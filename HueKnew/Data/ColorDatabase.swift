@@ -50,15 +50,17 @@ class ColorDatabase: ObservableObject {
 
     private func loadColorsFromJSON() {
         guard let url = Bundle.main.url(forResource: "colors", withExtension: "json") else {
+            Logger.error("Could not find colors.json in bundle")
             return
         }
 
         do {
             let data = try Data(contentsOf: url)
             jsonData = try JSONDecoder().decode(JSONColorData.self, from: data)
+            Logger.info("Successfully loaded \(jsonData?.colors.count ?? 0) colors from JSON")
             generateColorPairs()
         } catch {
-            // Optionally handle error
+            Logger.error("Failed to load colors from JSON: \(error.localizedDescription)")
         }
     }
 
@@ -125,7 +127,10 @@ class ColorDatabase: ObservableObject {
         
         return notes.joined(separator: ". ")
     }
+}
 
+// MARK: - ColorDatabase Extensions
+extension ColorDatabase {
     private func mapStringToCategory(_ categoryString: String) -> ColorCategory {
         switch categoryString.lowercased() {
         case "reds": return .reds
@@ -148,7 +153,7 @@ class ColorDatabase: ObservableObject {
         default: return .beginner
         }
     }
-
+    
     func temperatureCategory(for color: ColorInfo) -> String {
         let hue = color.hsbComponents.hue
         return (hue >= ColorThresholds.coolHueStart && hue <= ColorThresholds.coolHueEnd) ? "cool" : "warm"
@@ -171,7 +176,7 @@ class ColorDatabase: ObservableObject {
         default: return "bright"
         }
     }
-
+    
     func getColorPairs(for category: ColorCategory) -> [ColorPair] {
         colorPairs.filter { $0.category == category }
     }
@@ -265,45 +270,44 @@ class ColorDatabase: ObservableObject {
         let hsb1 = color1.hsbComponents
         let hsb2 = color2.hsbComponents
         
-        print("DEBUG: Comparing \(color1.name) (\(hsb1.hue), \(hsb1.saturation), \(hsb1.brightness)) with \(color2.name) (\(hsb2.hue), \(hsb2.saturation), \(hsb2.brightness))")
+        Logger.debug("Comparing \(color1.name) (\(hsb1.hue), \(hsb1.saturation), \(hsb1.brightness)) with \(color2.name) (\(hsb2.hue), \(hsb2.saturation), \(hsb2.brightness))")
         
         var comparisons: [String] = []
         
         // Compare hue (color-specific descriptions)
         let hueDiff = hsb1.hue - hsb2.hue
         let normalizedHueDiff = abs(hueDiff) > 180 ? 360 - abs(hueDiff) : abs(hueDiff)
-        print("DEBUG: Hue diff: \(hueDiff), normalized: \(normalizedHueDiff)")
         if normalizedHueDiff > 0 {
             let colorDescription = getColorDescription(hue1: hsb1.hue, hue2: hsb2.hue)
-            print("DEBUG: Color description: \(colorDescription)")
             if !colorDescription.isEmpty {
                 comparisons.append(colorDescription)
+                Logger.debug("Added color description: \(colorDescription)")
             }
         }
         
         // Compare saturation (relative to color1)
         let satDiff = hsb1.saturation - hsb2.saturation
-        print("DEBUG: Saturation diff: \(satDiff)")
         if satDiff != 0 {
             if satDiff > 0 {
                 comparisons.append("More Saturated")
             } else {
                 comparisons.append("Less Saturated")
             }
+            Logger.debug("Added saturation comparison: \(satDiff > 0 ? "More" : "Less") Saturated")
         }
         
         // Compare brightness (relative to color1)
         let brightDiff = hsb1.brightness - hsb2.brightness
-        print("DEBUG: Brightness diff: \(brightDiff)")
         if brightDiff != 0 {
             if brightDiff > 0 {
                 comparisons.append("Brighter")
             } else {
                 comparisons.append("Darker")
             }
+            Logger.debug("Added brightness comparison: \(brightDiff > 0 ? "Brighter" : "Darker")")
         }
         
-        print("DEBUG: Final comparisons for \(color1.name): \(comparisons)")
+        Logger.debug("Final comparisons for \(color1.name): \(comparisons)")
         return comparisons
     }
     
