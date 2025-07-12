@@ -5,95 +5,96 @@ on:
     branches:
       - main
   pull_request:
-    branches:
-      - main
+
+env:
+  # must be ≤ 18.2.99
+  IPHONEOS_DEPLOYMENT_TARGET: ${{ vars.IPHONEOS_DEPLOYMENT_TARGET }}
+  TEAM_ID:             ${{ secrets.TEAM_ID }}
+  APPSTORE_API_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
+  APPSTORE_ISSUER_ID:  ${{ secrets.APPSTORE_ISSUER_ID }}
+  APPSTORE_API_PRIVATE_KEY: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
 
 jobs:
-  build_and_deploy:
+  validate:
+    if: github.event_name == 'pull_request'
     runs-on: macos-latest
-    env:
-      APPSTORE_API_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
-      APPSTORE_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
-      APPSTORE_API_PRIVATE_KEY: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
-      TEAM_ID: ${{ secrets.TEAM_ID }}
-      IPHONEOS_DEPLOYMENT_TARGET: ${{ vars.IPHONEOS_DEPLOYMENT_TARGET }}
-
+    name: PR Validation (no signing)
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Xcode
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: 'latest-stable'
 
-      - name: Create App Store Connect API key file
-        if: github.event_name == 'push'
+      - name: Build (skip code signing)
         run: |
-          # write the private key to a file in the workspace root
-          cat <<EOF > AuthKey.p8
-          $APPSTORE_API_PRIVATE_KEY
-          EOF
-          echo "Wrote AuthKey.p8 to $(pwd)/AuthKey.p8"
+          xcodebuild \
+            -project HueKnew.xcodeproj \
+            -scheme HueKnew \
+            -configuration Release \
+            -derivedDataPath build \
+            clean build \
+            IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO
+
+  build_and_deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: macos-latest
+    name: Archive & Deploy to TestFlight
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: 'latest-stable'
+
+      - name: Write App Store Connect API Key
+        run: |
+          echo "$APPSTORE_API_PRIVATE_KEY" > "$GITHUB_WORKSPACE/AuthKey.p8"
+          chmod 600 "$GITHUB_WORKSPACE/AuthKey.p8"
 
       - name: Archive iOS App
         run: |
-          if [ "${{ github.event_name }}" = "push" ]; then
-            # Full archive for deployment
-            AUTH_KEY_PATH="$(pwd)/AuthKey.p8"
-            echo "Using authenticationKeyPath: $AUTH_KEY_PATH"
-            xcodebuild \
-              -project HueKnew.xcodeproj \
-              -scheme HueKnew \
-              -configuration Release \
-              -destination 'generic/platform=iOS' \
-              -archivePath build/HueKnew.xcarchive \
-              -allowProvisioningUpdates \
-              -authenticationKeyPath "$AUTH_KEY_PATH" \
-              -authenticationKeyID "$APPSTORE_API_KEY_ID" \
-              -authenticationKeyIssuerID "$APPSTORE_ISSUER_ID" \
-              IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
-              archive
-          else
-            # Simple build for PR validation
-            echo "Building for PR validation..."
-            xcodebuild \
-              -project HueKnew.xcodeproj \
-              -scheme HueKnew \
-              -configuration Release \
-              -destination 'generic/platform=iOS' \
-              -derivedDataPath build \
-              clean build
-          fi
+          xcodebuild \
+            -project HueKnew.xcodeproj \
+            -scheme HueKnew \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath build/HueKnew.xcarchive \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$GITHUB_WORKSPACE/AuthKey.p8" \
+            -authenticationKeyID "$APPSTORE_API_KEY_ID" \
+            -authenticationKeyIssuerID "$APPSTORE_ISSUER_ID" \
+            IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
+            archive
 
-      - name: Create Export Options
-        if: github.event_name == 'push'
+      - name: Create exportOptions.plist
         run: |
-          cat > exportOptions.plist << 'EOF'
+          cat > exportOptions.plist <<EOF
           <?xml version="1.0" encoding="UTF-8"?>
-          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+           "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
           <plist version="1.0">
           <dict>
-              <key>method</key>
-              <string>app-store</string>
-              <key>teamID</key>
-              <string>$TEAM_ID</string>
-              <key>signingStyle</key>
-              <string>automatic</string>
+            <key>method</key><string>app-store</string>
+            <key>teamID</key><string>$TEAM_ID</string>
+            <key>signingStyle</key><string>automatic</string>
           </dict>
           </plist>
           EOF
 
-      - name: Export iOS App
-        if: github.event_name == 'push'
+      - name: Export .ipa
         run: |
           xcodebuild -exportArchive \
             -archivePath build/HueKnew.xcarchive \
-            -exportPath build/export \
-            -exportOptionsPlist exportOptions.plist
+            -exportOptionsPlist exportOptions.plist \
+            -exportPath build/export
 
       - name: Upload to TestFlight
-        if: github.event_name == 'push'
         uses: apple-actions/upload-testflight-build@v3
         with:
           app-path: 'build/export/HueKnew.ipa'
