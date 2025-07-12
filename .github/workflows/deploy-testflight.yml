@@ -40,7 +40,7 @@ jobs:
   build_and_deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: macos-latest
-    name: Archive & Deploy (manual signing)
+    name: Archive & Deploy
     steps:
       - uses: actions/checkout@v4
 
@@ -114,7 +114,7 @@ jobs:
           security unlock-keychain -p "" build.keychain-db
           security set-keychain-settings -t 3600 -u build.keychain-db
 
-          # Archive without codesigning first
+          # Archive with automatic signing
           xcodebuild \
             -project HueKnew.xcodeproj \
             -scheme HueKnew \
@@ -122,9 +122,8 @@ jobs:
             -destination 'generic/platform=iOS' \
             -archivePath build/HueKnew.xcarchive \
             IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
-            CODE_SIGNING_ALLOWED=NO \
-            CODE_SIGN_IDENTITY="" \
-            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_STYLE=Automatic \
+            DEVELOPMENT_TEAM="$TEAM_ID" \
             archive
 
       - name: Verify archive was created
@@ -141,12 +140,7 @@ jobs:
           <dict>
             <key>method</key><string>app-store-connect</string>
             <key>teamID</key><string>$TEAM_ID</string>
-            <key>signingStyle</key><string>manual</string>
-            <key>provisioningProfiles</key>
-            <dict>
-              <key>net.shadowpuppet.HueKnew</key><string>$PROFILE_NAME</string>
-            </dict>
-            <key>signingCertificate</key><string>Apple Distribution</string>
+            <key>signingStyle</key><string>automatic</string>
             <key>stripSwiftSymbols</key><true/>
             <key>uploadBitcode</key><false/>
             <key>uploadSymbols</key><false/>
