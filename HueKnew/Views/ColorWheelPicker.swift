@@ -221,6 +221,6 @@ struct HSBColor {
 
 #Preview {
     ColorWheelPicker { color in
-        print(color.description)
+        // Removed print(color.description)
     }
 }
