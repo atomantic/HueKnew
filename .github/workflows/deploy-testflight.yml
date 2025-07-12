@@ -107,7 +107,7 @@ jobs:
           echo "PROFILE_UUID=$PROFILE_UUID" >> $GITHUB_ENV
           echo "PROFILE_NAME=$PROFILE_NAME" >> $GITHUB_ENV
 
-      - name: Archive iOS App (manual signing)
+      - name: Archive iOS App
         run: |
           # ensure the keychain is still default & unlocked
           security default-keychain -s build.keychain-db
@@ -124,6 +124,7 @@ jobs:
             IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
             CODE_SIGN_STYLE=Automatic \
             DEVELOPMENT_TEAM="$TEAM_ID" \
+            -allowProvisioningUpdates \
             archive
 
       - name: Verify archive was created
