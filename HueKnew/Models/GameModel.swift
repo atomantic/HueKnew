@@ -44,6 +44,11 @@ class GameModel {
     
     private let colorDatabase = ColorDatabase.shared
     
+    init() {
+        // Debug: Test color differences on initialization
+        colorDatabase.debugColorDifferences()
+    }
+    
     // MARK: - Game Flow Methods
     
     func startLearningSession(category: ColorCategory? = nil, difficulty: DifficultyLevel? = nil, hsbFilter: HSBFilter? = nil) {
@@ -52,6 +57,9 @@ class GameModel {
         selectedHSBFilter = hsbFilter
         questionsInCurrentSession = 0
         isGameActive = true
+        
+        // Debug: Test color differences
+        colorDatabase.debugColorDifferences()
         
         // Get next color pair to learn
         generateNextColorPair()

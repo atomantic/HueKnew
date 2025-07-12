@@ -135,6 +135,39 @@ class ColorDatabase: ObservableObject {
 
     private init() {
         loadColorsFromJSON()
+        testDifficultyDistribution()
+    }
+    
+    private func testDifficultyDistribution() {
+        print("=== TESTING DIFFICULTY DISTRIBUTION ===")
+        let allPairs = getAllColorPairs()
+        print("Total pairs: \(allPairs.count)")
+        
+        var difficultyCounts: [DifficultyLevel: Int] = [:]
+        var maxDifference = 0.0
+        
+        for pair in allPairs {
+            let diff = calculateColorDifference(color1: pair.primaryColor, color2: pair.comparisonColor)
+            maxDifference = max(maxDifference, diff)
+            
+            let level = pair.difficultyLevel
+            difficultyCounts[level, default: 0] += 1
+        }
+        
+        print("Max difference found: \(maxDifference)")
+        print("Difficulty distribution:")
+        for (level, count) in difficultyCounts.sorted(by: { $0.key.rawValue < $1.key.rawValue }) {
+            print("  \(level.rawValue): \(count) pairs")
+        }
+        
+        // Check if we have any beginner pairs
+        let beginnerPairs = allPairs.filter { $0.difficultyLevel == .beginner }
+        print("Beginner pairs: \(beginnerPairs.count)")
+        
+        if beginnerPairs.isEmpty {
+            print("ERROR: No beginner difficulty pairs found!")
+            print("This explains why 1-star difficulty selection shows loading screen.")
+        }
     }
 
     private func loadColorsFromJSON() {
@@ -230,6 +263,19 @@ class ColorDatabase: ObservableObject {
 
         return createPair(from: color1, and: color2)
     }
+  
+    func getColorPairs(for difficulty: DifficultyLevel) -> [ColorPair] {
+        let filteredPairs = colorPairs.filter { $0.difficultyLevel == difficulty }
+        print("DEBUG: getColorPairs(for: \(difficulty.rawValue)) - Total pairs: \(colorPairs.count), Filtered pairs: \(filteredPairs.count)")
+        
+        // Debug: Show difficulty distribution
+        let difficultyCounts = Dictionary(grouping: colorPairs) { $0.difficultyLevel }
+        for (level, pairs) in difficultyCounts {
+            print("DEBUG: \(level.rawValue): \(pairs.count) pairs")
+        }
+        
+        return filteredPairs
+    }
 
     func randomColorPair(for difficulty: DifficultyLevel) -> ColorPair? {
         for _ in 0..<50 {
@@ -317,15 +363,55 @@ class ColorDatabase: ObservableObject {
         }
     }
     
+    // Debug method to test color differences
+    func debugColorDifferences() {
+        print("=== Color Difference Debug ===")
+        
+        // Test some known pairs
+        let testPairs = [
+            ("Gamboge", "#E49B0F", "Indian Yellow", "#E3B505"),
+            ("Cadmium Yellow", "#FFF600", "Lemon Yellow", "#FFFF9F"),
+            ("Prussian Blue", "#003153", "Navy Blue", "#000080"),
+            ("Vermillion", "#E34234", "Cinnabar", "#E44D2E")
+        ]
+        
+        for (name1, hex1, name2, hex2) in testPairs {
+            let color1 = ColorInfo(name: name1, hexValue: hex1, description: "", category: .yellows)
+            let color2 = ColorInfo(name: name2, hexValue: hex2, description: "", category: .yellows)
+            let diff = calculateColorDifference(color1: color1, color2: color2)
+            let level = ColorPair(primaryColor: color1, comparisonColor: color2, learningNotes: "", category: .yellows).difficultyLevel
+            print("\(name1) vs \(name2): \(String(format: "%.2f", diff)) -> \(level.rawValue)")
+        }
+        
+        // Test with actual color pairs from the database
+        print("\n=== Actual Database Pairs ===")
+        let allPairs = getAllColorPairs()
+        let samplePairs = Array(allPairs.prefix(10))
+        
+        for pair in samplePairs {
+            let diff = calculateColorDifference(color1: pair.primaryColor, color2: pair.comparisonColor)
+            print("\(pair.primaryColor.name) vs \(pair.comparisonColor.name): \(String(format: "%.2f", diff)) -> \(pair.difficultyLevel.rawValue)")
+        }
+    }
+    
     func calculateColorDifference(color1: ColorInfo, color2: ColorInfo) -> Double {
-        let rgb1 = color1.rgbComponents
-        let rgb2 = color2.rgbComponents
+        let hsb1 = color1.hsbComponents
+        let hsb2 = color2.hsbComponents
         
-        let deltaL = pow(rgb1.red - rgb2.red, 2)
-        let deltaA = pow(rgb1.green - rgb2.green, 2)
-        let deltaB = pow(rgb1.blue - rgb2.blue, 2)
+        // Calculate hue difference (handling circular nature of hue)
+        let hueDiff = min(abs(hsb1.hue - hsb2.hue), 360 - abs(hsb1.hue - hsb2.hue))
+        let normalizedHueDiff = hueDiff / 360.0 // Normalize to 0-1
         
-        return sqrt(deltaL + deltaA + deltaB)
+        // Calculate saturation and brightness differences
+        let satDiff = abs(hsb1.saturation - hsb2.saturation)
+        let brightDiff = abs(hsb1.brightness - hsb2.brightness)
+        
+        // Weighted combination that prioritizes hue differences
+        // Hue is most important for color perception, then saturation, then brightness
+        let weightedDifference = (normalizedHueDiff * 0.6) + (satDiff * 0.25) + (brightDiff * 0.15)
+        
+        // Convert to a 0-100 scale for easier threshold setting
+        return weightedDifference * 100.0
     }
 }
 
@@ -333,14 +419,15 @@ extension ColorPair {
     var difficultyLevel: DifficultyLevel {
         let deltaE = ColorDatabase.shared.calculateColorDifference(color1: primaryColor, color2: comparisonColor)
         
-        if deltaE < 10 {
-            return .expert
-        } else if deltaE < 20 {
-            return .advanced
-        } else if deltaE < 40 {
-            return .intermediate
+        // New thresholds based on 0-100 scale with better perceptual accuracy
+        if deltaE < 5 {
+            return .expert      // Very similar colors (e.g., Gamboge vs Indian Yellow)
+        } else if deltaE < 15 {
+            return .advanced    // Similar colors with subtle differences
+        } else if deltaE < 35 {
+            return .intermediate // Moderately different colors
         } else {
-            return .beginner
+            return .beginner    // Clearly different colors
         }
     }
 }
