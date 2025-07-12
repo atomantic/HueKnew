@@ -76,20 +76,7 @@ struct ColorPair: Identifiable, Codable {
         [primaryColor, comparisonColor]
     }
     
-    var difficultyLevel: DifficultyLevel {
-        let deltaE = ColorDatabase.shared.calculateColorDifference(color1: primaryColor, color2: comparisonColor)
-        
-        // Adjusted thresholds to ensure beginner pairs exist
-        if deltaE < 5 {
-            return .expert      // Very similar colors (e.g., Gamboge vs Indian Yellow)
-        } else if deltaE < 15 {
-            return .advanced    // Similar colors with subtle differences
-        } else if deltaE < 25 {
-            return .intermediate // Moderately different colors
-        } else {
-            return .beginner    // Clearly different colors
-        }
-    }
+
 }
 
 struct HSBFilter {
