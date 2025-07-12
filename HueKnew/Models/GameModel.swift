@@ -178,4 +178,32 @@ class GameModel {
     var totalPairsCount: Int {
         colorDatabase.getAllColorPairs().count
     }
+    
+    // MARK: - Reset Progress
+    
+    func resetProgress() {
+        // Reset all game progress
+        score = 0
+        level = 1
+        streak = 0
+        bestStreak = 0
+        totalQuestionsAnswered = 0
+        correctAnswers = 0
+        masteredPairs.removeAll()
+        
+        // Reset current session
+        currentColorPair = nil
+        currentChallengeType = .nameToColor
+        questionsInCurrentSession = 0
+        
+        // Reset learning progress
+        selectedCategory = nil
+        selectedDifficulty = nil
+        selectedHSBFilter = nil
+        
+        // Reset game flow
+        isGameActive = false
+        isPaused = false
+        currentPhase = .menu
+    }
 }
