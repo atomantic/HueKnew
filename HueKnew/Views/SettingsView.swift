@@ -11,12 +11,23 @@ struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var soundEnabled = true
     @State private var vibrationEnabled = true
+    @State private var showingResetAlert = false
+    
+    let gameModel: GameModel
+    
     var body: some View {
         NavigationView {
             Form {
                 Section("Audio & Feedback") {
                     Toggle("Sound Effects", isOn: $soundEnabled)
                     Toggle("Vibration", isOn: $vibrationEnabled)
+                }
+                
+                Section("Game Progress") {
+                    Button("Reset Progress") {
+                        showingResetAlert = true
+                    }
+                    .foregroundColor(.red)
                 }
                 
                 Section("About") {
@@ -43,10 +54,18 @@ struct SettingsView: View {
                     }
                 }
             }
+            .alert("Reset Progress", isPresented: $showingResetAlert) {
+                Button("Cancel", role: .cancel) { }
+                Button("Reset", role: .destructive) {
+                    gameModel.resetProgress()
+                }
+            } message: {
+                Text("This will reset all your game progress including score, level, streak, and mastered colors. This action cannot be undone.")
+            }
         }
     }
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(gameModel: GameModel())
 }
