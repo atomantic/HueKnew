@@ -25,78 +25,16 @@ struct ColorThresholds {
 // MARK: - JSON Color Structures
 struct JSONColorData: Codable {
     let colors: [JSONColor]
-    let comparisonTemplates: ComparisonTemplates
-
-    enum CodingKeys: String, CodingKey {
-        case colors
-        case comparisonTemplates = "comparison_templates"
-    }
 }
 
 struct JSONColor: Codable {
     let name: String
     let hex: String
     let category: String
-
     let description: String
 
     enum CodingKeys: String, CodingKey {
         case name, hex, category, description
-    }
-}
-
-struct ComparisonTemplates: Codable {
-    let temperature: TemperatureTemplates
-    let saturation: SaturationTemplates
-    let brightness: BrightnessTemplates
-    let purity: PurityTemplates
-    let undertones: UndertoneTemplates
-}
-
-struct TemperatureTemplates: Codable {
-    let warmer: String
-    let cooler: String
-    let similar: String
-}
-
-struct SaturationTemplates: Codable {
-    let moreSaturated: String
-    let lessSaturated: String
-    let similar: String
-
-    enum CodingKeys: String, CodingKey {
-        case moreSaturated = "more_saturated"
-        case lessSaturated = "less_saturated"
-        case similar
-    }
-}
-
-struct BrightnessTemplates: Codable {
-    let brighter: String
-    let darker: String
-    let similar: String
-}
-
-struct PurityTemplates: Codable {
-    let purer: String
-    let moreMuted: String
-    let similar: String
-
-    enum CodingKeys: String, CodingKey {
-        case purer
-        case moreMuted = "more_muted"
-        case similar
-    }
-}
-
-struct UndertoneTemplates: Codable {
-    let different: String
-    let similar: String
-    let noneVsSome: String
-
-    enum CodingKeys: String, CodingKey {
-        case different, similar
-        case noneVsSome = "none_vs_some"
     }
 }
 
@@ -112,15 +50,17 @@ class ColorDatabase: ObservableObject {
 
     private func loadColorsFromJSON() {
         guard let url = Bundle.main.url(forResource: "colors", withExtension: "json") else {
+            Logger.error("Could not find colors.json in bundle")
             return
         }
 
         do {
             let data = try Data(contentsOf: url)
             jsonData = try JSONDecoder().decode(JSONColorData.self, from: data)
+            Logger.info("Successfully loaded \(jsonData?.colors.count ?? 0) colors from JSON")
             generateColorPairs()
         } catch {
-            // Optionally handle error
+            Logger.error("Failed to load colors from JSON: \(error.localizedDescription)")
         }
     }
 
@@ -167,42 +107,30 @@ class ColorDatabase: ObservableObject {
     }
 
     private func generateComparisonNotes(color1: JSONColor, color2: JSONColor) -> String {
-        guard let templates = jsonData?.comparisonTemplates else {
-            return "\(color1.name) vs \(color2.name): Compare their unique characteristics."
-        }
-
         let info1 = ColorInfo(name: color1.name, hexValue: color1.hex, description: color1.description, category: mapStringToCategory(color1.category))
         let info2 = ColorInfo(name: color2.name, hexValue: color2.hex, description: color2.description, category: mapStringToCategory(color2.category))
 
+        let comparisons1 = getColorComparisons(color1: info1, color2: info2)
+        let comparisons2 = getColorComparisons(color1: info2, color2: info1)
+        
         var notes: [String] = []
-
-        let temp1 = temperatureCategory(for: info1)
-        let temp2 = temperatureCategory(for: info2)
-        if temp1 != temp2 {
-            let warmer = temp1 == "warm" ? info1.name : info2.name
-            let cooler = temp1 == "cool" ? info1.name : info2.name
-            notes.append(templates.temperature.warmer.replacingOccurrences(of: "{color1}", with: warmer).replacingOccurrences(of: "{color2}", with: cooler))
+        
+        // Add first color's characteristics
+        if !comparisons1.isEmpty {
+            notes.append("\(info1.name): \(comparisons1.joined(separator: ", "))")
         }
-
-        let sat1 = saturationLevel(for: info1)
-        let sat2 = saturationLevel(for: info2)
-        if sat1 != sat2 {
-            let moreSaturated = sat1 == "high" ? info1.name : info2.name
-            let lessSaturated = sat1 == "low" ? info1.name : info2.name
-            notes.append(templates.saturation.moreSaturated.replacingOccurrences(of: "{color1}", with: moreSaturated).replacingOccurrences(of: "{color2}", with: lessSaturated))
+        
+        // Add second color's characteristics
+        if !comparisons2.isEmpty {
+            notes.append("\(info2.name): \(comparisons2.joined(separator: ", "))")
         }
-
-        let bright1 = brightnessLevel(for: info1)
-        let bright2 = brightnessLevel(for: info2)
-        if bright1 != bright2 {
-            let brighter = bright1 == "bright" ? info1.name : info2.name
-            let darker = bright1 == "dark" ? info1.name : info2.name
-            notes.append(templates.brightness.brighter.replacingOccurrences(of: "{color1}", with: brighter).replacingOccurrences(of: "{color2}", with: darker))
-        }
-
-        return notes.joined(separator: " ")
+        
+        return notes.joined(separator: ". ")
     }
+}
 
+// MARK: - ColorDatabase Extensions
+extension ColorDatabase {
     private func mapStringToCategory(_ categoryString: String) -> ColorCategory {
         switch categoryString.lowercased() {
         case "reds": return .reds
@@ -225,13 +153,13 @@ class ColorDatabase: ObservableObject {
         default: return .beginner
         }
     }
-
-    private func temperatureCategory(for color: ColorInfo) -> String {
+    
+    func temperatureCategory(for color: ColorInfo) -> String {
         let hue = color.hsbComponents.hue
         return (hue >= ColorThresholds.coolHueStart && hue <= ColorThresholds.coolHueEnd) ? "cool" : "warm"
     }
 
-    private func saturationLevel(for color: ColorInfo) -> String {
+    func saturationLevel(for color: ColorInfo) -> String {
         let sat = color.hsbComponents.saturation
         switch sat {
         case 0..<ColorThresholds.lowSaturationThreshold: return "low"
@@ -240,7 +168,7 @@ class ColorDatabase: ObservableObject {
         }
     }
 
-    private func brightnessLevel(for color: ColorInfo) -> String {
+    func brightnessLevel(for color: ColorInfo) -> String {
         let bright = color.hsbComponents.brightness
         switch bright {
         case 0..<ColorThresholds.lowBrightnessThreshold: return "dark"
@@ -248,7 +176,7 @@ class ColorDatabase: ObservableObject {
         default: return "bright"
         }
     }
-
+    
     func getColorPairs(for category: ColorCategory) -> [ColorPair] {
         colorPairs.filter { $0.category == category }
     }
@@ -283,6 +211,12 @@ class ColorDatabase: ObservableObject {
     func getRandomColorPair(excluding: ColorPair) -> ColorPair? {
         colorPairs.filter { $0.id != excluding.id }.randomElement()
     }
+    
+    func getColorPair(containing colorInfo: ColorInfo) -> ColorPair? {
+        return colorPairs.first { pair in
+            pair.primaryColor.id == colorInfo.id || pair.comparisonColor.id == colorInfo.id
+        }
+    }
 
     func getAllColors() -> [ColorInfo] {
         // Get unique colors from the JSON data to avoid duplicates
@@ -310,10 +244,6 @@ class ColorDatabase: ObservableObject {
     func getAvailableColors() -> [JSONColor] {
         return jsonData?.colors ?? []
     }
-
-    func getComparisonTemplates() -> ComparisonTemplates? {
-        return jsonData?.comparisonTemplates
-    }
     
     func calculateColorDifference(color1: ColorInfo, color2: ColorInfo) -> Double {
         let hsb1 = color1.hsbComponents
@@ -333,6 +263,110 @@ class ColorDatabase: ObservableObject {
         
         // Convert to a 0-100 scale for easier threshold setting
         return weightedDifference * 100.0
+    }
+    
+    // MARK: - Shared Comparison Logic
+    func getColorComparisons(color1: ColorInfo, color2: ColorInfo) -> [String] {
+        let hsb1 = color1.hsbComponents
+        let hsb2 = color2.hsbComponents
+        
+        Logger.debug("Comparing \(color1.name) (\(hsb1.hue), \(hsb1.saturation), \(hsb1.brightness)) with \(color2.name) (\(hsb2.hue), \(hsb2.saturation), \(hsb2.brightness))")
+        
+        var comparisons: [String] = []
+        
+        // Compare hue (color-specific descriptions)
+        let hueDiff = hsb1.hue - hsb2.hue
+        let normalizedHueDiff = abs(hueDiff) > 180 ? 360 - abs(hueDiff) : abs(hueDiff)
+        if normalizedHueDiff > 0 {
+            let colorDescription = getColorDescription(hue1: hsb1.hue, hue2: hsb2.hue)
+            if !colorDescription.isEmpty {
+                comparisons.append(colorDescription)
+                Logger.debug("Added color description: \(colorDescription)")
+            }
+        }
+        
+        // Compare saturation (relative to color1)
+        let satDiff = hsb1.saturation - hsb2.saturation
+        if satDiff != 0 {
+            if satDiff > 0 {
+                comparisons.append("More Saturated")
+            } else {
+                comparisons.append("Less Saturated")
+            }
+            Logger.debug("Added saturation comparison: \(satDiff > 0 ? "More" : "Less") Saturated")
+        }
+        
+        // Compare brightness (relative to color1)
+        let brightDiff = hsb1.brightness - hsb2.brightness
+        if brightDiff != 0 {
+            if brightDiff > 0 {
+                comparisons.append("Brighter")
+            } else {
+                comparisons.append("Darker")
+            }
+            Logger.debug("Added brightness comparison: \(brightDiff > 0 ? "Brighter" : "Darker")")
+        }
+        
+        Logger.debug("Final comparisons for \(color1.name): \(comparisons)")
+        return comparisons
+    }
+    
+    private func getColorDescription(hue1: Double, hue2: Double) -> String {
+        let hueDiff = hue1 - hue2
+        let normalizedHueDiff = abs(hueDiff) > 180 ? 360 - abs(hueDiff) : abs(hueDiff)
+        
+        // Show color descriptions for any difference
+        guard normalizedHueDiff > 0 else { return "" }
+        
+        // Define hue ranges for primary and secondary colors
+        let redRange = 350.0...360.0
+        let redRange2 = 0.0...10.0
+        let orangeRange = 10.0...45.0
+        let yellowRange = 45.0...75.0
+        let greenRange = 75.0...165.0
+        let blueRange = 165.0...255.0
+        let purpleRange = 255.0...285.0
+        let magentaRange = 285.0...350.0
+        
+        func getColorName(for hue: Double) -> String {
+            let normalizedHue = hue < 0 ? hue + 360 : hue
+            
+            if redRange.contains(normalizedHue) || redRange2.contains(normalizedHue) {
+                return "red"
+            } else if orangeRange.contains(normalizedHue) {
+                return "orange"
+            } else if yellowRange.contains(normalizedHue) {
+                return "yellow"
+            } else if greenRange.contains(normalizedHue) {
+                return "green"
+            } else if blueRange.contains(normalizedHue) {
+                return "blue"
+            } else if purpleRange.contains(normalizedHue) {
+                return "purple"
+            } else if magentaRange.contains(normalizedHue) {
+                return "magenta"
+            } else {
+                return "red" // Default for edge cases
+            }
+        }
+        
+        let color1 = getColorName(for: hue1)
+        let color2 = getColorName(for: hue2)
+        
+        if color1 != color2 {
+            return "More \(color1.capitalized)"
+        } else {
+            // Same color family, but different shades
+            if abs(hueDiff) > 20 {
+                if hueDiff > 0 && hueDiff < 180 || hueDiff < -180 {
+                    return "More \(color1.capitalized)"
+                } else {
+                    return "Less \(color1.capitalized)"
+                }
+            }
+        }
+        
+        return ""
     }
 }
 

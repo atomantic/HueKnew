@@ -133,12 +133,12 @@ struct ColorWheelView: View {
                             x: geometry.size.width / 2.0,
                             y: geometry.size.height / 2.0
                         )
-                        let dx = value.location.x - center.x
-                        let dy = value.location.y - center.y
-                        let dist = sqrt(dx * dx + dy * dy)
+                        let deltaX = value.location.x - center.x
+                        let deltaY = value.location.y - center.y
+                        let dist = sqrt(deltaX * deltaX + deltaY * deltaY)
                         let maxR = geometry.size.width / 2.0 - 10.0
 
-                        var angleDeg = atan2(dy, dx) * 180.0 / .pi
+                        var angleDeg = atan2(deltaY, deltaX) * 180.0 / .pi
                         if angleDeg < 0 { angleDeg += 360.0 }
                         selectedHue = angleDeg
                         selectedSaturation = min(dist / maxR, 1.0)
@@ -220,7 +220,7 @@ struct HSBColor {
 }
 
 #Preview {
-    ColorWheelPicker { color in
+    ColorWheelPicker { _ in
         // Removed print(color.description)
     }
 }
