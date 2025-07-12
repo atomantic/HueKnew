@@ -130,9 +130,9 @@ jobs:
       - name: Codesign the archive
         run: |
           # ensure the keychain is still default & unlocked
-          security default-keychain -s build.keychain-db
-          security unlock-keychain -p "" build.keychain-db
-          security set-keychain-settings -t 3600 -u build.keychain-db
+          # security default-keychain -s build.keychain-db
+          # security unlock-keychain -p "" build.keychain-db
+          # security set-keychain-settings -t 3600 -u build.keychain-db
 
           # Codesign the app bundle inside the archive
           codesign --force --sign "Apple Distribution" \
