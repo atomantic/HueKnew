@@ -1,0 +1,321 @@
+//
+//  ChallengeView.swift
+//  Hue Knew
+//
+//  Created by Adam Eivy on 7/11/25.
+//
+
+import SwiftUI
+
+struct ChallengeView: View {
+    let colorPair: ColorPair
+    let challengeType: ChallengeType
+    let onAnswerSelected: (Bool) -> Void
+    
+    @State private var selectedAnswer: ColorInfo?
+    @State private var showingResult = false
+    @State private var answerOptions: [ColorInfo] = []
+    @State private var targetColor: ColorInfo?
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            // Header
+            VStack(spacing: 8) {
+                Text("Challenge Mode")
+                    .font(.headline)
+                    .foregroundColor(.orange)
+                
+                Text(challengeType.description)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            }
+            .padding()
+            
+            Spacer()
+            
+            VStack(spacing: 32) {
+                // Question section
+                questionSection
+                
+                // Answer options
+                answerOptionsSection
+                
+                // Submit button
+                if selectedAnswer != nil && !showingResult {
+                    Button(action: submitAnswer) {
+                        Text("Submit Answer")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.orange)
+                            .cornerRadius(12)
+                    }
+                    .padding(.horizontal)
+                    .animation(.easeInOut(duration: 0.3), value: selectedAnswer)
+                }
+                
+                // Result section
+                if showingResult {
+                    resultSection
+                }
+            }
+            
+            Spacer()
+        }
+        .background(Color(.systemBackground))
+        .onAppear {
+            setupChallenge()
+        }
+    }
+    
+    @ViewBuilder
+    private var questionSection: some View {
+        VStack(spacing: 16) {
+            switch challengeType {
+            case .nameToColor:
+                // Show color name, ask to pick color
+                VStack(spacing: 8) {
+                    Text("Which color is:")
+                        .font(.title2)
+                        .foregroundColor(.primary)
+                    
+                    Text(targetColor?.name ?? "")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(.orange)
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .cornerRadius(12)
+                }
+                
+            case .colorToName:
+                // Show color, ask to pick name
+                VStack(spacing: 8) {
+                    Text("What is this color called?")
+                        .font(.title2)
+                        .foregroundColor(.primary)
+                    
+                    Rectangle()
+                        .fill(targetColor?.color ?? Color.gray)
+                        .frame(height: 120)
+                        .cornerRadius(12)
+                        .shadow(radius: 4)
+                        .padding(.horizontal, 40)
+                }
+            }
+        }
+        .padding()
+        .background(Color(.systemGray6))
+        .cornerRadius(16)
+        .padding(.horizontal)
+    }
+    
+    @ViewBuilder
+    private var answerOptionsSection: some View {
+        VStack(spacing: 16) {
+            Text("Choose your answer:")
+                .font(.headline)
+                .foregroundColor(.primary)
+            
+            switch challengeType {
+            case .nameToColor:
+                // Show color swatches
+                LazyVGrid(columns: [
+                    GridItem(.flexible()),
+                    GridItem(.flexible())
+                ], spacing: 16) {
+                    ForEach(answerOptions) { colorInfo in
+                        ColorOptionCard(
+                            colorInfo: colorInfo,
+                            isSelected: selectedAnswer?.id == colorInfo.id,
+                            showName: false
+                        ) {
+                            selectedAnswer = colorInfo
+                        }
+                    }
+                }
+                .padding(.horizontal)
+                
+            case .colorToName:
+                // Show color names
+                VStack(spacing: 12) {
+                    ForEach(answerOptions) { colorInfo in
+                        NameOptionCard(
+                            colorInfo: colorInfo,
+                            isSelected: selectedAnswer?.id == colorInfo.id
+                        ) {
+                            selectedAnswer = colorInfo
+                        }
+                    }
+                }
+                .padding(.horizontal)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private var resultSection: some View {
+        VStack(spacing: 16) {
+            // Result indicator
+            let isCorrect = selectedAnswer?.id == targetColor?.id
+            
+            VStack(spacing: 8) {
+                Image(systemName: isCorrect ? "checkmark.circle.fill" : "xmark.circle.fill")
+                    .font(.system(size: 60))
+                    .foregroundColor(isCorrect ? .green : .red)
+                
+                Text(isCorrect ? "Correct!" : "Incorrect")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(isCorrect ? .green : .red)
+                
+                if !isCorrect {
+                    Text("The correct answer was: \(targetColor?.name ?? "")")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                }
+            }
+            .padding()
+            .background(Color(.systemGray6))
+            .cornerRadius(12)
+            
+            // Continue button
+            Button(action: {
+                onAnswerSelected(isCorrect)
+            }) {
+                Text("Continue")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.blue)
+                    .cornerRadius(12)
+            }
+            .padding(.horizontal)
+        }
+        .animation(.easeInOut(duration: 0.5), value: showingResult)
+    }
+    
+    private func setupChallenge() {
+        // Set target color (randomly pick one from the pair)
+        targetColor = [colorPair.primaryColor, colorPair.comparisonColor].randomElement()
+        
+        // Create answer options
+        var options = [targetColor!]
+        
+        // Add the other color from the pair
+        let otherColor = targetColor?.id == colorPair.primaryColor.id ? 
+            colorPair.comparisonColor : colorPair.primaryColor
+        options.append(otherColor)
+        
+        // Add 2 more random colors from the database
+        let randomColors = ColorDatabase.shared.getRandomColors(count: 2, excluding: targetColor!)
+        options.append(contentsOf: randomColors)
+        
+        // Shuffle the options
+        answerOptions = options.shuffled()
+    }
+    
+    private func submitAnswer() {
+        showingResult = true
+    }
+}
+
+struct ColorOptionCard: View {
+    let colorInfo: ColorInfo
+    let isSelected: Bool
+    let showName: Bool
+    let onTap: () -> Void
+    
+    var body: some View {
+        Button(action: onTap) {
+            VStack(spacing: 8) {
+                Rectangle()
+                    .fill(colorInfo.color)
+                    .frame(height: 80)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(isSelected ? Color.blue : Color.clear, lineWidth: 3)
+                    )
+                    .cornerRadius(8)
+                
+                if showName {
+                    Text(colorInfo.name)
+                        .font(.caption)
+                        .foregroundColor(.primary)
+                        .multilineTextAlignment(.center)
+                }
+            }
+            .padding(8)
+            .background(isSelected ? Color.blue.opacity(0.1) : Color(.systemGray6))
+            .cornerRadius(12)
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
+}
+
+struct NameOptionCard: View {
+    let colorInfo: ColorInfo
+    let isSelected: Bool
+    let onTap: () -> Void
+    
+    var body: some View {
+        Button(action: onTap) {
+            HStack {
+                Rectangle()
+                    .fill(colorInfo.color)
+                    .frame(width: 20, height: 20)
+                    .cornerRadius(4)
+                
+                Text(colorInfo.name)
+                    .font(.body)
+                    .foregroundColor(.primary)
+                    .multilineTextAlignment(.leading)
+                
+                Spacer()
+                
+                if isSelected {
+                    Image(systemName: "checkmark.circle.fill")
+                        .foregroundColor(.blue)
+                }
+            }
+            .padding()
+            .background(isSelected ? Color.blue.opacity(0.1) : Color(.systemGray6))
+            .cornerRadius(12)
+        }
+        .buttonStyle(PlainButtonStyle())
+    }
+}
+
+#Preview {
+    ChallengeView(
+        colorPair: ColorPair(
+            id: UUID(),
+            primaryColor: ColorInfo(
+                id: UUID(),
+                name: "Gamboge",
+                hexValue: "#E49B0F",
+                description: "A deep golden yellow with warm undertones",
+                category: .yellows
+            ),
+            comparisonColor: ColorInfo(
+                id: UUID(),
+                name: "Indian Yellow",
+                hexValue: "#E3B505",
+                description: "A rich, warm yellow with orange undertones",
+                category: .yellows
+            ),
+            learningNotes: "Gamboge has more brown/amber undertones, while Indian Yellow is purer and brighter with orange hints.",
+            difficultyLevel: .beginner,
+            category: .yellows
+        ),
+        challengeType: .nameToColor,
+        onAnswerSelected: { isCorrect in
+            print("Answer was \(isCorrect ? "correct" : "incorrect")")
+        }
+    )
+}
