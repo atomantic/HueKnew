@@ -22,29 +22,11 @@ struct JSONColor: Codable {
     let name: String
     let hex: String
     let category: String
-    
+
     let description: String
-    let attributes: ColorAttributes
-    let distinguishingFeatures: [String]
 
     enum CodingKeys: String, CodingKey {
-        case name, hex, category, description, attributes
-        case distinguishingFeatures = "distinguishing_features"
-    }
-}
-
-struct ColorAttributes: Codable {
-    let temperature: String
-    let saturation: String
-    let brightness: String
-    let undertones: [String]
-    let purity: String
-    let transparency: String
-    let historicalSignificance: String
-
-    enum CodingKeys: String, CodingKey {
-        case temperature, saturation, brightness, undertones, purity, transparency
-        case historicalSignificance = "historical_significance"
+        case name, hex, category, description
     }
 }
 
@@ -208,26 +190,32 @@ class ColorDatabase: ObservableObject {
             return "\(color1.name) vs \(color2.name): Compare their unique characteristics."
         }
 
+        let info1 = ColorInfo(name: color1.name, hexValue: color1.hex, description: color1.description, category: mapStringToCategory(color1.category))
+        let info2 = ColorInfo(name: color2.name, hexValue: color2.hex, description: color2.description, category: mapStringToCategory(color2.category))
+
         var notes: [String] = []
 
-        // Temperature comparison
-        if color1.attributes.temperature != color2.attributes.temperature {
-            let warmer = color1.attributes.temperature == "warm" ? color1.name : color2.name
-            let cooler = color1.attributes.temperature == "cool" ? color1.name : color2.name
+        let temp1 = temperatureCategory(for: info1)
+        let temp2 = temperatureCategory(for: info2)
+        if temp1 != temp2 {
+            let warmer = temp1 == "warm" ? info1.name : info2.name
+            let cooler = temp1 == "cool" ? info1.name : info2.name
             notes.append(templates.temperature.warmer.replacingOccurrences(of: "{color1}", with: warmer).replacingOccurrences(of: "{color2}", with: cooler))
         }
 
-        // Saturation comparison
-        if color1.attributes.saturation != color2.attributes.saturation {
-            let moreSaturated = color1.attributes.saturation == "high" ? color1.name : color2.name
-            let lessSaturated = color1.attributes.saturation == "low" ? color1.name : color2.name
+        let sat1 = saturationLevel(for: info1)
+        let sat2 = saturationLevel(for: info2)
+        if sat1 != sat2 {
+            let moreSaturated = sat1 == "high" ? info1.name : info2.name
+            let lessSaturated = sat1 == "low" ? info1.name : info2.name
             notes.append(templates.saturation.moreSaturated.replacingOccurrences(of: "{color1}", with: moreSaturated).replacingOccurrences(of: "{color2}", with: lessSaturated))
         }
 
-        // Brightness comparison
-        if color1.attributes.brightness != color2.attributes.brightness {
-            let brighter = color1.attributes.brightness == "bright" ? color1.name : color2.name
-            let darker = color1.attributes.brightness == "dark" ? color1.name : color2.name
+        let bright1 = brightnessLevel(for: info1)
+        let bright2 = brightnessLevel(for: info2)
+        if bright1 != bright2 {
+            let brighter = bright1 == "bright" ? info1.name : info2.name
+            let darker = bright1 == "dark" ? info1.name : info2.name
             notes.append(templates.brightness.brighter.replacingOccurrences(of: "{color1}", with: brighter).replacingOccurrences(of: "{color2}", with: darker))
         }
 
@@ -254,6 +242,29 @@ class ColorDatabase: ObservableObject {
         case "advanced": return .advanced
         case "expert": return .expert
         default: return .beginner
+        }
+    }
+
+    private func temperatureCategory(for color: ColorInfo) -> String {
+        let hue = color.hsbComponents.hue
+        return (hue >= 90 && hue <= 270) ? "cool" : "warm"
+    }
+
+    private func saturationLevel(for color: ColorInfo) -> String {
+        let sat = color.hsbComponents.saturation
+        switch sat {
+        case 0..<0.33: return "low"
+        case 0.33..<0.66: return "medium"
+        default: return "high"
+        }
+    }
+
+    private func brightnessLevel(for color: ColorInfo) -> String {
+        let bright = color.hsbComponents.brightness
+        switch bright {
+        case 0..<0.33: return "dark"
+        case 0.33..<0.66: return "medium"
+        default: return "bright"
         }
     }
 
