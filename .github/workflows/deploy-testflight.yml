@@ -137,7 +137,6 @@ jobs:
           # Codesign the app bundle inside the archive
           codesign --force --sign "Apple Distribution" \
             --timestamp=none \
-            --entitlements build/HueKnew.xcarchive/Products/Applications/HueKnew.app/entitlements.plist \
             build/HueKnew.xcarchive/Products/Applications/HueKnew.app
 
       - name: Create exportOptions.plist
