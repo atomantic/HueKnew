@@ -25,16 +25,8 @@ struct ColorWheelPicker: View {
 
                 // Vertical Value slider (like Blender)
                 VStack(spacing: 8) {
-                    Slider(value: $selectedValue, in: 0...1)
-                        .rotationEffect(.degrees(-90.0))
-                        .frame(width: 200, height: 20)
-                        .accentColor(
-                            Color(
-                                hue: selectedHue / 360.0,
-                                saturation: selectedSaturation,
-                                brightness: 1.0
-                            )
-                        )
+                    CustomValueSlider(value: $selectedValue)
+                        .frame(width: 40, height: 200)
                 }
                 .frame(width: 40)
             }
@@ -158,6 +150,52 @@ struct ColorWheelView: View {
     private var hueColors: [Color] {
         (0...360).map { i in
             Color(hue: Double(i) / 360.0, saturation: 1.0, brightness: 1.0)
+        }
+    }
+}
+
+struct CustomValueSlider: View {
+    @Binding var value: Double
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack {
+                // Gradient background from white to black
+                RoundedRectangle(cornerRadius: 4)
+                    .fill(
+                        LinearGradient(
+                            gradient: Gradient(colors: [Color.white, Color.black]),
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 4)
+                            .stroke(Color.primary.opacity(0.3), lineWidth: 1)
+                    )
+                
+                // Draggable indicator box
+                let sliderHeight = geometry.size.height
+                let indicatorY = sliderHeight - (sliderHeight * CGFloat(value))
+                
+                RoundedRectangle(cornerRadius: 2)
+                    .fill(Color.white)
+                    .frame(width: geometry.size.width + 8, height: 8)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 2)
+                            .stroke(Color.black, lineWidth: 1)
+                    )
+                    .position(x: geometry.size.width / 2, y: indicatorY)
+            }
+            .gesture(
+                DragGesture(minimumDistance: 0)
+                    .onChanged { dragValue in
+                        let height = geometry.size.height
+                        let y = dragValue.location.y
+                        let clampedY = max(0, min(height, y))
+                        value = 1.0 - (clampedY / height)
+                    }
+            )
         }
     }
 }
