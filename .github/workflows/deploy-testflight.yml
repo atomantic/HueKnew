@@ -8,6 +8,14 @@ on:
 jobs:
   build_and_deploy:
     runs-on: macos-latest
+    env:
+      # your App Store Connect API credentials
+      APPSTORE_API_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
+      APPSTORE_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
+      APPSTORE_API_PRIVATE_KEY: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
+      TEAM_ID: ${{ secrets.TEAM_ID }}
+      IPHONEOS_DEPLOYMENT_TARGET: ${{ vars.IPHONEOS_DEPLOYMENT_TARGET }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -17,24 +25,26 @@ jobs:
         with:
           xcode-version: 'latest-stable'
 
+      - name: Create App Store Connect API key file
+        run: |
+          cat <<EOF > AuthKey.p8
+          $APPSTORE_API_PRIVATE_KEY
+          EOF
+
       - name: Archive iOS App
         run: |
-          xcodebuild -project HueKnew.xcodeproj \
+          xcodebuild \
+            -project HueKnew.xcodeproj \
             -scheme HueKnew \
             -configuration Release \
             -destination 'generic/platform=iOS' \
             -archivePath build/HueKnew.xcarchive \
             -allowProvisioningUpdates \
-            -allowProvisioningDeviceRegistration \
-            IPHONEOS_DEPLOYMENT_TARGET=${{ vars.IPHONEOS_DEPLOYMENT_TARGET }} \
+            -authenticationKeyPath AuthKey.p8 \
+            -authenticationKeyID "$APPSTORE_API_KEY_ID" \
+            -authenticationKeyIssuerID "$APPSTORE_ISSUER_ID" \
+            IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
             archive
-
-      - name: Export iOS App
-        run: |
-          xcodebuild -exportArchive \
-            -archivePath build/HueKnew.xcarchive \
-            -exportPath build/export \
-            -exportOptionsPlist exportOptions.plist
 
       - name: Create Export Options
         run: |
@@ -46,17 +56,24 @@ jobs:
               <key>method</key>
               <string>app-store</string>
               <key>teamID</key>
-              <string>${{ secrets.TEAM_ID }}</string>
+              <string>$TEAM_ID</string>
               <key>signingStyle</key>
               <string>automatic</string>
           </dict>
           </plist>
           EOF
 
+      - name: Export iOS App
+        run: |
+          xcodebuild -exportArchive \
+            -archivePath build/HueKnew.xcarchive \
+            -exportPath build/export \
+            -exportOptionsPlist exportOptions.plist
+
       - name: Upload to TestFlight
         uses: apple-actions/upload-testflight-build@v3
         with:
           app-path: 'build/export/HueKnew.ipa'
-          issuer-id: '${{ secrets.APPSTORE_ISSUER_ID }}'
-          api-key-id: '${{ secrets.APPSTORE_API_KEY_ID }}'
-          api-private-key: '${{ secrets.APPSTORE_API_PRIVATE_KEY }}' 
+          issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
+          api-key-id: ${{ secrets.APPSTORE_API_KEY_ID }}
+          api-private-key: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
