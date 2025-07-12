@@ -24,6 +24,9 @@ jobs:
             -configuration Release \
             -destination 'generic/platform=iOS' \
             -archivePath build/HueKnew.xcarchive \
+            -allowProvisioningUpdates \
+            -allowProvisioningDeviceRegistration \
+            IPHONEOS_DEPLOYMENT_TARGET=${{ vars.IPHONEOS_DEPLOYMENT_TARGET }} \
             archive
 
       - name: Export iOS App
