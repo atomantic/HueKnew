@@ -70,6 +70,8 @@ jobs:
             -authenticationKeyID "$APPSTORE_API_KEY_ID" \
             -authenticationKeyIssuerID "$APPSTORE_ISSUER_ID" \
             IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
+            DEVELOPMENT_TEAM="$TEAM_ID" \
+            CODE_SIGN_STYLE=Automatic \
             archive
 
       - name: Create exportOptions.plist
@@ -96,6 +98,7 @@ jobs:
             -archivePath build/HueKnew.xcarchive \
             -exportOptionsPlist exportOptions.plist \
             -allowProvisioningUpdates \
+            -allowProvisioningDeviceRegistration \
             -exportPath build/export
 
       - name: Upload to TestFlight
