@@ -50,9 +50,9 @@ struct GameView: View {
     
     private var menuScreen: some View {
         ScrollView {
-            VStack(spacing: 30) {
+            VStack(spacing: 20) {
                 // Game logo/title
-                VStack(spacing: 16) {
+                VStack(spacing: 10) {
                     Text("Hue Knew")
                         .font(.largeTitle)
                         .fontWeight(.bold)
@@ -65,14 +65,11 @@ struct GameView: View {
                 }
                 
                 // Play options
-                VStack(spacing: 20) {
-                    Text("How would you like to play?")
-                        .font(.headline)
-                        .fontWeight(.semibold)
+                VStack(spacing: 10) {
                     
                     // Resume/Start New Game button
                     Button(action: { gameModel.resumeOrStartGame() }) {
-                        Text(gameModel.isGameActive ? "Resume your progress" : "Start new game")
+                        Text(gameModel.isGameActive ? "Resume your progress" : "New game")
                             .font(.title2)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
@@ -85,7 +82,7 @@ struct GameView: View {
                     
                     // Choose by Color Wheel
                     VStack(spacing: 16) {
-                        Text("Choose colors to study:")
+                        Text("or start from a color:")
                             .font(.headline)
                             .fontWeight(.semibold)
                         

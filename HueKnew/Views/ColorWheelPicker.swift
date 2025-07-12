@@ -47,7 +47,7 @@ struct ColorWheelPicker: View {
             .padding(.horizontal)
 
             // Color preview and action button
-            VStack(spacing: 12) {
+            HStack(spacing: 16) {
                 RoundedRectangle(cornerRadius: 12)
                     .fill(
                         Color(
@@ -71,7 +71,7 @@ struct ColorWheelPicker: View {
                         )
                     )
                 }) {
-                    Text("Find Similar Colors")
+                    Text("start here")
                         .font(.headline)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
