@@ -114,11 +114,7 @@ jobs:
           security unlock-keychain -p "" build.keychain-db
           security set-keychain-settings -t 3600 -u build.keychain-db
 
-          # Set environment variables to disable timestamping
-          export CODESIGN_ALLOCATE=/usr/bin/codesign_allocate
-          export CODESIGN_TIMESTAMP=none
-
-          # then archive
+          # Archive without codesigning first
           xcodebuild \
             -project HueKnew.xcodeproj \
             -scheme HueKnew \
@@ -126,13 +122,23 @@ jobs:
             -destination 'generic/platform=iOS' \
             -archivePath build/HueKnew.xcarchive \
             IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
-            CODE_SIGN_STYLE=Manual \
-            DEVELOPMENT_TEAM="$TEAM_ID" \
-            PROVISIONING_PROFILE="$PROFILE_UUID" \
-            PROVISIONING_PROFILE_SPECIFIER="$PROFILE_NAME" \
-            CODE_SIGN_IDENTITY="Apple Distribution" \
-            OTHER_CODE_SIGN_FLAGS="--timestamp=none" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
             archive
+
+      - name: Codesign the archive
+        run: |
+          # ensure the keychain is still default & unlocked
+          security default-keychain -s build.keychain-db
+          security unlock-keychain -p "" build.keychain-db
+          security set-keychain-settings -t 3600 -u build.keychain-db
+
+          # Codesign the app bundle inside the archive
+          codesign --force --sign "Apple Distribution" \
+            --timestamp=none \
+            --entitlements build/HueKnew.xcarchive/Products/Applications/HueKnew.app/entitlements.plist \
+            build/HueKnew.xcarchive/Products/Applications/HueKnew.app
 
       - name: Create exportOptions.plist
         run: |
