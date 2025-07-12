@@ -50,47 +50,47 @@ jobs:
 
       - name: Install certificates
         run: |
-          # 1) create & unlock a temporary keychain
           security create-keychain -p "" build.keychain
           security default-keychain -s build.keychain
           security unlock-keychain -p "" build.keychain
 
-          # 2) import Apple Development cert
           echo "${{ secrets.DEV_CERT_P12_BASE64 }}" | base64 --decode > dev.p12
           security import dev.p12 \
             -k build.keychain \
             -P "${{ secrets.DEV_CERT_P12_PASSWORD }}" \
             -T /usr/bin/codesign
 
-          # 3) import Apple Distribution cert
           echo "${{ secrets.DIST_CERT_P12_BASE64 }}" | base64 --decode > dist.p12
           security import dist.p12 \
             -k build.keychain \
             -P "${{ secrets.DIST_CERT_P12_PASSWORD }}" \
             -T /usr/bin/codesign
 
-          # 4) allow codesign to access the keys without UI prompts
           security set-key-partition-list -S apple-tool:,apple:codesign -s -k "" build.keychain
 
       - name: Install provisioning profile & extract UUID/Name
         run: |
-          # decode the profile into a temp file
-          printf '%s' "${{ secrets.PROV_PROFILE_BASE64 }}" | tr -d '\r\n' | base64 -D > tmp.mobileprovision
+          # 1) Write the base64 secret to disk and check its size
+          printf '%s' "${{ secrets.PROV_PROFILE_BASE64 }}" > profile.b64
+          echo "profile.b64 size: $(wc -c < profile.b64) bytes"
 
-          # extract UUID and Name
+          # 2) Decode into a .mobileprovision
+          base64 -D profile.b64 > tmp.mobileprovision
+          echo "tmp.mobileprovision size: $(wc -c < tmp.mobileprovision) bytes"
+
+          # 3) Extract UUID and Name
           PROFILE_UUID=$(security cms -D -i tmp.mobileprovision \
             | /usr/libexec/PlistBuddy -c 'Print :UUID' /dev/stdin)
           PROFILE_NAME=$(security cms -D -i tmp.mobileprovision \
             | /usr/libexec/PlistBuddy -c 'Print :Name' /dev/stdin)
-
           echo "Found provisioning profile UUID=$PROFILE_UUID, Name=$PROFILE_NAME"
 
-          # install it where Xcode expects
+          # 4) Install into the standard folder
           mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
           mv tmp.mobileprovision \
-            "$HOME/Library/MobileDevice/Provisioning Profiles/${PROFILE_UUID}.mobileprovision"
+             "$HOME/Library/MobileDevice/Provisioning Profiles/${PROFILE_UUID}.mobileprovision"
 
-          # export for archive step
+          # 5) Export for the next step
           echo "PROFILE_UUID=$PROFILE_UUID" >> $GITHUB_ENV
           echo "PROFILE_NAME=$PROFILE_NAME" >> $GITHUB_ENV
 
