@@ -111,6 +111,7 @@ jobs:
           # ensure the keychain is still default & unlocked
           security default-keychain -s build.keychain-db
           security unlock-keychain -p "" build.keychain-db
+          security set-keychain-settings -t 3600 -u build.keychain-db
 
           # then archive
           xcodebuild \
