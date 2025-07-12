@@ -136,6 +136,7 @@ struct ColorDisplayCard: View {
                 // Comparative characteristics
                 VStack(alignment: .leading, spacing: 2) {
                     let characteristics = getComparativeCharacteristics()
+                    let otherColor = isPrimaryColor ? colorPair.comparisonColor : colorPair.primaryColor
                     if characteristics.isEmpty {
                         Text("No differences found")
                             .font(.caption)
@@ -173,18 +174,9 @@ struct ColorDisplayCard: View {
         // Get the other color from the color pair
         let otherColor = isPrimaryColor ? colorPair.comparisonColor : colorPair.primaryColor
         
-        print("DEBUG: Comparing \(colorInfo.name) with \(otherColor.name)")
-        
-        // Debug HSB values
-        let hsb1 = colorInfo.hsbComponents
-        let hsb2 = otherColor.hsbComponents
-        print("DEBUG: \(colorInfo.name) HSB: (\(hsb1.hue), \(hsb1.saturation), \(hsb1.brightness))")
-        print("DEBUG: \(otherColor.name) HSB: (\(hsb2.hue), \(hsb2.saturation), \(hsb2.brightness))")
-        
         // Use shared comparison logic from ColorDatabase
         let comparisons = ColorDatabase.shared.getColorComparisons(color1: colorInfo, color2: otherColor)
         
-        print("DEBUG: \(colorInfo.name) vs \(otherColor.name) - comparisons: \(comparisons)")
         return comparisons
     }
 }
