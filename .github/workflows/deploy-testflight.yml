@@ -50,7 +50,7 @@ jobs:
 
       - name: Install certificates
         run: |
-          # 1) create & unlock a keychain
+          # 1) create & unlock a temporary keychain
           security create-keychain -p "" build.keychain
           security default-keychain -s build.keychain
           security unlock-keychain -p "" build.keychain
@@ -69,11 +69,29 @@ jobs:
             -P "${{ secrets.DIST_CERT_P12_PASSWORD }}" \
             -T /usr/bin/codesign
 
-      - name: Install provisioning profile
+      - name: Install provisioning profile & extract UUID/Name
         run: |
+          # decode the profile into a temp file
+          echo "${{ secrets.PROV_PROFILE_BASE64 }}" | base64 --decode > tmp.mobileprovision
+
+          # extract the UUID and Name
+          PROFILE_UUID=$(security cms -D -i tmp.mobileprovision \
+            | /usr/libexec/PlistBuddy -c 'Print :UUID' /dev/stdin)
+          PROFILE_NAME=$(security cms -D -i tmp.mobileprovision \
+            | /usr/libexec/PlistBuddy -c 'Print :Name' /dev/stdin)
+
+          echo "Found provisioning profile:"
+          echo "  UUID: $PROFILE_UUID"
+          echo "  Name: $PROFILE_NAME"
+
+          # install it where Xcode expects
           mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
-          echo "${{ secrets.PROV_PROFILE_BASE64 }}" | base64 --decode \
-            > "$HOME/Library/MobileDevice/Provisioning Profiles/${{ secrets.PROFILE_UUID }}.mobileprovision"
+          mv tmp.mobileprovision \
+            "$HOME/Library/MobileDevice/Provisioning Profiles/${PROFILE_UUID}.mobileprovision"
+
+          # export for later steps
+          echo "PROFILE_UUID=$PROFILE_UUID" >> $GITHUB_ENV
+          echo "PROFILE_NAME=$PROFILE_NAME" >> $GITHUB_ENV
 
       - name: Archive iOS App (manual signing)
         run: |
@@ -86,7 +104,8 @@ jobs:
             IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
             CODE_SIGN_STYLE=Manual \
             DEVELOPMENT_TEAM="$TEAM_ID" \
-            PROVISIONING_PROFILE="${{ secrets.PROFILE_UUID }}" \
+            PROVISIONING_PROFILE="$PROFILE_UUID" \
+            PROVISIONING_PROFILE_SPECIFIER="$PROFILE_NAME" \
             CODE_SIGN_IDENTITY="Apple Distribution" \
             archive
 
