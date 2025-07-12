@@ -4,32 +4,58 @@ on:
   push:
     branches:
       - main
+  pull_request:
+
+env:
+  # must be ≤ 18.2.99
+  IPHONEOS_DEPLOYMENT_TARGET: ${{ vars.IPHONEOS_DEPLOYMENT_TARGET }}
+  TEAM_ID:             ${{ secrets.TEAM_ID }}
+  APPSTORE_API_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
+  APPSTORE_ISSUER_ID:  ${{ secrets.APPSTORE_ISSUER_ID }}
+  APPSTORE_API_PRIVATE_KEY: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
 
 jobs:
-  build_and_deploy:
+  validate:
+    if: github.event_name == 'pull_request'
     runs-on: macos-latest
-    env:
-      # your App Store Connect API credentials
-      APPSTORE_API_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
-      APPSTORE_ISSUER_ID: ${{ secrets.APPSTORE_ISSUER_ID }}
-      APPSTORE_API_PRIVATE_KEY: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
-      TEAM_ID: ${{ secrets.TEAM_ID }}
-      IPHONEOS_DEPLOYMENT_TARGET: ${{ vars.IPHONEOS_DEPLOYMENT_TARGET }}
-
+    name: PR Validation (no signing)
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Xcode
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: 'latest-stable'
 
-      - name: Create App Store Connect API key file
+      - name: Build (skip code signing)
         run: |
-          cat <<EOF > AuthKey.p8
-          $APPSTORE_API_PRIVATE_KEY
-          EOF
+          xcodebuild \
+            -project HueKnew.xcodeproj \
+            -scheme HueKnew \
+            -configuration Release \
+            -derivedDataPath build \
+            clean build \
+            IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO
+
+  build_and_deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: macos-latest
+    name: Archive & Deploy to TestFlight
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: 'latest-stable'
+
+      - name: Write App Store Connect API Key
+        run: |
+          echo "$APPSTORE_API_PRIVATE_KEY" > "$GITHUB_WORKSPACE/AuthKey.p8"
+          chmod 600 "$GITHUB_WORKSPACE/AuthKey.p8"
 
       - name: Archive iOS App
         run: |
@@ -40,35 +66,33 @@ jobs:
             -destination 'generic/platform=iOS' \
             -archivePath build/HueKnew.xcarchive \
             -allowProvisioningUpdates \
-            -authenticationKeyPath AuthKey.p8 \
+            -authenticationKeyPath "$GITHUB_WORKSPACE/AuthKey.p8" \
             -authenticationKeyID "$APPSTORE_API_KEY_ID" \
             -authenticationKeyIssuerID "$APPSTORE_ISSUER_ID" \
             IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
             archive
 
-      - name: Create Export Options
+      - name: Create exportOptions.plist
         run: |
-          cat > exportOptions.plist << 'EOF'
+          cat > exportOptions.plist <<EOF
           <?xml version="1.0" encoding="UTF-8"?>
-          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+           "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
           <plist version="1.0">
           <dict>
-              <key>method</key>
-              <string>app-store</string>
-              <key>teamID</key>
-              <string>$TEAM_ID</string>
-              <key>signingStyle</key>
-              <string>automatic</string>
+            <key>method</key><string>app-store</string>
+            <key>teamID</key><string>$TEAM_ID</string>
+            <key>signingStyle</key><string>automatic</string>
           </dict>
           </plist>
           EOF
 
-      - name: Export iOS App
+      - name: Export .ipa
         run: |
           xcodebuild -exportArchive \
             -archivePath build/HueKnew.xcarchive \
-            -exportPath build/export \
-            -exportOptionsPlist exportOptions.plist
+            -exportOptionsPlist exportOptions.plist \
+            -exportPath build/export
 
       - name: Upload to TestFlight
         uses: apple-actions/upload-testflight-build@v3
