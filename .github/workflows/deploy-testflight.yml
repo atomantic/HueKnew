@@ -70,13 +70,14 @@ jobs:
 
       - name: Install provisioning profile & extract UUID/Name
         run: |
-          # 1) write the base64 blob to disk
+          # 1) dump your base64 secret to disk and check size
           printf '%s' "${{ secrets.PROV_PROFILE_BASE64 }}" > profile.b64
           echo "profile.b64 size: $(wc -c < profile.b64) bytes"
 
-          # 2) decode it properly
-          base64 -D -i profile.b64 -o tmp.mobileprovision
+          # 2) decode with openssl
+          openssl base64 -d -in profile.b64 -out tmp.mobileprovision
           echo "tmp.mobileprovision size: $(wc -c < tmp.mobileprovision) bytes"
+          file tmp.mobileprovision
 
           # 3) extract UUID and Name
           PROFILE_UUID=$(security cms -D -i tmp.mobileprovision \
@@ -85,12 +86,12 @@ jobs:
             | /usr/libexec/PlistBuddy -c 'Print :Name' /dev/stdin)
           echo "Found provisioning profile UUID=$PROFILE_UUID, Name=$PROFILE_NAME"
 
-          # 4) install into the standard folder
+          # 4) install where Xcode expects it
           mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
           mv tmp.mobileprovision \
             "$HOME/Library/MobileDevice/Provisioning Profiles/${PROFILE_UUID}.mobileprovision"
 
-          # 5) export for use by xcodebuild
+          # 5) export for xcodebuild
           echo "PROFILE_UUID=$PROFILE_UUID" >> $GITHUB_ENV
           echo "PROFILE_NAME=$PROFILE_NAME" >> $GITHUB_ENV
 
