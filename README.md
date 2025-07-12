@@ -2,7 +2,7 @@
 
 Your ability to understand the world is limited by the language you have to describe it. Expand your world!
 
-A SwiftUI color learning game that helps you discover the subtle differences between similar colors and learn their proper names.
+An open-source SwiftUI color learning game that helps you discover the subtle differences between similar colors and learn their proper names.
 
 ## 🎯 Game Overview
 
@@ -66,7 +66,7 @@ The game uses a progressive learning approach with two main phases:
 1. Clone the repository:
    ```bash
    git clone https://github.com/atomantic/HueKnew.git
-   cd cHueKnew
+   cd HueKnew
    ```
 
 2. Open the project in Xcode:
