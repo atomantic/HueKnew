@@ -140,18 +140,22 @@ struct ColorDisplayCard: View {
                         Text("No differences found")
                             .font(.caption)
                             .foregroundColor(.secondary)
+                            .accessibilityLabel("No differences found between colors")
                     } else {
                         ForEach(characteristics, id: \.self) { characteristic in
                             HStack(alignment: .top, spacing: 4) {
                                 Text("•")
                                     .font(.caption)
                                     .foregroundColor(.secondary)
+                                    .accessibilityHidden(true)
                                 Text(characteristic)
                                     .font(.caption)
                                     .foregroundColor(.secondary)
                                     .multilineTextAlignment(.leading)
                                     .lineLimit(1)
+                                    .accessibilityLabel("\(colorInfo.name) is \(characteristic.lowercased()) than \(otherColor.name)")
                             }
+                            .accessibilityElement(children: .combine)
                         }
                     }
                 }
