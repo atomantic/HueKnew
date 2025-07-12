@@ -9,6 +9,7 @@ on:
 env:
   IPHONEOS_DEPLOYMENT_TARGET: ${{ vars.IPHONEOS_DEPLOYMENT_TARGET }}
   TEAM_ID:             ${{ secrets.TEAM_ID }}
+  CODESIGN_ALLOCATE:   /usr/bin/codesign_allocate
 
 jobs:
   validate:
@@ -113,8 +114,12 @@ jobs:
           security unlock-keychain -p "" build.keychain-db
           security set-keychain-settings -t 3600 -u build.keychain-db
 
-          # then archive
-          xcodebuild \
+          # Set environment variables to disable timestamping
+          export CODESIGN_ALLOCATE=/usr/bin/codesign_allocate
+          export CODESIGN_TIMESTAMP=none
+
+          # then archive with timeout
+          timeout 600 xcodebuild \
             -project HueKnew.xcodeproj \
             -scheme HueKnew \
             -configuration Release \
@@ -126,6 +131,7 @@ jobs:
             PROVISIONING_PROFILE="$PROFILE_UUID" \
             PROVISIONING_PROFILE_SPECIFIER="$PROFILE_NAME" \
             CODE_SIGN_IDENTITY="Apple Distribution" \
+            OTHER_CODE_SIGN_FLAGS="--timestamp=none" \
             archive
 
       - name: Create exportOptions.plist
