@@ -19,17 +19,16 @@ struct JSONColorData: Codable {
 }
 
 struct JSONColor: Codable {
-    let id: String
     let name: String
     let hex: String
     let category: String
-    let difficulty: String
+    
     let description: String
     let attributes: ColorAttributes
     let distinguishingFeatures: [String]
 
     enum CodingKeys: String, CodingKey {
-        case id, name, hex, category, difficulty, description, attributes
+        case name, hex, category, description, attributes
         case distinguishingFeatures = "distinguishing_features"
     }
 }
@@ -143,7 +142,6 @@ class ColorDatabase: ObservableObject {
                     let color2 = colors[idx2]
 
                     let colorInfo1 = ColorInfo(
-                        id: UUID(),
                         name: color1.name,
                         hexValue: color1.hex,
                         description: color1.description,
@@ -151,7 +149,6 @@ class ColorDatabase: ObservableObject {
                     )
 
                     let colorInfo2 = ColorInfo(
-                        id: UUID(),
                         name: color2.name,
                         hexValue: color2.hex,
                         description: color2.description,
@@ -161,11 +158,9 @@ class ColorDatabase: ObservableObject {
                     let learningNotes = generateComparisonNotes(color1: color1, color2: color2)
 
                     let colorPair = ColorPair(
-                        id: UUID(),
                         primaryColor: colorInfo1,
                         comparisonColor: colorInfo2,
                         learningNotes: learningNotes,
-                        difficultyLevel: mapStringToDifficulty(color1.difficulty),
                         category: mapStringToCategory(category)
                     )
 
@@ -264,5 +259,32 @@ class ColorDatabase: ObservableObject {
 
     func getComparisonTemplates() -> ComparisonTemplates? {
         return jsonData?.comparisonTemplates
+    }
+    
+    func calculateColorDifference(color1: ColorInfo, color2: ColorInfo) -> Double {
+        let rgb1 = color1.rgbComponents
+        let rgb2 = color2.rgbComponents
+        
+        let deltaL = pow(rgb1.red - rgb2.red, 2)
+        let deltaA = pow(rgb1.green - rgb2.green, 2)
+        let deltaB = pow(rgb1.blue - rgb2.blue, 2)
+        
+        return sqrt(deltaL + deltaA + deltaB)
+    }
+}
+
+extension ColorPair {
+    var difficultyLevel: DifficultyLevel {
+        let deltaE = ColorDatabase.shared.calculateColorDifference(color1: primaryColor, color2: comparisonColor)
+        
+        if deltaE < 10 {
+            return .expert
+        } else if deltaE < 20 {
+            return .advanced
+        } else if deltaE < 40 {
+            return .intermediate
+        } else {
+            return .beginner
+        }
     }
 }

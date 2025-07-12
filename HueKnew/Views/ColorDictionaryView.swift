@@ -221,7 +221,6 @@ struct ColorListRow: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
         }
-        .padding()
         .background(Color(.systemBackground))
         .contentShape(Rectangle())
     }

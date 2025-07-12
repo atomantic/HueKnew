@@ -33,7 +33,7 @@ class GameModel {
     var maxQuestionsPerSession: Int = 10
     
     // Learning progress
-    var masteredPairs: Set<UUID> = []
+    var masteredPairs: Set<String> = []
     var selectedCategory: ColorCategory?
     var selectedDifficulty: DifficultyLevel?
     

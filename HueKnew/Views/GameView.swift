@@ -18,7 +18,6 @@ struct GameView: View {
                 HeaderView(
                     score: gameModel.score,
                     level: gameModel.level,
-                    timeRemaining: 0, // No timer in learning mode
                     currentStreak: gameModel.streak,
                     bestStreak: gameModel.bestStreak
                 )

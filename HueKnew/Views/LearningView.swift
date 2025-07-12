@@ -199,23 +199,19 @@ struct ColorDetailRow: View {
 #Preview {
     LearningView(
         colorPair: ColorPair(
-            id: UUID(),
             primaryColor: ColorInfo(
-                id: UUID(),
                 name: "Gamboge",
                 hexValue: "#E49B0F",
                 description: "A deep golden yellow with warm undertones",
                 category: .yellows
             ),
             comparisonColor: ColorInfo(
-                id: UUID(),
                 name: "Indian Yellow",
                 hexValue: "#E3B505",
                 description: "A rich, warm yellow with orange undertones",
                 category: .yellows
             ),
             learningNotes: "Gamboge has more brown/amber undertones, while Indian Yellow is purer and brighter with orange hints.",
-            difficultyLevel: .beginner,
             category: .yellows
         ),
         onContinue: { print("Continue tapped") }

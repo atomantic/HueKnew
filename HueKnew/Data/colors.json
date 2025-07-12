@@ -1,11 +1,9 @@
 {
   "colors": [
     {
-      "id": "gamboge",
       "name": "Gamboge",
       "hex": "#E49B0F",
       "category": "yellows",
-      "difficulty": "beginner",
       "description": "A deep golden yellow with warm undertones, traditionally made from tree resin",
       "attributes": {
         "temperature": "warm",
@@ -24,11 +22,9 @@
       ]
     },
     {
-      "id": "indian_yellow",
       "name": "Indian Yellow",
       "hex": "#E3B505",
       "category": "yellows",
-      "difficulty": "beginner",
       "description": "A rich, warm yellow with slightly more orange undertones than Gamboge",
       "attributes": {
         "temperature": "warm",
@@ -47,11 +43,9 @@
       ]
     },
     {
-      "id": "cadmium_yellow",
       "name": "Cadmium Yellow",
       "hex": "#FFF600",
       "category": "yellows",
-      "difficulty": "beginner",
       "description": "A pure, bright yellow with no warm or cool undertones",
       "attributes": {
         "temperature": "neutral",
@@ -70,11 +64,9 @@
       ]
     },
     {
-      "id": "lemon_yellow",
       "name": "Lemon Yellow",
       "hex": "#FFFF9F",
       "category": "yellows",
-      "difficulty": "beginner",
       "description": "A pale, cool yellow with green undertones",
       "attributes": {
         "temperature": "cool",
@@ -93,12 +85,10 @@
       ]
     },
     {
-      "id": "naples_yellow",
       "name": "Naples Yellow",
       "hex": "#FADA5E",
       "category": "yellows",
-      "difficulty": "intermediate",
-      "description": "A muted yellow with subtle orange and beige undertones",
+			"description": "A muted yellow with subtle orange and beige undertones",
       "attributes": {
         "temperature": "warm",
         "saturation": "medium",
@@ -116,12 +106,10 @@
       ]
     },
     {
-      "id": "prussian_blue",
       "name": "Prussian Blue",
       "hex": "#003153",
       "category": "blues",
-      "difficulty": "intermediate",
-      "description": "A very dark blue with slight green undertones, historically important pigment",
+			"description": "A very dark blue with slight green undertones, historically important pigment",
       "attributes": {
         "temperature": "cool",
         "saturation": "high",
@@ -139,12 +127,10 @@
       ]
     },
     {
-      "id": "navy_blue",
       "name": "Navy Blue",
       "hex": "#000080",
       "category": "blues",
-      "difficulty": "intermediate",
-      "description": "A dark blue with purple undertones, named after naval uniforms",
+			"description": "A dark blue with purple undertones, named after naval uniforms",
       "attributes": {
         "temperature": "cool",
         "saturation": "high",
@@ -162,12 +148,10 @@
       ]
     },
     {
-      "id": "cerulean_blue",
       "name": "Cerulean Blue",
       "hex": "#007BA7",
       "category": "blues",
-      "difficulty": "intermediate",
-      "description": "A pure, medium blue reminiscent of clear skies",
+			"description": "A pure, medium blue reminiscent of clear skies",
       "attributes": {
         "temperature": "cool",
         "saturation": "high",
@@ -185,12 +169,10 @@
       ]
     },
     {
-      "id": "azure",
       "name": "Azure",
       "hex": "#0080FF",
       "category": "blues",
-      "difficulty": "intermediate",
-      "description": "A bright blue with slight purple undertones, lighter than Cerulean",
+			"description": "A bright blue with slight purple undertones, lighter than Cerulean",
       "attributes": {
         "temperature": "cool",
         "saturation": "high",
@@ -208,12 +190,10 @@
       ]
     },
     {
-      "id": "muted_glaucous",
       "name": "Muted Glaucous",
       "hex": "#6082B6",
       "category": "blues",
-      "difficulty": "advanced",
-      "description": "A grayish-blue with muted, dusty appearance",
+			"description": "A grayish-blue with muted, dusty appearance",
       "attributes": {
         "temperature": "cool",
         "saturation": "low",
@@ -231,12 +211,10 @@
       ]
     },
     {
-      "id": "winter_glaucous",
       "name": "Winter Glaucous",
       "hex": "#5B8DBF",
       "category": "blues",
-      "difficulty": "advanced",
-      "description": "A clearer, more vibrant blue-gray with cooler undertones",
+			"description": "A clearer, more vibrant blue-gray with cooler undertones",
       "attributes": {
         "temperature": "very_cool",
         "saturation": "medium",
@@ -254,12 +232,10 @@
       ]
     },
     {
-      "id": "vermillion",
       "name": "Vermillion",
       "hex": "#E34234",
       "category": "reds",
-      "difficulty": "intermediate",
-      "description": "A bright red-orange, traditionally made from cinnabar mineral",
+			"description": "A bright red-orange, traditionally made from cinnabar mineral",
       "attributes": {
         "temperature": "warm",
         "saturation": "high",
@@ -277,11 +253,9 @@
       ]
     },
     {
-      "id": "cinnabar",
       "name": "Cinnabar",
       "hex": "#E44D2E",
       "category": "reds",
-      "difficulty": "intermediate",
       "description": "A deep red with orange undertones, the mineral form of mercury sulfide",
       "attributes": {
         "temperature": "warm",
@@ -300,11 +274,9 @@
       ]
     },
     {
-      "id": "cadmium_red",
       "name": "Cadmium Red",
       "hex": "#E30022",
       "category": "reds",
-      "difficulty": "intermediate",
       "description": "A pure, intense red with no blue or yellow undertones",
       "attributes": {
         "temperature": "neutral",
@@ -323,11 +295,9 @@
       ]
     },
     {
-      "id": "alizarin_crimson",
       "name": "Alizarin Crimson",
       "hex": "#E32636",
       "category": "reds",
-      "difficulty": "intermediate",
       "description": "A deep red with purple undertones, historically made from madder root",
       "attributes": {
         "temperature": "cool",
@@ -346,12 +316,11 @@
       ]
     },
     {
-      "id": "viridian",
+      
       "name": "Viridian",
       "hex": "#40826D",
       "category": "greens",
-      "difficulty": "advanced",
-      "description": "A blue-green with cool, transparent qualities",
+			"description": "A blue-green with cool, transparent qualities",
       "attributes": {
         "temperature": "cool",
         "saturation": "medium",
@@ -369,12 +338,11 @@
       ]
     },
     {
-      "id": "malachite",
+      
       "name": "Malachite",
       "hex": "#0BDA51",
       "category": "greens",
-      "difficulty": "advanced",
-      "description": "A bright green with blue undertones, named after the mineral",
+			"description": "A bright green with blue undertones, named after the mineral",
       "attributes": {
         "temperature": "cool",
         "saturation": "very_high",
@@ -392,11 +360,10 @@
       ]
     },
     {
-      "id": "forest_green",
+      
       "name": "Forest Green",
       "hex": "#228B22",
       "category": "greens",
-      "difficulty": "beginner",
       "description": "A dark green reminiscent of deep forest canopies",
       "attributes": {
         "temperature": "neutral",
@@ -415,11 +382,10 @@
       ]
     },
     {
-      "id": "sage_green",
+      
       "name": "Sage Green",
       "hex": "#9CAF88",
       "category": "greens",
-      "difficulty": "beginner",
       "description": "A muted green with gray undertones, like the herb",
       "attributes": {
         "temperature": "neutral",
@@ -438,12 +404,11 @@
       ]
     },
     {
-      "id": "tyrian_purple",
+      
       "name": "Tyrian Purple",
       "hex": "#66023C",
       "category": "purples",
-      "difficulty": "expert",
-      "description": "A deep purple-red, historically made from murex shells",
+			"description": "A deep purple-red, historically made from murex shells",
       "attributes": {
         "temperature": "warm",
         "saturation": "high",
@@ -461,12 +426,11 @@
       ]
     },
     {
-      "id": "royal_purple",
+      
       "name": "Royal Purple",
       "hex": "#7851A9",
       "category": "purples",
-      "difficulty": "expert",
-      "description": "A rich purple with blue undertones, associated with royalty",
+			"description": "A rich purple with blue undertones, associated with royalty",
       "attributes": {
         "temperature": "cool",
         "saturation": "high",
@@ -484,11 +448,9 @@
       ]
     },
     {
-      "id": "burnt_orange",
       "name": "Burnt Orange",
       "hex": "#CC5500",
       "category": "oranges",
-      "difficulty": "intermediate",
       "description": "A dark orange with brown undertones",
       "attributes": {
         "temperature": "warm",
@@ -507,11 +469,9 @@
       ]
     },
     {
-      "id": "tangerine",
       "name": "Tangerine",
-      "hex": "#F28500",
+      "hex": "#FF9500",
       "category": "oranges",
-      "difficulty": "intermediate",
       "description": "A bright orange like the citrus fruit",
       "attributes": {
         "temperature": "warm",

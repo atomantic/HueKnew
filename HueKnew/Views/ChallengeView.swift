@@ -129,7 +129,7 @@ struct ChallengeView: View {
                     ForEach(answerOptions) { colorInfo in
                         ColorOptionCard(
                             colorInfo: colorInfo,
-                            isSelected: selectedAnswer?.id == colorInfo.id,
+                            isSelected: selectedAnswer?.name == colorInfo.name,
                             showName: false
                         ) {
                             selectedAnswer = colorInfo
@@ -144,7 +144,7 @@ struct ChallengeView: View {
                     ForEach(answerOptions) { colorInfo in
                         NameOptionCard(
                             colorInfo: colorInfo,
-                            isSelected: selectedAnswer?.id == colorInfo.id
+                            isSelected: selectedAnswer?.name == colorInfo.name
                         ) {
                             selectedAnswer = colorInfo
                         }
@@ -159,7 +159,7 @@ struct ChallengeView: View {
     private var resultSection: some View {
         VStack(spacing: 16) {
             // Result indicator
-            let isCorrect = selectedAnswer?.id == targetColor?.id
+            let isCorrect = selectedAnswer?.name == targetColor?.name
             
             VStack(spacing: 8) {
                 Image(systemName: isCorrect ? "checkmark.circle.fill" : "xmark.circle.fill")
@@ -208,7 +208,7 @@ struct ChallengeView: View {
         var options = [targetColor!]
         
         // Add the other color from the pair
-        let otherColor = targetColor?.id == colorPair.primaryColor.id ? 
+        let otherColor = targetColor?.name == colorPair.primaryColor.name ?
             colorPair.comparisonColor : colorPair.primaryColor
         options.append(otherColor)
         
@@ -294,23 +294,19 @@ struct NameOptionCard: View {
 #Preview {
     ChallengeView(
         colorPair: ColorPair(
-            id: UUID(),
             primaryColor: ColorInfo(
-                id: UUID(),
                 name: "Gamboge",
                 hexValue: "#E49B0F",
                 description: "A deep golden yellow with warm undertones",
                 category: .yellows
             ),
             comparisonColor: ColorInfo(
-                id: UUID(),
                 name: "Indian Yellow",
                 hexValue: "#E3B505",
                 description: "A rich, warm yellow with orange undertones",
                 category: .yellows
             ),
             learningNotes: "Gamboge has more brown/amber undertones, while Indian Yellow is purer and brighter with orange hints.",
-            difficultyLevel: .beginner,
             category: .yellows
         ),
         challengeType: .nameToColor,

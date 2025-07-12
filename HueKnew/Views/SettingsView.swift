@@ -11,23 +11,9 @@ struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var soundEnabled = true
     @State private var vibrationEnabled = true
-    @State private var gameDuration = 60.0
-    
     var body: some View {
         NavigationView {
             Form {
-                Section("Game Settings") {
-                    HStack {
-                        Text("Game Duration")
-                        Spacer()
-                        Text("\(Int(gameDuration)) seconds")
-                            .foregroundColor(.secondary)
-                    }
-                    
-                    Slider(value: $gameDuration, in: 30...120, step: 15)
-                        .accentColor(.blue)
-                }
-                
                 Section("Audio & Feedback") {
                     Toggle("Sound Effects", isOn: $soundEnabled)
                     Toggle("Vibration", isOn: $vibrationEnabled)
@@ -41,10 +27,10 @@ struct SettingsView: View {
                             .foregroundColor(.secondary)
                     }
                     
-                    Link("Privacy Policy", destination: URL(string: "https://example.com/privacy")!)
+                    Link("Privacy Policy", destination: URL(string: "https://raw.githubusercontent.com/atomantic/HueKnew/refs/heads/main/PRIVACY_POLICY.md")!)
                         .foregroundColor(.blue)
                     
-                    Link("Terms of Service", destination: URL(string: "https://example.com/terms")!)
+                    Link("Terms of Service", destination: URL(string: "https://raw.githubusercontent.com/atomantic/HueKnew/refs/heads/main/TERMS_OF_USE.md")!)
                         .foregroundColor(.blue)
                 }
             }

@@ -10,7 +10,6 @@ import SwiftUI
 struct HeaderView: View {
     let score: Int
     let level: Int
-    let timeRemaining: Int
     let currentStreak: Int
     let bestStreak: Int
 
@@ -71,20 +70,6 @@ struct HeaderView: View {
                         .foregroundColor(.purple)
                 }
                 .frame(maxWidth: .infinity)
-                
-                // Time Remaining (only show if > 0)
-                if timeRemaining > 0 {
-                    VStack {
-                        Text("Time")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                        Text("\(timeRemaining)s")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                            .foregroundColor(timeRemaining <= 10 ? .red : .orange)
-                    }
-                    .frame(maxWidth: .infinity)
-                }
             }
         }
         .padding()
@@ -97,7 +82,6 @@ struct HeaderView: View {
     HeaderView(
         score: 1250, 
         level: 3, 
-        timeRemaining: 45,
         currentStreak: 8,
         bestStreak: 23
     )

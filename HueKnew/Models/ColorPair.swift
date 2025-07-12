@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 
 struct ColorInfo: Identifiable, Codable, Equatable {
-    let id: UUID
+    var id: String { name }
     let name: String
     let hexValue: String
     let description: String
@@ -35,11 +35,11 @@ struct ColorInfo: Identifiable, Codable, Equatable {
 }
 
 struct ColorPair: Identifiable, Codable {
-    let id: UUID
+    var id: String { "\(primaryColor.name)-\(comparisonColor.name)" }
     let primaryColor: ColorInfo
     let comparisonColor: ColorInfo
     let learningNotes: String
-    let difficultyLevel: DifficultyLevel
+    
     let category: ColorCategory
     
     var allColors: [ColorInfo] {
