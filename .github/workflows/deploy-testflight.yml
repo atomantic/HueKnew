@@ -17,10 +17,12 @@ jobs:
     name: PR Validation (no signing)
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up Xcode
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: 'latest-stable'
+
       - name: Build (skip code signing)
         run: |
           xcodebuild \
@@ -48,36 +50,49 @@ jobs:
 
       - name: Install certificates
         run: |
+          # 1) create & unlock a temporary keychain
           security create-keychain -p "" build.keychain
           security default-keychain -s build.keychain
           security unlock-keychain -p "" build.keychain
 
+          # 2) import Apple Development cert
           echo "${{ secrets.DEV_CERT_P12_BASE64 }}" | base64 --decode > dev.p12
           security import dev.p12 \
             -k build.keychain \
             -P "${{ secrets.DEV_CERT_P12_PASSWORD }}" \
             -T /usr/bin/codesign
 
+          # 3) import Apple Distribution cert
           echo "${{ secrets.DIST_CERT_P12_BASE64 }}" | base64 --decode > dist.p12
           security import dist.p12 \
             -k build.keychain \
             -P "${{ secrets.DIST_CERT_P12_PASSWORD }}" \
             -T /usr/bin/codesign
 
-      - name: Install provisioning profile
+          # 4) allow codesign to access the keys without UI prompts
+          security set-key-partition-list -S apple-tool:,apple:codesign -s -k "" build.keychain
+
+      - name: Install provisioning profile & extract UUID/Name
         run: |
-          # debug: show that the secret is non-zero length
-          echo "PROV_PROFILE_BASE64 length:" \
-            $(printf '%s' "${{ secrets.PROV_PROFILE_BASE64 }}" | wc -c)
+          # decode the profile into a temp file
+          printf '%s' "${{ secrets.PROV_PROFILE_BASE64 }}" | tr -d '\r\n' | base64 -D > tmp.mobileprovision
 
-          # create target dir
+          # extract UUID and Name
+          PROFILE_UUID=$(security cms -D -i tmp.mobileprovision \
+            | /usr/libexec/PlistBuddy -c 'Print :UUID' /dev/stdin)
+          PROFILE_NAME=$(security cms -D -i tmp.mobileprovision \
+            | /usr/libexec/PlistBuddy -c 'Print :Name' /dev/stdin)
+
+          echo "Found provisioning profile UUID=$PROFILE_UUID, Name=$PROFILE_NAME"
+
+          # install it where Xcode expects
           mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
+          mv tmp.mobileprovision \
+            "$HOME/Library/MobileDevice/Provisioning Profiles/${PROFILE_UUID}.mobileprovision"
 
-          # strip stray newlines and decode
-          printf '%s' "${{ secrets.PROV_PROFILE_BASE64 }}" \
-            | tr -d '\r\n' \
-            | base64 -D \
-            > "$HOME/Library/MobileDevice/Provisioning Profiles/${{ secrets.PROFILE_UUID }}.mobileprovision"
+          # export for archive step
+          echo "PROFILE_UUID=$PROFILE_UUID" >> $GITHUB_ENV
+          echo "PROFILE_NAME=$PROFILE_NAME" >> $GITHUB_ENV
 
       - name: Archive iOS App (manual signing)
         run: |
@@ -90,7 +105,8 @@ jobs:
             IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
             CODE_SIGN_STYLE=Manual \
             DEVELOPMENT_TEAM="$TEAM_ID" \
-            PROVISIONING_PROFILE="${{ secrets.PROFILE_UUID }}" \
+            PROVISIONING_PROFILE="$PROFILE_UUID" \
+            PROVISIONING_PROFILE_SPECIFIER="$PROFILE_NAME" \
             CODE_SIGN_IDENTITY="Apple Distribution" \
             archive
 
