@@ -152,16 +152,12 @@ struct ColorDictionaryView: View {
                 .background(Color(.systemGray6))
                 
                 // Color list
-                ScrollView {
-                    LazyVStack(spacing: 1) {
-                        ForEach(filteredColors, id: \.name) { color in
-                            NavigationLink(destination: ColorDetailView(color: color)) {
-                                ColorListRow(color: color)
-                            }
-                            .buttonStyle(PlainButtonStyle())
-                        }
+                List(filteredColors, id: \.name) { color in
+                    NavigationLink(destination: ColorDetailView(color: color)) {
+                        ColorListRow(color: color)
                     }
                 }
+                .listStyle(PlainListStyle())
             }
             .navigationTitle("Color Dictionary")
             .navigationBarTitleDisplayMode(.large)
@@ -215,13 +211,8 @@ struct ColorListRow: View {
             }
             
             Spacer()
-            
-            // Chevron indicator
-            Image(systemName: "chevron.right")
-                .font(.caption)
-                .foregroundColor(.secondary)
         }
-        .background(Color(.systemBackground))
+        .padding(.vertical, 8)
         .contentShape(Rectangle())
     }
 }

@@ -241,7 +241,17 @@ class ColorDatabase: ObservableObject {
     }
 
     func getAllColors() -> [ColorInfo] {
-        colorPairs.flatMap { $0.allColors }
+        // Get unique colors from the JSON data to avoid duplicates
+        guard let jsonData = jsonData else { return [] }
+        
+        return jsonData.colors.map { jsonColor in
+            ColorInfo(
+                name: jsonColor.name,
+                hexValue: jsonColor.hex,
+                description: jsonColor.description,
+                category: mapStringToCategory(jsonColor.category)
+            )
+        }
     }
 
     func getAllColorPairs() -> [ColorPair] {
