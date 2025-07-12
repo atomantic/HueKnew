@@ -8,16 +8,16 @@ on:
 
 env:
   IPHONEOS_DEPLOYMENT_TARGET: ${{ vars.IPHONEOS_DEPLOYMENT_TARGET }}
-  TEAM_ID:                    ${{ secrets.TEAM_ID }}
-  APPSTORE_API_KEY_ID:        ${{ secrets.APPSTORE_API_KEY_ID }}
-  APPSTORE_ISSUER_ID:         ${{ secrets.APPSTORE_ISSUER_ID }}
-  APPSTORE_API_PRIVATE_KEY:   ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
+  TEAM_ID:                  ${{ secrets.TEAM_ID }}
+  APPSTORE_API_KEY_ID:      ${{ secrets.APPSTORE_API_KEY_ID }}
+  APPSTORE_ISSUER_ID:       ${{ secrets.APPSTORE_ISSUER_ID }}
+  APPSTORE_API_PRIVATE_KEY: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
 
 jobs:
   validate:
     if: github.event_name == 'pull_request'
     runs-on: macos-latest
-    name: PR Validation (no signing)
+    name: PR Validation (skip signing)
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -27,7 +27,7 @@ jobs:
         with:
           xcode-version: 'latest-stable'
 
-      - name: Build (skip code signing)
+      - name: Build (no code signing)
         run: |
           xcodebuild \
             -project HueKnew.xcodeproj \
@@ -53,9 +53,8 @@ jobs:
         with:
           xcode-version: 'latest-stable'
 
-      - name: Create App Store Connect API key file
+      - name: Write App Store Connect API Key
         run: |
-          # write the key to the workspace root
           cat > "$GITHUB_WORKSPACE/AuthKey.p8" <<EOF
           ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
           EOF
@@ -76,6 +75,7 @@ jobs:
             -authenticationKeyIssuerID "${{ secrets.APPSTORE_ISSUER_ID }}" \
             IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
             DEVELOPMENT_TEAM="$TEAM_ID" \
+            CODE_SIGN_STYLE=Automatic \
             archive
 
       - name: Create exportOptions.plist
