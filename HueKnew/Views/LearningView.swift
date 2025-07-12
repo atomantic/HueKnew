@@ -48,50 +48,24 @@ struct LearningView: View {
                             ColorDisplayCard(
                                 colorInfo: colorPair.primaryColor,
                                 isSelected: false,
-                                showDescription: true
+                                showDescription: true,
+                                learningNotes: colorPair.learningNotes,
+                                isPrimaryColor: true,
+                                colorPair: colorPair
                             )
                             
                             // Comparison color
                             ColorDisplayCard(
                                 colorInfo: colorPair.comparisonColor,
                                 isSelected: false,
-                                showDescription: true
+                                showDescription: true,
+                                learningNotes: colorPair.learningNotes,
+                                isPrimaryColor: false,
+                                colorPair: colorPair
                             )
                         }
                         .padding(.horizontal)
-                        
-                        // Learning notes
-                        VStack(alignment: .leading, spacing: 12) {
-                            Text("Key Differences:")
-                                .font(.headline)
-                                .foregroundColor(.primary)
-                            
-                            Text(colorPair.learningNotes)
-                                .font(.body)
-                                .foregroundColor(.secondary)
-                                .multilineTextAlignment(.leading)
-                        }
-                        .padding()
-                        .background(Color(.systemGray6))
-                        .cornerRadius(12)
-                        .padding(.horizontal)
                     }
-                    
-                    // Color details section
-                    VStack(spacing: 16) {
-                        Text("Color Details")
-                            .font(.headline)
-                            .foregroundColor(.primary)
-                        
-                        VStack(spacing: 12) {
-                            ColorDetailRow(colorInfo: colorPair.primaryColor)
-                            ColorDetailRow(colorInfo: colorPair.comparisonColor)
-                        }
-                    }
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(12)
-                    .padding(.horizontal)
                     
                     // Continue button
                     Button(action: onContinue) {
@@ -117,6 +91,9 @@ struct ColorDisplayCard: View {
     let colorInfo: ColorInfo
     let isSelected: Bool
     let showDescription: Bool
+    let learningNotes: String
+    let isPrimaryColor: Bool
+    let colorPair: ColorPair
     
     var body: some View {
         VStack(spacing: 12) {
@@ -155,44 +132,52 @@ struct ColorDisplayCard: View {
                     .multilineTextAlignment(.center)
                     .lineLimit(3)
                     .padding(.horizontal, 4)
+                
+                // Comparative characteristics
+                VStack(alignment: .leading, spacing: 2) {
+                    let characteristics = getComparativeCharacteristics()
+                    let otherColor = isPrimaryColor ? colorPair.comparisonColor : colorPair.primaryColor
+                    if characteristics.isEmpty {
+                        Text("No differences found")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                            .accessibilityLabel("No differences found between colors")
+                    } else {
+                        ForEach(characteristics, id: \.self) { characteristic in
+                            HStack(alignment: .top, spacing: 4) {
+                                Text("•")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                    .accessibilityHidden(true)
+                                Text(characteristic)
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                    .multilineTextAlignment(.leading)
+                                    .lineLimit(1)
+                                    .accessibilityLabel("\(colorInfo.name) is \(characteristic.lowercased()) than \(otherColor.name)")
+                            }
+                            .accessibilityElement(children: .combine)
+                        }
+                    }
+                }
+                .padding(.horizontal, 4)
+                .padding(.top, 4)
             }
         }
         .padding()
         .background(Color(.systemGray6))
         .cornerRadius(16)
     }
-}
-
-struct ColorDetailRow: View {
-    let colorInfo: ColorInfo
     
-    var body: some View {
-        HStack {
-            // Small color swatch
-            Rectangle()
-                .fill(colorInfo.color)
-                .frame(width: 20, height: 20)
-                .cornerRadius(4)
-            
-            // Color name
-            Text(colorInfo.name)
-                .font(.subheadline)
-                .fontWeight(.medium)
-            
-            Spacer()
-            
-            // RGB values
-            VStack(alignment: .trailing, spacing: 2) {
-                let rgb = colorInfo.rgbComponents
-                Text("R:\(Int(rgb.red * 255)) G:\(Int(rgb.green * 255)) B:\(Int(rgb.blue * 255))")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                Text(colorInfo.hexValue)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
-        }
-        .padding(.horizontal)
+    // MARK: - Helper Methods
+    private func getComparativeCharacteristics() -> [String] {
+        // Get the other color from the color pair
+        let otherColor = isPrimaryColor ? colorPair.comparisonColor : colorPair.primaryColor
+        
+        // Use shared comparison logic from ColorDatabase
+        let comparisons = ColorDatabase.shared.getColorComparisons(color1: colorInfo, color2: otherColor)
+        
+        return comparisons
     }
 }
 

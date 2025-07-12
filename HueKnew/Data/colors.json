@@ -168,32 +168,5 @@
       "category": "oranges",
       "description": "A bright orange like the citrus fruit"
     }
-  ],
-  "comparison_templates": {
-    "temperature": {
-      "warmer": "{color1} is warmer than {color2}",
-      "cooler": "{color1} is cooler than {color2}",
-      "similar": "{color1} and {color2} have similar temperature"
-    },
-    "saturation": {
-      "more_saturated": "{color1} is more saturated than {color2}",
-      "less_saturated": "{color1} is less saturated than {color2}",
-      "similar": "{color1} and {color2} have similar saturation levels"
-    },
-    "brightness": {
-      "brighter": "{color1} is brighter than {color2}",
-      "darker": "{color1} is darker than {color2}",
-      "similar": "{color1} and {color2} have similar brightness"
-    },
-    "purity": {
-      "purer": "{color1} is purer than {color2}",
-      "more_muted": "{color1} is more muted than {color2}",
-      "similar": "{color1} and {color2} have similar purity levels"
-    },
-    "undertones": {
-      "different": "{color1} has {undertones1} undertones, while {color2} has {undertones2} undertones",
-      "similar": "Both {color1} and {color2} share {common_undertones} undertones",
-      "none_vs_some": "{color1} has no undertones, while {color2} has {undertones2} undertones"
-    }
-  }
+  ]
 }
