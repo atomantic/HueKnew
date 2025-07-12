@@ -55,9 +55,6 @@ enum ColorCategory: String, CaseIterable, Codable {
     case purples = "Purples"
     case oranges = "Oranges"
     case neutrals = "Neutrals"
-    case earth = "Earth Tones"
-    case pastels = "Pastels"
-    case jewel = "Jewel Tones"
     
     var emoji: String {
         switch self {
@@ -68,9 +65,6 @@ enum ColorCategory: String, CaseIterable, Codable {
         case .purples: return "🟣"
         case .oranges: return "🟠"
         case .neutrals: return "⚪"
-        case .earth: return "🤎"
-        case .pastels: return "🌸"
-        case .jewel: return "💎"
         }
     }
 }

@@ -22,6 +22,111 @@
       ]
     },
     {
+      "name": "Buttercup",
+      "hex": "#F7D716",
+      "category": "yellows",
+      "description": "A bright, vivid yellow resembling a buttercup flower",
+      "attributes": {
+        "temperature": "warm",
+        "saturation": "high",
+        "brightness": "high",
+        "undertones": [],
+        "purity": "high",
+        "transparency": "low",
+        "historical_significance": "low"
+      },
+      "distinguishing_features": [
+        "bright appearance",
+        "vivid hue",
+        "flower resemblance",
+        "pure yellow"
+      ]
+    },
+    {
+      "name": "Goldenrod",
+      "hex": "#DAA520",
+      "category": "yellows",
+      "description": "A deeper, more muted yellow with golden undertones",
+      "attributes": {
+        "temperature": "warm",
+        "saturation": "medium",
+        "brightness": "medium",
+        "undertones": ["golden"],
+        "purity": "medium",
+        "transparency": "medium",
+        "historical_significance": "medium"
+      },
+      "distinguishing_features": [
+        "golden hue",
+        "muted quality",
+        "tonal depth",
+        "natural associations"
+      ]
+    },
+    {
+      "name": "Daffodil",
+      "hex": "#FFFF31",
+      "category": "yellows",
+      "description": "A bright yellow with a hint of orange, like daffodil petals",
+      "attributes": {
+        "temperature": "neutral",
+        "saturation": "high",
+        "brightness": "high",
+        "undertones": ["orange"],
+        "purity": "medium",
+        "transparency": "medium",
+        "historical_significance": "low"
+      },
+      "distinguishing_features": [
+        "petal resemblance",
+        "orange hints",
+        "vivid brightness",
+        "natural origin"
+      ]
+    },
+    {
+      "name": "Banana",
+      "hex": "#FFE135",
+      "category": "yellows",
+      "description": "A creamy yellow reminiscent of ripe bananas",
+      "attributes": {
+        "temperature": "neutral",
+        "saturation": "medium",
+        "brightness": "high",
+        "undertones": ["cream"],
+        "purity": "medium",
+        "transparency": "medium",
+        "historical_significance": "low"
+      },
+      "distinguishing_features": [
+        "creamy hue",
+        "fruit association",
+        "soft brightness",
+        "natural framing"
+      ]
+    },
+    {
+      "name": "Flaxen",
+      "hex": "#EEDC82",
+      "category": "yellows",
+      "description": "A muted yellow with brown undertones, like the color of flax",
+      "attributes": {
+        "temperature": "warm",
+        "saturation": "low",
+        "brightness": "medium",
+        "undertones": ["brown"],
+        "purity": "low",
+        "transparency": "medium",
+        "historical_significance": "low"
+      },
+      "distinguishing_features": [
+        "earthy appearance",
+        "brown undertones",
+        "muted quality",
+        "natural resemblance"
+      ]
+    },
+    {
       "name": "Indian Yellow",
       "hex": "#E3B505",
       "category": "yellows",
