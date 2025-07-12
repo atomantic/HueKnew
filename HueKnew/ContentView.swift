@@ -26,7 +26,7 @@ struct ContentView: View {
             .background(Color(.systemGray6))
             .navigationBarHidden(true)
             .sheet(isPresented: $showingSettings) {
-                SettingsView()
+                SettingsView(gameModel: gameModel)
             }
             .sheet(isPresented: $showingColorDictionary) {
                 ColorDictionaryView()
