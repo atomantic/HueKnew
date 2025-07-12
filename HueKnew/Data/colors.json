@@ -4,595 +4,169 @@
       "name": "Gamboge",
       "hex": "#E49B0F",
       "category": "yellows",
-      "description": "A deep golden yellow with warm undertones, traditionally made from tree resin",
-      "attributes": {
-        "temperature": "warm",
-        "saturation": "high",
-        "brightness": "medium",
-        "undertones": ["brown", "amber", "orange"],
-        "purity": "medium",
-        "transparency": "medium",
-        "historical_significance": "high"
-      },
-      "distinguishing_features": [
-        "deep golden hue",
-        "warm brown undertones",
-        "amber qualities",
-        "traditional pigment origin"
-      ]
+      "description": "A deep golden yellow with warm undertones, traditionally made from tree resin"
     },
     {
       "name": "Buttercup",
       "hex": "#F7D716",
       "category": "yellows",
-      "description": "A bright, vivid yellow resembling a buttercup flower",
-      "attributes": {
-        "temperature": "warm",
-        "saturation": "high",
-        "brightness": "high",
-        "undertones": [],
-        "purity": "high",
-        "transparency": "low",
-        "historical_significance": "low"
-      },
-      "distinguishing_features": [
-        "bright appearance",
-        "vivid hue",
-        "flower resemblance",
-        "pure yellow"
-      ]
+      "description": "A bright, vivid yellow resembling a buttercup flower"
     },
     {
       "name": "Goldenrod",
       "hex": "#DAA520",
       "category": "yellows",
-      "description": "A deeper, more muted yellow with golden undertones",
-      "attributes": {
-        "temperature": "warm",
-        "saturation": "medium",
-        "brightness": "medium",
-        "undertones": ["golden"],
-        "purity": "medium",
-        "transparency": "medium",
-        "historical_significance": "medium"
-      },
-      "distinguishing_features": [
-        "golden hue",
-        "muted quality",
-        "tonal depth",
-        "natural associations"
-      ]
+      "description": "A deeper, more muted yellow with golden undertones"
     },
     {
       "name": "Daffodil",
       "hex": "#FFFF31",
       "category": "yellows",
-      "description": "A bright yellow with a hint of orange, like daffodil petals",
-      "attributes": {
-        "temperature": "neutral",
-        "saturation": "high",
-        "brightness": "high",
-        "undertones": ["orange"],
-        "purity": "medium",
-        "transparency": "medium",
-        "historical_significance": "low"
-      },
-      "distinguishing_features": [
-        "petal resemblance",
-        "orange hints",
-        "vivid brightness",
-        "natural origin"
-      ]
+      "description": "A bright yellow with a hint of orange, like daffodil petals"
     },
     {
       "name": "Banana",
       "hex": "#FFE135",
       "category": "yellows",
-      "description": "A creamy yellow reminiscent of ripe bananas",
-      "attributes": {
-        "temperature": "neutral",
-        "saturation": "medium",
-        "brightness": "high",
-        "undertones": ["cream"],
-        "purity": "medium",
-        "transparency": "medium",
-        "historical_significance": "low"
-      },
-      "distinguishing_features": [
-        "creamy hue",
-        "fruit association",
-        "soft brightness",
-        "natural framing"
-      ]
+      "description": "A creamy yellow reminiscent of ripe bananas"
     },
     {
       "name": "Flaxen",
       "hex": "#EEDC82",
       "category": "yellows",
-      "description": "A muted yellow with brown undertones, like the color of flax",
-      "attributes": {
-        "temperature": "warm",
-        "saturation": "low",
-        "brightness": "medium",
-        "undertones": ["brown"],
-        "purity": "low",
-        "transparency": "medium",
-        "historical_significance": "low"
-      },
-      "distinguishing_features": [
-        "earthy appearance",
-        "brown undertones",
-        "muted quality",
-        "natural resemblance"
-      ]
+      "description": "A muted yellow with brown undertones, like the color of flax"
     },
     {
       "name": "Indian Yellow",
       "hex": "#E3B505",
       "category": "yellows",
-      "description": "A rich, warm yellow with slightly more orange undertones than Gamboge",
-      "attributes": {
-        "temperature": "warm",
-        "saturation": "high",
-        "brightness": "high",
-        "undertones": ["orange"],
-        "purity": "high",
-        "transparency": "low",
-        "historical_significance": "high"
-      },
-      "distinguishing_features": [
-        "pure bright yellow",
-        "orange hints",
-        "high opacity",
-        "vibrant appearance"
-      ]
+      "description": "A rich, warm yellow with slightly more orange undertones than Gamboge"
     },
     {
       "name": "Cadmium Yellow",
       "hex": "#FFF600",
       "category": "yellows",
-      "description": "A pure, bright yellow with no warm or cool undertones",
-      "attributes": {
-        "temperature": "neutral",
-        "saturation": "very_high",
-        "brightness": "very_high",
-        "undertones": [],
-        "purity": "very_high",
-        "transparency": "very_low",
-        "historical_significance": "medium"
-      },
-      "distinguishing_features": [
-        "pure primary yellow",
-        "no undertones",
-        "maximum saturation",
-        "opaque coverage"
-      ]
+      "description": "A pure, bright yellow with no warm or cool undertones"
     },
     {
       "name": "Lemon Yellow",
       "hex": "#FFFF9F",
       "category": "yellows",
-      "description": "A pale, cool yellow with green undertones",
-      "attributes": {
-        "temperature": "cool",
-        "saturation": "medium",
-        "brightness": "high",
-        "undertones": ["green"],
-        "purity": "medium",
-        "transparency": "medium",
-        "historical_significance": "low"
-      },
-      "distinguishing_features": [
-        "pale appearance",
-        "cool temperature",
-        "green undertones",
-        "citrus association"
-      ]
+      "description": "A pale, cool yellow with green undertones"
     },
     {
       "name": "Naples Yellow",
       "hex": "#FADA5E",
       "category": "yellows",
-			"description": "A muted yellow with subtle orange and beige undertones",
-      "attributes": {
-        "temperature": "warm",
-        "saturation": "medium",
-        "brightness": "medium",
-        "undertones": ["orange", "beige"],
-        "purity": "low",
-        "transparency": "medium",
-        "historical_significance": "high"
-      },
-      "distinguishing_features": [
-        "muted quality",
-        "beige undertones",
-        "historical importance",
-        "soft appearance"
-      ]
+      "description": "A muted yellow with subtle orange and beige undertones"
     },
     {
       "name": "Prussian Blue",
       "hex": "#003153",
       "category": "blues",
-			"description": "A very dark blue with slight green undertones, historically important pigment",
-      "attributes": {
-        "temperature": "cool",
-        "saturation": "high",
-        "brightness": "very_low",
-        "undertones": ["green"],
-        "purity": "high",
-        "transparency": "high",
-        "historical_significance": "very_high"
-      },
-      "distinguishing_features": [
-        "very dark tone",
-        "green undertones",
-        "transparent quality",
-        "historical significance"
-      ]
+      "description": "A very dark blue with slight green undertones, historically important pigment"
     },
     {
       "name": "Navy Blue",
       "hex": "#000080",
       "category": "blues",
-			"description": "A dark blue with purple undertones, named after naval uniforms",
-      "attributes": {
-        "temperature": "cool",
-        "saturation": "high",
-        "brightness": "very_low",
-        "undertones": ["purple"],
-        "purity": "high",
-        "transparency": "low",
-        "historical_significance": "medium"
-      },
-      "distinguishing_features": [
-        "deep navy tone",
-        "purple undertones",
-        "uniform association",
-        "opaque quality"
-      ]
+      "description": "A dark blue with purple undertones, named after naval uniforms"
     },
     {
       "name": "Cerulean Blue",
       "hex": "#007BA7",
       "category": "blues",
-			"description": "A pure, medium blue reminiscent of clear skies",
-      "attributes": {
-        "temperature": "cool",
-        "saturation": "high",
-        "brightness": "medium",
-        "undertones": [],
-        "purity": "very_high",
-        "transparency": "medium",
-        "historical_significance": "medium"
-      },
-      "distinguishing_features": [
-        "sky-like quality",
-        "pure blue hue",
-        "medium tone",
-        "clear appearance"
-      ]
+      "description": "A pure, medium blue reminiscent of clear skies"
     },
     {
       "name": "Azure",
       "hex": "#0080FF",
       "category": "blues",
-			"description": "A bright blue with slight purple undertones, lighter than Cerulean",
-      "attributes": {
-        "temperature": "cool",
-        "saturation": "high",
-        "brightness": "high",
-        "undertones": ["purple"],
-        "purity": "high",
-        "transparency": "low",
-        "historical_significance": "low"
-      },
-      "distinguishing_features": [
-        "bright appearance",
-        "purple hints",
-        "lighter tone",
-        "vivid quality"
-      ]
+      "description": "A bright blue with slight purple undertones, lighter than Cerulean"
     },
     {
       "name": "Muted Glaucous",
       "hex": "#6082B6",
       "category": "blues",
-			"description": "A grayish-blue with muted, dusty appearance",
-      "attributes": {
-        "temperature": "cool",
-        "saturation": "low",
-        "brightness": "medium",
-        "undertones": ["gray"],
-        "purity": "low",
-        "transparency": "medium",
-        "historical_significance": "low"
-      },
-      "distinguishing_features": [
-        "dusty appearance",
-        "gray influence",
-        "muted quality",
-        "subdued tone"
-      ]
+      "description": "A grayish-blue with muted, dusty appearance"
     },
     {
       "name": "Winter Glaucous",
       "hex": "#5B8DBF",
       "category": "blues",
-			"description": "A clearer, more vibrant blue-gray with cooler undertones",
-      "attributes": {
-        "temperature": "very_cool",
-        "saturation": "medium",
-        "brightness": "medium",
-        "undertones": ["gray"],
-        "purity": "medium",
-        "transparency": "medium",
-        "historical_significance": "low"
-      },
-      "distinguishing_features": [
-        "clearer appearance",
-        "cooler temperature",
-        "more vibrant",
-        "winter association"
-      ]
+      "description": "A clearer, more vibrant blue-gray with cooler undertones"
     },
     {
       "name": "Vermillion",
       "hex": "#E34234",
       "category": "reds",
-			"description": "A bright red-orange, traditionally made from cinnabar mineral",
-      "attributes": {
-        "temperature": "warm",
-        "saturation": "high",
-        "brightness": "high",
-        "undertones": ["orange"],
-        "purity": "high",
-        "transparency": "low",
-        "historical_significance": "very_high"
-      },
-      "distinguishing_features": [
-        "red-orange hue",
-        "mineral origin",
-        "high opacity",
-        "traditional importance"
-      ]
+      "description": "A bright red-orange, traditionally made from cinnabar mineral"
     },
     {
       "name": "Cinnabar",
       "hex": "#E44D2E",
       "category": "reds",
-      "description": "A deep red with orange undertones, the mineral form of mercury sulfide",
-      "attributes": {
-        "temperature": "warm",
-        "saturation": "high",
-        "brightness": "medium",
-        "undertones": ["orange"],
-        "purity": "high",
-        "transparency": "low",
-        "historical_significance": "very_high"
-      },
-      "distinguishing_features": [
-        "deeper red tone",
-        "mineral origin",
-        "orange undertones",
-        "mercury sulfide source"
-      ]
+      "description": "A deep red with orange undertones, the mineral form of mercury sulfide"
     },
     {
       "name": "Cadmium Red",
       "hex": "#E30022",
       "category": "reds",
-      "description": "A pure, intense red with no blue or yellow undertones",
-      "attributes": {
-        "temperature": "neutral",
-        "saturation": "very_high",
-        "brightness": "high",
-        "undertones": [],
-        "purity": "very_high",
-        "transparency": "very_low",
-        "historical_significance": "medium"
-      },
-      "distinguishing_features": [
-        "pure red hue",
-        "no undertones",
-        "intense saturation",
-        "maximum opacity"
-      ]
+      "description": "A pure, intense red with no blue or yellow undertones"
     },
     {
       "name": "Alizarin Crimson",
       "hex": "#E32636",
       "category": "reds",
-      "description": "A deep red with purple undertones, historically made from madder root",
-      "attributes": {
-        "temperature": "cool",
-        "saturation": "high",
-        "brightness": "medium",
-        "undertones": ["purple"],
-        "purity": "high",
-        "transparency": "high",
-        "historical_significance": "very_high"
-      },
-      "distinguishing_features": [
-        "purple undertones",
-        "transparent quality",
-        "madder root origin",
-        "crimson depth"
-      ]
+      "description": "A deep red with purple undertones, historically made from madder root"
     },
     {
-      
       "name": "Viridian",
       "hex": "#40826D",
       "category": "greens",
-			"description": "A blue-green with cool, transparent qualities",
-      "attributes": {
-        "temperature": "cool",
-        "saturation": "medium",
-        "brightness": "medium",
-        "undertones": ["blue"],
-        "purity": "high",
-        "transparency": "high",
-        "historical_significance": "high"
-      },
-      "distinguishing_features": [
-        "blue-green hue",
-        "transparent quality",
-        "cool temperature",
-        "traditional pigment"
-      ]
+      "description": "A blue-green with cool, transparent qualities"
     },
     {
-      
       "name": "Malachite",
       "hex": "#0BDA51",
       "category": "greens",
-			"description": "A bright green with blue undertones, named after the mineral",
-      "attributes": {
-        "temperature": "cool",
-        "saturation": "very_high",
-        "brightness": "high",
-        "undertones": ["blue"],
-        "purity": "high",
-        "transparency": "low",
-        "historical_significance": "high"
-      },
-      "distinguishing_features": [
-        "emerald-like quality",
-        "mineral origin",
-        "bright appearance",
-        "blue undertones"
-      ]
+      "description": "A bright green with blue undertones, named after the mineral"
     },
     {
-      
       "name": "Forest Green",
       "hex": "#228B22",
       "category": "greens",
-      "description": "A dark green reminiscent of deep forest canopies",
-      "attributes": {
-        "temperature": "neutral",
-        "saturation": "high",
-        "brightness": "low",
-        "undertones": [],
-        "purity": "high",
-        "transparency": "low",
-        "historical_significance": "low"
-      },
-      "distinguishing_features": [
-        "deep forest tone",
-        "dark appearance",
-        "natural association",
-        "pure green hue"
-      ]
+      "description": "A dark green reminiscent of deep forest canopies"
     },
     {
-      
       "name": "Sage Green",
       "hex": "#9CAF88",
       "category": "greens",
-      "description": "A muted green with gray undertones, like the herb",
-      "attributes": {
-        "temperature": "neutral",
-        "saturation": "low",
-        "brightness": "medium",
-        "undertones": ["gray"],
-        "purity": "low",
-        "transparency": "medium",
-        "historical_significance": "low"
-      },
-      "distinguishing_features": [
-        "muted quality",
-        "gray undertones",
-        "herb association",
-        "soft appearance"
-      ]
+      "description": "A muted green with gray undertones, like the herb"
     },
     {
-      
       "name": "Tyrian Purple",
       "hex": "#66023C",
       "category": "purples",
-			"description": "A deep purple-red, historically made from murex shells",
-      "attributes": {
-        "temperature": "warm",
-        "saturation": "high",
-        "brightness": "very_low",
-        "undertones": ["red"],
-        "purity": "high",
-        "transparency": "medium",
-        "historical_significance": "very_high"
-      },
-      "distinguishing_features": [
-        "royal associations",
-        "red undertones",
-        "murex shell origin",
-        "deep darkness"
-      ]
+      "description": "A deep purple-red, historically made from murex shells"
     },
     {
-      
       "name": "Royal Purple",
       "hex": "#7851A9",
       "category": "purples",
-			"description": "A rich purple with blue undertones, associated with royalty",
-      "attributes": {
-        "temperature": "cool",
-        "saturation": "high",
-        "brightness": "medium",
-        "undertones": ["blue"],
-        "purity": "high",
-        "transparency": "low",
-        "historical_significance": "very_high"
-      },
-      "distinguishing_features": [
-        "blue undertones",
-        "royal associations",
-        "medium brightness",
-        "regal quality"
-      ]
+      "description": "A rich purple with blue undertones, associated with royalty"
     },
     {
       "name": "Burnt Orange",
       "hex": "#CC5500",
       "category": "oranges",
-      "description": "A dark orange with brown undertones",
-      "attributes": {
-        "temperature": "warm",
-        "saturation": "high",
-        "brightness": "medium",
-        "undertones": ["brown"],
-        "purity": "medium",
-        "transparency": "low",
-        "historical_significance": "low"
-      },
-      "distinguishing_features": [
-        "dark orange tone",
-        "brown undertones",
-        "burnt quality",
-        "earthy appearance"
-      ]
+      "description": "A dark orange with brown undertones"
     },
     {
       "name": "Tangerine",
       "hex": "#FF9500",
       "category": "oranges",
-      "description": "A bright orange like the citrus fruit",
-      "attributes": {
-        "temperature": "warm",
-        "saturation": "high",
-        "brightness": "high",
-        "undertones": ["yellow"],
-        "purity": "high",
-        "transparency": "low",
-        "historical_significance": "low"
-      },
-      "distinguishing_features": [
-        "citrus association",
-        "bright appearance",
-        "yellow undertones",
-        "vivid quality"
-      ]
+      "description": "A bright orange like the citrus fruit"
     }
   ],
   "comparison_templates": {

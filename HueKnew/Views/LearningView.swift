@@ -41,15 +41,6 @@ struct LearningView: View {
                     }
                     .padding(.horizontal)
                     
-                    // Debug: Show calculated difference
-                    HStack {
-                        Text("Difference: \(String(format: "%.1f", ColorDatabase.shared.calculateColorDifference(color1: colorPair.primaryColor, color2: colorPair.comparisonColor)))")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                        Spacer()
-                    }
-                    .padding(.horizontal)
-                    
                     // Side-by-side color comparison
                     VStack(spacing: 16) {
                         HStack(spacing: 16) {
@@ -223,6 +214,6 @@ struct ColorDetailRow: View {
             learningNotes: "Gamboge has more brown/amber undertones, while Indian Yellow is purer and brighter with orange hints.",
             category: .yellows
         ),
-        onContinue: { print("Continue tapped") }
+        onContinue: { }
     )
 }
