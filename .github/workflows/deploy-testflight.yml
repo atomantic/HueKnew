@@ -139,7 +139,7 @@ jobs:
            "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
           <plist version="1.0">
           <dict>
-            <key>method</key><string>app-store</string>
+            <key>method</key><string>app-store-connect</string>
             <key>teamID</key><string>$TEAM_ID</string>
             <key>signingStyle</key><string>manual</string>
             <key>provisioningProfiles</key>
@@ -156,6 +156,11 @@ jobs:
 
       - name: Export .ipa
         run: |
+          # ensure the keychain is still default & unlocked
+          security default-keychain -s build.keychain-db
+          security unlock-keychain -p "" build.keychain-db
+          security set-keychain-settings -t 3600 -u build.keychain-db
+
           xcodebuild -exportArchive \
             -archivePath build/HueKnew.xcarchive \
             -exportOptionsPlist exportOptions.plist \
