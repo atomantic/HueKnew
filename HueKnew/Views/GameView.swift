@@ -85,11 +85,12 @@ struct GameView: View {
                     
                     // Choose by Color Wheel
                     VStack(spacing: 16) {
-                        Text("or select a color area:")
+                        Text("Choose colors to study:")
                             .font(.headline)
                             .fontWeight(.semibold)
                         
                         ColorWheelPicker { hsbColor in
+                            // This will be called when the user clicks "Find Similar Colors"
                             let filter = HSBFilter(
                                 hue: hsbColor.hue,
                                 saturation: hsbColor.saturation,

@@ -110,26 +110,6 @@ struct ColorWheelPicker: View {
             }
             .padding(.horizontal)
         }
-        .onChange(of: selectedSaturation) { _, _ in
-            // Auto-update when sliders change
-            if !isDragging {
-                onColorSelected(HSBColor(
-                    hue: selectedHue,
-                    saturation: selectedSaturation,
-                    brightness: selectedBrightness
-                ))
-            }
-        }
-        .onChange(of: selectedBrightness) { _, _ in
-            // Auto-update when sliders change
-            if !isDragging {
-                onColorSelected(HSBColor(
-                    hue: selectedHue,
-                    saturation: selectedSaturation,
-                    brightness: selectedBrightness
-                ))
-            }
-        }
     }
     
     private var saturationType: String {
@@ -165,9 +145,7 @@ struct ColorWheelView: View {
                 colorWheelBackground(in: geometry)
                 selectionIndicator(in: geometry)
             }
-            .onTapGesture { location in
-                updateSelection(at: location, in: geometry)
-            }
+            .contentShape(Circle())
             .gesture(
                 DragGesture()
                     .onChanged { value in
@@ -178,6 +156,9 @@ struct ColorWheelView: View {
                         isDragging = false
                     }
             )
+            .onTapGesture { location in
+                updateSelection(at: location, in: geometry)
+            }
         }
     }
     
@@ -208,7 +189,11 @@ struct ColorWheelView: View {
     
     @ViewBuilder
     private func selectionIndicator(in geometry: GeometryProxy) -> some View {
-        let radius = CGFloat(geometry.size.width) / 2 - 30
+        let center = CGPoint(x: geometry.size.width / 2, y: geometry.size.height / 2)
+        let maxRadius = geometry.size.width / 2 - 20
+        let radius = maxRadius * selectedSaturation
+        let angle = selectedHue * .pi / 180
+        
         Circle()
             .fill(Color.white)
             .frame(width: 20, height: 20)
@@ -217,8 +202,8 @@ struct ColorWheelView: View {
                     .stroke(Color.black, lineWidth: 2)
             )
             .offset(
-                x: CGFloat(cos(selectedHue * .pi / 180)) * radius,
-                y: CGFloat(sin(selectedHue * .pi / 180)) * radius
+                x: CGFloat(cos(angle)) * radius,
+                y: CGFloat(sin(angle)) * radius
             )
             .shadow(radius: 2)
     }
@@ -227,17 +212,14 @@ struct ColorWheelView: View {
         let center = CGPoint(x: geometry.size.width / 2, y: geometry.size.height / 2)
         let vector = CGPoint(x: location.x - center.x, y: location.y - center.y)
         let distance = sqrt(vector.x * vector.x + vector.y * vector.y)
+        let maxRadius = geometry.size.width / 2 - 20
         
-        // Only update if within the circle
-        if distance <= geometry.size.width / 2 {
-            // Calculate angle (hue)
-            let angle = atan2(vector.y, vector.x) * 180 / .pi
-            selectedHue = angle < 0 ? angle + 360 : angle
-            
-            // Calculate saturation based on distance from center
-            let maxRadius = geometry.size.width / 2 - 30
-            selectedSaturation = min(distance / maxRadius, 1.0)
-        }
+        // Calculate angle (hue)
+        let angle = atan2(vector.y, vector.x) * 180 / .pi
+        selectedHue = angle < 0 ? angle + 360 : angle
+        
+        // Calculate saturation based on distance from center
+        selectedSaturation = min(distance / maxRadius, 1.0)
     }
     
     private var hueColors: [Color] {
