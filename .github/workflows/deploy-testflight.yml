@@ -26,7 +26,7 @@ jobs:
             -archivePath build/HueKnew.xcarchive \
             -allowProvisioningUpdates \
             -allowProvisioningDeviceRegistration \
-            IPHONEOS_DEPLOYMENT_TARGET=18.2 \
+            IPHONEOS_DEPLOYMENT_TARGET=${{ vars.IPHONEOS_DEPLOYMENT_TARGET }} \
             archive
 
       - name: Export iOS App
