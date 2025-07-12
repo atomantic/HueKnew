@@ -7,7 +7,7 @@ on:
   pull_request:
 
 env:
-  IPHONEOS_DEPLOYMENT_TARGET: '18.2'       # must be ≤ 18.2.99
+  IPHONEOS_DEPLOYMENT_TARGET: ${{ vars.IPHONEOS_DEPLOYMENT_TARGET }}
   TEAM_ID:             ${{ secrets.TEAM_ID }}
   APPSTORE_API_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
   APPSTORE_ISSUER_ID:  ${{ secrets.APPSTORE_ISSUER_ID }}
