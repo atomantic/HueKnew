@@ -7,8 +7,7 @@ on:
   pull_request:
 
 env:
-  # must be ≤ 18.2.99
-  IPHONEOS_DEPLOYMENT_TARGET: ${{ vars.IPHONEOS_DEPLOYMENT_TARGET }}
+  IPHONEOS_DEPLOYMENT_TARGET: '18.2'       # must be ≤ 18.2.99
   TEAM_ID:             ${{ secrets.TEAM_ID }}
   APPSTORE_API_KEY_ID: ${{ secrets.APPSTORE_API_KEY_ID }}
   APPSTORE_ISSUER_ID:  ${{ secrets.APPSTORE_ISSUER_ID }}
@@ -66,6 +65,7 @@ jobs:
             -destination 'generic/platform=iOS' \
             -archivePath build/HueKnew.xcarchive \
             -allowProvisioningUpdates \
+            -allowProvisioningDeviceRegistration \
             -authenticationKeyPath "$GITHUB_WORKSPACE/AuthKey.p8" \
             -authenticationKeyID "$APPSTORE_API_KEY_ID" \
             -authenticationKeyIssuerID "$APPSTORE_ISSUER_ID" \
@@ -97,9 +97,11 @@ jobs:
           xcodebuild -exportArchive \
             -archivePath build/HueKnew.xcarchive \
             -exportOptionsPlist exportOptions.plist \
+            -exportPath build/export \
             -allowProvisioningUpdates \
-            -allowProvisioningDeviceRegistration \
-            -exportPath build/export
+            -authenticationKeyPath "$GITHUB_WORKSPACE/AuthKey.p8" \
+            -authenticationKeyID "$APPSTORE_API_KEY_ID" \
+            -authenticationKeyIssuerID "$APPSTORE_ISSUER_ID"
 
       - name: Upload to TestFlight
         uses: apple-actions/upload-testflight-build@v3
