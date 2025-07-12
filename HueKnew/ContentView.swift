@@ -21,8 +21,9 @@ struct ContentView: View {
                     onSettings: { showingSettings = true },
                     onCatalog: { showingColorDictionary = true }
                 )
-                .padding()
+                .safeAreaPadding(.bottom)
             }
+            .background(Color(.systemGray6))
             .navigationBarHidden(true)
             .sheet(isPresented: $showingSettings) {
                 SettingsView()

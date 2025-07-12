@@ -123,6 +123,7 @@ extension Color {
         
         self.init(
             .sRGB,
+            // swiftlint:disable:next colon
             red: Double(red) / 255,
             green: Double(green) / 255,
             blue:  Double(blue) / 255,

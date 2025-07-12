@@ -59,75 +59,69 @@ struct GameView: View {
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
                     
-                    Text("Embark on a journey to discover color distinctions")
+                    Text("Embark on a journey to discover colors")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
                 }
-            }
-            
-            // Category selection
-            VStack(spacing: 16) {
-                Text("Choose a category to study:")
-                    .font(.headline)
-                    .fontWeight(.semibold)
                 
-                LazyVGrid(columns: [
-                    GridItem(.flexible()),
-                    GridItem(.flexible())
-                ], spacing: 12) {
-                    ForEach(ColorCategory.allCases.prefix(6), id: \.self) { category in
-                        CategoryCard(category: category) {
-                            gameModel.startLearningSession(category: category)
+                // Play options
+                VStack(spacing: 20) {
+                    Text("How would you like to play?")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                    
+                    // Resume/Start New Game button
+                    Button(action: { gameModel.resumeOrStartGame() }) {
+                        Text(gameModel.isGameActive ? "Resume your progress" : "Start new game")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(12)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    
+                    // Choose by Color Category
+                    VStack(spacing: 16) {
+                        Text("Choose a category to study:")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                        
+                        LazyVGrid(columns: [
+                            GridItem(.flexible()),
+                            GridItem(.flexible())
+                        ], spacing: 12) {
+                            ForEach(ColorCategory.allCases.prefix(6), id: \.self) { category in
+                                CategoryCard(category: category) {
+                                    gameModel.startLearningSession(category: category)
+                                }
+                            }
+                        }
+                    }
+                    
+                    // Choose by Difficulty
+                    VStack(spacing: 12) {
+                        Text("Or choose by difficulty:")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                        
+                        HStack(spacing: 12) {
+                            ForEach(DifficultyLevel.allCases, id: \.self) { difficulty in
+                                DifficultyButton(difficulty: difficulty) {
+                                    gameModel.startLearningSession(difficulty: difficulty)
+                                }
+                            }
                         }
                     }
                 }
             }
-            
-            // Quick start options
-            VStack(spacing: 12) {
-                Text("Or choose by difficulty:")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                
-                HStack(spacing: 12) {
-                    ForEach(DifficultyLevel.allCases, id: \.self) { difficulty in
-                        DifficultyButton(difficulty: difficulty) {
-                            gameModel.startLearningSession(difficulty: difficulty)
-                        }
-                    }
-                }
+            .padding()
+            .sheet(isPresented: $showingColorDictionary) {
+                ColorDictionaryView()
             }
-            
-            // Random start button
-            Button(action: { gameModel.resumeOrStartGame() }) {
-                Text("Play")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(12)
-            }
-            .buttonStyle(PlainButtonStyle())
-            
-            // Color Dictionary button
-            Button(action: { showingColorDictionary = true }) {
-                Text("Browse Color Dictionary")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .foregroundColor(.blue)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(12)
-            }
-            .buttonStyle(PlainButtonStyle())
-        }
-        .padding()
-        .sheet(isPresented: $showingColorDictionary) {
-            ColorDictionaryView()
         }
     }
     
