@@ -50,7 +50,8 @@ struct LearningView: View {
                                 isSelected: false,
                                 showDescription: true,
                                 learningNotes: colorPair.learningNotes,
-                                isPrimaryColor: true
+                                isPrimaryColor: true,
+                                colorPair: colorPair
                             )
                             
                             // Comparison color
@@ -59,7 +60,8 @@ struct LearningView: View {
                                 isSelected: false,
                                 showDescription: true,
                                 learningNotes: colorPair.learningNotes,
-                                isPrimaryColor: false
+                                isPrimaryColor: false,
+                                colorPair: colorPair
                             )
                         }
                         .padding(.horizontal)
@@ -91,6 +93,7 @@ struct ColorDisplayCard: View {
     let showDescription: Bool
     let learningNotes: String
     let isPrimaryColor: Bool
+    let colorPair: ColorPair
     
     var body: some View {
         VStack(spacing: 12) {
@@ -112,25 +115,6 @@ struct ColorDisplayCard: View {
                 .foregroundColor(.primary)
                 .multilineTextAlignment(.center)
             
-            // Color characteristics badges
-            HStack(spacing: 8) {
-                CharacteristicBadge(
-                    icon: "thermometer",
-                    text: temperatureText,
-                    color: temperatureColor
-                )
-                CharacteristicBadge(
-                    icon: "drop.fill",
-                    text: saturationText,
-                    color: saturationColor
-                )
-                CharacteristicBadge(
-                    icon: "sun.max.fill",
-                    text: brightnessText,
-                    color: brightnessColor
-                )
-            }
-            
             // Hex value
             Text(colorInfo.hexValue)
                 .font(.caption)
@@ -148,6 +132,31 @@ struct ColorDisplayCard: View {
                     .multilineTextAlignment(.center)
                     .lineLimit(3)
                     .padding(.horizontal, 4)
+                
+                // Comparative characteristics
+                VStack(alignment: .leading, spacing: 2) {
+                    let characteristics = getComparativeCharacteristics()
+                    if characteristics.isEmpty {
+                        Text("No differences found")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    } else {
+                        ForEach(characteristics, id: \.self) { characteristic in
+                            HStack(alignment: .top, spacing: 4) {
+                                Text("•")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                Text(characteristic)
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                    .multilineTextAlignment(.leading)
+                                    .lineLimit(1)
+                            }
+                        }
+                    }
+                }
+                .padding(.horizontal, 4)
+                .padding(.top, 4)
                 
                 // Learning notes (if shown)
                 if !learningNotes.isEmpty {
@@ -182,66 +191,126 @@ struct ColorDisplayCard: View {
         .cornerRadius(16)
     }
     
-    // MARK: - Computed Properties
-    private var temperatureText: String {
-        let temp = ColorDatabase.shared.temperatureCategory(for: colorInfo)
-        return temp.capitalized
-    }
-    
-    private var temperatureColor: Color {
-        let temp = ColorDatabase.shared.temperatureCategory(for: colorInfo)
-        return temp == "warm" ? .orange : .blue
-    }
-    
-    private var saturationText: String {
-        let sat = ColorDatabase.shared.saturationLevel(for: colorInfo)
-        return sat.capitalized
-    }
-    
-    private var saturationColor: Color {
-        let sat = ColorDatabase.shared.saturationLevel(for: colorInfo)
-        switch sat {
-        case "low": return .gray
-        case "medium": return .purple
-        default: return .pink
+    // MARK: - Helper Methods
+    private func getComparativeCharacteristics() -> [String] {
+        // Get the other color from the color pair
+        let otherColor = isPrimaryColor ? colorPair.comparisonColor : colorPair.primaryColor
+        
+        print("DEBUG: Comparing \(colorInfo.name) with \(otherColor.name)")
+        
+        // Debug HSB values
+        let hsb1 = colorInfo.hsbComponents
+        let hsb2 = otherColor.hsbComponents
+        print("DEBUG: \(colorInfo.name) HSB: (\(hsb1.hue), \(hsb1.saturation), \(hsb1.brightness))")
+        print("DEBUG: \(otherColor.name) HSB: (\(hsb2.hue), \(hsb2.saturation), \(hsb2.brightness))")
+        
+        var characteristics: [String] = []
+        
+        // Compare hue (temperature)
+        let hueDiff = hsb1.hue - hsb2.hue
+        let normalizedHueDiff = abs(hueDiff) > 180 ? 360 - abs(hueDiff) : abs(hueDiff)
+        if normalizedHueDiff > 5 { // Only show if there's a meaningful difference
+            // Add color-specific descriptions
+            let colorDescription = getColorDescription(hue1: hsb1.hue, hue2: hsb2.hue)
+            if !colorDescription.isEmpty {
+                characteristics.append(colorDescription)
+            }
         }
-    }
-    
-    private var brightnessText: String {
-        let bright = ColorDatabase.shared.brightnessLevel(for: colorInfo)
-        return bright.capitalized
-    }
-    
-    private var brightnessColor: Color {
-        let bright = ColorDatabase.shared.brightnessLevel(for: colorInfo)
-        switch bright {
-        case "dark": return .black
-        case "medium": return .brown
-        default: return .yellow
+        
+        // Compare saturation
+        let satDiff = hsb1.saturation - hsb2.saturation
+        if abs(satDiff) > 0.05 { // Only show if there's a meaningful difference
+            if satDiff > 0 {
+                characteristics.append("More Saturated")
+            } else {
+                characteristics.append("Less Saturated")
+            }
         }
-    }
-}
-
-// MARK: - Characteristic Badge
-struct CharacteristicBadge: View {
-    let icon: String
-    let text: String
-    let color: Color
-    
-    var body: some View {
-        HStack(spacing: 2) {
-            Image(systemName: icon)
-                .font(.caption2)
-                .foregroundColor(color)
-            Text(text)
-                .font(.caption2)
-                .fontWeight(.medium)
-                .foregroundColor(color)
+        
+        // Compare brightness
+        let brightDiff = hsb1.brightness - hsb2.brightness
+        if abs(brightDiff) > 0.05 { // Only show if there's a meaningful difference
+            if brightDiff > 0 {
+                characteristics.append("Brighter")
+            } else {
+                characteristics.append("Darker")
+            }
         }
-        .padding(.horizontal, 6)
-        .padding(.vertical, 2)
-        .background(color.opacity(0.1))
-        .cornerRadius(8)
+        
+        print("DEBUG: Final characteristics for \(colorInfo.name): \(characteristics)")
+        return characteristics
+    }
+    
+    private func getColorDescription(hue1: Double, hue2: Double) -> String {
+        let hueDiff = hue1 - hue2
+        let normalizedHueDiff = abs(hueDiff) > 180 ? 360 - abs(hueDiff) : abs(hueDiff)
+        
+        // Only provide color descriptions for meaningful differences
+        guard normalizedHueDiff > 10 else { return "" }
+        
+        // Define hue ranges for different colors (adjusted for better accuracy)
+        let redRange = 350.0...360.0
+        let redOrangeRange = 0.0...15.0
+        let orangeRange = 15.0...45.0
+        let yellowOrangeRange = 45.0...75.0
+        let yellowRange = 75.0...105.0
+        let yellowGreenRange = 105.0...135.0
+        let greenRange = 135.0...165.0
+        let blueGreenRange = 165.0...195.0
+        let blueRange = 195.0...255.0
+        let purpleRange = 255.0...285.0
+        let magentaRange = 285.0...315.0
+        let pinkRange = 315.0...350.0
+        
+        func getColorName(for hue: Double) -> String {
+            let normalizedHue = hue < 0 ? hue + 360 : hue
+            
+            if redRange.contains(normalizedHue) {
+                return "red"
+            } else if redOrangeRange.contains(normalizedHue) {
+                return "red-orange"
+            } else if orangeRange.contains(normalizedHue) {
+                return "orange"
+            } else if yellowOrangeRange.contains(normalizedHue) {
+                return "yellow-orange"
+            } else if yellowRange.contains(normalizedHue) {
+                return "yellow"
+            } else if yellowGreenRange.contains(normalizedHue) {
+                return "yellow-green"
+            } else if greenRange.contains(normalizedHue) {
+                return "green"
+            } else if blueGreenRange.contains(normalizedHue) {
+                return "blue-green"
+            } else if blueRange.contains(normalizedHue) {
+                return "blue"
+            } else if purpleRange.contains(normalizedHue) {
+                return "purple"
+            } else if magentaRange.contains(normalizedHue) {
+                return "magenta"
+            } else if pinkRange.contains(normalizedHue) {
+                return "pink"
+            } else {
+                return "red" // Default for edge cases
+            }
+        }
+        
+        let color1 = getColorName(for: hue1)
+        let color2 = getColorName(for: hue2)
+        
+        if color1 != color2 {
+            return "More \(color1.replacingOccurrences(of: "-", with: " ").capitalized)"
+        } else {
+            // Same color family, but different shades
+            if abs(hueDiff) > 20 {
+                if hueDiff > 0 && hueDiff < 180 || hueDiff < -180 {
+                    return "More \(color1.replacingOccurrences(of: "-", with: " ").capitalized)"
+                } else {
+                    return "Less \(color1.replacingOccurrences(of: "-", with: " ").capitalized)"
+                }
+            }
+        }
+        
+        return ""
     }
 }
 

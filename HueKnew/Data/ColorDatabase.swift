@@ -217,6 +217,12 @@ class ColorDatabase: ObservableObject {
     func getRandomColorPair(excluding: ColorPair) -> ColorPair? {
         colorPairs.filter { $0.id != excluding.id }.randomElement()
     }
+    
+    func getColorPair(containing colorInfo: ColorInfo) -> ColorPair? {
+        return colorPairs.first { pair in
+            pair.primaryColor.id == colorInfo.id || pair.comparisonColor.id == colorInfo.id
+        }
+    }
 
     func getAllColors() -> [ColorInfo] {
         // Get unique colors from the JSON data to avoid duplicates
