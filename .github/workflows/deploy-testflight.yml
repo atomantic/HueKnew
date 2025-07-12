@@ -69,25 +69,11 @@ jobs:
             -P "${{ secrets.DIST_CERT_P12_PASSWORD }}" \
             -T /usr/bin/codesign
 
-      - name: Install provisioning profile & extract UUID
+      - name: Install provisioning profile
         run: |
-          # decode the profile into a temp file
-          echo "${{ secrets.PROV_PROFILE_BASE64 }}" | base64 --decode > tmp.mobileprovision
-
-          # extract the UUID
-          PROFILE_UUID=$(
-            security cms -D -i tmp.mobileprovision \
-              | /usr/libexec/PlistBuddy -c 'Print :UUID' /dev/stdin
-          )
-          echo "Found provisioning profile UUID: $PROFILE_UUID"
-
-          # install it where Xcode expects
           mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
-          mv tmp.mobileprovision \
-            "$HOME/Library/MobileDevice/Provisioning Profiles/${PROFILE_UUID}.mobileprovision"
-
-          # export for next steps
-          echo "PROFILE_UUID=$PROFILE_UUID" >> $GITHUB_ENV
+          echo "${{ secrets.PROV_PROFILE_BASE64 }}" | base64 --decode \
+            > "$HOME/Library/MobileDevice/Provisioning Profiles/${{ secrets.PROFILE_UUID }}.mobileprovision"
 
       - name: Archive iOS App (manual signing)
         run: |
@@ -100,7 +86,7 @@ jobs:
             IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
             CODE_SIGN_STYLE=Manual \
             DEVELOPMENT_TEAM="$TEAM_ID" \
-            PROVISIONING_PROFILE="$PROFILE_UUID" \
+            PROVISIONING_PROFILE="${{ secrets.PROFILE_UUID }}" \
             CODE_SIGN_IDENTITY="iPhone Distribution" \
             archive
 
