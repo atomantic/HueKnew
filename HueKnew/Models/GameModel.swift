@@ -44,6 +44,11 @@ class GameModel {
     
     private let colorDatabase = ColorDatabase.shared
     
+    init() {
+        // Debug: Test color differences on initialization
+        colorDatabase.debugColorDifferences()
+    }
+    
     // MARK: - Game Flow Methods
     
     func startLearningSession(category: ColorCategory? = nil, difficulty: DifficultyLevel? = nil, hsbFilter: HSBFilter? = nil) {
@@ -52,6 +57,9 @@ class GameModel {
         selectedHSBFilter = hsbFilter
         questionsInCurrentSession = 0
         isGameActive = true
+        
+        // Debug: Test color differences
+        colorDatabase.debugColorDifferences()
         
         // Get next color pair to learn
         generateNextColorPair()
@@ -123,22 +131,37 @@ class GameModel {
         // Filter by category if selected
         if let category = selectedCategory {
             availablePairs = colorDatabase.getColorPairs(for: category)
+            print("DEBUG: Filtering by category \(category.rawValue), found \(availablePairs.count) pairs")
         } else if let difficulty = selectedDifficulty {
             availablePairs = colorDatabase.getColorPairs(for: difficulty)
+            print("DEBUG: Filtering by difficulty \(difficulty.rawValue), found \(availablePairs.count) pairs")
+            
+            // Debug: Show all pairs and their difficulties
+            let allPairs = colorDatabase.getAllColorPairs()
+            print("DEBUG: Total pairs in database: \(allPairs.count)")
+            for pair in allPairs.prefix(10) {
+                let diff = colorDatabase.calculateColorDifference(color1: pair.primaryColor, color2: pair.comparisonColor)
+                print("DEBUG: \(pair.primaryColor.name) vs \(pair.comparisonColor.name): diff=\(String(format: "%.1f", diff)), level=\(pair.difficultyLevel.rawValue)")
+            }
         } else if let hsbFilter = selectedHSBFilter {
             availablePairs = colorDatabase.getColorPairs(matching: hsbFilter)
+            print("DEBUG: Filtering by HSB filter, found \(availablePairs.count) pairs")
         } else {
             availablePairs = colorDatabase.getAllColorPairs()
+            print("DEBUG: No filter, found \(availablePairs.count) pairs")
         }
         
         // Prefer pairs that haven't been mastered yet
         let unmasteredPairs = availablePairs.filter { !masteredPairs.contains($0.id) }
+        print("DEBUG: Unmastered pairs: \(unmasteredPairs.count)")
         
         if !unmasteredPairs.isEmpty {
             currentColorPair = unmasteredPairs.randomElement()
         } else {
             currentColorPair = availablePairs.randomElement()
         }
+        
+        print("DEBUG: Selected color pair: \(currentColorPair?.primaryColor.name ?? "nil") vs \(currentColorPair?.comparisonColor.name ?? "nil")")
     }
     
     private func calculateScore() -> Int {

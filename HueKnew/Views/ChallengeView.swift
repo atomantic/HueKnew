@@ -24,10 +24,6 @@ struct ChallengeView: View {
                 Text("Challenge Mode")
                     .font(.headline)
                     .foregroundColor(.orange)
-                
-                Text(challengeType.description)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
             }
             .padding()
             
@@ -77,9 +73,6 @@ struct ChallengeView: View {
             case .nameToColor:
                 // Show color name, ask to pick color
                 VStack(spacing: 8) {
-                    Text("Which color is:")
-                        .font(.title2)
-                        .foregroundColor(.primary)
                     
                     Text(targetColor?.name ?? "")
                         .font(.largeTitle)
