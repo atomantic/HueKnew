@@ -1,5 +1,7 @@
 # Hue Knew 🎨
 
+Your ability to understand the world is limited by the language you have to describe it. Expand your world!
+
 A SwiftUI color learning game that helps you discover the subtle differences between similar colors and learn their proper names.
 
 ## 🎯 Game Overview
@@ -97,7 +99,7 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ## 🙏 Acknowledgments
 
