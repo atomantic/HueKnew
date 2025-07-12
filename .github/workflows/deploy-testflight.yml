@@ -127,17 +127,9 @@ jobs:
             CODE_SIGNING_REQUIRED=NO \
             archive
 
-      - name: Codesign the archive
+      - name: Verify archive was created
         run: |
-          # ensure the keychain is still default & unlocked
-          # security default-keychain -s build.keychain-db
-          # security unlock-keychain -p "" build.keychain-db
-          # security set-keychain-settings -t 3600 -u build.keychain-db
-
-          # Codesign the app bundle inside the archive
-          codesign --force --sign "Apple Distribution" \
-            --timestamp=none \
-            build/HueKnew.xcarchive/Products/Applications/HueKnew.app
+          ls -la build/HueKnew.xcarchive/Products/Applications/
 
       - name: Create exportOptions.plist
         run: |
@@ -150,6 +142,14 @@ jobs:
             <key>method</key><string>app-store</string>
             <key>teamID</key><string>$TEAM_ID</string>
             <key>signingStyle</key><string>manual</string>
+            <key>provisioningProfiles</key>
+            <dict>
+              <key>net.shadowpuppet.HueKnew</key><string>$PROFILE_NAME</string>
+            </dict>
+            <key>signingCertificate</key><string>Apple Distribution</string>
+            <key>stripSwiftSymbols</key><true/>
+            <key>uploadBitcode</key><false/>
+            <key>uploadSymbols</key><false/>
           </dict>
           </plist>
           EOF
