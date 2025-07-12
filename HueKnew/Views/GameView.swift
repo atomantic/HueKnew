@@ -235,10 +235,23 @@ struct CategoryCard: View {
             }
             .frame(maxWidth: .infinity)
             .padding()
-            .background(Color(.systemGray6))
+            .background(
+                LinearGradient(
+                    gradient: Gradient(colors: [Color.white, Color(.systemGray6)]),
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
             .cornerRadius(12)
+            .shadow(color: Color.black.opacity(0.1), radius: 2, x: 0, y: 2)
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color(.systemGray4), lineWidth: 1)
+            )
         }
         .buttonStyle(PlainButtonStyle())
+        .scaleEffect(1.0)
+        .animation(.easeInOut(duration: 0.1), value: false)
     }
 }
 
@@ -250,10 +263,15 @@ struct DifficultyButton: View {
         Button(action: onTap) {
             Text(difficulty.starIcons)
                 .font(.system(size: 16))
+                .foregroundColor(.primary)
             .padding(.horizontal, 12)
             .padding(.vertical, 6)
-            .background(Color.gray)
+            .background(Color(.systemGray5))
             .cornerRadius(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color(.systemGray4), lineWidth: 1)
+            )
         }
         .buttonStyle(PlainButtonStyle())
     }
