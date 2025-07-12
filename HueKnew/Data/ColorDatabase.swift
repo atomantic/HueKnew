@@ -7,6 +7,21 @@
 
 import Foundation
 
+// MARK: - Color Classification Constants
+struct ColorThresholds {
+    // Hue thresholds for temperature classification (0-360 degrees)
+    static let coolHueStart: Double = 90
+    static let coolHueEnd: Double = 270
+    
+    // Saturation thresholds (0.0-1.0)
+    static let lowSaturationThreshold: Double = 0.33
+    static let mediumSaturationThreshold: Double = 0.66
+    
+    // Brightness thresholds (0.0-1.0)
+    static let lowBrightnessThreshold: Double = 0.33
+    static let mediumBrightnessThreshold: Double = 0.66
+}
+
 // MARK: - JSON Color Structures
 struct JSONColorData: Codable {
     let colors: [JSONColor]
@@ -213,14 +228,14 @@ class ColorDatabase: ObservableObject {
 
     private func temperatureCategory(for color: ColorInfo) -> String {
         let hue = color.hsbComponents.hue
-        return (hue >= 90 && hue <= 270) ? "cool" : "warm"
+        return (hue >= ColorThresholds.coolHueStart && hue <= ColorThresholds.coolHueEnd) ? "cool" : "warm"
     }
 
     private func saturationLevel(for color: ColorInfo) -> String {
         let sat = color.hsbComponents.saturation
         switch sat {
-        case 0..<0.33: return "low"
-        case 0.33..<0.66: return "medium"
+        case 0..<ColorThresholds.lowSaturationThreshold: return "low"
+        case ColorThresholds.lowSaturationThreshold..<ColorThresholds.mediumSaturationThreshold: return "medium"
         default: return "high"
         }
     }
@@ -228,8 +243,8 @@ class ColorDatabase: ObservableObject {
     private func brightnessLevel(for color: ColorInfo) -> String {
         let bright = color.hsbComponents.brightness
         switch bright {
-        case 0..<0.33: return "dark"
-        case 0.33..<0.66: return "medium"
+        case 0..<ColorThresholds.lowBrightnessThreshold: return "dark"
+        case ColorThresholds.lowBrightnessThreshold..<ColorThresholds.mediumBrightnessThreshold: return "medium"
         default: return "bright"
         }
     }
