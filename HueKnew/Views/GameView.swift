@@ -85,7 +85,7 @@ struct GameView: View {
                     
                     // Choose by Color Wheel
                     VStack(spacing: 16) {
-                        Text("Choose colors to study:")
+                        Text("or select a color area:")
                             .font(.headline)
                             .fontWeight(.semibold)
                         
