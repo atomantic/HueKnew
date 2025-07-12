@@ -17,12 +17,10 @@ jobs:
     name: PR Validation (no signing)
     steps:
       - uses: actions/checkout@v4
-
       - name: Set up Xcode
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: 'latest-stable'
-
       - name: Build (skip code signing)
         run: |
           xcodebuild \
@@ -66,28 +64,20 @@ jobs:
             -P "${{ secrets.DIST_CERT_P12_PASSWORD }}" \
             -T /usr/bin/codesign
 
-      - name: Install provisioning profile & extract UUID/Name
+      - name: Install provisioning profile
         run: |
-          # decode your base64 into a valid .mobileprovision
-          printf '%s' "${{ secrets.PROV_PROFILE_BASE64 }}" \
-            | base64 -D > tmp.mobileprovision
+          # debug: show that the secret is non-zero length
+          echo "PROV_PROFILE_BASE64 length:" \
+            $(printf '%s' "${{ secrets.PROV_PROFILE_BASE64 }}" | wc -c)
 
-          # extract UUID and Name
-          PROFILE_UUID=$(security cms -D -i tmp.mobileprovision \
-            | /usr/libexec/PlistBuddy -c 'Print :UUID' /dev/stdin)
-          PROFILE_NAME=$(security cms -D -i tmp.mobileprovision \
-            | /usr/libexec/PlistBuddy -c 'Print :Name' /dev/stdin)
-
-          echo "Found provisioning profile UUID=$PROFILE_UUID, Name=$PROFILE_NAME"
-
-          # install where Xcode will pick it up
+          # create target dir
           mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
-          mv tmp.mobileprovision \
-            "$HOME/Library/MobileDevice/Provisioning Profiles/${PROFILE_UUID}.mobileprovision"
 
-          # export for archive step
-          echo "PROFILE_UUID=$PROFILE_UUID" >> $GITHUB_ENV
-          echo "PROFILE_NAME=$PROFILE_NAME" >> $GITHUB_ENV
+          # strip stray newlines and decode
+          printf '%s' "${{ secrets.PROV_PROFILE_BASE64 }}" \
+            | tr -d '\r\n' \
+            | base64 -D \
+            > "$HOME/Library/MobileDevice/Provisioning Profiles/${{ secrets.PROFILE_UUID }}.mobileprovision"
 
       - name: Archive iOS App (manual signing)
         run: |
@@ -100,8 +90,7 @@ jobs:
             IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
             CODE_SIGN_STYLE=Manual \
             DEVELOPMENT_TEAM="$TEAM_ID" \
-            PROVISIONING_PROFILE="$PROFILE_UUID" \
-            PROVISIONING_PROFILE_SPECIFIER="$PROFILE_NAME" \
+            PROVISIONING_PROFILE="${{ secrets.PROFILE_UUID }}" \
             CODE_SIGN_IDENTITY="Apple Distribution" \
             archive
 
