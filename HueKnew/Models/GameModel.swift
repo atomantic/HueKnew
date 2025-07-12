@@ -93,15 +93,16 @@ class GameModel {
         }
     }
     
-    func restartGame() {
-        currentPhase = .menu
-        questionsInCurrentSession = 0
-        isGameActive = false
-        isPaused = false
+    func resumeOrStartGame() {
+        if isGameActive {
+            currentPhase = .learning
+        } else {
+            startLearningSession()
+        }
     }
-    
-    func pauseGame() {
-        isPaused.toggle()
+
+    func goToMenu() {
+        currentPhase = .menu
     }
     
     func endSession() {
@@ -168,7 +169,7 @@ class GameModel {
         return accuracy
     }
     
-    var masteredPairsCount: Int {
+    var learnedPairsCount: Int {
         masteredPairs.count
     }
     

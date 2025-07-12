@@ -11,7 +11,7 @@ import Foundation
 struct JSONColorData: Codable {
     let colors: [JSONColor]
     let comparisonTemplates: ComparisonTemplates
-    
+
     enum CodingKeys: String, CodingKey {
         case colors
         case comparisonTemplates = "comparison_templates"
@@ -27,7 +27,7 @@ struct JSONColor: Codable {
     let description: String
     let attributes: ColorAttributes
     let distinguishingFeatures: [String]
-    
+
     enum CodingKeys: String, CodingKey {
         case id, name, hex, category, difficulty, description, attributes
         case distinguishingFeatures = "distinguishing_features"
@@ -42,7 +42,7 @@ struct ColorAttributes: Codable {
     let purity: String
     let transparency: String
     let historicalSignificance: String
-    
+
     enum CodingKeys: String, CodingKey {
         case temperature, saturation, brightness, undertones, purity, transparency
         case historicalSignificance = "historical_significance"
@@ -67,7 +67,7 @@ struct SaturationTemplates: Codable {
     let moreSaturated: String
     let lessSaturated: String
     let similar: String
-    
+
     enum CodingKeys: String, CodingKey {
         case moreSaturated = "more_saturated"
         case lessSaturated = "less_saturated"
@@ -85,7 +85,7 @@ struct PurityTemplates: Codable {
     let purer: String
     let moreMuted: String
     let similar: String
-    
+
     enum CodingKeys: String, CodingKey {
         case purer
         case moreMuted = "more_muted"
@@ -97,7 +97,7 @@ struct UndertoneTemplates: Codable {
     let different: String
     let similar: String
     let noneVsSome: String
-    
+
     enum CodingKeys: String, CodingKey {
         case different, similar
         case noneVsSome = "none_vs_some"
@@ -106,20 +106,20 @@ struct UndertoneTemplates: Codable {
 
 class ColorDatabase: ObservableObject {
     static let shared = ColorDatabase()
-    
+
     private var jsonData: JSONColorData?
     private var colorPairs: [ColorPair] = []
-    
+
     private init() {
         loadColorsFromJSON()
     }
-    
+
     private func loadColorsFromJSON() {
         guard let url = Bundle.main.url(forResource: "colors", withExtension: "json") else {
             print("Could not find colors.json file")
             return
         }
-        
+
         do {
             let data = try Data(contentsOf: url)
             jsonData = try JSONDecoder().decode(JSONColorData.self, from: data)
@@ -128,20 +128,20 @@ class ColorDatabase: ObservableObject {
             print("Error loading colors.json: \(error)")
         }
     }
-    
+
     private func generateColorPairs() {
         guard let jsonData = jsonData else { return }
-        
+
         // Group colors by category for pairing
         let colorsByCategory = Dictionary(grouping: jsonData.colors) { $0.category }
-        
+
         for (category, colors) in colorsByCategory {
             // Create pairs within each category
-            for i in 0..<colors.count {
-                for j in (i+1)..<colors.count {
-                    let color1 = colors[i]
-                    let color2 = colors[j]
-                    
+            for idx1 in 0..<colors.count {
+                for idx2 in (idx1+1)..<colors.count {
+                    let color1 = colors[idx1]
+                    let color2 = colors[idx2]
+
                     let colorInfo1 = ColorInfo(
                         id: UUID(),
                         name: color1.name,
@@ -149,7 +149,7 @@ class ColorDatabase: ObservableObject {
                         description: color1.description,
                         category: mapStringToCategory(color1.category)
                     )
-                    
+
                     let colorInfo2 = ColorInfo(
                         id: UUID(),
                         name: color2.name,
@@ -157,9 +157,9 @@ class ColorDatabase: ObservableObject {
                         description: color2.description,
                         category: mapStringToCategory(color2.category)
                     )
-                    
+
                     let learningNotes = generateComparisonNotes(color1: color1, color2: color2)
-                    
+
                     let colorPair = ColorPair(
                         id: UUID(),
                         primaryColor: colorInfo1,
@@ -168,44 +168,44 @@ class ColorDatabase: ObservableObject {
                         difficultyLevel: mapStringToDifficulty(color1.difficulty),
                         category: mapStringToCategory(category)
                     )
-                    
+
                     colorPairs.append(colorPair)
                 }
             }
         }
     }
-    
+
     private func generateComparisonNotes(color1: JSONColor, color2: JSONColor) -> String {
         guard let templates = jsonData?.comparisonTemplates else {
             return "\(color1.name) vs \(color2.name): Compare their unique characteristics."
         }
-        
+
         var notes: [String] = []
-        
+
         // Temperature comparison
         if color1.attributes.temperature != color2.attributes.temperature {
             let warmer = color1.attributes.temperature == "warm" ? color1.name : color2.name
             let cooler = color1.attributes.temperature == "cool" ? color1.name : color2.name
             notes.append(templates.temperature.warmer.replacingOccurrences(of: "{color1}", with: warmer).replacingOccurrences(of: "{color2}", with: cooler))
         }
-        
+
         // Saturation comparison
         if color1.attributes.saturation != color2.attributes.saturation {
             let moreSaturated = color1.attributes.saturation == "high" ? color1.name : color2.name
             let lessSaturated = color1.attributes.saturation == "low" ? color1.name : color2.name
             notes.append(templates.saturation.moreSaturated.replacingOccurrences(of: "{color1}", with: moreSaturated).replacingOccurrences(of: "{color2}", with: lessSaturated))
         }
-        
+
         // Brightness comparison
         if color1.attributes.brightness != color2.attributes.brightness {
             let brighter = color1.attributes.brightness == "bright" ? color1.name : color2.name
             let darker = color1.attributes.brightness == "dark" ? color1.name : color2.name
             notes.append(templates.brightness.brighter.replacingOccurrences(of: "{color1}", with: brighter).replacingOccurrences(of: "{color2}", with: darker))
         }
-        
+
         return notes.joined(separator: " ")
     }
-    
+
     private func mapStringToCategory(_ categoryString: String) -> ColorCategory {
         switch categoryString.lowercased() {
         case "reds": return .reds
@@ -218,7 +218,7 @@ class ColorDatabase: ObservableObject {
         default: return .neutrals
         }
     }
-    
+
     private func mapStringToDifficulty(_ difficultyString: String) -> DifficultyLevel {
         switch difficultyString.lowercased() {
         case "beginner": return .beginner
@@ -228,40 +228,40 @@ class ColorDatabase: ObservableObject {
         default: return .beginner
         }
     }
-    
+
     func getColorPairs(for category: ColorCategory) -> [ColorPair] {
         colorPairs.filter { $0.category == category }
     }
-    
+
     func getColorPairs(for difficulty: DifficultyLevel) -> [ColorPair] {
         colorPairs.filter { $0.difficultyLevel == difficulty }
     }
-    
+
     func getRandomColorPair() -> ColorPair? {
         colorPairs.randomElement()
     }
-    
+
     func getRandomColorPair(excluding: ColorPair) -> ColorPair? {
         colorPairs.filter { $0.id != excluding.id }.randomElement()
     }
-    
+
     func getAllColors() -> [ColorInfo] {
         colorPairs.flatMap { $0.allColors }
     }
-    
+
     func getAllColorPairs() -> [ColorPair] {
         colorPairs
     }
-    
+
     func getRandomColors(count: Int, excluding: ColorInfo) -> [ColorInfo] {
         let allColors = getAllColors().filter { $0.id != excluding.id }
         return Array(allColors.shuffled().prefix(count))
     }
-    
+
     func getAvailableColors() -> [JSONColor] {
         return jsonData?.colors ?? []
     }
-    
+
     func getComparisonTemplates() -> ComparisonTemplates? {
         return jsonData?.comparisonTemplates
     }

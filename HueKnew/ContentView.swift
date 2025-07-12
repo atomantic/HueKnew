@@ -8,8 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var gameModel = GameModel()
+    @State private var showingSettings = false
+    @State private var showingColorDictionary = false
+
     var body: some View {
-        GameView()
+        NavigationView {
+            VStack {
+                GameView(gameModel: gameModel)
+                FooterView(
+                    onHome: { gameModel.goToMenu() },
+                    onSettings: { showingSettings = true },
+                    onCatalog: { showingColorDictionary = true }
+                )
+                .padding()
+            }
+            .navigationBarHidden(true)
+            .sheet(isPresented: $showingSettings) {
+                SettingsView()
+            }
+            .sheet(isPresented: $showingColorDictionary) {
+                ColorDictionaryView()
+            }
+        }
     }
 }
 

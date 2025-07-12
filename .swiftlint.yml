@@ -1,0 +1,19 @@
+disabled_rules:
+  - trailing_whitespace
+  - line_length
+  - large_tuple
+  - multiple_closures_with_trailing_closure
+  - redundant_optional_initialization
+  - colon
+  - vertical_whitespace
+  - inclusive_language
+identifier_name:
+  excluded: # excluded in identifier_name rule
+    - id
+    - url
+    - x
+    - y
+    - z
+    - i
+    - j
+

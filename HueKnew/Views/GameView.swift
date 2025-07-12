@@ -8,22 +8,23 @@
 import SwiftUI
 
 struct GameView: View {
-    @State private var gameModel = GameModel()
-    @State private var showingSettings = false
+    @Bindable var gameModel: GameModel
     @State private var showingColorDictionary = false
     
     var body: some View {
         VStack(spacing: 0) {
             // Header
-            HeaderView(
-                score: gameModel.score,
-                level: gameModel.level,
-                timeRemaining: 0, // No timer in learning mode
-                currentStreak: gameModel.streak,
-                bestStreak: gameModel.bestStreak
-            )
-            .padding(.horizontal)
-            .padding(.top)
+            if gameModel.currentPhase == .learning || gameModel.currentPhase == .challenge {
+                HeaderView(
+                    score: gameModel.score,
+                    level: gameModel.level,
+                    timeRemaining: 0, // No timer in learning mode
+                    currentStreak: gameModel.streak,
+                    bestStreak: gameModel.bestStreak
+                )
+                .padding(.horizontal)
+                .padding(.top)
+            }
             
             Spacer()
             
@@ -41,46 +42,28 @@ struct GameView: View {
                 }
             }
             
-            Spacer()
             
-            // Footer
-            FooterView(
-                onRestart: { gameModel.restartGame() },
-                onPause: { gameModel.pauseGame() },
-                onSettings: { showingSettings = true },
-                isPaused: gameModel.isPaused
-            )
-            .padding(.horizontal)
-            .padding(.bottom)
         }
-        .background(Color(.systemBackground))
-        .sheet(isPresented: $showingSettings) {
-            SettingsView()
-        }
-        .sheet(isPresented: $showingColorDictionary) {
-            ColorDictionaryView()
-        }
+        
     }
     
     // MARK: - Screen Views
     
     private var menuScreen: some View {
-        VStack(spacing: 30) {
-            // Game logo/title
-            VStack(spacing: 16) {
-                Image(systemName: "paintbrush.fill")
-                    .font(.system(size: 80))
-                    .foregroundColor(.blue)
-                
-                Text("Hue Knew")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .multilineTextAlignment(.center)
-                
-                Text("Embark on a journey to discover color distinctions")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                    .multilineTextAlignment(.center)
+        ScrollView {
+            VStack(spacing: 30) {
+                // Game logo/title
+                VStack(spacing: 16) {
+                    Text("Hue Knew")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+                    
+                    Text("Embark on a journey to discover color distinctions")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                }
             }
             
             // Category selection
@@ -117,8 +100,8 @@ struct GameView: View {
             }
             
             // Random start button
-            Button(action: { gameModel.startLearningSession() }) {
-                Text("Start Random Session")
+            Button(action: { gameModel.resumeOrStartGame() }) {
+                Text("Play")
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
@@ -143,6 +126,9 @@ struct GameView: View {
             .buttonStyle(PlainButtonStyle())
         }
         .padding()
+        .sheet(isPresented: $showingColorDictionary) {
+            ColorDictionaryView()
+        }
     }
     
     private var learningScreen: some View {
@@ -203,7 +189,7 @@ struct GameView: View {
                 
                 HStack {
                     StatCard(title: "Total Score", value: "\(gameModel.score)", color: .green)
-                    StatCard(title: "Colors Mastered", value: "\(gameModel.masteredPairsCount)/\(gameModel.totalPairsCount)", color: .purple)
+                    StatCard(title: "Colors Learned", value: "\(gameModel.learnedPairsCount)/\(gameModel.totalPairsCount)", color: .purple)
                 }
             }
             
@@ -306,5 +292,5 @@ struct StatCard: View {
 }
 
 #Preview {
-    GameView()
+    GameView(gameModel: GameModel())
 }

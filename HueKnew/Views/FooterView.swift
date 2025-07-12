@@ -8,56 +8,48 @@
 import SwiftUI
 
 struct FooterView: View {
-    let onRestart: () -> Void
-    let onPause: () -> Void
+    let onHome: () -> Void
     let onSettings: () -> Void
-    let isPaused: Bool
+    let onCatalog: () -> Void
     
     var body: some View {
-        VStack(spacing: 12) {
-            // Control buttons
-            HStack(spacing: 20) {
-                // Restart button
-                Button(action: onRestart) {
-                    VStack(spacing: 4) {
-                        Image(systemName: "arrow.clockwise")
-                            .font(.title2)
-                        Text("Restart")
-                            .font(.caption)
-                    }
-                    .foregroundColor(.blue)
+        HStack {
+            // Home button
+            Button(action: onHome) {
+                VStack {
+                    Image(systemName: "house.fill")
+                        .font(.title2)
+                    Text("Home")
+                        .font(.caption)
                 }
-                .buttonStyle(PlainButtonStyle())
-                
-                Spacer()
-                
-                // Pause/Resume button
-                Button(action: onPause) {
-                    VStack(spacing: 4) {
-                        Image(systemName: isPaused ? "play.fill" : "pause.fill")
-                            .font(.title2)
-                        Text(isPaused ? "Resume" : "Pause")
-                            .font(.caption)
-                    }
-                    .foregroundColor(.green)
-                }
-                .buttonStyle(PlainButtonStyle())
-                
-                Spacer()
-                
-                // Settings button
-                Button(action: onSettings) {
-                    VStack(spacing: 4) {
-                        Image(systemName: "gear")
-                            .font(.title2)
-                        Text("Settings")
-                            .font(.caption)
-                    }
-                    .foregroundColor(.gray)
-                }
-                .buttonStyle(PlainButtonStyle())
             }
-            .padding(.horizontal)
+            .frame(maxWidth: .infinity)
+            
+            Spacer()
+            
+            // Settings button
+            Button(action: onSettings) {
+                VStack {
+                    Image(systemName: "gear")
+                        .font(.title2)
+                    Text("Settings")
+                        .font(.caption)
+                }
+            }
+            .frame(maxWidth: .infinity)
+            
+            Spacer()
+            
+            // Catalog button
+            Button(action: onCatalog) {
+                VStack {
+                    Image(systemName: "book.fill")
+                        .font(.title2)
+                    Text("Catalog")
+                        .font(.caption)
+                }
+            }
+            .frame(maxWidth: .infinity)
         }
         .padding()
         .background(Color(.systemGray6))
@@ -67,10 +59,9 @@ struct FooterView: View {
 
 #Preview {
     FooterView(
-        onRestart: { print("Restart tapped") },
-        onPause: { print("Pause tapped") },
+        onHome: { print("Home tapped") },
         onSettings: { print("Settings tapped") },
-        isPaused: false
+        onCatalog: { print("Catalog tapped") }
     )
     .padding()
 }

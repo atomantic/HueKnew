@@ -13,7 +13,7 @@ struct HeaderView: View {
     let timeRemaining: Int
     let currentStreak: Int
     let bestStreak: Int
-    
+
     var body: some View {
         VStack(spacing: 8) {
             // App Title
@@ -21,7 +21,7 @@ struct HeaderView: View {
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundColor(.primary)
-            
+
             // Game Stats
             HStack {
                 // Score
@@ -35,7 +35,7 @@ struct HeaderView: View {
                         .foregroundColor(.blue)
                 }
                 .frame(maxWidth: .infinity)
-                
+
                 // Level
                 VStack {
                     Text("Level")
@@ -47,7 +47,7 @@ struct HeaderView: View {
                         .foregroundColor(.green)
                 }
                 .frame(maxWidth: .infinity)
-                
+
                 // Current Streak
                 VStack {
                     Text("Streak")
