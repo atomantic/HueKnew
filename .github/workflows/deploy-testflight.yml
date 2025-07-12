@@ -55,10 +55,11 @@ jobs:
 
       - name: Create App Store Connect API key file
         run: |
-          cat > AuthKey.p8 <<EOF
+          # write the key to the workspace root
+          cat > "$GITHUB_WORKSPACE/AuthKey.p8" <<EOF
           ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
           EOF
-          chmod 600 AuthKey.p8
+          chmod 600 "$GITHUB_WORKSPACE/AuthKey.p8"
 
       - name: Archive iOS App (automatic signing)
         run: |
@@ -70,9 +71,9 @@ jobs:
             -archivePath build/HueKnew.xcarchive \
             -allowProvisioningUpdates \
             -allowProvisioningDeviceRegistration \
-            -authenticationKeyPath AuthKey.p8 \
-            -authenticationKeyID ${{ secrets.APPSTORE_API_KEY_ID }} \
-            -authenticationKeyIssuerID ${{ secrets.APPSTORE_ISSUER_ID }} \
+            -authenticationKeyPath "$GITHUB_WORKSPACE/AuthKey.p8" \
+            -authenticationKeyID "${{ secrets.APPSTORE_API_KEY_ID }}" \
+            -authenticationKeyIssuerID "${{ secrets.APPSTORE_ISSUER_ID }}" \
             IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
             DEVELOPMENT_TEAM="$TEAM_ID" \
             archive
@@ -102,9 +103,9 @@ jobs:
             -exportOptionsPlist exportOptions.plist \
             -exportPath build/export \
             -allowProvisioningUpdates \
-            -authenticationKeyPath AuthKey.p8 \
-            -authenticationKeyID ${{ secrets.APPSTORE_API_KEY_ID }} \
-            -authenticationKeyIssuerID ${{ secrets.APPSTORE_ISSUER_ID }}
+            -authenticationKeyPath "$GITHUB_WORKSPACE/AuthKey.p8" \
+            -authenticationKeyID "${{ secrets.APPSTORE_API_KEY_ID }}" \
+            -authenticationKeyIssuerID "${{ secrets.APPSTORE_ISSUER_ID }}"
 
       - name: Upload to TestFlight
         uses: apple-actions/upload-testflight-build@v3
