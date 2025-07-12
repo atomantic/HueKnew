@@ -91,6 +91,7 @@ struct GameView: View {
                         
                         LazyVGrid(columns: [
                             GridItem(.flexible()),
+                            GridItem(.flexible()),
                             GridItem(.flexible())
                         ], spacing: 12) {
                             ForEach(ColorCategory.allCases.prefix(6), id: \.self) { category in
