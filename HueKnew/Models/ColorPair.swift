@@ -32,6 +32,36 @@ struct ColorInfo: Identifiable, Codable, Equatable {
         }
         return (0, 0, 0)
     }
+    
+    var hsbComponents: (hue: Double, saturation: Double, brightness: Double) {
+        let rgb = rgbComponents
+        let max = Swift.max(rgb.red, rgb.green, rgb.blue)
+        let min = Swift.min(rgb.red, rgb.green, rgb.blue)
+        let delta = max - min
+        
+        var hue: Double = 0
+        let saturation: Double = max == 0 ? 0 : delta / max
+        let brightness: Double = max
+        
+        if delta != 0 {
+            switch max {
+            case rgb.red:
+                hue = ((rgb.green - rgb.blue) / delta).truncatingRemainder(dividingBy: 6)
+            case rgb.green:
+                hue = (rgb.blue - rgb.red) / delta + 2
+            case rgb.blue:
+                hue = (rgb.red - rgb.green) / delta + 4
+            default:
+                hue = 0
+            }
+            hue *= 60
+            if hue < 0 {
+                hue += 360
+            }
+        }
+        
+        return (hue, saturation, brightness)
+    }
 }
 
 struct ColorPair: Identifiable, Codable {
@@ -44,6 +74,27 @@ struct ColorPair: Identifiable, Codable {
     
     var allColors: [ColorInfo] {
         [primaryColor, comparisonColor]
+    }
+}
+
+struct HSBFilter {
+    let hueRange: ClosedRange<Double>
+    let saturationRange: ClosedRange<Double>
+    let brightnessRange: ClosedRange<Double>
+    
+    init(hue: Double, saturation: Double, brightness: Double, tolerance: Double = 30.0) {
+        // Create ranges with tolerance
+        let hueMin = max(0, hue - tolerance)
+        let hueMax = min(360, hue + tolerance)
+        self.hueRange = hueMin...hueMax
+        
+        let satMin = max(0, saturation - 0.2)
+        let satMax = min(1, saturation + 0.2)
+        self.saturationRange = satMin...satMax
+        
+        let brightMin = max(0, brightness - 0.2)
+        let brightMax = min(1, brightness + 0.2)
+        self.brightnessRange = brightMin...brightMax
     }
 }
 

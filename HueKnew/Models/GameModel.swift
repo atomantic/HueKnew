@@ -36,6 +36,7 @@ class GameModel {
     var masteredPairs: Set<String> = []
     var selectedCategory: ColorCategory?
     var selectedDifficulty: DifficultyLevel?
+    var selectedHSBFilter: HSBFilter?
     
     // Game flow control
     var isGameActive: Bool = false
@@ -45,9 +46,10 @@ class GameModel {
     
     // MARK: - Game Flow Methods
     
-    func startLearningSession(category: ColorCategory? = nil, difficulty: DifficultyLevel? = nil) {
+    func startLearningSession(category: ColorCategory? = nil, difficulty: DifficultyLevel? = nil, hsbFilter: HSBFilter? = nil) {
         selectedCategory = category
         selectedDifficulty = difficulty
+        selectedHSBFilter = hsbFilter
         questionsInCurrentSession = 0
         isGameActive = true
         
@@ -123,6 +125,8 @@ class GameModel {
             availablePairs = colorDatabase.getColorPairs(for: category)
         } else if let difficulty = selectedDifficulty {
             availablePairs = colorDatabase.getColorPairs(for: difficulty)
+        } else if let hsbFilter = selectedHSBFilter {
+            availablePairs = colorDatabase.getColorPairs(matching: hsbFilter)
         } else {
             availablePairs = colorDatabase.getAllColorPairs()
         }

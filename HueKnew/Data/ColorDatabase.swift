@@ -231,6 +231,24 @@ class ColorDatabase: ObservableObject {
     func getColorPairs(for difficulty: DifficultyLevel) -> [ColorPair] {
         colorPairs.filter { $0.difficultyLevel == difficulty }
     }
+    
+    func getColorPairs(matching filter: HSBFilter) -> [ColorPair] {
+        return colorPairs.filter { pair in
+            let hsb1 = pair.primaryColor.hsbComponents
+            let hsb2 = pair.comparisonColor.hsbComponents
+            
+            // Check if either color in the pair matches the filter
+            let matches1 = filter.hueRange.contains(hsb1.hue) &&
+                          filter.saturationRange.contains(hsb1.saturation) &&
+                          filter.brightnessRange.contains(hsb1.brightness)
+            
+            let matches2 = filter.hueRange.contains(hsb2.hue) &&
+                          filter.saturationRange.contains(hsb2.saturation) &&
+                          filter.brightnessRange.contains(hsb2.brightness)
+            
+            return matches1 || matches2
+        }
+    }
 
     func getRandomColorPair() -> ColorPair? {
         colorPairs.randomElement()

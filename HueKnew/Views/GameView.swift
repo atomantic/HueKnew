@@ -83,22 +83,19 @@ struct GameView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     
-                    // Choose by Color Category
+                    // Choose by Color Wheel
                     VStack(spacing: 16) {
-                        Text("Choose a category to study:")
+                        Text("Choose colors to study:")
                             .font(.headline)
                             .fontWeight(.semibold)
                         
-                        LazyVGrid(columns: [
-                            GridItem(.flexible()),
-                            GridItem(.flexible()),
-                            GridItem(.flexible())
-                        ], spacing: 12) {
-                            ForEach(ColorCategory.allCases.prefix(6), id: \.self) { category in
-                                CategoryCard(category: category) {
-                                    gameModel.startLearningSession(category: category)
-                                }
-                            }
+                        ColorWheelPicker { hsbColor in
+                            let filter = HSBFilter(
+                                hue: hsbColor.hue,
+                                saturation: hsbColor.saturation,
+                                brightness: hsbColor.brightness
+                            )
+                            gameModel.startLearningSession(hsbFilter: filter)
                         }
                     }
                     
