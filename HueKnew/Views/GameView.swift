@@ -248,14 +248,12 @@ struct DifficultyButton: View {
     
     var body: some View {
         Button(action: onTap) {
-            Text(difficulty.rawValue)
-                .font(.caption)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                .padding(.horizontal, 12)
-                .padding(.vertical, 6)
-                .background(difficulty.color)
-                .cornerRadius(8)
+            Text(difficulty.starIcons)
+                .font(.system(size: 16))
+            .padding(.horizontal, 12)
+            .padding(.vertical, 6)
+            .background(Color.gray)
+            .cornerRadius(8)
         }
         .buttonStyle(PlainButtonStyle())
     }

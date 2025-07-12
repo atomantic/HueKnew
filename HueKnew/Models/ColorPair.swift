@@ -89,6 +89,15 @@ enum DifficultyLevel: String, CaseIterable, Codable {
         case .expert: return .red
         }
     }
+    
+    var starIcons: String {
+        switch self {
+        case .beginner: return "⭐"
+        case .intermediate: return "⭐⭐"
+        case .advanced: return "⭐⭐⭐"
+        case .expert: return "⭐⭐⭐⭐"
+        }
+    }
 }
 
 enum ChallengeType: CaseIterable {
