@@ -26,7 +26,7 @@ The game uses a progressive learning approach with two main phases:
 ## 🌟 Features
 
 - **Progressive difficulty**: Start with obvious differences, advance to subtle variations
-- **Smart color pairs**: Curated color combinations that are commonly confused
+- **Smart color pairs**: On-demand combinations of colors that are commonly confused
 - **Achievement system**: Track your progress and unlock new color categories
 - **Streak tracking**: Monitor your learning momentum
 - **Category-based learning**: Focus on specific color families (blues, yellows, reds, etc.)
@@ -99,7 +99,7 @@ Color Name Train/
 │   ├── ChallengeView.swift      # Quiz interface
 │   └── SettingsView.swift       # Game settings
 ├── Data/
-│   └── ColorDatabase.swift      # Color definitions and pairs
+│   └── ColorDatabase.swift      # Color definitions and on-demand pairing logic
 └── Resources/
     └── Assets.xcassets          # App icons and images
 ```

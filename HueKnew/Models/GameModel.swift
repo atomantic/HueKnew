@@ -118,27 +118,23 @@ class GameModel {
     // MARK: - Helper Methods
     
     private func generateNextColorPair() {
-        var availablePairs: [ColorPair] = []
-        
-        // Filter by category if selected
-        if let category = selectedCategory {
-            availablePairs = colorDatabase.getColorPairs(for: category)
-        } else if let difficulty = selectedDifficulty {
-            availablePairs = colorDatabase.getColorPairs(for: difficulty)
-        } else if let hsbFilter = selectedHSBFilter {
-            availablePairs = colorDatabase.getColorPairs(matching: hsbFilter)
-        } else {
-            availablePairs = colorDatabase.getAllColorPairs()
-        }
-        
-        // Prefer pairs that haven't been mastered yet
-        let unmasteredPairs = availablePairs.filter { !masteredPairs.contains($0.id) }
-        
-        if !unmasteredPairs.isEmpty {
-            currentColorPair = unmasteredPairs.randomElement()
-        } else {
-            currentColorPair = availablePairs.randomElement()
-        }
+        var pair: ColorPair?
+        var attempts = 0
+
+        repeat {
+            if let category = selectedCategory {
+                pair = colorDatabase.randomColorPair(in: category)
+            } else if let difficulty = selectedDifficulty {
+                pair = colorDatabase.randomColorPair(for: difficulty)
+            } else if let hsbFilter = selectedHSBFilter {
+                pair = colorDatabase.randomColorPair(matching: hsbFilter)
+            } else {
+                pair = colorDatabase.randomColorPair()
+            }
+            attempts += 1
+        } while pair != nil && masteredPairs.contains(pair!.id) && attempts < 20
+
+        currentColorPair = pair
     }
     
     private func calculateScore() -> Int {
@@ -178,6 +174,6 @@ class GameModel {
     }
     
     var totalPairsCount: Int {
-        colorDatabase.getAllColorPairs().count
+        colorDatabase.totalPairsCount()
     }
 }

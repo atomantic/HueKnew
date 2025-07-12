@@ -33,14 +33,38 @@ struct JSONColor: Codable {
     }
 }
 
+enum Temperature: String, Codable {
+    case warm
+    case cool
+    case neutral
+}
+
+enum RelativeLevel: String, Codable {
+    case very_low
+    case low
+    case medium
+    case high
+    case very_high
+
+    var value: Int {
+        switch self {
+        case .very_low: return 0
+        case .low: return 1
+        case .medium: return 2
+        case .high: return 3
+        case .very_high: return 4
+        }
+    }
+}
+
 struct ColorAttributes: Codable {
-    let temperature: String
-    let saturation: String
-    let brightness: String
+    let temperature: Temperature
+    let saturation: RelativeLevel
+    let brightness: RelativeLevel
     let undertones: [String]
-    let purity: String
-    let transparency: String
-    let historicalSignificance: String
+    let purity: RelativeLevel
+    let transparency: RelativeLevel
+    let historicalSignificance: RelativeLevel
 
     enum CodingKeys: String, CodingKey {
         case temperature, saturation, brightness, undertones, purity, transparency
@@ -107,7 +131,7 @@ class ColorDatabase: ObservableObject {
     static let shared = ColorDatabase()
 
     private var jsonData: JSONColorData?
-    private var colorPairs: [ColorPair] = []
+    private var colorsByCategory: [ColorCategory: [JSONColor]] = [:]
 
     private init() {
         loadColorsFromJSON()
@@ -122,53 +146,16 @@ class ColorDatabase: ObservableObject {
         do {
             let data = try Data(contentsOf: url)
             jsonData = try JSONDecoder().decode(JSONColorData.self, from: data)
-            generateColorPairs()
+            if let jsonData = jsonData {
+                colorsByCategory = Dictionary(grouping: jsonData.colors) {
+                    mapStringToCategory($0.category)
+                }
+            }
         } catch {
             print("Error loading colors.json: \(error)")
         }
     }
 
-    private func generateColorPairs() {
-        guard let jsonData = jsonData else { return }
-
-        // Group colors by category for pairing
-        let colorsByCategory = Dictionary(grouping: jsonData.colors) { $0.category }
-
-        for (category, colors) in colorsByCategory {
-            // Create pairs within each category
-            for idx1 in 0..<colors.count {
-                for idx2 in (idx1+1)..<colors.count {
-                    let color1 = colors[idx1]
-                    let color2 = colors[idx2]
-
-                    let colorInfo1 = ColorInfo(
-                        name: color1.name,
-                        hexValue: color1.hex,
-                        description: color1.description,
-                        category: mapStringToCategory(color1.category)
-                    )
-
-                    let colorInfo2 = ColorInfo(
-                        name: color2.name,
-                        hexValue: color2.hex,
-                        description: color2.description,
-                        category: mapStringToCategory(color2.category)
-                    )
-
-                    let learningNotes = generateComparisonNotes(color1: color1, color2: color2)
-
-                    let colorPair = ColorPair(
-                        primaryColor: colorInfo1,
-                        comparisonColor: colorInfo2,
-                        learningNotes: learningNotes,
-                        category: mapStringToCategory(category)
-                    )
-
-                    colorPairs.append(colorPair)
-                }
-            }
-        }
-    }
 
     private func generateComparisonNotes(color1: JSONColor, color2: JSONColor) -> String {
         guard let templates = jsonData?.comparisonTemplates else {
@@ -179,22 +166,22 @@ class ColorDatabase: ObservableObject {
 
         // Temperature comparison
         if color1.attributes.temperature != color2.attributes.temperature {
-            let warmer = color1.attributes.temperature == "warm" ? color1.name : color2.name
-            let cooler = color1.attributes.temperature == "cool" ? color1.name : color2.name
+            let warmer = color1.attributes.temperature == .warm ? color1.name : color2.name
+            let cooler = color1.attributes.temperature == .cool ? color1.name : color2.name
             notes.append(templates.temperature.warmer.replacingOccurrences(of: "{color1}", with: warmer).replacingOccurrences(of: "{color2}", with: cooler))
         }
 
         // Saturation comparison
         if color1.attributes.saturation != color2.attributes.saturation {
-            let moreSaturated = color1.attributes.saturation == "high" ? color1.name : color2.name
-            let lessSaturated = color1.attributes.saturation == "low" ? color1.name : color2.name
+            let moreSaturated = color1.attributes.saturation.value > color2.attributes.saturation.value ? color1.name : color2.name
+            let lessSaturated = color1.attributes.saturation.value < color2.attributes.saturation.value ? color1.name : color2.name
             notes.append(templates.saturation.moreSaturated.replacingOccurrences(of: "{color1}", with: moreSaturated).replacingOccurrences(of: "{color2}", with: lessSaturated))
         }
 
         // Brightness comparison
         if color1.attributes.brightness != color2.attributes.brightness {
-            let brighter = color1.attributes.brightness == "bright" ? color1.name : color2.name
-            let darker = color1.attributes.brightness == "dark" ? color1.name : color2.name
+            let brighter = color1.attributes.brightness.value > color2.attributes.brightness.value ? color1.name : color2.name
+            let darker = color1.attributes.brightness.value < color2.attributes.brightness.value ? color1.name : color2.name
             notes.append(templates.brightness.brighter.replacingOccurrences(of: "{color1}", with: brighter).replacingOccurrences(of: "{color2}", with: darker))
         }
 
@@ -224,56 +211,91 @@ class ColorDatabase: ObservableObject {
         }
     }
 
-    func getColorPairs(for category: ColorCategory) -> [ColorPair] {
-        colorPairs.filter { $0.category == category }
-    }
-
-    func getColorPairs(for difficulty: DifficultyLevel) -> [ColorPair] {
-        colorPairs.filter { $0.difficultyLevel == difficulty }
-    }
-    
-    func getColorPairs(matching filter: HSBFilter) -> [ColorPair] {
-        return colorPairs.filter { pair in
-            let hsb1 = pair.primaryColor.hsbComponents
-            let hsb2 = pair.comparisonColor.hsbComponents
-            
-            // Check if either color in the pair matches the filter
-            let matches1 = filter.hueRange.contains(hsb1.hue) &&
-                          filter.saturationRange.contains(hsb1.saturation) &&
-                          filter.brightnessRange.contains(hsb1.brightness)
-            
-            let matches2 = filter.hueRange.contains(hsb2.hue) &&
-                          filter.saturationRange.contains(hsb2.saturation) &&
-                          filter.brightnessRange.contains(hsb2.brightness)
-            
-            return matches1 || matches2
+    func randomColorPair(in category: ColorCategory? = nil) -> ColorPair? {
+        let colors: [JSONColor]
+        if let category = category {
+            colors = colorsByCategory[category] ?? []
+        } else {
+            colors = colorsByCategory.values.flatMap { $0 }
         }
+
+        guard colors.count >= 2 else { return nil }
+
+        var idx1 = Int.random(in: 0..<colors.count)
+        var idx2 = Int.random(in: 0..<colors.count)
+        while idx2 == idx1 { idx2 = Int.random(in: 0..<colors.count) }
+
+        let color1 = colors[idx1]
+        let color2 = colors[idx2]
+
+        return createPair(from: color1, and: color2)
     }
 
-    func getRandomColorPair() -> ColorPair? {
-        colorPairs.randomElement()
+    func randomColorPair(for difficulty: DifficultyLevel) -> ColorPair? {
+        for _ in 0..<50 {
+            if let pair = randomColorPair(), pair.difficultyLevel == difficulty {
+                return pair
+            }
+        }
+        return nil
     }
 
-    func getRandomColorPair(excluding: ColorPair) -> ColorPair? {
-        colorPairs.filter { $0.id != excluding.id }.randomElement()
+    func randomColorPair(matching filter: HSBFilter) -> ColorPair? {
+        for _ in 0..<50 {
+            if let pair = randomColorPair() {
+                let hsb1 = pair.primaryColor.hsbComponents
+                let hsb2 = pair.comparisonColor.hsbComponents
+
+                let matches1 = filter.hueRange.contains(hsb1.hue) &&
+                              filter.saturationRange.contains(hsb1.saturation) &&
+                              filter.brightnessRange.contains(hsb1.brightness)
+
+                let matches2 = filter.hueRange.contains(hsb2.hue) &&
+                              filter.saturationRange.contains(hsb2.saturation) &&
+                              filter.brightnessRange.contains(hsb2.brightness)
+
+                if matches1 || matches2 { return pair }
+            }
+        }
+        return nil
+    }
+
+    private func createPair(from color1: JSONColor, and color2: JSONColor) -> ColorPair {
+        let colorInfo1 = ColorInfo(
+            name: color1.name,
+            hexValue: color1.hex,
+            description: color1.description,
+            category: mapStringToCategory(color1.category)
+        )
+
+        let colorInfo2 = ColorInfo(
+            name: color2.name,
+            hexValue: color2.hex,
+            description: color2.description,
+            category: mapStringToCategory(color2.category)
+        )
+
+        let learningNotes = generateComparisonNotes(color1: color1, color2: color2)
+
+        return ColorPair(
+            primaryColor: colorInfo1,
+            comparisonColor: colorInfo2,
+            learningNotes: learningNotes,
+            category: mapStringToCategory(color1.category)
+        )
     }
 
     func getAllColors() -> [ColorInfo] {
-        // Get unique colors from the JSON data to avoid duplicates
-        guard let jsonData = jsonData else { return [] }
-        
-        return jsonData.colors.map { jsonColor in
-            ColorInfo(
-                name: jsonColor.name,
-                hexValue: jsonColor.hex,
-                description: jsonColor.description,
-                category: mapStringToCategory(jsonColor.category)
-            )
+        colorsByCategory.values.flatMap { categoryColors in
+            categoryColors.map { color in
+                ColorInfo(
+                    name: color.name,
+                    hexValue: color.hex,
+                    description: color.description,
+                    category: mapStringToCategory(color.category)
+                )
+            }
         }
-    }
-
-    func getAllColorPairs() -> [ColorPair] {
-        colorPairs
     }
 
     func getRandomColors(count: Int, excluding: ColorInfo) -> [ColorInfo] {
@@ -287,6 +309,12 @@ class ColorDatabase: ObservableObject {
 
     func getComparisonTemplates() -> ComparisonTemplates? {
         return jsonData?.comparisonTemplates
+    }
+
+    func totalPairsCount() -> Int {
+        colorsByCategory.values.reduce(0) { result, colors in
+            result + colors.count * (colors.count - 1) / 2
+        }
     }
     
     func calculateColorDifference(color1: ColorInfo, color2: ColorInfo) -> Double {
