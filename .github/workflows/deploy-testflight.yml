@@ -97,8 +97,6 @@ jobs:
           echo "PROFILE_NAME=$PROFILE_NAME" >> $GITHUB_ENV
 
       - name: Archive iOS App (manual signing)
-        env:
-          OTHER_CODE_SIGN_FLAGS: "--timestamp=none --verbose=4"
         run: |
           xcodebuild \
             -project HueKnew.xcodeproj \
@@ -112,6 +110,7 @@ jobs:
             PROVISIONING_PROFILE="$PROFILE_UUID" \
             PROVISIONING_PROFILE_SPECIFIER="$PROFILE_NAME" \
             CODE_SIGN_IDENTITY="Apple Distribution" \
+            OTHER_CODE_SIGN_FLAGS="--timestamp=none --verbose=4" \
             archive
 
       - name: Create exportOptions.plist
