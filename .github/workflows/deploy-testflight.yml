@@ -8,7 +8,7 @@ on:
 
 env:
   IPHONEOS_DEPLOYMENT_TARGET: ${{ vars.IPHONEOS_DEPLOYMENT_TARGET }}
-  TEAM_ID:                    ${{ secrets.TEAM_ID }}
+  TEAM_ID:             ${{ secrets.TEAM_ID }}
 
 jobs:
   validate:
@@ -23,7 +23,7 @@ jobs:
         with:
           xcode-version: 'latest-stable'
 
-      - name: Build (skip code signing)
+      - name: Build (skip signing)
         run: |
           xcodebuild \
             -project HueKnew.xcodeproj \
@@ -48,58 +48,71 @@ jobs:
         with:
           xcode-version: 'latest-stable'
 
-      - name: Install certificates
+      - name: Install certificates into a temporary keychain
         run: |
-          security create-keychain -p "" build.keychain
-          security default-keychain -s build.keychain
-          security unlock-keychain -p "" build.keychain
+          # 1) create the keychain (this creates build.keychain-db)
+          security create-keychain -p "" build.keychain-db
 
-          security set-keychain-settings -t 3600 -u build.keychain
-          
+          # 2) make it the default and unlocked
+          security list-keychains -s build.keychain-db
+          security default-keychain -s build.keychain-db
+          security unlock-keychain -p "" build.keychain-db
+
+          # 3) keep it unlocked for at least an hour
+          security set-keychain-settings -t 3600 -u build.keychain-db
+
+          # 4) import your dev and dist certs
           echo "${{ secrets.DEV_CERT_P12_BASE64 }}" | base64 --decode > dev.p12
           security import dev.p12 \
-            -k build.keychain \
+            -k build.keychain-db \
             -P "${{ secrets.DEV_CERT_P12_PASSWORD }}" \
             -T /usr/bin/codesign
 
           echo "${{ secrets.DIST_CERT_P12_BASE64 }}" | base64 --decode > dist.p12
           security import dist.p12 \
-            -k build.keychain \
+            -k build.keychain-db \
             -P "${{ secrets.DIST_CERT_P12_PASSWORD }}" \
             -T /usr/bin/codesign
 
-          security set-key-partition-list -S apple-tool:,apple:codesign -s -k "" build.keychain
+          # 5) allow non-interactive codesign access
+          security set-key-partition-list \
+            -S apple-tool:,apple:codesign \
+            -s -k "" build.keychain-db
 
       - name: Install provisioning profile & extract UUID/Name
         run: |
-          # 1) dump the base64 blob and decode
+          # 1) dump and decode the base64 blob
           printf '%s' "${{ secrets.PROV_PROFILE_BASE64 }}" > profile.b64
           echo "profile.b64 size: $(wc -c < profile.b64) bytes"
           openssl base64 -d -in profile.b64 -out tmp.mobileprovision
           echo "tmp.mobileprovision size: $(wc -c < tmp.mobileprovision) bytes"
-          file tmp.mobileprovision
 
-          # 2) unwrap the CMS to get an XML plist
+          # 2) unwrap the CMS container to get raw XML plist
           openssl smime -verify -inform DER -noverify \
             -in tmp.mobileprovision \
             -out decoded.plist
 
-          # 3) read UUID and Name from the plist
+          # 3) read out the UUID and Name
           PROFILE_UUID=$(/usr/libexec/PlistBuddy -c 'Print :UUID' decoded.plist)
           PROFILE_NAME=$(/usr/libexec/PlistBuddy -c 'Print :Name' decoded.plist)
           echo "Found provisioning profile UUID=$PROFILE_UUID, Name=$PROFILE_NAME"
 
-          # 4) install for Xcode
+          # 4) install it for Xcode
           mkdir -p "$HOME/Library/MobileDevice/Provisioning Profiles"
           mv tmp.mobileprovision \
             "$HOME/Library/MobileDevice/Provisioning Profiles/${PROFILE_UUID}.mobileprovision"
 
-          # 5) export for xcodebuild
+          # 5) export for the next step
           echo "PROFILE_UUID=$PROFILE_UUID" >> $GITHUB_ENV
           echo "PROFILE_NAME=$PROFILE_NAME" >> $GITHUB_ENV
 
       - name: Archive iOS App (manual signing)
         run: |
+          # ensure the keychain is still default & unlocked
+          security default-keychain -s build.keychain-db
+          security unlock-keychain -p "" build.keychain-db
+
+          # then archive
           xcodebuild \
             -project HueKnew.xcodeproj \
             -scheme HueKnew \
