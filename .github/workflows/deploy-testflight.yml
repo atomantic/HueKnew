@@ -56,22 +56,18 @@ jobs:
           security unlock-keychain -p "" build.keychain
 
           # 2) import Apple Development cert
-          TEMP_DEV_CERT=$(mktemp /tmp/dev_cert_XXXXXX.p12)
-          echo "${{ secrets.DEV_CERT_P12_BASE64 }}" | base64 --decode > "$TEMP_DEV_CERT"
-          security import "$TEMP_DEV_CERT" \
+          echo "${{ secrets.DEV_CERT_P12_BASE64 }}" | base64 --decode > dev.p12
+          security import dev.p12 \
             -k build.keychain \
             -P "${{ secrets.DEV_CERT_P12_PASSWORD }}" \
             -T /usr/bin/codesign
-          rm -f "$TEMP_DEV_CERT"
 
           # 3) import Apple Distribution cert
-          TEMP_DIST_CERT=$(mktemp /tmp/dist_cert_XXXXXX.p12)
-          echo "${{ secrets.DIST_CERT_P12_BASE64 }}" | base64 --decode > "$TEMP_DIST_CERT"
-          security import "$TEMP_DIST_CERT" \
+          echo "${{ secrets.DIST_CERT_P12_BASE64 }}" | base64 --decode > dist.p12
+          security import dist.p12 \
             -k build.keychain \
             -P "${{ secrets.DIST_CERT_P12_PASSWORD }}" \
             -T /usr/bin/codesign
-          rm -f "$TEMP_DIST_CERT"
 
       - name: Install provisioning profile & extract UUID
         run: |
