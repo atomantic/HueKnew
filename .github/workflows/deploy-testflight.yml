@@ -118,8 +118,8 @@ jobs:
           export CODESIGN_ALLOCATE=/usr/bin/codesign_allocate
           export CODESIGN_TIMESTAMP=none
 
-          # then archive with timeout
-          timeout 600 xcodebuild \
+          # then archive
+          xcodebuild \
             -project HueKnew.xcodeproj \
             -scheme HueKnew \
             -configuration Release \
