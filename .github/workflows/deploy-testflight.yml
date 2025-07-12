@@ -17,15 +17,6 @@ jobs:
         with:
           xcode-version: 'latest-stable'
 
-      - name: Build iOS App
-        run: |
-          xcodebuild -project HueKnew.xcodeproj \
-            -scheme HueKnew \
-            -configuration Release \
-            -destination 'generic/platform=iOS' \
-            -derivedDataPath build \
-            clean build
-
       - name: Archive iOS App
         run: |
           xcodebuild -project HueKnew.xcodeproj \
