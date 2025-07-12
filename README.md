@@ -63,13 +63,13 @@ The game uses a progressive learning approach with two main phases:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/chroma-quest.git
-   cd chroma-quest
+   git clone https://github.com/atomantic/HueKnew.git
+   cd cHueKnew
    ```
 
 2. Open the project in Xcode:
    ```bash
-   open "Color Name Train.xcodeproj"
+   open "HueKnew.xcodeproj"
    ```
 
 3. Build and run the project on a simulator or device
@@ -82,36 +82,6 @@ The game uses a progressive learning approach with two main phases:
 4. **Take the challenge**: Test your knowledge with randomized questions
 5. **Track progress**: Build streaks and unlock new categories
 
-## 🏗️ Project Structure
-
-```
-Color Name Train/
-├── Models/
-│   ├── GameModel.swift          # Core game logic
-│   ├── ColorPair.swift          # Color pair definitions
-│   └── GameState.swift          # Game state management
-├── Views/
-│   ├── ContentView.swift        # Main container view
-│   ├── GameView.swift           # Main game interface
-│   ├── HeaderView.swift         # Score and progress display
-│   ├── FooterView.swift         # Game controls
-│   ├── LearningView.swift       # Side-by-side comparison
-│   ├── ChallengeView.swift      # Quiz interface
-│   └── SettingsView.swift       # Game settings
-├── Data/
-│   └── ColorDatabase.swift      # Color definitions and pairs
-└── Resources/
-    └── Assets.xcassets          # App icons and images
-```
-
-## 🎨 Color Data Structure
-
-Each color pair includes:
-- **Primary color**: Name, hex value, RGB values
-- **Comparison color**: Similar color for contrast
-- **Learning notes**: What makes each color unique
-- **Difficulty level**: Beginner, intermediate, advanced
-- **Category**: Color family grouping
 
 ## 🔮 Future Enhancements
 
