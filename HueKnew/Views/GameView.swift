@@ -82,7 +82,7 @@ struct GameView: View {
                     
                     // Choose by Color Wheel
                     VStack(spacing: 16) {
-                        Text("or start from a color:")
+                        Text("explore a color:")
                             .font(.headline)
                             .fontWeight(.semibold)
                         
@@ -99,7 +99,7 @@ struct GameView: View {
                     
                     // Choose by Difficulty
                     VStack(spacing: 12) {
-                        Text("Or choose by difficulty:")
+                        Text("or choose by difficulty:")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                         
