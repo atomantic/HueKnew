@@ -250,11 +250,6 @@ struct NameOptionCard: View {
     var body: some View {
         Button(action: onTap) {
             HStack {
-                Rectangle()
-                    .fill(colorInfo.color)
-                    .frame(width: 20, height: 20)
-                    .cornerRadius(4)
-                
                 Text(colorInfo.name)
                     .font(.body)
                     .foregroundColor(.primary)
