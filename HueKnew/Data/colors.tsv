@@ -168,7 +168,6 @@ Hex	Category	Name	Description
 #4682B4	blues	Steel blue	Named after clear skies, this blue has a soft medium look.
 #470659	purples	Petunia	A deep, rich purple inspired by the petunia flower, which has been cultivated for its beauty and variety of colors since the 19th century. This color represents the diversity of natural beauty and the joy of garden cultivation. Petunia's association with horticultural beauty and natural variety has made it popular in garden and floral design.
 #47ABCC	blues	Maximum blue	A soft medium blue reminiscent of clear skies.
-#483C32	oranges	Dark lava	Named after autumn leaves, this orange has a muted dark look.
 #483C32	oranges	Taupe	Similar to a glowing sunset, it's a muted dark orange.
 #483D8B	blues	Dark slate blue	Similar to clear skies, it's a soft medium blue.
 #48D1CC	blues	Medium turquoise	A balanced blue-green that captures the color of tropical waters and coral reefs. This color represents the beauty and tranquility of marine environments and the rich biodiversity of ocean ecosystems. Medium turquoise's association with beach vacations and ocean conservation has made it popular in travel and environmental branding.
@@ -188,11 +187,9 @@ Hex	Category	Name	Description
 #5072A7	blues	Blue yonder	This blue evokes a twilight horizon with its soft medium tone.
 #507D2A	greens	Sap green	Similar to spring grass, it's a soft medium green.
 #50C878	greens	Emerald	A brilliant green pigment inspired by the precious gemstone emerald, which gets its color from trace amounts of chromium and vanadium. The synthetic pigment was developed in the 19th century as a safer alternative to the toxic emerald green (copper arsenite). This color captures the lush, vibrant quality of the gemstone and has been used extensively in decorative arts and fashion, particularly during the Art Nouveau period when emerald green was a signature color.
-#50C878	greens	Paris Green	A bright, vibrant green that was originally a toxic pigment made from copper arsenite, used extensively in the 19th century for wallpaper and paint. This color represents the intersection of beauty and danger, and the evolution of safer pigments in art and design. Paris Green's association with historical innovation and artistic risk has made it significant in art history and museum contexts.
 #512888	purples	KSU purple	Named after lavender fields, this purple has a soft medium look.
 #5271FF	blues	Vantg blue	This blue evokes clear skies with its vibrant light tone.
 #536878	blues	Dark electric blue	This blue evokes deep ocean water with its muted medium tone.
-#536878	blues	Payne's grey	A sophisticated, muted blue-gray named after William Payne, an 18th-century English watercolorist who popularized this color in his landscape paintings. This color represents artistic technique, atmospheric perspective, and the subtle beauty of natural light. Payne's grey's association with classical painting and artistic tradition has made it significant in fine art and educational contexts.
 #543D37	reds	Dark liver (horses)	Similar to a fresh rose, it's a muted dark red.
 #545AA7	blues	Liberty	A dignified blue-purple that represents the ideals of freedom, democracy, and independence. This color has been associated with liberty and justice throughout history, particularly in the context of American democracy. Liberty blue's association with constitutional rights and civic pride has made it popular in government and educational institutions. The color's balanced, authoritative quality reflects the stability and strength of democratic principles.
 #54626F	blues	Black coral	Similar to a twilight horizon, it's a muted medium blue.
@@ -228,11 +225,9 @@ Hex	Category	Name	Description
 #664228	oranges	Van Dyke brown	A soft dark orange reminiscent of autumn leaves.
 #665D1E	yellows	Antique bronze	Similar to ripe lemons, it's a soft dark yellow.
 #6699CC	blues	Blue-gray (Crayola)	This blue evokes clear skies with its soft light tone.
-#6699CC	blues	Livid	This blue evokes clear skies with its soft light tone.
 #66DDAA	greens	Medium aquamarine	A refreshing blue-green inspired by the aquamarine gemstone, which has been prized for its ocean-like color since ancient times. This color represents the clear, tropical waters of the Caribbean and the tranquility of marine environments. Medium aquamarine's association with water, healing, and communication has made it popular in jewelry and wellness design.
 #66FF66	greens	Screamin' Green	Similar to pine forests, it's a vibrant light green.
 #673147	purples	Old mauve	A deep, aged purple that represents the faded elegance of the original mauve dye discovered by William Henry Perkin in 1856. This color represents the historical significance of synthetic dyes and the evolution of fashion technology. Old mauve's association with Victorian innovation and textile history has made it significant in heritage and museum contexts.
-#673147	purples	Wine dregs	A deep, muted purple inspired by the sediment and residue left at the bottom of wine barrels after fermentation. Wine dregs color evokes the rich history of winemaking, the depth of aged vintages, and the earthy complexity of traditional fermentation processes. This color is often used in design to convey depth, maturity, and the sophisticated character of well-aged traditions.
 #674846	reds	Rose ebony	Similar to rose petals, it's a muted medium red.
 #674C47	reds	Liver	Named after a fresh rose, this red has a muted medium look.
 #676767	neutrals	Granite gray	This neutral evokes soft ash with its muted medium tone.
@@ -253,9 +248,7 @@ Hex	Category	Name	Description
 #6D9BC3	blues	Cerulean frost	This blue evokes a twilight horizon with its soft medium tone.
 #6EAEA1	blues	Green Sheen	A muted medium blue reminiscent of a twilight horizon.
 #6F4E37	oranges	Coffee	A soft medium orange reminiscent of fresh coffee.
-#6F4E37	oranges	Tuscan brown	A warm, earthy brown inspired by the sunbaked landscapes and rustic architecture of Tuscany, Italy. Tuscan brown evokes the region's terracotta rooftops, ancient olive groves, and the enduring beauty of traditional craftsmanship. This color is associated with comfort, heritage, and the timeless appeal of Mediterranean design, making it a favorite in interiors and artisanal products.
 #701C1C	reds	Persian plum	A deep, rich red-brown inspired by the traditional ceramics and textiles of Persia, where this color has been used in decorative arts for centuries. This color represents the depth of Persian cultural heritage and the rich traditions of Middle Eastern craftsmanship. Persian plum's association with classical elegance and cultural sophistication has made it popular in heritage and luxury design.
-#701C1C	reds	Prune	A deep, rich red-brown inspired by the dried plum fruit, which has been valued for its nutritional benefits and sweet taste for thousands of years. This color represents natural preservation, traditional food preparation, and the wisdom of ancient culinary practices. Prune's association with natural health and traditional cooking has made it popular in health food and heritage branding.
 #702670	purples	Midnight	A deep, mysterious purple that captures the color of the night sky at its darkest hour. This color represents the unknown, the mystical, and the hidden depths of the universe. Midnight's association with mystery and introspection has made it popular in spiritual and contemplative design contexts.
 #702963	purples	Byzantium	Named after lavender fields, this purple has a soft medium look.
 #703642	reds	Catawba	Named after brick walls, this red has a soft medium look.
@@ -297,7 +290,6 @@ Hex	Category	Name	Description
 #800000	reds	Maroon (web)	A deep, rich red-brown that takes its name from the French word 'marron,' meaning chestnut. This color has been associated with academic institutions and military uniforms throughout history. Maroon's association with tradition, authority, and sophistication has made it popular in educational and corporate branding. The color's dignified, timeless quality makes it ideal for creating serious, professional environments.
 #800020	reds	Burgundy	Named after a fresh rose, this red has a vibrant dark look.
 #800080	purples	Patriarch	A deep, authoritative purple that represents patriarchal leadership and traditional authority structures. This color symbolizes wisdom, experience, and the weight of historical responsibility. Patriarch's association with institutional power and traditional values has made it significant in formal and ceremonial contexts.
-#800080	purples	Purple (web)	This purple evokes violet blossoms with its vibrant dark tone.
 #801818	reds	Falu red	Named after brick walls, this red has a vibrant dark look.
 #80461B	oranges	Russet	Named after autumn leaves, this orange has a vibrant medium look.
 #807532	yellows	Spanish bistre	Similar to morning sunlight, it's a soft medium yellow.
@@ -309,14 +301,12 @@ Hex	Category	Name	Description
 #838996	blues	Roman silver	A muted medium blue reminiscent of clear skies.
 #841617	reds	OU Crimson red	Similar to brick walls, it's a vibrant medium red.
 #841B2D	reds	Antique ruby	Similar to brick walls, it's a vibrant medium red.
-#848482	neutrals	Battleship grey	Similar to driftwood, it's a muted medium neutral.
-#848482	neutrals	Old silver	A muted, tarnished gray that mimics the appearance of aged silver metal. This color represents the passage of time, heritage, and the beauty of well-worn objects. Old silver's association with antique elegance and traditional craftsmanship has made it popular in heritage design and vintage aesthetics.
+#848482	neutrals	Battleship grey	A muted, tarnished gray that mimics the appearance of aged silver metal. This color represents the passage of time, heritage, and the beauty of well-worn objects. Old silver's association with antique elegance and traditional craftsmanship has made it popular in heritage design and vintage aesthetics.
 #856088	purples	Chinese violet	Similar to lavender fields, it's a muted medium purple.
 #856D4D	oranges	French bistre	Similar to autumn leaves, it's a muted medium orange.
 #85754E	oranges	Gold Fusion	Named after a glowing sunset, this orange has a muted medium look.
 #8601AF	purples	Violet (RYB)	Similar to violet blossoms, it's a vibrant medium purple.
-#86608E	purples	French lilac	Named after royal velvet, this purple has a muted medium look.
-#86608E	purples	Pomp and Power	A dignified, authoritative purple that represents ceremonial grandeur and institutional authority. This color symbolizes the weight of tradition, the dignity of official proceedings, and the solemnity of important occasions. Pomp and Power's association with formal ceremonies and institutional prestige has made it significant in governmental and ceremonial contexts.
+#86608E	purples	French lilac	A dignified, authoritative purple that represents ceremonial grandeur and institutional authority. This color symbolizes the weight of tradition, the dignity of official proceedings, and the solemnity of important occasions. Pomp and Power's association with formal ceremonies and institutional prestige has made it significant in governmental and ceremonial contexts.
 #86A1A9	blues	Tourmaline	A complex blue-gray named after the tourmaline gemstone, which is celebrated for its remarkable range of colors and its role in both ancient and modern jewelry. Tourmaline has been prized since antiquity in cultures from Egypt to China, believed to inspire creativity and protect against negative energy. The color tourmaline blue evokes the gemstone's rare blue-green varieties, which were once mistaken for sapphires and are now among the most valuable. This shade is associated with clarity, insight, and the mysterious beauty of natural minerals.
 #87421F	oranges	Fuzzy Wuzzy	Named after tangerine peel, this orange has a vibrant medium look.
 #87CEEB	blues	Sky blue	A vibrant light blue reminiscent of a clear sky.
@@ -324,7 +314,6 @@ Hex	Category	Name	Description
 #87FF2A	greens	Spring Frost	A vibrant medium green reminiscent of pine forests.
 #880085	purples	Mardi Gras	A vibrant dark purple reminiscent of royal velvet.
 #8806CE	purples	French violet	This purple evokes violet blossoms with its vibrant medium tone.
-#882D17	reds	Kobe	A vibrant medium red reminiscent of brick walls.
 #882D17	reds	Sienna	A natural earth pigment composed of iron oxide and clay minerals, named after the Italian city of Siena in Tuscany where it was originally mined. This warm, transparent pigment has been used since prehistoric times and was particularly valued during the Renaissance for its ability to create natural flesh tones and warm shadows. Raw sienna has a yellow-brown color that becomes a rich red-orange when heated to create burnt sienna.
 #893843	reds	Solid pink	Named after ripe cherries, this red has a soft medium look.
 #893F45	reds	Cordovan	Similar to ripe cherries, it's a soft medium red.
@@ -335,7 +324,6 @@ Hex	Category	Name	Description
 #8A795D	oranges	Shadow	Named after autumn leaves, this orange has a muted medium look.
 #8A7F80	neutrals	Rocket metallic	A muted medium neutral reminiscent of soft ash.
 #8A9A5B	greens	Moss green	A natural, earthy green inspired by the moss that grows on trees and rocks in forest environments. This color represents the quiet beauty of natural landscapes and the slow, steady growth of nature. Moss green's association with organic living and environmental harmony has made it popular in sustainable design and outdoor branding.
-#8A9A5B	greens	Turtle green	Named after fresh herbs, this green has a muted medium look.
 #8B0000	reds	Dark red	Similar to a fresh rose, it's a vibrant dark red.
 #8B008B	purples	Dark magenta	This purple evokes violet blossoms with its vibrant dark tone.
 #8B4513	oranges	Saddle brown	Similar to autumn leaves, it's a vibrant medium orange.
@@ -350,8 +338,7 @@ Hex	Category	Name	Description
 #8DD9CC	blues	Middle blue green	A soft light blue reminiscent of clear skies.
 #8E3A59	purples	Quinacridone magenta	A deep, rich magenta pigment first synthesized in 1958, known for its exceptional lightfastness and color strength. This synthetic pigment revolutionized magenta colors in art, offering artists a powerful, permanent alternative to traditional organic dyes. Quinacridone magenta's association with modern artistic innovation and technical excellence has made it significant in contemporary art and industrial applications.
 #8E4585	purples	Plum	A deep, rich purple inspired by the plum fruit, which has been cultivated for its sweet taste and nutritional value for thousands of years. This color represents abundance, wisdom, and the natural sweetness of autumn harvests. Plum's association with seasonal beauty and natural abundance has made it popular in food and seasonal design.
-#8F00FF	purples	Electric violet	A vibrant medium purple reminiscent of lavender fields.
-#8F00FF	purples	Violet	A deep, rich purple inspired by the violet flower, which has been celebrated in poetry, art, and folklore for its delicate beauty and sweet fragrance. Violets have been associated with modesty, faithfulness, and the arrival of spring since ancient times. The color violet represents creativity, spirituality, and the mysterious beauty of nature, making it a favorite in artistic and spiritual contexts.
+#8F00FF	purples	Electric violet	A deep, rich purple inspired by the violet flower, which has been celebrated in poetry, art, and folklore for its delicate beauty and sweet fragrance. Violets have been associated with modesty, faithfulness, and the arrival of spring since ancient times. The color violet represents creativity, spirituality, and the mysterious beauty of nature, making it a favorite in artistic and spiritual contexts.
 #8FBC8F	greens	Dark sea green	Similar to the open sea, it's a muted light green.
 #8FD400	greens	Sheen green	A vibrant medium green reminiscent of pine forests.
 #905D5D	reds	Rose taupe	Similar to rose petals, it's a muted medium red.
@@ -360,7 +347,6 @@ Hex	Category	Name	Description
 #914E75	purples	Sugar Plum	Similar to royal velvet, it's a soft medium purple.
 #915C83	purples	Antique fuchsia	This purple evokes violet blossoms with its muted medium tone.
 #915F6D	purples	Mauve taupe	A sophisticated, muted purple inspired by glacé fruits, which are candied fruits preserved in sugar syrup. This color represents the refined art of food preservation and the elegant traditions of European confectionery. Raspberry glacé's association with luxury desserts and artisanal craftsmanship has made it popular in gourmet and heritage design.
-#915F6D	purples	Raspberry glacé	A muted medium purple reminiscent of lavender fields.
 #91A3B0	blues	Cadet grey	Similar to clear skies, it's a muted light blue.
 #922B3E	reds	Red-violet (Color wheel)	Named after a fresh rose, this red has a soft medium look.
 #9370DB	purples	Medium purple	A balanced purple that represents the ideal medium tone between light and dark purples. This color has been associated with creativity, spirituality, and artistic expression throughout history. Medium purple's association with imagination and innovation has made it popular in creative industries and educational settings.
@@ -405,7 +391,6 @@ Hex	Category	Name	Description
 #9F4576	purples	Magenta haze	Similar to violet blossoms, it's a soft medium purple.
 #9F8170	oranges	Beaver	Similar to autumn leaves, it's a muted medium orange.
 #9FA91F	yellows	Citron	A vibrant medium yellow reminiscent of morning sunlight.
-#A020F0	purples	Purple (X11)	Similar to violet blossoms, it's a vibrant medium purple.
 #A020F0	purples	Veronica	A bright, electric purple named after the speedwell flower (genus Veronica), which has been used in traditional medicine and garden design for centuries. Veronica purple captures the flower's vibrant beauty and is associated with healing, fidelity, and the simple pleasures of wildflowers. This color is often used in design to convey energy, creativity, and natural charm.
 #A0D6B4	greens	Turquoise green	Similar to pine forests, it's a soft light green.
 #A17A74	reds	Burnished brown	A muted medium red reminiscent of brick walls.
@@ -421,9 +406,7 @@ Hex	Category	Name	Description
 #A55353	reds	Middle red purple	This red evokes ripe cherries with its soft medium tone.
 #A57164	reds	Blast-off bronze	A muted medium red reminiscent of ripe cherries.
 #A63A79	purples	Maximum red purple	Named after lavender fields, this purple has a soft medium look.
-#A67B5B	oranges	Café au lait	A muted medium orange reminiscent of tangerine peel.
 #A67B5B	oranges	French beige	Similar to a glowing sunset, it's a muted medium orange.
-#A67B5B	oranges	Tuscan tan	Named after tangerine peel, this orange has a muted medium look.
 #A6A6A6	neutrals	Quick Silver	A bright, metallic gray inspired by the mercury metal, which has been valued for its unique liquid properties and reflective surface since ancient times. This color represents speed, fluidity, and the mysterious properties of rare metals. Quick Silver's association with scientific discovery and industrial innovation has made it popular in technology and automotive design.
 #A75502	oranges	Windsor tan	A rich, warm brown inspired by the traditional leather goods and equestrian equipment associated with Windsor Castle and British aristocracy. Windsor tan evokes the heritage of English craftsmanship, the elegance of royal traditions, and the timeless appeal of fine leatherwork. This color is often used in design to convey sophistication, tradition, and refined taste.
 #A7F432	greens	Green Lizard	A vibrant medium green reminiscent of pine forests.
@@ -464,9 +447,7 @@ Hex	Category	Name	Description
 #B2BEB5	neutrals	Ash gray	This neutral evokes soft ash with its muted light tone.
 #B2EC5D	greens	Inchworm	This green evokes spring grass with its vibrant light tone.
 #B2FFFF	blues	Celeste	A vibrant light blue reminiscent of clear skies.
-#B2FFFF	blues	Italian sky blue	Named after a clear sky, this blue has a vibrant light look.
 #B31B1B	reds	Carnelian	A vibrant medium red reminiscent of ripe cherries.
-#B3446C	purples	Irresistible	Named after lavender fields, this purple has a soft medium look.
 #B3446C	purples	Raspberry rose	A soft medium purple reminiscent of rose petals.
 #B48395	purples	English lavender	Similar to lavender blossoms, it's a muted light purple.
 #B53389	purples	Fandango	Named after royal velvet, this purple has a soft medium look.
@@ -503,13 +484,9 @@ Hex	Category	Name	Description
 #C09999	reds	Tuscany	A muted, rosy red inspired by the romantic landscapes and artistic legacy of Tuscany, Italy. The color Tuscany evokes the region's historic cities, Renaissance art, and the soft glow of sunset over rolling vineyards. It is often used in design to convey elegance, nostalgia, and the timeless allure of Italian culture.
 #C0C0C0	neutrals	Silver	This neutral evokes soft ash with its muted light tone.
 #C154C1	purples	Fuchsia (Crayola)	Named after violet blossoms, this purple has a soft medium look.
-#C19A6B	oranges	Camel	Named after autumn leaves, this orange has a soft medium look.
-#C19A6B	oranges	Desert	Similar to tangerine peel, it's a soft medium orange.
-#C19A6B	oranges	Fallow	This orange evokes tangerine peel with its soft medium tone.
-#C19A6B	oranges	Wood brown	A warm, natural brown inspired by the rich tones of aged wood and timber. Wood brown evokes the craftsmanship of traditional woodworking, the warmth of natural materials, and the enduring beauty of wooden furniture and architecture. This color is often used in design to convey authenticity, craftsmanship, and the comforting appeal of natural materials.
+#C19A6B	oranges	Camel / Wood Brown   A warm, natural brown inspired by the rich tones of aged wood and timber (or a camel). Evokes the craftsmanship of traditional woodworking, the warmth of natural materials, and the enduring beauty of wooden furniture and architecture. This color is often used in design to convey authenticity, craftsmanship, and the comforting appeal of natural materials.
 #C21E56	purples	Rose red	Similar to rose petals, it's a vibrant medium purple.
-#C2B280	yellows	Ecru	Named after sunflower petals, this yellow has a soft light look.
-#C2B280	yellows	Sand	Similar to ripe lemons, it's a soft light yellow.
+#C2B280	yellows	Ecru / Sand	Initially indicated unbleached linen (écru is French for "raw, unbleached")
 #C30B4E	reds	Pictorial carmine	A deep, rich red pigment made from the cochineal insect (Dactylopius coccus), which lives on prickly pear cacti in Central and South America. This dye was highly prized by the Aztecs and was one of the most valuable exports from the New World to Europe. It takes approximately 7,000 insects to produce one pound of carmine dye. The pigment's intensity and permanence made it popular for royal garments and religious vestments, though modern versions often use synthetic alternatives.
 #C32148	reds	Maroon (Crayola)	Named after brick walls, this red has a vibrant medium look.
 #C3B091	oranges	Khaki (web)	A light brownish-yellow color that takes its name from the Persian word 'khak,' meaning dust or earth. Khaki was first used for military uniforms in the 19th century by British troops in India, where the dusty color provided excellent camouflage. This practical color has since become a staple in casual wear and outdoor clothing, representing durability, utility, and understated style.
@@ -524,7 +501,6 @@ Hex	Category	Name	Description
 #C5CBE1	blues	Light periwinkle	A delicate, soft blue inspired by the periwinkle flower (Vinca minor), which has been used in traditional medicine and garden design for centuries. This color represents tranquility, friendship, and gentle beauty. Light periwinkle's association with spring flowers and peaceful gardens has made it popular in romantic and pastoral design themes.
 #C5E384	greens	Yellow-green (Crayola)	This green evokes fresh herbs with its vibrant light tone.
 #C71585	purples	Medium violet-red	A rich, deep purple-red that represents the perfect balance between violet and red. This color has been associated with passion, creativity, and artistic expression throughout history. Medium violet-red's association with dramatic flair and emotional intensity has made it popular in fashion and entertainment design.
-#C71585	purples	Red-violet	Named after royal velvet, this purple has a vibrant medium look.
 #C72C48	reds	French raspberry	A vibrant medium red reminiscent of brick walls.
 #C80815	reds	Venetian red	A deep, rich red pigment originally made from iron oxide and named after the Italian city of Venice, where it was produced and traded during the Renaissance. Venetian red was prized by artists like Titian and Veronese for its warm, earthy quality and excellent covering power. This color evokes the artistic legacy of Venice and the rich cultural heritage of Italian painting traditions.
 #C84186	purples	Smitten	This purple evokes violet blossoms with its soft medium tone.
@@ -549,8 +525,7 @@ Hex	Category	Name	Description
 #CC7722	oranges	Ocher (Ochre)	A natural earth pigment composed of iron oxide and clay, one of the oldest pigments used by humans. Evidence of ochre use dates back over 100,000 years, with prehistoric cave paintings in France and Australia featuring this warm, earthy color. The pigment's name comes from the Greek 'ochros,' meaning pale yellow. Ochre was used for body painting, cave art, and early textiles, and remains a staple in traditional painting techniques today.
 #CC8899	reds	Puce	A muted, dusty pink that was popular in 18th-century French fashion, particularly during the reign of Marie Antoinette. This color represents the opulence of the French court and the dramatic shifts in fashion that preceded the French Revolution. Puce's association with historical fashion and aristocratic taste has made it significant in costume and heritage design.
 #CCA01D	oranges	Lemon curry	Named after a glowing sunset, this orange has a vibrant medium look.
-#CCCCFF	blues	Lavender blue	This blue evokes lavender blossoms with its vibrant light tone.
-#CCCCFF	blues	Periwinkle	A soft, gentle blue inspired by the periwinkle flower, which has been used in traditional medicine and folklore for centuries. This color represents healing, tranquility, and the gentle beauty of spring wildflowers. Periwinkle's association with natural healing and peaceful growth has made it popular in wellness and garden design.
+#CCCCFF	blues	Lavender blue / Periwinkle	This blue evokes lavender blossoms with its vibrant light tone. A soft, gentle blue inspired by the periwinkle flower, which has been used in traditional medicine and folklore for centuries. This color represents healing, tranquility, and the gentle beauty of spring wildflowers. Periwinkle's association with natural healing and peaceful growth has made it popular in wellness and garden design.
 #CCFF00	yellows	Electric lime	Named after morning sunlight, this yellow has a vibrant medium look.
 #CD5700	oranges	Tenné (tawny)	Similar to tangerine peel, it's a vibrant medium orange.
 #CD5C5C	reds	Indian red	A soft medium red reminiscent of brick walls.
@@ -586,8 +561,7 @@ Hex	Category	Name	Description
 #D7837F	reds	New York pink	A sophisticated, urban pink that captures the energy and diversity of New York City. This color represents cosmopolitan style, cultural vibrancy, and the dynamic spirit of urban life. New York pink's association with fashion, art, and metropolitan culture has made it popular in contemporary design and urban branding.
 #D891EF	purples	Bright lilac	Named after royal velvet, this purple has a vibrant light look.
 #D8B2D1	purples	Pink lavender	Named after lavender blossoms, this purple has a soft light look.
-#D8BFD8	purples	Light purple	A gentle, soft purple that represents creativity, spirituality, and gentle wisdom. This color has been associated with royalty and luxury throughout history, but in its lighter form, it takes on a more approachable, nurturing quality. Light purple's association with imagination and artistic expression has made it popular in children's products and creative spaces.
-#D8BFD8	purples	Thistle	This purple evokes royal velvet with its muted light tone.
+#D8BFD8	purples	Thistle	A gentle, soft purple that represents creativity, spirituality, and gentle wisdom. This color has been associated with royalty and luxury throughout history, but in its lighter form, it takes on a more approachable, nurturing quality. Light purple's association with imagination and artistic expression has made it popular in children's products and creative spaces.
 #D9004C	purples	UA red	This purple evokes lavender fields with its vibrant medium tone.
 #D92121	reds	Maximum red	This red evokes a fresh rose with its vibrant medium tone.
 #D982B5	purples	Middle purple	This purple evokes violet blossoms with its soft light tone.
@@ -603,7 +577,6 @@ Hex	Category	Name	Description
 #DA9100	oranges	Harvest gold	This orange evokes autumn leaves with its vibrant medium tone.
 #DAA520	yellows	Goldenrod	A deeper, muted yellow inspired by the goldenrod plant (Solidago), which blooms in late summer and early autumn across North America and Europe. Goldenrod has been used in folk medicine, dyeing, and as a symbol of encouragement and good fortune. Its warm, earthy hue evokes the changing seasons and the richness of natural landscapes, making it a popular choice in rustic and botanical art.
 #DB2D43	reds	Alizarin	A deep, rich red pigment originally derived from the roots of the madder plant, used in textile dyeing for thousands of years. In 1868, German chemists synthesized alizarin, revolutionizing the dye industry and making this once-rare color widely available. Alizarin's association with traditional craftsmanship and artistic innovation has made it significant in heritage and textile design.
-#DB2D43	reds	Alizarin	A deep, rich red pigment originally derived from the roots of the madder plant, used in textile dyeing for thousands of years. In 1868, German chemists synthesized alizarin, revolutionizing the dye industry and making this once-rare color widely available. Alizarin's association with traditional craftsmanship and artistic innovation has made it significant in heritage and textile design.
 #DBD7D2	neutrals	Timberwolf	A soft, pale gray inspired by the elusive timberwolf, whose fur blends seamlessly with misty forests and snowy landscapes. The color timberwolf evokes the quiet strength and adaptability of these iconic creatures, revered in Native American folklore as symbols of loyalty, intuition, and wilderness wisdom. This gentle neutral is often used in design to convey subtlety, calm, and a connection to the natural world.
 #DC143C	reds	Crimson	A deep, rich red with a slight blue undertone, originally derived from the kermes insect (Kermes vermilio) found on Mediterranean oak trees. This ancient dye was used by the Phoenicians and Romans, and its name comes from the Arabic 'qirmiz.' Crimson was so valuable that it was often worth more than gold, reserved for royal garments and religious vestments. The color's association with power and prestige continues today, where it represents authority and importance in academic and military contexts.
 #DCDCDC	neutrals	Gainsboro	A muted light neutral reminiscent of soft ash.
@@ -611,15 +584,12 @@ Hex	Category	Name	Description
 #DE3163	purples	Cerise	A vibrant medium purple reminiscent of lavender fields.
 #DE5285	purples	Fandango pink	This purple evokes violet blossoms with its vibrant medium tone.
 #DE5D83	purples	Blush	A vibrant light purple reminiscent of lavender fields.
-#DE6FA1	purples	China pink	A vibrant light purple reminiscent of royal velvet.
-#DE6FA1	purples	Liseran purple	This purple evokes lavender fields with its vibrant light tone.
 #DE6FA1	purples	Thulian pink	Similar to violet blossoms, it's a vibrant light purple.
 #DEA5A4	reds	Pastel pink	Similar to ripe cherries, it's a soft light red.
 #DEAA88	oranges	Tumbleweed	Named after tangerine peel, this orange has a soft light look.
 #DEB887	oranges	Burlywood	A soft light orange reminiscent of tangerine peel.
 #DECC9C	oranges	Lion	A warm, golden beige inspired by the majestic lion's mane, which has been a symbol of strength, courage, and royalty throughout human history. This color represents leadership, nobility, and natural authority. Lion's association with power and dignity has made it popular in luxury branding and traditional design. The color's rich, warm quality evokes feelings of strength and confidence.
-#DF00FF	purples	Phlox	A bright, vibrant purple inspired by the phlox flower, which has been cultivated for its beauty and fragrance since the 18th century. This color represents the joy of summer gardens and the vibrant energy of natural beauty. Phlox's association with horticultural beauty and seasonal joy has made it popular in garden and floral design.
-#DF00FF	purples	Psychedelic purple	A bright, electric purple that captures the excitement and energy of 1960s counterculture and psychedelic art. This color represents artistic freedom, cultural revolution, and the exploration of consciousness. Psychedelic purple's association with creative expression and cultural innovation has made it popular in artistic and alternative design.
+#DF00FF	purples	Phlox / Psychedelic purple	A bright, electric purple that captures the excitement and energy of 1960s counterculture and psychedelic art. This color represents artistic freedom, cultural revolution, and the exploration of consciousness. Psychedelic purple's association with creative expression and cultural innovation has made it popular in artistic and alternative design.
 #DF73FF	purples	Heliotrope	A bright purple-pink named after the heliotrope flower (Heliotropium), which was believed to turn toward the sun. The name comes from the Greek 'helios' (sun) and 'trope' (turn). This color represents devotion and faithfulness, as the flower was thought to follow the sun's path across the sky. Heliotrope's vibrant, romantic quality has made it popular in Victorian gardens and continues to appeal in modern floral design and fashion.
 #E0115F	purples	Ruby	Similar to royal velvet, it's a vibrant medium purple.
 #E0B0FF	purples	Mauve	A soft, dusty purple named after the French word for the mallow flower. This color was accidentally discovered by 18-year-old chemistry student William Henry Perkin in 1856 while trying to synthesize quinine. Mauve became the first synthetic dye and revolutionized the textile industry, making purple accessible to everyone. The color's association with innovation and democratization of fashion has made it historically significant.
@@ -664,17 +634,13 @@ Hex	Category	Name	Description
 #E97451	reds	Burnt sienna	A warm, earthy red-brown pigment made by heating raw sienna (iron oxide clay) to drive off water and convert the yellow-brown color to a rich red-orange. This pigment has been used since prehistoric times and was particularly popular in Renaissance fresco painting. The name comes from the Italian city of Siena, where the clay was originally mined. Burnt sienna's transparency and warm undertones make it essential for creating flesh tones and warm shadows in traditional painting.
 #E9967A	oranges	Dark salmon	Named after tangerine peel, this orange has a vibrant light look.
 #E9D66B	yellows	Arylide yellow	Named after morning sunlight, this yellow has a vibrant light look.
-#E9D66B	yellows	Hansa yellow	A vibrant light yellow reminiscent of morning sunlight.
 #E9FFDB	greens	Nyanza	A soft, pale green named after Lake Nyanza (Lake Victoria), the largest lake in Africa. This color represents the gentle, life-giving quality of fresh water and the natural beauty of African landscapes. Nyanza's association with natural resources and environmental conservation has made it popular in eco-friendly and sustainable design.
 #EAA221	oranges	Marigold	Similar to a glowing sunset, it's a vibrant medium orange.
 #EC5800	oranges	Persimmon	A rich, warm orange inspired by the persimmon fruit, which has been cultivated in Asia for thousands of years and is celebrated for its sweet taste and cultural significance. This color represents autumn abundance, natural sweetness, and the rich traditions of Asian agriculture. Persimmon's association with seasonal beauty and cultural heritage has made it popular in Asian design and seasonal branding.
 #ECB176	oranges	Middle yellow red	Similar to tangerine peel, it's a vibrant light orange.
 #ECEBBD	yellows	Pale spring bud	Similar to morning sunlight, it's a soft light yellow.
-#ECEBBD	yellows	Spring green (Crayola)	Named after ripe lemons, this yellow has a soft light look.
 #ED1C24	reds	Red (pigment)	A vibrant medium red reminiscent of ripe cherries.
 #ED2939	reds	Imperial red	This red evokes a fresh rose with its vibrant medium tone.
-#ED2939	reds	Red (Pantone)	Named after a fresh rose, this red has a vibrant medium look.
-#ED7A9B	purples	Pale Dogwood	A soft, romantic pink inspired by the delicate blossoms of the dogwood tree, which has been celebrated in American folklore and poetry. This color represents spring renewal, gentle beauty, and the tender quality of new beginnings. Pale Dogwood's association with natural elegance and seasonal beauty has made it popular in bridal and garden design.
 #ED7A9B	purples	Rose Pompadour	Similar to rose petals, it's a vibrant light purple.
 #ED872D	oranges	Cadmium orange	Named after autumn leaves, this orange has a vibrant medium look.
 #ED9121	oranges	Carrot orange	A vibrant medium orange reminiscent of autumn leaves.
@@ -707,11 +673,9 @@ Hex	Category	Name	Description
 #F2E8D7	oranges	Magnolia	Named after tangerine peel, this orange has a soft light look.
 #F37A48	oranges	Mandarin	This orange evokes a glowing sunset with its vibrant light tone.
 #F38FA9	purples	Vanilla ice	Similar to lavender fields, it's a vibrant light purple.
-#F3E5AB	yellows	Medium champagne	A warm, golden yellow inspired by the color of champagne, the sparkling wine that has been associated with celebration and luxury since the 17th century. This color represents success, achievement, and the finer things in life. Medium champagne's association with celebration and sophistication has made it popular in luxury branding and special occasion design.
 #F3E5AB	yellows	Vanilla	A warm, creamy yellow inspired by the vanilla orchid (Vanilla planifolia), native to Mexico and Central America. Vanilla was first cultivated by the Totonac people and later spread worldwide by Spanish conquistadors. The color captures the rich, comforting quality of vanilla's flavor and aroma, making it popular in food packaging, cosmetics, and interior design. Vanilla's association with sweetness and comfort has made it a beloved color in home decor and fashion.
 #F400A1	purples	Hollywood cerise	A vibrant medium purple reminiscent of royal velvet.
 #F4A460	oranges	Sandy brown	Named after a glowing sunset, this orange has a vibrant light look.
-#F4C2C2	reds	Baby pink	A vibrant light red reminiscent of brick walls.
 #F4C2C2	reds	Tea rose	Similar to rose petals, it's a vibrant light red.
 #F4C430	yellows	Saffron	A precious golden-yellow pigment derived from the dried stigmas of the saffron crocus (Crocus sativus). This ancient dye, worth more than gold by weight, was used in royal garments, illuminated manuscripts, and religious ceremonies. Saffron's distinctive color comes from crocin, a carotenoid compound that gives it both its hue and its value. The labor-intensive harvesting process - each flower produces only three stigmas - made saffron a symbol of wealth and luxury throughout history.
 #F4CA16	yellows	Jonquil	A bright, cheerful yellow inspired by the jonquil daffodil (Narcissus jonquilla), which is native to Spain and Portugal. This flower's golden hue represents the arrival of spring and new beginnings. Jonquil yellow captures the flower's sunny disposition and its ability to naturalize in gardens, making it a symbol of resilience and hope. The color's association with early spring flowers has made it popular in seasonal design and spring fashion.
@@ -733,23 +697,17 @@ Hex	Category	Name	Description
 #F7BFBE	reds	Spanish pink	Named after a fresh rose, this red has a vibrant light look.
 #F7D716	yellows	Buttercup	A bright, vivid yellow inspired by the buttercup flower (Ranunculus), which is found in meadows and fields across the Northern Hemisphere. Buttercups have long been associated with childhood games, folklore, and the arrival of spring. Their cheerful color symbolizes joy, innocence, and the simple pleasures of nature, making buttercup yellow a favorite in children's art and springtime celebrations.
 #F7E7CE	oranges	Champagne	Similar to a glowing sunset, it's a vibrant light orange.
-#F88379	reds	Congo pink	A vibrant light red reminiscent of ripe cherries.
 #F88379	reds	Coral pink	A vibrant light red reminiscent of a fresh rose.
 #F8B878	oranges	Mellow apricot	A soft, warm orange inspired by the apricot fruit, which has been cultivated in Central Asia for over 4,000 years. This color represents the gentle sweetness of summer fruits and the warmth of late summer afternoons. Mellow apricot's association with natural sweetness and comfort has made it popular in food packaging and wellness design.
 #F8D568	yellows	Orange-yellow (Crayola)	Similar to ripe lemons, it's a vibrant light yellow.
-#F8DE7E	yellows	Jasmine	A delicate, warm yellow inspired by the fragrant jasmine flower (Jasminum), which has been cultivated in Asia for over 1,000 years. Jasmine's golden hue captures the flower's ethereal beauty and its association with love, purity, and spiritual enlightenment in many cultures. The color's soft, luminous quality makes it popular in bridal and spring fashion, while its connection to the flower's intoxicating scent evokes feelings of romance and tranquility.
-#F8DE7E	yellows	Mellow yellow	A soft, gentle yellow that captures the warm, peaceful quality of late afternoon sunlight. This color represents relaxation, contentment, and the gentle transition from day to evening. Mellow yellow's association with calmness and comfort has made it popular in wellness and hospitality design.
+#F8DE7E	yellows	Jasmine / Mellow Yellow	A delicate, warm yellow inspired by the fragrant jasmine flower (Jasminum), which has been cultivated in Asia for over 1,000 years. Jasmine's golden hue captures the flower's ethereal beauty and its association with love, purity, and spiritual enlightenment in many cultures. The color's soft, luminous quality makes it popular in bridal and spring fashion, while its connection to the flower's intoxicating scent evokes feelings of romance and tranquility. A soft, gentle yellow that captures the warm, peaceful quality of late afternoon sunlight. This color represents relaxation, contentment, and the gentle transition from day to evening. Mellow yellow's association with calmness and comfort has made it popular in wellness and hospitality design.
 #F8F8FF	neutrals	Ghost white	A vibrant light neutral reminiscent of soft ash.
 #F9429E	purples	Rose bonbon	A vibrant light purple reminiscent of rose petals.
 #FA5053	reds	Strawberry	This red evokes ripe cherries with its vibrant light tone.
 #FA5B3D	reds	Orange soda	This red evokes brick walls with its vibrant light tone.
 #FA8072	reds	Salmon	Named after brick walls, this red has a vibrant light look.
-#FAD6A5	oranges	Deep champagne	Named after tangerine peel, this orange has a vibrant light look.
-#FAD6A5	oranges	Sunset	A vibrant light orange reminiscent of tangerine peel.
-#FAD6A5	oranges	Tuscan	This orange evokes autumn leaves with its vibrant light tone.
-#FADA5E	yellows	Naples yellow	A warm, golden yellow pigment that was originally made from lead antimonate and used extensively in Renaissance painting. This color was prized by artists for its warm undertones and excellent covering power. Naples yellow's association with classical art and traditional painting techniques has made it significant in fine art and historical restoration.
-#FADA5E	yellows	Royal yellow	A vibrant light yellow reminiscent of ripe lemons.
-#FADA5E	yellows	Stil de grain yellow	A vibrant light yellow reminiscent of morning sunlight.
+#FAD6A5	oranges	Prosecco / Deep Champagne	Named after the champagne, a very light orange/tan.
+#FADA5E	yellows	Naples Yellow	A warm, golden yellow pigment that was originally made from lead antimonate and used extensively in Renaissance painting. This color was prized by artists for its warm undertones and excellent covering power. Naples yellow's association with classical art and traditional painting techniques has made it significant in fine art and historical restoration.
 #FADADD	reds	Pale pink	Similar to brick walls, it's a vibrant light red.
 #FAE6FA	neutrals	Pale purple (Pantone)	This neutral evokes weathered stone with its vibrant light tone.
 #FAE7B5	oranges	Banana Mania	Similar to ripe bananas, it's a vibrant light orange.
@@ -760,11 +718,9 @@ Hex	Category	Name	Description
 #FB4D46	reds	Tart Orange	This red evokes brick walls with its vibrant light tone.
 #FBAB60	oranges	Rajah	A warm, golden orange inspired by the title 'Rajah,' which refers to Indian princes and rulers. This color represents the opulence of Indian royalty, the richness of South Asian culture, and the golden traditions of the subcontinent. Rajah's association with cultural heritage and royal splendor has made it popular in heritage and luxury design.
 #FBCEB1	oranges	Apricot	Named after a glowing sunset, this orange has a vibrant light look.
-#FBEC5D	yellows	Corn	Similar to sunflower petals, it's a vibrant light yellow.
-#FBEC5D	yellows	Maize	This yellow evokes ripe lemons with its vibrant light tone.
+#FBEC5D	yellows	Corn / Maize	Similar to sunflower petals, it's a vibrant light yellow.
 #FC0FC0	purples	Shocking pink	Named after lavender fields, this purple has a vibrant medium look.
 #FC6C85	reds	Ultra red	A vibrant light red reminiscent of brick walls.
-#FC6C85	reds	Wild watermelon	A bright, juicy pink-red inspired by the sweet, refreshing flesh of wild watermelon varieties. Wild watermelon color evokes the natural sweetness of summer fruits and the vibrant energy of warm-weather refreshment. This color is often used in design to convey freshness, vitality, and the simple pleasures of seasonal abundance.
 #FC89AC	purples	Tickle Me Pink	This purple evokes royal velvet with its vibrant light tone.
 #FCC200	yellows	Golden poppy	A bright, cheerful yellow inspired by the California poppy (Eschscholzia californica), the state flower of California. This wildflower's golden hue has become a symbol of the American West and its natural beauty. The color captures the flower's sunny disposition and its ability to thrive in arid conditions, making it a symbol of resilience and optimism. Golden poppy's association with California's golden hills and spring wildflowers has made it a beloved color in Western design and culture.
 #FCE883	yellows	Yellow (Crayola)	Similar to sunflower petals, it's a vibrant light yellow.
@@ -791,7 +747,6 @@ Hex	Category	Name	Description
 #FF007C	purples	Winter Sky	A bright, electric pink-purple inspired by the dramatic colors that sometimes appear in winter skies during sunrise or sunset. Winter Sky captures the unexpected beauty of cold weather, the contrast of vibrant colors against snowy landscapes, and the magical quality of winter light. This color is often used in design to convey energy, contrast, and the surprising beauty of winter.
 #FF007F	purples	Rose	Similar to rose petals, it's a vibrant medium purple.
 #FF0090	purples	Magenta (process)	A vibrant medium purple reminiscent of royal velvet.
-#FF00FF	purples	Fuchsia	A bold, electric purple-pink named after the fuchsia flower, which was discovered in the Caribbean in the 17th century and named after German botanist Leonhart Fuchs. This color represents the perfect balance between red and blue in the color spectrum, making it one of the primary colors in digital color models. Fuchsia's vibrant, attention-grabbing quality has made it popular in fashion, advertising, and digital design, where it's used to create high-impact visual statements.
 #FF00FF	purples	Magenta	A bold, electric pink-purple named after the Battle of Magenta in 1859, where French and Sardinian forces defeated Austrian troops. This color represents the perfect balance between red and blue in the color spectrum and is one of the primary colors in digital color models. Magenta's vibrant, attention-grabbing quality has made it popular in advertising, fashion, and digital design.
 #FF1493	purples	Deep pink	Similar to violet blossoms, it's a vibrant medium purple.
 #FF1DCE	purples	Hot magenta[broken anchor]	This purple evokes royal velvet with its vibrant medium tone.
