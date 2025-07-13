@@ -32,7 +32,7 @@ jobs:
           xcodebuild test \
             -project HueKnew.xcodeproj \
             -scheme HueKnew \
-            -destination 'platform=macOS,arch=arm64,variant=Designed for [iPad,iPhone]' \
+            -destination 'platform=iOS Simulator,name=iPhone 15 Pro' \
             -configuration Debug \
             -derivedDataPath build \
             IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
