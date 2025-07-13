@@ -55,40 +55,16 @@
       "description": "A pale, cool yellow with green undertones"
     },
     {
-      "name": "Naples Yellow",
-      "hex": "#FADA5E",
-      "category": "yellows",
-      "description": "A muted yellow with subtle orange and beige undertones"
-    },
-    {
-      "name": "Prussian Blue",
-      "hex": "#003153",
-      "category": "blues",
-      "description": "A very dark blue with slight green undertones, historically important pigment"
-    },
-    {
       "name": "Navy Blue",
       "hex": "#000080",
       "category": "blues",
       "description": "A dark blue with purple undertones, named after naval uniforms"
     },
     {
-      "name": "Cerulean Blue",
-      "hex": "#007BA7",
-      "category": "blues",
-      "description": "A pure, medium blue reminiscent of clear skies"
-    },
-    {
       "name": "Azure",
       "hex": "#0080FF",
       "category": "blues",
       "description": "A bright blue with slight purple undertones, lighter than Cerulean"
-    },
-    {
-      "name": "Muted Glaucous",
-      "hex": "#6082B6",
-      "category": "blues",
-      "description": "A grayish-blue with muted, dusty appearance"
     },
     {
       "name": "Winter Glaucous",
@@ -115,7 +91,7 @@
       "description": "A pure, intense red with no blue or yellow undertones"
     },
     {
-      "name": "Alizarin Crimson",
+      "name": "Alizarin Crimson / Rose Madder",
       "hex": "#E32636",
       "category": "reds",
       "description": "A deep red with purple undertones, historically made from madder root"
@@ -167,6 +143,5268 @@
       "hex": "#FF9500",
       "category": "oranges",
       "description": "A bright orange like the citrus fruit"
+    },
+    {
+      "name": "Absolute Zero",
+      "hex": "#0048BA",
+      "category": "blues",
+      "description": "This blue evokes clear skies with its vibrant medium tone."
+    },
+    {
+      "name": "Acid green",
+      "hex": "#B0BF1A",
+      "category": "yellows",
+      "description": "A vibrant medium yellow reminiscent of ripe lemons."
+    },
+    {
+      "name": "Aero",
+      "hex": "#7CB9E8",
+      "category": "blues",
+      "description": "A vibrant light blue reminiscent of clear skies."
+    },
+    {
+      "name": "African violet",
+      "hex": "#B284BE",
+      "category": "purples",
+      "description": "Similar to royal velvet, it's a soft light purple."
+    },
+    {
+      "name": "Air superiority blue",
+      "hex": "#72A0C1",
+      "category": "blues",
+      "description": "Similar to deep ocean water, it's a soft light blue."
+    },
+    {
+      "name": "Alice blue",
+      "hex": "#F0F8FF",
+      "category": "neutrals",
+      "description": "Similar to weathered stone, it's a vibrant light neutral."
+    },
+    {
+      "name": "Alizarin",
+      "hex": "#DB2D43",
+      "category": "reds",
+      "description": "This red evokes a fresh rose with its vibrant medium tone."
+    },
+    {
+      "name": "Alloy orange",
+      "hex": "#C46210",
+      "category": "oranges",
+      "description": "Similar to tangerine peel, it's a vibrant medium orange."
+    },
+    {
+      "name": "Almond",
+      "hex": "#EED9C4",
+      "category": "oranges",
+      "description": "A soft light orange reminiscent of tangerine peel."
+    },
+    {
+      "name": "Amaranth deep purple",
+      "hex": "#9F2B68",
+      "category": "purples",
+      "description": "This purple evokes lavender fields with its soft medium tone."
+    },
+    {
+      "name": "Amaranth pink",
+      "hex": "#F19CBB",
+      "category": "purples",
+      "description": "This purple evokes lavender fields with its vibrant light tone."
+    },
+    {
+      "name": "Amaranth purple",
+      "hex": "#AB274F",
+      "category": "purples",
+      "description": "Named after violet blossoms, this purple has a vibrant medium look."
+    },
+    {
+      "name": "Amazon",
+      "hex": "#3B7A57",
+      "category": "greens",
+      "description": "Similar to pine forests, it's a soft medium green."
+    },
+    {
+      "name": "Amber",
+      "hex": "#FFBF00",
+      "category": "oranges",
+      "description": "This orange evokes tangerine peel with its vibrant medium tone."
+    },
+    {
+      "name": "Amethyst",
+      "hex": "#9966CC",
+      "category": "purples",
+      "description": "Similar to lavender fields, it's a soft light purple."
+    },
+    {
+      "name": "Android green",
+      "hex": "#3DDC84",
+      "category": "greens",
+      "description": "This green evokes spring grass with its vibrant medium tone."
+    },
+    {
+      "name": "Antique brass",
+      "hex": "#C88A65",
+      "category": "oranges",
+      "description": "Similar to autumn leaves, it's a soft medium orange."
+    },
+    {
+      "name": "Antique bronze",
+      "hex": "#665D1E",
+      "category": "yellows",
+      "description": "Similar to ripe lemons, it's a soft dark yellow."
+    },
+    {
+      "name": "Antique fuchsia",
+      "hex": "#915C83",
+      "category": "purples",
+      "description": "This purple evokes violet blossoms with its muted medium tone."
+    },
+    {
+      "name": "Antique ruby",
+      "hex": "#841B2D",
+      "category": "reds",
+      "description": "Similar to brick walls, it's a vibrant medium red."
+    },
+    {
+      "name": "Antique white",
+      "hex": "#FAEBD7",
+      "category": "oranges",
+      "description": "Named after autumn leaves, this orange has a vibrant light look."
+    },
+    {
+      "name": "Apricot",
+      "hex": "#FBCEB1",
+      "category": "oranges",
+      "description": "Named after a glowing sunset, this orange has a vibrant light look."
+    },
+    {
+      "name": "Aqua",
+      "hex": "#00FFFF",
+      "category": "blues",
+      "description": "Similar to clear skies, it's a vibrant medium blue."
+    },
+    {
+      "name": "Aquamarine",
+      "hex": "#7FFFD4",
+      "category": "greens",
+      "description": "This green evokes spring grass with its vibrant light tone."
+    },
+    {
+      "name": "Arctic lime",
+      "hex": "#D0FF14",
+      "category": "yellows",
+      "description": "Similar to morning sunlight, it's a vibrant medium yellow."
+    },
+    {
+      "name": "Artichoke green",
+      "hex": "#4B6F44",
+      "category": "greens",
+      "description": "Named after fresh herbs, this green has a muted medium look."
+    },
+    {
+      "name": "Arylide yellow",
+      "hex": "#E9D66B",
+      "category": "yellows",
+      "description": "Named after morning sunlight, this yellow has a vibrant light look."
+    },
+    {
+      "name": "Ash gray",
+      "hex": "#B2BEB5",
+      "category": "neutrals",
+      "description": "This neutral evokes soft ash with its muted light tone."
+    },
+    {
+      "name": "Atomic tangerine",
+      "hex": "#FF9966",
+      "category": "oranges",
+      "description": "Named after autumn leaves, this orange has a vibrant light look."
+    },
+    {
+      "name": "Aureolin",
+      "hex": "#FDEE00",
+      "category": "yellows",
+      "description": "A vibrant medium yellow reminiscent of sunflower petals."
+    },
+    {
+      "name": "Azure (X11/web color)",
+      "hex": "#F0FFFF",
+      "category": "neutrals",
+      "description": "This neutral evokes weathered stone with its vibrant light tone."
+    },
+    {
+      "name": "Baby blue",
+      "hex": "#89CFF0",
+      "category": "blues",
+      "description": "This blue evokes a twilight horizon with its vibrant light tone."
+    },
+    {
+      "name": "Baby blue eyes",
+      "hex": "#A1CAF1",
+      "category": "blues",
+      "description": "Named after a twilight horizon, this blue has a vibrant light look."
+    },
+    {
+      "name": "Baby pink",
+      "hex": "#F4C2C2",
+      "category": "reds",
+      "description": "A vibrant light red reminiscent of brick walls."
+    },
+    {
+      "name": "Baby powder",
+      "hex": "#FEFEFA",
+      "category": "neutrals",
+      "description": "Named after soft ash, this neutral has a vibrant light look."
+    },
+    {
+      "name": "Baker-Miller pink",
+      "hex": "#FF91AF",
+      "category": "purples",
+      "description": "Named after lavender fields, this purple has a vibrant light look."
+    },
+    {
+      "name": "Banana Mania",
+      "hex": "#FAE7B5",
+      "category": "oranges",
+      "description": "Similar to ripe bananas, it's a vibrant light orange."
+    },
+    {
+      "name": "Barbie Pink",
+      "hex": "#DA1884",
+      "category": "purples",
+      "description": "A vibrant medium purple reminiscent of lavender fields."
+    },
+    {
+      "name": "Barn red",
+      "hex": "#7C0A02",
+      "category": "reds",
+      "description": "A vibrant dark red reminiscent of brick walls."
+    },
+    {
+      "name": "Battleship grey",
+      "hex": "#848482",
+      "category": "neutrals",
+      "description": "Similar to driftwood, it's a muted medium neutral."
+    },
+    {
+      "name": "Beau blue",
+      "hex": "#BCD4E6",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a soft light blue."
+    },
+    {
+      "name": "Beaver",
+      "hex": "#9F8170",
+      "category": "oranges",
+      "description": "Similar to autumn leaves, it's a muted medium orange."
+    },
+    {
+      "name": "Beige",
+      "hex": "#F5F5DC",
+      "category": "yellows",
+      "description": "This yellow evokes ripe lemons with its soft light tone."
+    },
+    {
+      "name": "B'dazzled blue",
+      "hex": "#2E5894",
+      "category": "blues",
+      "description": "A soft medium blue reminiscent of deep ocean water."
+    },
+    {
+      "name": "Big dip o\u2019ruby",
+      "hex": "#9C2542",
+      "category": "reds",
+      "description": "Similar to brick walls, it's a vibrant medium red."
+    },
+    {
+      "name": "Bisque",
+      "hex": "#FFE4C4",
+      "category": "oranges",
+      "description": "This orange evokes tangerine peel with its vibrant light tone."
+    },
+    {
+      "name": "Bistre",
+      "hex": "#3D2B1F",
+      "category": "oranges",
+      "description": "A soft dark orange reminiscent of tangerine peel."
+    },
+    {
+      "name": "Bistre brown",
+      "hex": "#967117",
+      "category": "oranges",
+      "description": "Similar to tangerine peel, it's a vibrant medium orange."
+    },
+    {
+      "name": "Bitter lemon",
+      "hex": "#CAE00D",
+      "category": "yellows",
+      "description": "This yellow evokes morning sunlight with its vibrant medium tone."
+    },
+    {
+      "name": "Black",
+      "hex": "#000000",
+      "category": "neutrals",
+      "description": "Similar to weathered stone, it's a muted dark neutral."
+    },
+    {
+      "name": "Black bean",
+      "hex": "#3D0C02",
+      "category": "reds",
+      "description": "A vibrant dark red reminiscent of ripe cherries."
+    },
+    {
+      "name": "Black coral",
+      "hex": "#54626F",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a muted medium blue."
+    },
+    {
+      "name": "Black olive",
+      "hex": "#3B3C36",
+      "category": "yellows",
+      "description": "Named after olive groves, this yellow has a muted dark look."
+    },
+    {
+      "name": "Black Shadows",
+      "hex": "#BFAFB2",
+      "category": "neutrals",
+      "description": "A muted light neutral reminiscent of weathered stone."
+    },
+    {
+      "name": "Blanched almond",
+      "hex": "#FFEBCD",
+      "category": "oranges",
+      "description": "Similar to a glowing sunset, it's a vibrant light orange."
+    },
+    {
+      "name": "Blast-off bronze",
+      "hex": "#A57164",
+      "category": "reds",
+      "description": "A muted medium red reminiscent of ripe cherries."
+    },
+    {
+      "name": "Bleu de France",
+      "hex": "#318CE7",
+      "category": "blues",
+      "description": "A vibrant medium blue reminiscent of clear skies."
+    },
+    {
+      "name": "Blizzard blue",
+      "hex": "#ACE5EE",
+      "category": "blues",
+      "description": "Named after clear skies, this blue has a vibrant light look."
+    },
+    {
+      "name": "Blood red",
+      "hex": "#660000",
+      "category": "reds",
+      "description": "This red evokes ripe cherries with its vibrant dark tone."
+    },
+    {
+      "name": "Blue",
+      "hex": "#0000FF",
+      "category": "blues",
+      "description": "Named after clear skies, this blue has a vibrant medium look."
+    },
+    {
+      "name": "Blue (Crayola)",
+      "hex": "#1F75FE",
+      "category": "blues",
+      "description": "This blue evokes a twilight horizon with its vibrant medium tone."
+    },
+    {
+      "name": "Blue (Munsell)",
+      "hex": "#0093AF",
+      "category": "blues",
+      "description": "Named after deep ocean water, this blue has a vibrant medium look."
+    },
+    {
+      "name": "Blue (NCS)",
+      "hex": "#0087BD",
+      "category": "blues",
+      "description": "This blue evokes clear skies with its vibrant medium tone."
+    },
+    {
+      "name": "Blue (Pantone)",
+      "hex": "#0018A8",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a vibrant medium blue."
+    },
+    {
+      "name": "Blue (pigment)",
+      "hex": "#333399",
+      "category": "blues",
+      "description": "Similar to deep ocean water, it's a soft medium blue."
+    },
+    {
+      "name": "Blue bell",
+      "hex": "#A2A2D0",
+      "category": "blues",
+      "description": "Named after deep ocean water, this blue has a soft light look."
+    },
+    {
+      "name": "Blue-gray (Crayola)",
+      "hex": "#6699CC",
+      "category": "blues",
+      "description": "This blue evokes clear skies with its soft light tone."
+    },
+    {
+      "name": "Blue jeans",
+      "hex": "#5DADEC",
+      "category": "blues",
+      "description": "A vibrant light blue reminiscent of clear skies."
+    },
+    {
+      "name": "Blue sapphire",
+      "hex": "#126180",
+      "category": "blues",
+      "description": "A vibrant dark blue reminiscent of deep ocean water."
+    },
+    {
+      "name": "Blue-violet",
+      "hex": "#8A2BE2",
+      "category": "purples",
+      "description": "This purple evokes lavender fields with its vibrant medium tone."
+    },
+    {
+      "name": "Blue yonder",
+      "hex": "#5072A7",
+      "category": "blues",
+      "description": "This blue evokes a twilight horizon with its soft medium tone."
+    },
+    {
+      "name": "Bluetiful",
+      "hex": "#3C69E7",
+      "category": "blues",
+      "description": "A vibrant medium blue reminiscent of clear skies."
+    },
+    {
+      "name": "Blush",
+      "hex": "#DE5D83",
+      "category": "purples",
+      "description": "A vibrant light purple reminiscent of lavender fields."
+    },
+    {
+      "name": "Bole",
+      "hex": "#79443B",
+      "category": "reds",
+      "description": "A soft medium red reminiscent of ripe cherries."
+    },
+    {
+      "name": "Bone",
+      "hex": "#E3DAC9",
+      "category": "oranges",
+      "description": "Similar to autumn leaves, it's a soft light orange."
+    },
+    {
+      "name": "Brick red",
+      "hex": "#CB4154",
+      "category": "reds",
+      "description": "This red evokes ripe cherries with its soft medium tone."
+    },
+    {
+      "name": "Bright lilac",
+      "hex": "#D891EF",
+      "category": "purples",
+      "description": "Named after royal velvet, this purple has a vibrant light look."
+    },
+    {
+      "name": "Bright yellow (Crayola)",
+      "hex": "#FFAA1D",
+      "category": "oranges",
+      "description": "This orange evokes autumn leaves with its vibrant medium tone."
+    },
+    {
+      "name": "British racing green",
+      "hex": "#004225",
+      "category": "greens",
+      "description": "Named after fresh herbs, this green has a vibrant dark look."
+    },
+    {
+      "name": "Bronze",
+      "hex": "#CD7F32",
+      "category": "oranges",
+      "description": "Named after autumn leaves, this orange has a vibrant medium look."
+    },
+    {
+      "name": "Brown",
+      "hex": "#964B00",
+      "category": "oranges",
+      "description": "This orange evokes a glowing sunset with its vibrant dark tone."
+    },
+    {
+      "name": "Brown sugar",
+      "hex": "#AF6E4D",
+      "category": "oranges",
+      "description": "A soft medium orange reminiscent of autumn leaves."
+    },
+    {
+      "name": "Bud green",
+      "hex": "#7BB661",
+      "category": "greens",
+      "description": "Named after fresh herbs, this green has a soft medium look."
+    },
+    {
+      "name": "Buff",
+      "hex": "#FFC680",
+      "category": "oranges",
+      "description": "Named after a glowing sunset, this orange has a vibrant light look."
+    },
+    {
+      "name": "Burgundy",
+      "hex": "#800020",
+      "category": "reds",
+      "description": "Named after a fresh rose, this red has a vibrant dark look."
+    },
+    {
+      "name": "Burlywood",
+      "hex": "#DEB887",
+      "category": "oranges",
+      "description": "A soft light orange reminiscent of tangerine peel."
+    },
+    {
+      "name": "Burnished brown",
+      "hex": "#A17A74",
+      "category": "reds",
+      "description": "A muted medium red reminiscent of brick walls."
+    },
+    {
+      "name": "Burnt sienna",
+      "hex": "#E97451",
+      "category": "reds",
+      "description": "Similar to brick walls, it's a vibrant light red."
+    },
+    {
+      "name": "Burnt umber",
+      "hex": "#8A3324",
+      "category": "reds",
+      "description": "This red evokes ripe cherries with its soft medium tone."
+    },
+    {
+      "name": "Byzantine",
+      "hex": "#BD33A4",
+      "category": "purples",
+      "description": "This purple evokes violet blossoms with its soft medium tone."
+    },
+    {
+      "name": "Byzantium",
+      "hex": "#702963",
+      "category": "purples",
+      "description": "Named after lavender fields, this purple has a soft medium look."
+    },
+    {
+      "name": "Cadet blue",
+      "hex": "#5F9EA0",
+      "category": "blues",
+      "description": "Named after clear skies, this blue has a muted medium look."
+    },
+    {
+      "name": "Cadet grey",
+      "hex": "#91A3B0",
+      "category": "blues",
+      "description": "Similar to clear skies, it's a muted light blue."
+    },
+    {
+      "name": "Cadmium green",
+      "hex": "#006B3C",
+      "category": "greens",
+      "description": "This green evokes pine forests with its vibrant dark tone."
+    },
+    {
+      "name": "Cadmium orange",
+      "hex": "#ED872D",
+      "category": "oranges",
+      "description": "Named after autumn leaves, this orange has a vibrant medium look."
+    },
+    {
+      "name": "Caf\u00e9 au lait",
+      "hex": "#A67B5B",
+      "category": "oranges",
+      "description": "A muted medium orange reminiscent of tangerine peel."
+    },
+    {
+      "name": "Caf\u00e9 noir",
+      "hex": "#4B3621",
+      "category": "oranges",
+      "description": "A soft dark orange reminiscent of autumn leaves."
+    },
+    {
+      "name": "Cambridge blue",
+      "hex": "#A3C1AD",
+      "category": "greens",
+      "description": "This green evokes spring grass with its muted light tone."
+    },
+    {
+      "name": "Camel",
+      "hex": "#C19A6B",
+      "category": "oranges",
+      "description": "Named after autumn leaves, this orange has a soft medium look."
+    },
+    {
+      "name": "Cameo pink",
+      "hex": "#EFBBCC",
+      "category": "purples",
+      "description": "Named after royal velvet, this purple has a vibrant light look."
+    },
+    {
+      "name": "Canary",
+      "hex": "#FFFF99",
+      "category": "yellows",
+      "description": "Named after sunflower petals, this yellow has a vibrant light look."
+    },
+    {
+      "name": "Canary yellow",
+      "hex": "#FFEF00",
+      "category": "yellows",
+      "description": "This yellow evokes sunflower petals with its vibrant medium tone."
+    },
+    {
+      "name": "Candy pink",
+      "hex": "#E4717A",
+      "category": "reds",
+      "description": "A vibrant light red reminiscent of a fresh rose."
+    },
+    {
+      "name": "Cardinal",
+      "hex": "#C41E3A",
+      "category": "reds",
+      "description": "Similar to a fresh rose, it's a vibrant medium red."
+    },
+    {
+      "name": "Caribbean green",
+      "hex": "#00CC99",
+      "category": "blues",
+      "description": "Similar to deep ocean water, it's a vibrant medium blue."
+    },
+    {
+      "name": "Carmine",
+      "hex": "#960018",
+      "category": "reds",
+      "description": "Named after a fresh rose, this red has a vibrant dark look."
+    },
+    {
+      "name": "Carmine (M&P)",
+      "hex": "#D70040",
+      "category": "purples",
+      "description": "This purple evokes violet blossoms with its vibrant medium tone."
+    },
+    {
+      "name": "Carnation pink",
+      "hex": "#FFA6C9",
+      "category": "purples",
+      "description": "This purple evokes royal velvet with its vibrant light tone."
+    },
+    {
+      "name": "Carnelian",
+      "hex": "#B31B1B",
+      "category": "reds",
+      "description": "A vibrant medium red reminiscent of ripe cherries."
+    },
+    {
+      "name": "Carolina blue",
+      "hex": "#56A0D3",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a soft medium blue."
+    },
+    {
+      "name": "Carrot orange",
+      "hex": "#ED9121",
+      "category": "oranges",
+      "description": "A vibrant medium orange reminiscent of autumn leaves."
+    },
+    {
+      "name": "Catawba",
+      "hex": "#703642",
+      "category": "reds",
+      "description": "Named after brick walls, this red has a soft medium look."
+    },
+    {
+      "name": "Cedar Chest",
+      "hex": "#C95A49",
+      "category": "reds",
+      "description": "This red evokes brick walls with its soft medium tone."
+    },
+    {
+      "name": "Celadon",
+      "hex": "#ACE1AF",
+      "category": "greens",
+      "description": "A soft light green reminiscent of spring grass."
+    },
+    {
+      "name": "Celeste",
+      "hex": "#B2FFFF",
+      "category": "blues",
+      "description": "A vibrant light blue reminiscent of clear skies."
+    },
+    {
+      "name": "Cerise",
+      "hex": "#DE3163",
+      "category": "purples",
+      "description": "A vibrant medium purple reminiscent of lavender fields."
+    },
+    {
+      "name": "Cerulean",
+      "hex": "#007BA7",
+      "category": "blues",
+      "description": "A pure, medium blue reminiscent of clear skies"
+    },
+    {
+      "name": "Cerulean blue",
+      "hex": "#2A52BE",
+      "category": "blues",
+      "description": "A vibrant medium blue reminiscent of deep ocean water."
+    },
+    {
+      "name": "Cerulean frost",
+      "hex": "#6D9BC3",
+      "category": "blues",
+      "description": "This blue evokes a twilight horizon with its soft medium tone."
+    },
+    {
+      "name": "Cerulean (Crayola)",
+      "hex": "#1DACD6",
+      "category": "blues",
+      "description": "A vibrant medium blue reminiscent of a twilight horizon."
+    },
+    {
+      "name": "Cerulean (RGB)",
+      "hex": "#0040FF",
+      "category": "blues",
+      "description": "A vibrant medium blue reminiscent of a twilight horizon."
+    },
+    {
+      "name": "Champagne",
+      "hex": "#F7E7CE",
+      "category": "oranges",
+      "description": "Similar to a glowing sunset, it's a vibrant light orange."
+    },
+    {
+      "name": "Champagne pink",
+      "hex": "#F1DDCF",
+      "category": "oranges",
+      "description": "This orange evokes a glowing sunset with its soft light tone."
+    },
+    {
+      "name": "Charcoal",
+      "hex": "#36454F",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a muted dark blue."
+    },
+    {
+      "name": "Charm pink",
+      "hex": "#E68FAC",
+      "category": "purples",
+      "description": "Similar to violet blossoms, it's a vibrant light purple."
+    },
+    {
+      "name": "Chartreuse (web)",
+      "hex": "#80FF00",
+      "category": "greens",
+      "description": "This green evokes pine forests with its vibrant medium tone."
+    },
+    {
+      "name": "Cherry blossom pink",
+      "hex": "#FFB7C5",
+      "category": "reds",
+      "description": "Similar to brick walls, it's a vibrant light red."
+    },
+    {
+      "name": "Chestnut",
+      "hex": "#954535",
+      "category": "reds",
+      "description": "Similar to a fresh rose, it's a soft medium red."
+    },
+    {
+      "name": "Chili red",
+      "hex": "#E23D28",
+      "category": "reds",
+      "description": "A vibrant medium red reminiscent of ripe cherries."
+    },
+    {
+      "name": "China pink",
+      "hex": "#DE6FA1",
+      "category": "purples",
+      "description": "A vibrant light purple reminiscent of royal velvet."
+    },
+    {
+      "name": "Chinese red",
+      "hex": "#AA381E",
+      "category": "reds",
+      "description": "This red evokes ripe cherries with its vibrant medium tone."
+    },
+    {
+      "name": "Chinese violet",
+      "hex": "#856088",
+      "category": "purples",
+      "description": "Similar to lavender fields, it's a muted medium purple."
+    },
+    {
+      "name": "Chinese yellow",
+      "hex": "#FFB200",
+      "category": "oranges",
+      "description": "Similar to autumn leaves, it's a vibrant medium orange."
+    },
+    {
+      "name": "Chocolate (traditional)",
+      "hex": "#7B3F00",
+      "category": "oranges",
+      "description": "A vibrant dark orange reminiscent of chocolate bars."
+    },
+    {
+      "name": "Chocolate (web)",
+      "hex": "#D2691E",
+      "category": "oranges",
+      "description": "This orange evokes chocolate bars with its vibrant medium tone."
+    },
+    {
+      "name": "Cinereous",
+      "hex": "#98817B",
+      "category": "reds",
+      "description": "Similar to a fresh rose, it's a muted medium red."
+    },
+    {
+      "name": "Cinnamon Satin",
+      "hex": "#CD607E",
+      "category": "purples",
+      "description": "Named after violet blossoms, this purple has a soft medium look."
+    },
+    {
+      "name": "Citrine",
+      "hex": "#E4D00A",
+      "category": "yellows",
+      "description": "Similar to morning sunlight, it's a vibrant medium yellow."
+    },
+    {
+      "name": "Citron",
+      "hex": "#9FA91F",
+      "category": "yellows",
+      "description": "A vibrant medium yellow reminiscent of morning sunlight."
+    },
+    {
+      "name": "Claret",
+      "hex": "#7F1734",
+      "category": "purples",
+      "description": "Similar to lavender fields, it's a vibrant dark purple."
+    },
+    {
+      "name": "Coffee",
+      "hex": "#6F4E37",
+      "category": "oranges",
+      "description": "A soft medium orange reminiscent of fresh coffee."
+    },
+    {
+      "name": "Columbia Blue",
+      "hex": "#B9D9EB",
+      "category": "blues",
+      "description": "Similar to clear skies, it's a soft light blue."
+    },
+    {
+      "name": "Congo pink",
+      "hex": "#F88379",
+      "category": "reds",
+      "description": "A vibrant light red reminiscent of ripe cherries."
+    },
+    {
+      "name": "Cool grey",
+      "hex": "#8C92AC",
+      "category": "blues",
+      "description": "This blue evokes a twilight horizon with its muted light tone."
+    },
+    {
+      "name": "Copper",
+      "hex": "#B87333",
+      "category": "oranges",
+      "description": "Similar to a glowing sunset, it's a soft medium orange."
+    },
+    {
+      "name": "Copper (Crayola)",
+      "hex": "#DA8A67",
+      "category": "oranges",
+      "description": "This orange evokes tangerine peel with its vibrant light tone."
+    },
+    {
+      "name": "Copper penny",
+      "hex": "#AD6F69",
+      "category": "reds",
+      "description": "Similar to brick walls, it's a muted medium red."
+    },
+    {
+      "name": "Copper red",
+      "hex": "#CB6D51",
+      "category": "reds",
+      "description": "Similar to ripe cherries, it's a soft medium red."
+    },
+    {
+      "name": "Copper rose",
+      "hex": "#996666",
+      "category": "reds",
+      "description": "Named after rose petals, this red has a muted medium look."
+    },
+    {
+      "name": "Coquelicot",
+      "hex": "#FF3800",
+      "category": "reds",
+      "description": "A vibrant medium red reminiscent of a fresh rose."
+    },
+    {
+      "name": "Coral",
+      "hex": "#FF7F50",
+      "category": "oranges",
+      "description": "Named after autumn leaves, this orange has a vibrant light look."
+    },
+    {
+      "name": "Coral pink",
+      "hex": "#F88379",
+      "category": "reds",
+      "description": "A vibrant light red reminiscent of a fresh rose."
+    },
+    {
+      "name": "Cordovan",
+      "hex": "#893F45",
+      "category": "reds",
+      "description": "Similar to ripe cherries, it's a soft medium red."
+    },
+    {
+      "name": "Corn",
+      "hex": "#FBEC5D",
+      "category": "yellows",
+      "description": "Similar to sunflower petals, it's a vibrant light yellow."
+    },
+    {
+      "name": "Cornflower blue",
+      "hex": "#6495ED",
+      "category": "blues",
+      "description": "Named after clear skies, this blue has a vibrant light look."
+    },
+    {
+      "name": "Cornsilk",
+      "hex": "#FFF8DC",
+      "category": "yellows",
+      "description": "Named after morning sunlight, this yellow has a vibrant light look."
+    },
+    {
+      "name": "Cosmic cobalt",
+      "hex": "#2E2D88",
+      "category": "blues",
+      "description": "A soft medium blue reminiscent of a twilight horizon."
+    },
+    {
+      "name": "Cosmic latte",
+      "hex": "#FFF8E7",
+      "category": "neutrals",
+      "description": "A vibrant light neutral reminiscent of weathered stone."
+    },
+    {
+      "name": "Coyote brown",
+      "hex": "#81613C",
+      "category": "oranges",
+      "description": "This orange evokes tangerine peel with its soft medium tone."
+    },
+    {
+      "name": "Cotton candy",
+      "hex": "#FFBCD9",
+      "category": "purples",
+      "description": "A vibrant light purple reminiscent of lavender fields."
+    },
+    {
+      "name": "Cream",
+      "hex": "#FFFDD0",
+      "category": "yellows",
+      "description": "This yellow evokes ripe lemons with its vibrant light tone."
+    },
+    {
+      "name": "Crimson",
+      "hex": "#DC143C",
+      "category": "reds",
+      "description": "This red evokes a fresh rose with its vibrant medium tone."
+    },
+    {
+      "name": "Crimson (UA)",
+      "hex": "#9E1B32",
+      "category": "reds",
+      "description": "Similar to ripe cherries, it's a vibrant medium red."
+    },
+    {
+      "name": "Cultured Pearl",
+      "hex": "#F5F5F5",
+      "category": "neutrals",
+      "description": "A muted light neutral reminiscent of soft ash."
+    },
+    {
+      "name": "Cyan",
+      "hex": "#00FFFF",
+      "category": "blues",
+      "description": "This blue evokes deep ocean water with its vibrant medium tone."
+    },
+    {
+      "name": "Cyan (process)",
+      "hex": "#00B7EB",
+      "category": "blues",
+      "description": "This blue evokes a twilight horizon with its vibrant medium tone."
+    },
+    {
+      "name": "Cyber grape",
+      "hex": "#58427C",
+      "category": "purples",
+      "description": "A soft medium purple reminiscent of lavender fields."
+    },
+    {
+      "name": "Cyber yellow",
+      "hex": "#FFD300",
+      "category": "yellows",
+      "description": "Named after ripe lemons, this yellow has a vibrant medium look."
+    },
+    {
+      "name": "Cyclamen",
+      "hex": "#F56FA1",
+      "category": "purples",
+      "description": "This purple evokes lavender fields with its vibrant light tone."
+    },
+    {
+      "name": "Dandelion",
+      "hex": "#FED85D",
+      "category": "yellows",
+      "description": "This yellow evokes sunflower petals with its vibrant light tone."
+    },
+    {
+      "name": "Dark brown",
+      "hex": "#654321",
+      "category": "oranges",
+      "description": "Named after autumn leaves, this orange has a soft dark look."
+    },
+    {
+      "name": "Dark byzantium",
+      "hex": "#5D3954",
+      "category": "purples",
+      "description": "This purple evokes violet blossoms with its muted dark tone."
+    },
+    {
+      "name": "Dark cyan",
+      "hex": "#008B8B",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a vibrant dark blue."
+    },
+    {
+      "name": "Dark electric blue",
+      "hex": "#536878",
+      "category": "blues",
+      "description": "This blue evokes deep ocean water with its muted medium tone."
+    },
+    {
+      "name": "Dark goldenrod",
+      "hex": "#B8860B",
+      "category": "oranges",
+      "description": "This orange evokes a glowing sunset with its vibrant medium tone."
+    },
+    {
+      "name": "Dark green (X11)",
+      "hex": "#006400",
+      "category": "greens",
+      "description": "A vibrant dark green reminiscent of fresh herbs."
+    },
+    {
+      "name": "Dark jungle green",
+      "hex": "#1A2421",
+      "category": "greens",
+      "description": "A muted dark green reminiscent of pine forests."
+    },
+    {
+      "name": "Dark khaki",
+      "hex": "#BDB76B",
+      "category": "yellows",
+      "description": "This yellow evokes ripe lemons with its soft medium tone."
+    },
+    {
+      "name": "Dark lava",
+      "hex": "#483C32",
+      "category": "oranges",
+      "description": "Named after autumn leaves, this orange has a muted dark look."
+    },
+    {
+      "name": "Dark liver (horses)",
+      "hex": "#543D37",
+      "category": "reds",
+      "description": "Similar to a fresh rose, it's a muted dark red."
+    },
+    {
+      "name": "Dark magenta",
+      "hex": "#8B008B",
+      "category": "purples",
+      "description": "This purple evokes violet blossoms with its vibrant dark tone."
+    },
+    {
+      "name": "Dark olive green",
+      "hex": "#556B2F",
+      "category": "greens",
+      "description": "A soft medium green reminiscent of olive groves."
+    },
+    {
+      "name": "Dark orange",
+      "hex": "#FF8C00",
+      "category": "oranges",
+      "description": "This orange evokes tangerine peel with its vibrant medium tone."
+    },
+    {
+      "name": "Dark orchid",
+      "hex": "#9932CC",
+      "category": "purples",
+      "description": "Similar to royal velvet, it's a vibrant medium purple."
+    },
+    {
+      "name": "Dark purple",
+      "hex": "#301934",
+      "category": "purples",
+      "description": "A soft dark purple reminiscent of royal velvet."
+    },
+    {
+      "name": "Dark red",
+      "hex": "#8B0000",
+      "category": "reds",
+      "description": "Similar to a fresh rose, it's a vibrant dark red."
+    },
+    {
+      "name": "Dark salmon",
+      "hex": "#E9967A",
+      "category": "oranges",
+      "description": "Named after tangerine peel, this orange has a vibrant light look."
+    },
+    {
+      "name": "Dark sea green",
+      "hex": "#8FBC8F",
+      "category": "greens",
+      "description": "Similar to the open sea, it's a muted light green."
+    },
+    {
+      "name": "Dark sienna",
+      "hex": "#3C1414",
+      "category": "reds",
+      "description": "A soft dark red reminiscent of ripe cherries."
+    },
+    {
+      "name": "Dark sky blue",
+      "hex": "#8CBED6",
+      "category": "blues",
+      "description": "Similar to a clear sky, it's a soft light blue."
+    },
+    {
+      "name": "Dark slate blue",
+      "hex": "#483D8B",
+      "category": "blues",
+      "description": "Similar to clear skies, it's a soft medium blue."
+    },
+    {
+      "name": "Dark slate gray",
+      "hex": "#2F4F4F",
+      "category": "blues",
+      "description": "A muted dark blue reminiscent of clear skies."
+    },
+    {
+      "name": "Dark spring green",
+      "hex": "#177245",
+      "category": "greens",
+      "description": "Named after fresh herbs, this green has a vibrant dark look."
+    },
+    {
+      "name": "Dark turquoise",
+      "hex": "#00CED1",
+      "category": "blues",
+      "description": "Similar to deep ocean water, it's a vibrant medium blue."
+    },
+    {
+      "name": "Dark violet",
+      "hex": "#9400D3",
+      "category": "purples",
+      "description": "A vibrant medium purple reminiscent of royal velvet."
+    },
+    {
+      "name": "Davy's grey",
+      "hex": "#555555",
+      "category": "neutrals",
+      "description": "This neutral evokes soft ash with its muted medium tone."
+    },
+    {
+      "name": "Deep cerise",
+      "hex": "#DA3287",
+      "category": "purples",
+      "description": "A vibrant medium purple reminiscent of royal velvet."
+    },
+    {
+      "name": "Deep champagne",
+      "hex": "#FAD6A5",
+      "category": "oranges",
+      "description": "Named after tangerine peel, this orange has a vibrant light look."
+    },
+    {
+      "name": "Deep chestnut",
+      "hex": "#B94E48",
+      "category": "reds",
+      "description": "This red evokes ripe cherries with its soft medium tone."
+    },
+    {
+      "name": "Deep jungle green",
+      "hex": "#004B49",
+      "category": "blues",
+      "description": "Named after deep ocean water, this blue has a vibrant dark look."
+    },
+    {
+      "name": "Deep pink",
+      "hex": "#FF1493",
+      "category": "purples",
+      "description": "Similar to violet blossoms, it's a vibrant medium purple."
+    },
+    {
+      "name": "Deep saffron",
+      "hex": "#FF9933",
+      "category": "oranges",
+      "description": "Similar to tangerine peel, it's a vibrant light orange."
+    },
+    {
+      "name": "Deep sky blue",
+      "hex": "#00BFFF",
+      "category": "blues",
+      "description": "A vibrant medium blue reminiscent of a clear sky."
+    },
+    {
+      "name": "Deep Space Sparkle",
+      "hex": "#4A646C",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a muted medium blue."
+    },
+    {
+      "name": "Deep taupe",
+      "hex": "#7E5E60",
+      "category": "reds",
+      "description": "Similar to brick walls, it's a muted medium red."
+    },
+    {
+      "name": "Denim",
+      "hex": "#1560BD",
+      "category": "blues",
+      "description": "Named after a twilight horizon, this blue has a vibrant medium look."
+    },
+    {
+      "name": "Denim blue",
+      "hex": "#2243B6",
+      "category": "blues",
+      "description": "Named after deep ocean water, this blue has a vibrant medium look."
+    },
+    {
+      "name": "Desert",
+      "hex": "#C19A6B",
+      "category": "oranges",
+      "description": "Similar to tangerine peel, it's a soft medium orange."
+    },
+    {
+      "name": "Desert sand",
+      "hex": "#EDC9AF",
+      "category": "oranges",
+      "description": "This orange evokes tangerine peel with its vibrant light tone."
+    },
+    {
+      "name": "Dim gray",
+      "hex": "#696969",
+      "category": "neutrals",
+      "description": "Named after weathered stone, this neutral has a muted medium look."
+    },
+    {
+      "name": "Dodger blue",
+      "hex": "#1E90FF",
+      "category": "blues",
+      "description": "Named after a twilight horizon, this blue has a vibrant medium look."
+    },
+    {
+      "name": "Drab dark brown",
+      "hex": "#4A412A",
+      "category": "oranges",
+      "description": "This orange evokes tangerine peel with its muted dark tone."
+    },
+    {
+      "name": "Duke blue",
+      "hex": "#00009C",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a vibrant medium blue."
+    },
+    {
+      "name": "Dutch white",
+      "hex": "#EFDFBB",
+      "category": "oranges",
+      "description": "A vibrant light orange reminiscent of a glowing sunset."
+    },
+    {
+      "name": "Ebony",
+      "hex": "#555D50",
+      "category": "greens",
+      "description": "Similar to pine forests, it's a muted medium green."
+    },
+    {
+      "name": "Ecru",
+      "hex": "#C2B280",
+      "category": "yellows",
+      "description": "Named after sunflower petals, this yellow has a soft light look."
+    },
+    {
+      "name": "Eerie black",
+      "hex": "#1B1B1B",
+      "category": "neutrals",
+      "description": "Similar to driftwood, it's a muted dark neutral."
+    },
+    {
+      "name": "Eggplant",
+      "hex": "#614051",
+      "category": "purples",
+      "description": "Named after royal velvet, this purple has a muted medium look."
+    },
+    {
+      "name": "Eggshell",
+      "hex": "#F0EAD6",
+      "category": "yellows",
+      "description": "This yellow evokes ripe lemons with its soft light tone."
+    },
+    {
+      "name": "Electric lime",
+      "hex": "#CCFF00",
+      "category": "yellows",
+      "description": "Named after morning sunlight, this yellow has a vibrant medium look."
+    },
+    {
+      "name": "Electric purple",
+      "hex": "#BF00FF",
+      "category": "purples",
+      "description": "This purple evokes lavender fields with its vibrant medium tone."
+    },
+    {
+      "name": "Electric violet",
+      "hex": "#8F00FF",
+      "category": "purples",
+      "description": "A vibrant medium purple reminiscent of lavender fields."
+    },
+    {
+      "name": "Emerald",
+      "hex": "#50C878",
+      "category": "greens",
+      "description": "Similar to pine forests, it's a soft medium green."
+    },
+    {
+      "name": "Eminence",
+      "hex": "#6C3082",
+      "category": "purples",
+      "description": "This purple evokes violet blossoms with its soft medium tone."
+    },
+    {
+      "name": "English lavender",
+      "hex": "#B48395",
+      "category": "purples",
+      "description": "Similar to lavender blossoms, it's a muted light purple."
+    },
+    {
+      "name": "English red",
+      "hex": "#AB4B52",
+      "category": "reds",
+      "description": "This red evokes ripe cherries with its soft medium tone."
+    },
+    {
+      "name": "English vermillion",
+      "hex": "#CC474B",
+      "category": "reds",
+      "description": "A soft medium red reminiscent of ripe cherries."
+    },
+    {
+      "name": "English violet",
+      "hex": "#563C5C",
+      "category": "purples",
+      "description": "This purple evokes violet blossoms with its muted dark tone."
+    },
+    {
+      "name": "Erin",
+      "hex": "#00FF40",
+      "category": "greens",
+      "description": "A vibrant medium green reminiscent of pine forests."
+    },
+    {
+      "name": "Eton blue",
+      "hex": "#96C8A2",
+      "category": "greens",
+      "description": "Named after pine forests, this green has a soft light look."
+    },
+    {
+      "name": "Fallow",
+      "hex": "#C19A6B",
+      "category": "oranges",
+      "description": "This orange evokes tangerine peel with its soft medium tone."
+    },
+    {
+      "name": "Falu red",
+      "hex": "#801818",
+      "category": "reds",
+      "description": "Named after brick walls, this red has a vibrant dark look."
+    },
+    {
+      "name": "Fandango",
+      "hex": "#B53389",
+      "category": "purples",
+      "description": "Named after royal velvet, this purple has a soft medium look."
+    },
+    {
+      "name": "Fandango pink",
+      "hex": "#DE5285",
+      "category": "purples",
+      "description": "This purple evokes violet blossoms with its vibrant medium tone."
+    },
+    {
+      "name": "Fawn",
+      "hex": "#E5AA70",
+      "category": "oranges",
+      "description": "A vibrant light orange reminiscent of tangerine peel."
+    },
+    {
+      "name": "Fern green",
+      "hex": "#4F7942",
+      "category": "greens",
+      "description": "Named after spring grass, this green has a muted medium look."
+    },
+    {
+      "name": "Field drab",
+      "hex": "#6C541E",
+      "category": "oranges",
+      "description": "This orange evokes autumn leaves with its soft dark tone."
+    },
+    {
+      "name": "Fiery rose",
+      "hex": "#FF5470",
+      "category": "reds",
+      "description": "Named after rose petals, this red has a vibrant light look."
+    },
+    {
+      "name": "Finn",
+      "hex": "#683068",
+      "category": "purples",
+      "description": "This purple evokes violet blossoms with its soft dark tone."
+    },
+    {
+      "name": "Firebrick",
+      "hex": "#B22222",
+      "category": "reds",
+      "description": "A vibrant medium red reminiscent of flames."
+    },
+    {
+      "name": "Fire engine red",
+      "hex": "#CE2029",
+      "category": "reds",
+      "description": "Named after flames, this red has a vibrant medium look."
+    },
+    {
+      "name": "Flame",
+      "hex": "#E25822",
+      "category": "oranges",
+      "description": "Named after autumn leaves, this orange has a vibrant medium look."
+    },
+    {
+      "name": "Flirt",
+      "hex": "#A2006D",
+      "category": "purples",
+      "description": "Named after royal velvet, this purple has a vibrant medium look."
+    },
+    {
+      "name": "Floral white",
+      "hex": "#FFFAF0",
+      "category": "neutrals",
+      "description": "Named after driftwood, this neutral has a vibrant light look."
+    },
+    {
+      "name": "French beige",
+      "hex": "#A67B5B",
+      "category": "oranges",
+      "description": "Similar to a glowing sunset, it's a muted medium orange."
+    },
+    {
+      "name": "French bistre",
+      "hex": "#856D4D",
+      "category": "oranges",
+      "description": "Similar to autumn leaves, it's a muted medium orange."
+    },
+    {
+      "name": "French blue",
+      "hex": "#0072BB",
+      "category": "blues",
+      "description": "Named after a twilight horizon, this blue has a vibrant medium look."
+    },
+    {
+      "name": "French fuchsia",
+      "hex": "#FD3F92",
+      "category": "purples",
+      "description": "This purple evokes lavender fields with its vibrant light tone."
+    },
+    {
+      "name": "French lilac",
+      "hex": "#86608E",
+      "category": "purples",
+      "description": "Named after royal velvet, this purple has a muted medium look."
+    },
+    {
+      "name": "French lime",
+      "hex": "#9EFD38",
+      "category": "greens",
+      "description": "Similar to spring grass, it's a vibrant light green."
+    },
+    {
+      "name": "French mauve",
+      "hex": "#D473D4",
+      "category": "purples",
+      "description": "Similar to violet blossoms, it's a soft light purple."
+    },
+    {
+      "name": "French pink",
+      "hex": "#FD6C9E",
+      "category": "purples",
+      "description": "Similar to royal velvet, it's a vibrant light purple."
+    },
+    {
+      "name": "French raspberry",
+      "hex": "#C72C48",
+      "category": "reds",
+      "description": "A vibrant medium red reminiscent of brick walls."
+    },
+    {
+      "name": "French sky blue",
+      "hex": "#77B5FE",
+      "category": "blues",
+      "description": "This blue evokes a clear sky with its vibrant light tone."
+    },
+    {
+      "name": "French violet",
+      "hex": "#8806CE",
+      "category": "purples",
+      "description": "This purple evokes violet blossoms with its vibrant medium tone."
+    },
+    {
+      "name": "Frostbite",
+      "hex": "#E936A7",
+      "category": "purples",
+      "description": "This purple evokes royal velvet with its vibrant medium tone."
+    },
+    {
+      "name": "Fuchsia",
+      "hex": "#FF00FF",
+      "category": "purples",
+      "description": "This purple evokes lavender fields with its vibrant medium tone."
+    },
+    {
+      "name": "Fuchsia (Crayola)",
+      "hex": "#C154C1",
+      "category": "purples",
+      "description": "Named after violet blossoms, this purple has a soft medium look."
+    },
+    {
+      "name": "Fulvous",
+      "hex": "#E48400",
+      "category": "oranges",
+      "description": "Similar to a glowing sunset, it's a vibrant medium orange."
+    },
+    {
+      "name": "Fuzzy Wuzzy",
+      "hex": "#87421F",
+      "category": "oranges",
+      "description": "Named after tangerine peel, this orange has a vibrant medium look."
+    },
+    {
+      "name": "Gainsboro",
+      "hex": "#DCDCDC",
+      "category": "neutrals",
+      "description": "A muted light neutral reminiscent of soft ash."
+    },
+    {
+      "name": "Generic viridian",
+      "hex": "#007F66",
+      "category": "blues",
+      "description": "Named after clear skies, this blue has a vibrant dark look."
+    },
+    {
+      "name": "Ghost white",
+      "hex": "#F8F8FF",
+      "category": "neutrals",
+      "description": "A vibrant light neutral reminiscent of soft ash."
+    },
+    {
+      "name": "Glaucous",
+      "hex": "#6082B6",
+      "category": "blues",
+      "description": "A grayish-blue with muted, dusty appearance."
+    },
+    {
+      "name": "Glossy grape",
+      "hex": "#AB92B3",
+      "category": "purples",
+      "description": "A muted light purple reminiscent of royal velvet."
+    },
+    {
+      "name": "GO green",
+      "hex": "#00AB66",
+      "category": "greens",
+      "description": "Similar to pine forests, it's a vibrant medium green."
+    },
+    {
+      "name": "Gold (metallic)",
+      "hex": "#D4AF37",
+      "category": "yellows",
+      "description": "Named after ripe lemons, this yellow has a vibrant medium look."
+    },
+    {
+      "name": "Gold (web) (Golden)",
+      "hex": "#FFD700",
+      "category": "yellows",
+      "description": "This yellow evokes morning sunlight with its vibrant medium tone."
+    },
+    {
+      "name": "Gold (Crayola)",
+      "hex": "#E6BE8A",
+      "category": "oranges",
+      "description": "This orange evokes a glowing sunset with its vibrant light tone."
+    },
+    {
+      "name": "Gold Fusion",
+      "hex": "#85754E",
+      "category": "oranges",
+      "description": "Named after a glowing sunset, this orange has a muted medium look."
+    },
+    {
+      "name": "Golden brown",
+      "hex": "#996515",
+      "category": "oranges",
+      "description": "A vibrant medium orange reminiscent of a glowing sunset."
+    },
+    {
+      "name": "Golden poppy",
+      "hex": "#FCC200",
+      "category": "yellows",
+      "description": "Similar to ripe lemons, it's a vibrant medium yellow."
+    },
+    {
+      "name": "Golden yellow",
+      "hex": "#FFDF00",
+      "category": "yellows",
+      "description": "Named after morning sunlight, this yellow has a vibrant medium look."
+    },
+    {
+      "name": "Gotham green",
+      "hex": "#00573F",
+      "category": "greens",
+      "description": "This green evokes fresh herbs with its vibrant dark tone."
+    },
+    {
+      "name": "Granite gray",
+      "hex": "#676767",
+      "category": "neutrals",
+      "description": "This neutral evokes soft ash with its muted medium tone."
+    },
+    {
+      "name": "Granny Smith apple",
+      "hex": "#A8E4A0",
+      "category": "greens",
+      "description": "A soft light green reminiscent of fresh herbs."
+    },
+    {
+      "name": "Gray (web)",
+      "hex": "#808080",
+      "category": "neutrals",
+      "description": "A muted medium neutral reminiscent of soft ash."
+    },
+    {
+      "name": "Gray (X11 gray)",
+      "hex": "#BEBEBE",
+      "category": "neutrals",
+      "description": "Named after weathered stone, this neutral has a muted light look."
+    },
+    {
+      "name": "Green",
+      "hex": "#00FF00",
+      "category": "greens",
+      "description": "Named after spring grass, this green has a vibrant medium look."
+    },
+    {
+      "name": "Green (Crayola)",
+      "hex": "#1CAC78",
+      "category": "greens",
+      "description": "A vibrant medium green reminiscent of spring grass."
+    },
+    {
+      "name": "Green (web)",
+      "hex": "#008000",
+      "category": "greens",
+      "description": "Named after pine forests, this green has a vibrant dark look."
+    },
+    {
+      "name": "Green (Munsell)",
+      "hex": "#00A877",
+      "category": "greens",
+      "description": "This green evokes pine forests with its vibrant medium tone."
+    },
+    {
+      "name": "Green (NCS)",
+      "hex": "#009F6B",
+      "category": "greens",
+      "description": "Similar to pine forests, it's a vibrant medium green."
+    },
+    {
+      "name": "Green (Pantone)",
+      "hex": "#00AD43",
+      "category": "greens",
+      "description": "Named after pine forests, this green has a vibrant medium look."
+    },
+    {
+      "name": "Green (pigment)",
+      "hex": "#00A550",
+      "category": "greens",
+      "description": "Named after pine forests, this green has a vibrant medium look."
+    },
+    {
+      "name": "Green-blue",
+      "hex": "#1164B4",
+      "category": "blues",
+      "description": "A vibrant medium blue reminiscent of deep ocean water."
+    },
+    {
+      "name": "Green Lizard",
+      "hex": "#A7F432",
+      "category": "greens",
+      "description": "A vibrant medium green reminiscent of pine forests."
+    },
+    {
+      "name": "Green Sheen",
+      "hex": "#6EAEA1",
+      "category": "blues",
+      "description": "A muted medium blue reminiscent of a twilight horizon."
+    },
+    {
+      "name": "Gunmetal",
+      "hex": "#2a3439",
+      "category": "blues",
+      "description": "This blue evokes deep ocean water with its muted dark tone."
+    },
+    {
+      "name": "Hansa yellow",
+      "hex": "#E9D66B",
+      "category": "yellows",
+      "description": "A vibrant light yellow reminiscent of morning sunlight."
+    },
+    {
+      "name": "Harlequin",
+      "hex": "#3FFF00",
+      "category": "greens",
+      "description": "A vibrant medium green reminiscent of fresh herbs."
+    },
+    {
+      "name": "Harvest gold",
+      "hex": "#DA9100",
+      "category": "oranges",
+      "description": "This orange evokes autumn leaves with its vibrant medium tone."
+    },
+    {
+      "name": "Heat Wave",
+      "hex": "#FF7A00",
+      "category": "oranges",
+      "description": "A vibrant medium orange reminiscent of autumn leaves."
+    },
+    {
+      "name": "Heliotrope",
+      "hex": "#DF73FF",
+      "category": "purples",
+      "description": "This purple evokes lavender fields with its vibrant light tone."
+    },
+    {
+      "name": "Heliotrope gray",
+      "hex": "#AA98A9",
+      "category": "purples",
+      "description": "This purple evokes violet blossoms with its muted light tone."
+    },
+    {
+      "name": "Hollywood cerise",
+      "hex": "#F400A1",
+      "category": "purples",
+      "description": "A vibrant medium purple reminiscent of royal velvet."
+    },
+    {
+      "name": "Honolulu blue",
+      "hex": "#006DB0",
+      "category": "blues",
+      "description": "This blue evokes a twilight horizon with its vibrant medium tone."
+    },
+    {
+      "name": "Hooker's green",
+      "hex": "#49796B",
+      "category": "greens",
+      "description": "Similar to pine forests, it's a muted medium green."
+    },
+    {
+      "name": "Hot magenta[broken anchor]",
+      "hex": "#FF1DCE",
+      "category": "purples",
+      "description": "This purple evokes royal velvet with its vibrant medium tone."
+    },
+    {
+      "name": "Hot pink",
+      "hex": "#FF69B4",
+      "category": "purples",
+      "description": "A vibrant light purple reminiscent of lavender fields."
+    },
+    {
+      "name": "Hunter green",
+      "hex": "#355E3B",
+      "category": "greens",
+      "description": "Similar to spring grass, it's a muted dark green."
+    },
+    {
+      "name": "Iceberg",
+      "hex": "#71A6D2",
+      "category": "blues",
+      "description": "A soft light blue reminiscent of clear skies."
+    },
+    {
+      "name": "Illuminating emerald",
+      "hex": "#319177",
+      "category": "greens",
+      "description": "Named after pine forests, this green has a soft medium look."
+    },
+    {
+      "name": "Imperial red",
+      "hex": "#ED2939",
+      "category": "reds",
+      "description": "This red evokes a fresh rose with its vibrant medium tone."
+    },
+    {
+      "name": "Inchworm",
+      "hex": "#B2EC5D",
+      "category": "greens",
+      "description": "This green evokes spring grass with its vibrant light tone."
+    },
+    {
+      "name": "Independence",
+      "hex": "#4C516D",
+      "category": "blues",
+      "description": "Similar to clear skies, it's a muted medium blue."
+    },
+    {
+      "name": "India green",
+      "hex": "#138808",
+      "category": "greens",
+      "description": "A vibrant dark green reminiscent of fresh herbs."
+    },
+    {
+      "name": "Indian red",
+      "hex": "#CD5C5C",
+      "category": "reds",
+      "description": "A soft medium red reminiscent of brick walls."
+    },
+    {
+      "name": "Indian yellow",
+      "hex": "#E3A857",
+      "category": "oranges",
+      "description": "Named after a glowing sunset, this orange has a vibrant light look."
+    },
+    {
+      "name": "Indigo",
+      "hex": "#6A5DFF",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a vibrant light blue."
+    },
+    {
+      "name": "Indigo dye",
+      "hex": "#00416A",
+      "category": "blues",
+      "description": "Similar to clear skies, it's a vibrant dark blue."
+    },
+    {
+      "name": "International Klein Blue",
+      "hex": "#130a8f",
+      "category": "blues",
+      "description": "Named after clear skies, this blue has a vibrant medium look."
+    },
+    {
+      "name": "International orange (engineering)",
+      "hex": "#BA160C",
+      "category": "reds",
+      "description": "A vibrant medium red reminiscent of a fresh rose."
+    },
+    {
+      "name": "International orange (Golden Gate Bridge)",
+      "hex": "#C0362C",
+      "category": "reds",
+      "description": "Similar to a fresh rose, it's a vibrant medium red."
+    },
+    {
+      "name": "Irresistible",
+      "hex": "#B3446C",
+      "category": "purples",
+      "description": "Named after lavender fields, this purple has a soft medium look."
+    },
+    {
+      "name": "Isabelline",
+      "hex": "#F4F0EC",
+      "category": "neutrals",
+      "description": "This neutral evokes driftwood with its muted light tone."
+    },
+    {
+      "name": "Italian sky blue",
+      "hex": "#B2FFFF",
+      "category": "blues",
+      "description": "Named after a clear sky, this blue has a vibrant light look."
+    },
+    {
+      "name": "Ivory",
+      "hex": "#FFFFF0",
+      "category": "neutrals",
+      "description": "Similar to weathered stone, it's a vibrant light neutral."
+    },
+    {
+      "name": "Japanese carmine",
+      "hex": "#9D2933",
+      "category": "reds",
+      "description": "Named after brick walls, this red has a soft medium look."
+    },
+    {
+      "name": "Japanese violet",
+      "hex": "#5B3256",
+      "category": "purples",
+      "description": "Named after royal velvet, this purple has a muted dark look."
+    },
+    {
+      "name": "Jasmine",
+      "hex": "#F8DE7E",
+      "category": "yellows",
+      "description": "Similar to morning sunlight, it's a vibrant light yellow."
+    },
+    {
+      "name": "Jazzberry jam",
+      "hex": "#A50B5E",
+      "category": "purples",
+      "description": "This purple evokes royal velvet with its vibrant medium tone."
+    },
+    {
+      "name": "Jet",
+      "hex": "#343434",
+      "category": "neutrals",
+      "description": "Similar to weathered stone, it's a muted dark neutral."
+    },
+    {
+      "name": "Jonquil",
+      "hex": "#F4CA16",
+      "category": "yellows",
+      "description": "This yellow evokes ripe lemons with its vibrant medium tone."
+    },
+    {
+      "name": "June bud",
+      "hex": "#BDDA57",
+      "category": "yellows",
+      "description": "Named after ripe lemons, this yellow has a vibrant medium look."
+    },
+    {
+      "name": "Jungle green",
+      "hex": "#29AB87",
+      "category": "greens",
+      "description": "A vibrant medium green reminiscent of pine forests."
+    },
+    {
+      "name": "Kelly green",
+      "hex": "#4CBB17",
+      "category": "greens",
+      "description": "Similar to pine forests, it's a vibrant medium green."
+    },
+    {
+      "name": "Keppel",
+      "hex": "#3AB09E",
+      "category": "blues",
+      "description": "Named after clear skies, this blue has a soft medium look."
+    },
+    {
+      "name": "Key lime",
+      "hex": "#E8F48C",
+      "category": "yellows",
+      "description": "Similar to sunflower petals, it's a vibrant light yellow."
+    },
+    {
+      "name": "Khaki (web)",
+      "hex": "#C3B091",
+      "category": "oranges",
+      "description": "Similar to a glowing sunset, it's a muted light orange."
+    },
+    {
+      "name": "Khaki (X11) (Light khaki)",
+      "hex": "#F0E68C",
+      "category": "yellows",
+      "description": "Similar to ripe lemons, it's a vibrant light yellow."
+    },
+    {
+      "name": "Kobe",
+      "hex": "#882D17",
+      "category": "reds",
+      "description": "A vibrant medium red reminiscent of brick walls."
+    },
+    {
+      "name": "Kobi",
+      "hex": "#E79FC4",
+      "category": "purples",
+      "description": "This purple evokes lavender fields with its soft light tone."
+    },
+    {
+      "name": "Kobicha",
+      "hex": "#6B4423",
+      "category": "oranges",
+      "description": "This orange evokes autumn leaves with its soft dark tone."
+    },
+    {
+      "name": "KSU purple",
+      "hex": "#512888",
+      "category": "purples",
+      "description": "Named after lavender fields, this purple has a soft medium look."
+    },
+    {
+      "name": "Languid lavender",
+      "hex": "#D6CADD",
+      "category": "neutrals",
+      "description": "Named after lavender blossoms, this neutral has a muted light look."
+    },
+    {
+      "name": "Lapis lazuli",
+      "hex": "#26619C",
+      "category": "blues",
+      "description": "This blue evokes a twilight horizon with its vibrant medium tone."
+    },
+    {
+      "name": "Laser lemon",
+      "hex": "#FFFF66",
+      "category": "yellows",
+      "description": "Named after morning sunlight, this yellow has a vibrant light look."
+    },
+    {
+      "name": "Laurel green",
+      "hex": "#A9BA9D",
+      "category": "greens",
+      "description": "Named after fresh herbs, this green has a muted light look."
+    },
+    {
+      "name": "Lava",
+      "hex": "#CF1020",
+      "category": "reds",
+      "description": "A vibrant medium red reminiscent of a fresh rose."
+    },
+    {
+      "name": "Lavender (floral)",
+      "hex": "#B57EDC",
+      "category": "purples",
+      "description": "A soft light purple reminiscent of lavender blossoms."
+    },
+    {
+      "name": "Lavender (web)",
+      "hex": "#E6E6FA",
+      "category": "neutrals",
+      "description": "Similar to lavender blossoms, it's a vibrant light neutral."
+    },
+    {
+      "name": "Lavender blue",
+      "hex": "#CCCCFF",
+      "category": "blues",
+      "description": "This blue evokes lavender blossoms with its vibrant light tone."
+    },
+    {
+      "name": "Lavender blush",
+      "hex": "#FFF0F5",
+      "category": "neutrals",
+      "description": "Named after lavender blossoms, this neutral has a vibrant light look."
+    },
+    {
+      "name": "Lavender gray",
+      "hex": "#C4C3D0",
+      "category": "neutrals",
+      "description": "This neutral evokes lavender blossoms with its muted light tone."
+    },
+    {
+      "name": "Lawn green",
+      "hex": "#7CFC00",
+      "category": "greens",
+      "description": "Similar to pine forests, it's a vibrant medium green."
+    },
+    {
+      "name": "Lemon",
+      "hex": "#FFF700",
+      "category": "yellows",
+      "description": "Similar to ripe lemons, it's a vibrant medium yellow."
+    },
+    {
+      "name": "Lemon chiffon",
+      "hex": "#FFFACD",
+      "category": "yellows",
+      "description": "Similar to ripe lemons, it's a vibrant light yellow."
+    },
+    {
+      "name": "Lemon curry",
+      "hex": "#CCA01D",
+      "category": "oranges",
+      "description": "Named after a glowing sunset, this orange has a vibrant medium look."
+    },
+    {
+      "name": "Lemon glacier",
+      "hex": "#FDFF00",
+      "category": "yellows",
+      "description": "Similar to ripe lemons, it's a vibrant medium yellow."
+    },
+    {
+      "name": "Lemon meringue",
+      "hex": "#F6EABE",
+      "category": "yellows",
+      "description": "This yellow evokes ripe lemons with its vibrant light tone."
+    },
+    {
+      "name": "Liberty",
+      "hex": "#545AA7",
+      "category": "blues",
+      "description": "This blue evokes a twilight horizon with its soft medium tone."
+    },
+    {
+      "name": "Light blue",
+      "hex": "#ADD8E6",
+      "category": "blues",
+      "description": "This blue evokes clear skies with its soft light tone."
+    },
+    {
+      "name": "Light coral",
+      "hex": "#F08080",
+      "category": "reds",
+      "description": "Named after brick walls, this red has a vibrant light look."
+    },
+    {
+      "name": "Light cornflower blue",
+      "hex": "#93CCEA",
+      "category": "blues",
+      "description": "Similar to deep ocean water, it's a vibrant light blue."
+    },
+    {
+      "name": "Light cyan",
+      "hex": "#E0FFFF",
+      "category": "blues",
+      "description": "This blue evokes clear skies with its vibrant light tone."
+    },
+    {
+      "name": "Light French beige",
+      "hex": "#C8AD7F",
+      "category": "oranges",
+      "description": "This orange evokes a glowing sunset with its soft light tone."
+    },
+    {
+      "name": "Light goldenrod yellow",
+      "hex": "#FAFAD2",
+      "category": "yellows",
+      "description": "This yellow evokes ripe lemons with its vibrant light tone."
+    },
+    {
+      "name": "Light gray",
+      "hex": "#D3D3D3",
+      "category": "neutrals",
+      "description": "A muted light neutral reminiscent of soft ash."
+    },
+    {
+      "name": "Light green",
+      "hex": "#90EE90",
+      "category": "greens",
+      "description": "This green evokes fresh herbs with its vibrant light tone."
+    },
+    {
+      "name": "Light orange",
+      "hex": "#FED8B1",
+      "category": "oranges",
+      "description": "A vibrant light orange reminiscent of a glowing sunset."
+    },
+    {
+      "name": "Light periwinkle",
+      "hex": "#C5CBE1",
+      "category": "blues",
+      "description": "Similar to clear skies, it's a soft light blue."
+    },
+    {
+      "name": "Light pink",
+      "hex": "#FFB6C1",
+      "category": "reds",
+      "description": "This red evokes brick walls with its vibrant light tone."
+    },
+    {
+      "name": "Light purple",
+      "hex": "#D8BFD8",
+      "category": "purples",
+      "description": "Named after lavender fields, this purple has a muted light look."
+    },
+    {
+      "name": "Light salmon",
+      "hex": "#FFA07A",
+      "category": "oranges",
+      "description": "A vibrant light orange reminiscent of autumn leaves."
+    },
+    {
+      "name": "Light sea green",
+      "hex": "#20B2AA",
+      "category": "blues",
+      "description": "Similar to the open sea, it's a vibrant medium blue."
+    },
+    {
+      "name": "Light sky blue",
+      "hex": "#87CEFA",
+      "category": "blues",
+      "description": "Named after a clear sky, this blue has a vibrant light look."
+    },
+    {
+      "name": "Light slate gray",
+      "hex": "#778899",
+      "category": "blues",
+      "description": "Named after deep ocean water, this blue has a muted medium look."
+    },
+    {
+      "name": "Light steel blue",
+      "hex": "#B0C4DE",
+      "category": "blues",
+      "description": "This blue evokes deep ocean water with its soft light tone."
+    },
+    {
+      "name": "Light yellow",
+      "hex": "#FFFFE0",
+      "category": "yellows",
+      "description": "Similar to sunflower petals, it's a vibrant light yellow."
+    },
+    {
+      "name": "Lilac",
+      "hex": "#C8A2C8",
+      "category": "purples",
+      "description": "A muted light purple reminiscent of royal velvet."
+    },
+    {
+      "name": "Lilac Luster",
+      "hex": "#AE98AA",
+      "category": "purples",
+      "description": "Named after violet blossoms, this purple has a muted light look."
+    },
+    {
+      "name": "Lime (color wheel)",
+      "hex": "#BFFF00",
+      "category": "greens",
+      "description": "A vibrant medium green reminiscent of pine forests."
+    },
+    {
+      "name": "Lime (web) (X11 green)",
+      "hex": "#00FF00",
+      "category": "greens",
+      "description": "A vibrant medium green reminiscent of fresh herbs."
+    },
+    {
+      "name": "Lime green",
+      "hex": "#32CD32",
+      "category": "greens",
+      "description": "This green evokes spring grass with its vibrant medium tone."
+    },
+    {
+      "name": "Lincoln green",
+      "hex": "#195905",
+      "category": "greens",
+      "description": "Similar to fresh herbs, it's a vibrant dark green."
+    },
+    {
+      "name": "Linen",
+      "hex": "#FAF0E6",
+      "category": "neutrals",
+      "description": "This neutral evokes weathered stone with its vibrant light tone."
+    },
+    {
+      "name": "Lion",
+      "hex": "#DECC9C",
+      "category": "oranges",
+      "description": "Named after autumn leaves, this orange has a soft light look."
+    },
+    {
+      "name": "Liseran purple",
+      "hex": "#DE6FA1",
+      "category": "purples",
+      "description": "This purple evokes lavender fields with its vibrant light tone."
+    },
+    {
+      "name": "Little boy blue",
+      "hex": "#6CA0DC",
+      "category": "blues",
+      "description": "Named after a twilight horizon, this blue has a vibrant light look."
+    },
+    {
+      "name": "Liver",
+      "hex": "#674C47",
+      "category": "reds",
+      "description": "Named after a fresh rose, this red has a muted medium look."
+    },
+    {
+      "name": "Liver (dogs)",
+      "hex": "#B86D29",
+      "category": "oranges",
+      "description": "Named after a glowing sunset, this orange has a vibrant medium look."
+    },
+    {
+      "name": "Liver (organ)",
+      "hex": "#6C2E1F",
+      "category": "reds",
+      "description": "A soft dark red reminiscent of a fresh rose."
+    },
+    {
+      "name": "Liver chestnut",
+      "hex": "#987456",
+      "category": "oranges",
+      "description": "A muted medium orange reminiscent of tangerine peel."
+    },
+    {
+      "name": "Livid",
+      "hex": "#6699CC",
+      "category": "blues",
+      "description": "This blue evokes clear skies with its soft light tone."
+    },
+    {
+      "name": "Macaroni and Cheese",
+      "hex": "#FFBD88",
+      "category": "oranges",
+      "description": "A vibrant light orange reminiscent of a glowing sunset."
+    },
+    {
+      "name": "Madder Lake",
+      "hex": "#CC3336",
+      "category": "reds",
+      "description": "This red evokes ripe cherries with its vibrant medium tone."
+    },
+    {
+      "name": "Magenta",
+      "hex": "#FF00FF",
+      "category": "purples",
+      "description": "A vibrant medium purple reminiscent of violet blossoms."
+    },
+    {
+      "name": "Magenta (Crayola)[broken anchor]",
+      "hex": "#F653A6",
+      "category": "purples",
+      "description": "A vibrant light purple reminiscent of violet blossoms."
+    },
+    {
+      "name": "Magenta (dye)",
+      "hex": "#CA1F7B",
+      "category": "purples",
+      "description": "Named after royal velvet, this purple has a vibrant medium look."
+    },
+    {
+      "name": "Magenta (Pantone)",
+      "hex": "#D0417E",
+      "category": "purples",
+      "description": "Named after lavender fields, this purple has a vibrant medium look."
+    },
+    {
+      "name": "Magenta (process)",
+      "hex": "#FF0090",
+      "category": "purples",
+      "description": "A vibrant medium purple reminiscent of royal velvet."
+    },
+    {
+      "name": "Magenta haze",
+      "hex": "#9F4576",
+      "category": "purples",
+      "description": "Similar to violet blossoms, it's a soft medium purple."
+    },
+    {
+      "name": "Magic mint",
+      "hex": "#AAF0D1",
+      "category": "greens",
+      "description": "Similar to mint leaves, it's a vibrant light green."
+    },
+    {
+      "name": "Magnolia",
+      "hex": "#F2E8D7",
+      "category": "oranges",
+      "description": "Named after tangerine peel, this orange has a soft light look."
+    },
+    {
+      "name": "Mahogany",
+      "hex": "#C04000",
+      "category": "oranges",
+      "description": "This orange evokes autumn leaves with its vibrant medium tone."
+    },
+    {
+      "name": "Maize",
+      "hex": "#FBEC5D",
+      "category": "yellows",
+      "description": "This yellow evokes ripe lemons with its vibrant light tone."
+    },
+    {
+      "name": "Maize (Crayola)",
+      "hex": "#F2C649",
+      "category": "oranges",
+      "description": "A vibrant light orange reminiscent of a glowing sunset."
+    },
+    {
+      "name": "Majorelle blue",
+      "hex": "#6050DC",
+      "category": "blues",
+      "description": "This blue evokes a twilight horizon with its vibrant medium tone."
+    },
+    {
+      "name": "Manatee",
+      "hex": "#979AAA",
+      "category": "blues",
+      "description": "This blue evokes a twilight horizon with its muted light tone."
+    },
+    {
+      "name": "Mandarin",
+      "hex": "#F37A48",
+      "category": "oranges",
+      "description": "This orange evokes a glowing sunset with its vibrant light tone."
+    },
+    {
+      "name": "Mango",
+      "hex": "#FDBE02",
+      "category": "oranges",
+      "description": "A vibrant medium orange reminiscent of autumn leaves."
+    },
+    {
+      "name": "Mango Tango",
+      "hex": "#FF8243",
+      "category": "oranges",
+      "description": "Similar to autumn leaves, it's a vibrant light orange."
+    },
+    {
+      "name": "Mantis",
+      "hex": "#74C365",
+      "category": "greens",
+      "description": "Similar to fresh herbs, it's a soft medium green."
+    },
+    {
+      "name": "Mardi Gras",
+      "hex": "#880085",
+      "category": "purples",
+      "description": "A vibrant dark purple reminiscent of royal velvet."
+    },
+    {
+      "name": "Marigold",
+      "hex": "#EAA221",
+      "category": "oranges",
+      "description": "Similar to a glowing sunset, it's a vibrant medium orange."
+    },
+    {
+      "name": "Maroon (Crayola)",
+      "hex": "#C32148",
+      "category": "reds",
+      "description": "Named after brick walls, this red has a vibrant medium look."
+    },
+    {
+      "name": "Maroon (web)",
+      "hex": "#800000",
+      "category": "reds",
+      "description": "Named after a fresh rose, this red has a vibrant dark look."
+    },
+    {
+      "name": "Maroon (X11)",
+      "hex": "#B03060",
+      "category": "purples",
+      "description": "A soft medium purple reminiscent of royal velvet."
+    },
+    {
+      "name": "Mauve",
+      "hex": "#E0B0FF",
+      "category": "purples",
+      "description": "A vibrant light purple reminiscent of lavender fields."
+    },
+    {
+      "name": "Mauve taupe",
+      "hex": "#915F6D",
+      "category": "purples",
+      "description": "Similar to royal velvet, it's a muted medium purple."
+    },
+    {
+      "name": "Mauvelous",
+      "hex": "#EF98AA",
+      "category": "reds",
+      "description": "Similar to brick walls, it's a vibrant light red."
+    },
+    {
+      "name": "Maximum blue",
+      "hex": "#47ABCC",
+      "category": "blues",
+      "description": "A soft medium blue reminiscent of clear skies."
+    },
+    {
+      "name": "Maximum blue green",
+      "hex": "#30BFBF",
+      "category": "blues",
+      "description": "A soft medium blue reminiscent of clear skies."
+    },
+    {
+      "name": "Maximum blue purple",
+      "hex": "#ACACE6",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a soft light blue."
+    },
+    {
+      "name": "Maximum green",
+      "hex": "#5E8C31",
+      "category": "greens",
+      "description": "A soft medium green reminiscent of fresh herbs."
+    },
+    {
+      "name": "Maximum green yellow",
+      "hex": "#D9E650",
+      "category": "yellows",
+      "description": "Named after sunflower petals, this yellow has a vibrant light look."
+    },
+    {
+      "name": "Maximum purple",
+      "hex": "#733380",
+      "category": "purples",
+      "description": "Named after lavender fields, this purple has a soft medium look."
+    },
+    {
+      "name": "Maximum red",
+      "hex": "#D92121",
+      "category": "reds",
+      "description": "This red evokes a fresh rose with its vibrant medium tone."
+    },
+    {
+      "name": "Maximum red purple",
+      "hex": "#A63A79",
+      "category": "purples",
+      "description": "Named after lavender fields, this purple has a soft medium look."
+    },
+    {
+      "name": "Maximum yellow",
+      "hex": "#FAFA37",
+      "category": "yellows",
+      "description": "Named after morning sunlight, this yellow has a vibrant medium look."
+    },
+    {
+      "name": "Maximum yellow red",
+      "hex": "#F2BA49",
+      "category": "oranges",
+      "description": "Named after autumn leaves, this orange has a vibrant light look."
+    },
+    {
+      "name": "May green",
+      "hex": "#4C9141",
+      "category": "greens",
+      "description": "Named after pine forests, this green has a soft medium look."
+    },
+    {
+      "name": "Maya blue",
+      "hex": "#73C2FB",
+      "category": "blues",
+      "description": "Similar to deep ocean water, it's a vibrant light blue."
+    },
+    {
+      "name": "Medium aquamarine",
+      "hex": "#66DDAA",
+      "category": "greens",
+      "description": "A vibrant light green reminiscent of fresh herbs."
+    },
+    {
+      "name": "Medium blue",
+      "hex": "#0000CD",
+      "category": "blues",
+      "description": "Similar to clear skies, it's a vibrant medium blue."
+    },
+    {
+      "name": "Medium candy apple red",
+      "hex": "#E2062C",
+      "category": "reds",
+      "description": "Named after a fresh rose, this red has a vibrant medium look."
+    },
+    {
+      "name": "Medium carmine",
+      "hex": "#AF4035",
+      "category": "reds",
+      "description": "Named after a fresh rose, this red has a soft medium look."
+    },
+    {
+      "name": "Medium champagne",
+      "hex": "#F3E5AB",
+      "category": "yellows",
+      "description": "A vibrant light yellow reminiscent of morning sunlight."
+    },
+    {
+      "name": "Medium orchid",
+      "hex": "#BA55D3",
+      "category": "purples",
+      "description": "A soft medium purple reminiscent of royal velvet."
+    },
+    {
+      "name": "Medium purple",
+      "hex": "#9370DB",
+      "category": "purples",
+      "description": "Similar to royal velvet, it's a soft light purple."
+    },
+    {
+      "name": "Medium sea green",
+      "hex": "#3CB371",
+      "category": "greens",
+      "description": "Similar to the open sea, it's a soft medium green."
+    },
+    {
+      "name": "Medium slate blue",
+      "hex": "#7B68EE",
+      "category": "blues",
+      "description": "Named after clear skies, this blue has a vibrant light look."
+    },
+    {
+      "name": "Medium spring green",
+      "hex": "#00FA9A",
+      "category": "greens",
+      "description": "A vibrant medium green reminiscent of fresh herbs."
+    },
+    {
+      "name": "Medium turquoise",
+      "hex": "#48D1CC",
+      "category": "blues",
+      "description": "Named after a twilight horizon, this blue has a soft medium look."
+    },
+    {
+      "name": "Medium violet-red",
+      "hex": "#C71585",
+      "category": "purples",
+      "description": "A vibrant medium purple reminiscent of royal velvet."
+    },
+    {
+      "name": "Mellow apricot",
+      "hex": "#F8B878",
+      "category": "oranges",
+      "description": "Similar to autumn leaves, it's a vibrant light orange."
+    },
+    {
+      "name": "Mellow yellow",
+      "hex": "#F8DE7E",
+      "category": "yellows",
+      "description": "Named after morning sunlight, this yellow has a vibrant light look."
+    },
+    {
+      "name": "Melon",
+      "hex": "#FEBAAD",
+      "category": "reds",
+      "description": "Named after brick walls, this red has a vibrant light look."
+    },
+    {
+      "name": "Metallic gold",
+      "hex": "#D3AF37",
+      "category": "yellows",
+      "description": "This yellow evokes sunflower petals with its vibrant medium tone."
+    },
+    {
+      "name": "Metallic Seaweed",
+      "hex": "#0A7E8C",
+      "category": "blues",
+      "description": "Similar to the open sea, it's a vibrant dark blue."
+    },
+    {
+      "name": "Metallic Sunburst",
+      "hex": "#9C7C38",
+      "category": "oranges",
+      "description": "This orange evokes tangerine peel with its soft medium tone."
+    },
+    {
+      "name": "Mexican pink",
+      "hex": "#E4007C",
+      "category": "purples",
+      "description": "Named after royal velvet, this purple has a vibrant medium look."
+    },
+    {
+      "name": "Middle blue",
+      "hex": "#7ED4E6",
+      "category": "blues",
+      "description": "Named after a twilight horizon, this blue has a vibrant light look."
+    },
+    {
+      "name": "Middle blue green",
+      "hex": "#8DD9CC",
+      "category": "blues",
+      "description": "A soft light blue reminiscent of clear skies."
+    },
+    {
+      "name": "Middle blue purple",
+      "hex": "#8B72BE",
+      "category": "purples",
+      "description": "This purple evokes lavender fields with its soft medium tone."
+    },
+    {
+      "name": "Middle grey",
+      "hex": "#8B8680",
+      "category": "neutrals",
+      "description": "This neutral evokes driftwood with its muted medium tone."
+    },
+    {
+      "name": "Middle green",
+      "hex": "#4D8C57",
+      "category": "greens",
+      "description": "A muted medium green reminiscent of pine forests."
+    },
+    {
+      "name": "Middle green yellow",
+      "hex": "#ACBF60",
+      "category": "yellows",
+      "description": "Named after morning sunlight, this yellow has a soft medium look."
+    },
+    {
+      "name": "Middle purple",
+      "hex": "#D982B5",
+      "category": "purples",
+      "description": "This purple evokes violet blossoms with its soft light tone."
+    },
+    {
+      "name": "Middle red",
+      "hex": "#E58E73",
+      "category": "reds",
+      "description": "Named after ripe cherries, this red has a vibrant light look."
+    },
+    {
+      "name": "Middle red purple",
+      "hex": "#A55353",
+      "category": "reds",
+      "description": "This red evokes ripe cherries with its soft medium tone."
+    },
+    {
+      "name": "Middle yellow",
+      "hex": "#FFEB00",
+      "category": "yellows",
+      "description": "Similar to ripe lemons, it's a vibrant medium yellow."
+    },
+    {
+      "name": "Middle yellow red",
+      "hex": "#ECB176",
+      "category": "oranges",
+      "description": "Similar to tangerine peel, it's a vibrant light orange."
+    },
+    {
+      "name": "Midnight",
+      "hex": "#702670",
+      "category": "purples",
+      "description": "Named after royal velvet, this purple has a soft dark look."
+    },
+    {
+      "name": "Midnight blue",
+      "hex": "#191970",
+      "category": "blues",
+      "description": "This blue evokes deep ocean water with its vibrant dark tone."
+    },
+    {
+      "name": "Midnight green (eagle green)",
+      "hex": "#004953",
+      "category": "blues",
+      "description": "This blue evokes deep ocean water with its vibrant dark tone."
+    },
+    {
+      "name": "Mikado yellow",
+      "hex": "#FFC40C",
+      "category": "yellows",
+      "description": "This yellow evokes ripe lemons with its vibrant medium tone."
+    },
+    {
+      "name": "Mimi pink",
+      "hex": "#FFDAE9",
+      "category": "purples",
+      "description": "This purple evokes lavender fields with its vibrant light tone."
+    },
+    {
+      "name": "Mindaro",
+      "hex": "#E3F988",
+      "category": "yellows",
+      "description": "Similar to sunflower petals, it's a vibrant light yellow."
+    },
+    {
+      "name": "Ming",
+      "hex": "#36747D",
+      "category": "blues",
+      "description": "Similar to deep ocean water, it's a soft medium blue."
+    },
+    {
+      "name": "Minion yellow",
+      "hex": "#F5E050",
+      "category": "yellows",
+      "description": "Similar to morning sunlight, it's a vibrant light yellow."
+    },
+    {
+      "name": "Mint",
+      "hex": "#3EB489",
+      "category": "greens",
+      "description": "A soft medium green reminiscent of mint leaves."
+    },
+    {
+      "name": "Mint cream",
+      "hex": "#F5FFFA",
+      "category": "neutrals",
+      "description": "Similar to mint leaves, it's a vibrant light neutral."
+    },
+    {
+      "name": "Mint green",
+      "hex": "#98FF98",
+      "category": "greens",
+      "description": "Similar to mint leaves, it's a vibrant light green."
+    },
+    {
+      "name": "Misty moss",
+      "hex": "#BBB477",
+      "category": "yellows",
+      "description": "Named after morning sunlight, this yellow has a soft light look."
+    },
+    {
+      "name": "Misty rose",
+      "hex": "#FFE4E1",
+      "category": "reds",
+      "description": "This red evokes rose petals with its vibrant light tone."
+    },
+    {
+      "name": "Moccasin",
+      "hex": "#FFE4B5",
+      "category": "oranges",
+      "description": "Named after a glowing sunset, this orange has a vibrant light look."
+    },
+    {
+      "name": "Mode beige",
+      "hex": "#967117",
+      "category": "oranges",
+      "description": "Similar to a glowing sunset, it's a vibrant medium orange."
+    },
+    {
+      "name": "Mona Lisa",
+      "hex": "#FF948E",
+      "category": "reds",
+      "description": "Named after brick walls, this red has a vibrant light look."
+    },
+    {
+      "name": "Morning blue",
+      "hex": "#8DA399",
+      "category": "greens",
+      "description": "Similar to pine forests, it's a muted medium green."
+    },
+    {
+      "name": "Moss green",
+      "hex": "#8A9A5B",
+      "category": "greens",
+      "description": "This green evokes spring grass with its muted medium tone."
+    },
+    {
+      "name": "Mountain Meadow",
+      "hex": "#30BA8F",
+      "category": "greens",
+      "description": "Named after fresh herbs, this green has a soft medium look."
+    },
+    {
+      "name": "Mountbatten pink",
+      "hex": "#997A8D",
+      "category": "purples",
+      "description": "Named after violet blossoms, this purple has a muted medium look."
+    },
+    {
+      "name": "MSU green",
+      "hex": "#18453B",
+      "category": "blues",
+      "description": "Similar to clear skies, it's a soft dark blue."
+    },
+    {
+      "name": "Mulberry",
+      "hex": "#C54B8C",
+      "category": "purples",
+      "description": "Named after lavender fields, this purple has a soft medium look."
+    },
+    {
+      "name": "Mulberry (Crayola)",
+      "hex": "#C8509B",
+      "category": "purples",
+      "description": "Named after lavender fields, this purple has a soft medium look."
+    },
+    {
+      "name": "Mustard",
+      "hex": "#FFDB58",
+      "category": "yellows",
+      "description": "This yellow evokes ripe lemons with its vibrant light tone."
+    },
+    {
+      "name": "Myrtle green",
+      "hex": "#317873",
+      "category": "blues",
+      "description": "A soft medium blue reminiscent of deep ocean water."
+    },
+    {
+      "name": "Mystic",
+      "hex": "#D65282",
+      "category": "purples",
+      "description": "Similar to violet blossoms, it's a vibrant medium purple."
+    },
+    {
+      "name": "Mystic maroon",
+      "hex": "#AD4379",
+      "category": "purples",
+      "description": "Named after violet blossoms, this purple has a soft medium look."
+    },
+    {
+      "name": "Nadeshiko pink",
+      "hex": "#F6ADC6",
+      "category": "purples",
+      "description": "Named after violet blossoms, this purple has a vibrant light look."
+    },
+    {
+      "name": "Naples yellow",
+      "hex": "#FADA5E",
+      "category": "yellows",
+      "description": "This yellow evokes sunflower petals with its vibrant light tone."
+    },
+    {
+      "name": "Navajo white",
+      "hex": "#FFDEAD",
+      "category": "oranges",
+      "description": "This orange evokes a glowing sunset with its vibrant light tone."
+    },
+    {
+      "name": "Neon blue",
+      "hex": "#4666FF",
+      "category": "blues",
+      "description": "Similar to deep ocean water, it's a vibrant light blue."
+    },
+    {
+      "name": "Neon green",
+      "hex": "#39FF14",
+      "category": "greens",
+      "description": "Named after fresh herbs, this green has a vibrant medium look."
+    },
+    {
+      "name": "Neon fuchsia",
+      "hex": "#FE4164",
+      "category": "reds",
+      "description": "A vibrant light red reminiscent of brick walls."
+    },
+    {
+      "name": "New Car",
+      "hex": "#214FC6",
+      "category": "blues",
+      "description": "Named after deep ocean water, this blue has a vibrant medium look."
+    },
+    {
+      "name": "New York pink",
+      "hex": "#D7837F",
+      "category": "reds",
+      "description": "Named after a fresh rose, this red has a soft light look."
+    },
+    {
+      "name": "Nickel",
+      "hex": "#727472",
+      "category": "neutrals",
+      "description": "A muted medium neutral reminiscent of driftwood."
+    },
+    {
+      "name": "Non-photo blue",
+      "hex": "#A4DDED",
+      "category": "blues",
+      "description": "A vibrant light blue reminiscent of a twilight horizon."
+    },
+    {
+      "name": "Nyanza",
+      "hex": "#E9FFDB",
+      "category": "greens",
+      "description": "Similar to spring grass, it's a vibrant light green."
+    },
+    {
+      "name": "Ocher (Ochre)",
+      "hex": "#CC7722",
+      "category": "oranges",
+      "description": "A vibrant medium orange reminiscent of autumn leaves."
+    },
+    {
+      "name": "Old burgundy",
+      "hex": "#43302E",
+      "category": "reds",
+      "description": "A muted dark red reminiscent of a fresh rose."
+    },
+    {
+      "name": "Old gold",
+      "hex": "#CFB53B",
+      "category": "yellows",
+      "description": "A vibrant medium yellow reminiscent of morning sunlight."
+    },
+    {
+      "name": "Old lace",
+      "hex": "#FDF5E6",
+      "category": "neutrals",
+      "description": "This neutral evokes soft ash with its vibrant light tone."
+    },
+    {
+      "name": "Old lavender",
+      "hex": "#796878",
+      "category": "purples",
+      "description": "Similar to lavender blossoms, it's a muted medium purple."
+    },
+    {
+      "name": "Old mauve",
+      "hex": "#673147",
+      "category": "purples",
+      "description": "A soft dark purple reminiscent of violet blossoms."
+    },
+    {
+      "name": "Old rose",
+      "hex": "#C08081",
+      "category": "reds",
+      "description": "Similar to rose petals, it's a soft light red."
+    },
+    {
+      "name": "Old silver",
+      "hex": "#848482",
+      "category": "neutrals",
+      "description": "Similar to weathered stone, it's a muted medium neutral."
+    },
+    {
+      "name": "Olive",
+      "hex": "#808000",
+      "category": "yellows",
+      "description": "Similar to olive groves, it's a vibrant dark yellow."
+    },
+    {
+      "name": "Olive Drab (#3)",
+      "hex": "#6B8E23",
+      "category": "greens",
+      "description": "Similar to olive groves, it's a vibrant medium green."
+    },
+    {
+      "name": "Olive Drab #7",
+      "hex": "#3C341F",
+      "category": "oranges",
+      "description": "Named after olive groves, this orange has a soft dark look."
+    },
+    {
+      "name": "Olive green",
+      "hex": "#B5B35C",
+      "category": "yellows",
+      "description": "This yellow evokes olive groves with its soft medium tone."
+    },
+    {
+      "name": "Olivine",
+      "hex": "#9AB973",
+      "category": "greens",
+      "description": "Named after spring grass, this green has a soft medium look."
+    },
+    {
+      "name": "Onyx",
+      "hex": "#353839",
+      "category": "neutrals",
+      "description": "This neutral evokes driftwood with its muted dark tone."
+    },
+    {
+      "name": "Opal",
+      "hex": "#A8C3BC",
+      "category": "greens",
+      "description": "This green evokes spring grass with its muted light tone."
+    },
+    {
+      "name": "Opera mauve",
+      "hex": "#B784A7",
+      "category": "purples",
+      "description": "Named after violet blossoms, this purple has a muted light look."
+    },
+    {
+      "name": "Orange",
+      "hex": "#FF7F00",
+      "category": "oranges",
+      "description": "This orange evokes tangerine peel with its vibrant medium tone."
+    },
+    {
+      "name": "Orange (Crayola)",
+      "hex": "#FF7538",
+      "category": "oranges",
+      "description": "This orange evokes a glowing sunset with its vibrant light tone."
+    },
+    {
+      "name": "Orange (Pantone)",
+      "hex": "#FF5800",
+      "category": "oranges",
+      "description": "Named after autumn leaves, this orange has a vibrant medium look."
+    },
+    {
+      "name": "Orange (web)",
+      "hex": "#FFA500",
+      "category": "oranges",
+      "description": "Similar to tangerine peel, it's a vibrant medium orange."
+    },
+    {
+      "name": "Orange peel",
+      "hex": "#FF9F00",
+      "category": "oranges",
+      "description": "Similar to a glowing sunset, it's a vibrant medium orange."
+    },
+    {
+      "name": "Orange-red",
+      "hex": "#FF681F",
+      "category": "oranges",
+      "description": "A vibrant medium orange reminiscent of tangerine peel."
+    },
+    {
+      "name": "Orange-red (Crayola)",
+      "hex": "#FF5349",
+      "category": "reds",
+      "description": "Similar to a fresh rose, it's a vibrant light red."
+    },
+    {
+      "name": "Orange soda",
+      "hex": "#FA5B3D",
+      "category": "reds",
+      "description": "This red evokes brick walls with its vibrant light tone."
+    },
+    {
+      "name": "Orange-yellow",
+      "hex": "#F5BD1F",
+      "category": "oranges",
+      "description": "Named after autumn leaves, this orange has a vibrant medium look."
+    },
+    {
+      "name": "Orange-yellow (Crayola)",
+      "hex": "#F8D568",
+      "category": "yellows",
+      "description": "Similar to ripe lemons, it's a vibrant light yellow."
+    },
+    {
+      "name": "Orchid",
+      "hex": "#DA70D6",
+      "category": "purples",
+      "description": "Named after lavender fields, this purple has a soft light look."
+    },
+    {
+      "name": "Orchid pink",
+      "hex": "#F2BDCD",
+      "category": "purples",
+      "description": "Similar to lavender fields, it's a vibrant light purple."
+    },
+    {
+      "name": "Orchid (Crayola)",
+      "hex": "#E29CD2",
+      "category": "purples",
+      "description": "Similar to royal velvet, it's a soft light purple."
+    },
+    {
+      "name": "Outer space (Crayola)",
+      "hex": "#2D383A",
+      "category": "blues",
+      "description": "Named after clear skies, this blue has a muted dark look."
+    },
+    {
+      "name": "Outrageous Orange",
+      "hex": "#FF6E4A",
+      "category": "reds",
+      "description": "A vibrant light red reminiscent of a fresh rose."
+    },
+    {
+      "name": "Oxblood",
+      "hex": "#4A0000",
+      "category": "reds",
+      "description": "Named after ripe cherries, this red has a vibrant dark look."
+    },
+    {
+      "name": "Oxford blue",
+      "hex": "#002147",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a vibrant dark blue."
+    },
+    {
+      "name": "OU Crimson red",
+      "hex": "#841617",
+      "category": "reds",
+      "description": "Similar to brick walls, it's a vibrant medium red."
+    },
+    {
+      "name": "Pacific blue",
+      "hex": "#1CA9C9",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a vibrant medium blue."
+    },
+    {
+      "name": "Pakistan green",
+      "hex": "#006600",
+      "category": "greens",
+      "description": "Named after spring grass, this green has a vibrant dark look."
+    },
+    {
+      "name": "Palatinate purple",
+      "hex": "#682860",
+      "category": "purples",
+      "description": "A soft dark purple reminiscent of royal velvet."
+    },
+    {
+      "name": "Pale aqua",
+      "hex": "#BED3E5",
+      "category": "blues",
+      "description": "A soft light blue reminiscent of a twilight horizon."
+    },
+    {
+      "name": "Pale cerulean",
+      "hex": "#9BC4E2",
+      "category": "blues",
+      "description": "Named after a twilight horizon, this blue has a soft light look."
+    },
+    {
+      "name": "Pale Dogwood",
+      "hex": "#ED7A9B",
+      "category": "purples",
+      "description": "This purple evokes royal velvet with its vibrant light tone."
+    },
+    {
+      "name": "Pale pink",
+      "hex": "#FADADD",
+      "category": "reds",
+      "description": "Similar to brick walls, it's a vibrant light red."
+    },
+    {
+      "name": "Pale purple (Pantone)",
+      "hex": "#FAE6FA",
+      "category": "neutrals",
+      "description": "This neutral evokes weathered stone with its vibrant light tone."
+    },
+    {
+      "name": "Pale spring bud",
+      "hex": "#ECEBBD",
+      "category": "yellows",
+      "description": "Similar to morning sunlight, it's a soft light yellow."
+    },
+    {
+      "name": "Pansy purple",
+      "hex": "#78184A",
+      "category": "purples",
+      "description": "This purple evokes lavender fields with its vibrant dark tone."
+    },
+    {
+      "name": "Paolo Veronese green",
+      "hex": "#009B7D",
+      "category": "blues",
+      "description": "A vibrant medium blue reminiscent of a twilight horizon."
+    },
+    {
+      "name": "Papaya whip",
+      "hex": "#FFEFD5",
+      "category": "oranges",
+      "description": "A vibrant light orange reminiscent of tangerine peel."
+    },
+    {
+      "name": "Paradise pink",
+      "hex": "#E63E62",
+      "category": "reds",
+      "description": "Named after a fresh rose, this red has a vibrant medium look."
+    },
+    {
+      "name": "Parchment",
+      "hex": "#F1E9D2",
+      "category": "oranges",
+      "description": "Similar to autumn leaves, it's a soft light orange."
+    },
+    {
+      "name": "Paris Green",
+      "hex": "#50C878",
+      "category": "greens",
+      "description": "This green evokes fresh herbs with its soft medium tone."
+    },
+    {
+      "name": "Pastel pink",
+      "hex": "#DEA5A4",
+      "category": "reds",
+      "description": "Similar to ripe cherries, it's a soft light red."
+    },
+    {
+      "name": "Patriarch",
+      "hex": "#800080",
+      "category": "purples",
+      "description": "Named after royal velvet, this purple has a vibrant dark look."
+    },
+    {
+      "name": "Paua",
+      "hex": "#1F005E",
+      "category": "purples",
+      "description": "This purple evokes violet blossoms with its vibrant dark tone."
+    },
+    {
+      "name": "Payne's grey",
+      "hex": "#536878",
+      "category": "blues",
+      "description": "Similar to clear skies, it's a muted medium blue."
+    },
+    {
+      "name": "Peach",
+      "hex": "#FFE5B4",
+      "category": "oranges",
+      "description": "Similar to fresh peaches, it's a vibrant light orange."
+    },
+    {
+      "name": "Peach (Crayola)",
+      "hex": "#FFCBA4",
+      "category": "oranges",
+      "description": "This orange evokes fresh peaches with its vibrant light tone."
+    },
+    {
+      "name": "Peach puff",
+      "hex": "#FFDAB9",
+      "category": "oranges",
+      "description": "Similar to fresh peaches, it's a vibrant light orange."
+    },
+    {
+      "name": "Pear",
+      "hex": "#D1E231",
+      "category": "yellows",
+      "description": "Similar to ripe lemons, it's a vibrant medium yellow."
+    },
+    {
+      "name": "Pearly purple",
+      "hex": "#B768A2",
+      "category": "purples",
+      "description": "Similar to lavender fields, it's a soft medium purple."
+    },
+    {
+      "name": "Periwinkle",
+      "hex": "#CCCCFF",
+      "category": "blues",
+      "description": "Named after clear skies, this blue has a vibrant light look."
+    },
+    {
+      "name": "Periwinkle (Crayola)",
+      "hex": "#C3CDE6",
+      "category": "blues",
+      "description": "This blue evokes clear skies with its soft light tone."
+    },
+    {
+      "name": "Permanent Geranium Lake",
+      "hex": "#E12C2C",
+      "category": "reds",
+      "description": "Named after ripe cherries, this red has a vibrant medium look."
+    },
+    {
+      "name": "Persian blue",
+      "hex": "#1C39BB",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a vibrant medium blue."
+    },
+    {
+      "name": "Persian green",
+      "hex": "#00A693",
+      "category": "blues",
+      "description": "Named after clear skies, this blue has a vibrant medium look."
+    },
+    {
+      "name": "Persian indigo",
+      "hex": "#32127A",
+      "category": "purples",
+      "description": "Similar to violet blossoms, it's a vibrant dark purple."
+    },
+    {
+      "name": "Persian orange",
+      "hex": "#D99058",
+      "category": "oranges",
+      "description": "A vibrant medium orange reminiscent of tangerine peel."
+    },
+    {
+      "name": "Persian pink",
+      "hex": "#F77FBE",
+      "category": "purples",
+      "description": "Similar to royal velvet, it's a vibrant light purple."
+    },
+    {
+      "name": "Persian plum",
+      "hex": "#701C1C",
+      "category": "reds",
+      "description": "Similar to brick walls, it's a vibrant dark red."
+    },
+    {
+      "name": "Persian red",
+      "hex": "#CC3333",
+      "category": "reds",
+      "description": "Named after brick walls, this red has a vibrant medium look."
+    },
+    {
+      "name": "Persian rose",
+      "hex": "#FE28A2",
+      "category": "purples",
+      "description": "Similar to rose petals, it's a vibrant medium purple."
+    },
+    {
+      "name": "Persimmon",
+      "hex": "#EC5800",
+      "category": "oranges",
+      "description": "This orange evokes autumn leaves with its vibrant medium tone."
+    },
+    {
+      "name": "Petunia",
+      "hex": "#470659",
+      "category": "purples",
+      "description": "A vibrant dark purple reminiscent of royal velvet."
+    },
+    {
+      "name": "Pewter Blue",
+      "hex": "#8BA8B7",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a muted light blue."
+    },
+    {
+      "name": "Phlox",
+      "hex": "#DF00FF",
+      "category": "purples",
+      "description": "This purple evokes lavender fields with its vibrant medium tone."
+    },
+    {
+      "name": "Phthalo blue",
+      "hex": "#000F89",
+      "category": "blues",
+      "description": "A vibrant dark blue reminiscent of a twilight horizon."
+    },
+    {
+      "name": "Phthalo green",
+      "hex": "#123524",
+      "category": "greens",
+      "description": "Named after fresh herbs, this green has a soft dark look."
+    },
+    {
+      "name": "Picotee blue",
+      "hex": "#2E2787",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a soft medium blue."
+    },
+    {
+      "name": "Pictorial carmine",
+      "hex": "#C30B4E",
+      "category": "purples",
+      "description": "Named after lavender fields, this purple has a vibrant medium look."
+    },
+    {
+      "name": "Piggy pink",
+      "hex": "#FDDDE6",
+      "category": "purples",
+      "description": "This purple evokes violet blossoms with its vibrant light tone."
+    },
+    {
+      "name": "Pine green",
+      "hex": "#01796F",
+      "category": "blues",
+      "description": "A vibrant dark blue reminiscent of clear skies."
+    },
+    {
+      "name": "Pink",
+      "hex": "#FFC0CB",
+      "category": "reds",
+      "description": "Named after a fresh rose, this red has a vibrant light look."
+    },
+    {
+      "name": "Pink (Pantone)",
+      "hex": "#D74894",
+      "category": "purples",
+      "description": "A vibrant medium purple reminiscent of violet blossoms."
+    },
+    {
+      "name": "Pink lace",
+      "hex": "#FFDDF4",
+      "category": "purples",
+      "description": "This purple evokes violet blossoms with its vibrant light tone."
+    },
+    {
+      "name": "Pink lavender",
+      "hex": "#D8B2D1",
+      "category": "purples",
+      "description": "Named after lavender blossoms, this purple has a soft light look."
+    },
+    {
+      "name": "Pink Sherbet",
+      "hex": "#F78FA7",
+      "category": "reds",
+      "description": "Similar to a fresh rose, it's a vibrant light red."
+    },
+    {
+      "name": "Pistachio",
+      "hex": "#93C572",
+      "category": "greens",
+      "description": "Named after fresh herbs, this green has a soft light look."
+    },
+    {
+      "name": "Platinum",
+      "hex": "#E5E4E2",
+      "category": "neutrals",
+      "description": "This neutral evokes driftwood with its muted light tone."
+    },
+    {
+      "name": "Plum",
+      "hex": "#8E4585",
+      "category": "purples",
+      "description": "A soft medium purple reminiscent of royal velvet."
+    },
+    {
+      "name": "Plum (web)",
+      "hex": "#DDA0DD",
+      "category": "purples",
+      "description": "Named after royal velvet, this purple has a soft light look."
+    },
+    {
+      "name": "Plump Purple",
+      "hex": "#5946B2",
+      "category": "blues",
+      "description": "A soft medium blue reminiscent of deep ocean water."
+    },
+    {
+      "name": "Polished Pine",
+      "hex": "#5DA493",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a muted medium blue."
+    },
+    {
+      "name": "Pomp and Power",
+      "hex": "#86608E",
+      "category": "purples",
+      "description": "Named after violet blossoms, this purple has a muted medium look."
+    },
+    {
+      "name": "Popstar",
+      "hex": "#BE4F62",
+      "category": "reds",
+      "description": "This red evokes a fresh rose with its soft medium tone."
+    },
+    {
+      "name": "Portland Orange",
+      "hex": "#FF5A36",
+      "category": "reds",
+      "description": "A vibrant light red reminiscent of a fresh rose."
+    },
+    {
+      "name": "Powder blue",
+      "hex": "#B0E0E6",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a soft light blue."
+    },
+    {
+      "name": "Prairie gold",
+      "hex": "#E1CA7A",
+      "category": "yellows",
+      "description": "Similar to morning sunlight, it's a vibrant light yellow."
+    },
+    {
+      "name": "Princeton orange",
+      "hex": "#F58025",
+      "category": "oranges",
+      "description": "Named after autumn leaves, this orange has a vibrant medium look."
+    },
+    {
+      "name": "Prune",
+      "hex": "#701C1C",
+      "category": "reds",
+      "description": "This red evokes a fresh rose with its vibrant dark tone."
+    },
+    {
+      "name": "Prussian Blue",
+      "hex": "#003153",
+      "category": "blues",
+      "description": "A very dark blue with slight green undertones, historically important pigment"
+    },
+    {
+      "name": "Psychedelic purple",
+      "hex": "#DF00FF",
+      "category": "purples",
+      "description": "This purple evokes violet blossoms with its vibrant medium tone."
+    },
+    {
+      "name": "Puce",
+      "hex": "#CC8899",
+      "category": "reds",
+      "description": "A soft light red reminiscent of brick walls."
+    },
+    {
+      "name": "Pullman Brown (UPS Brown)",
+      "hex": "#644117",
+      "category": "oranges",
+      "description": "Similar to autumn leaves, it's a vibrant dark orange."
+    },
+    {
+      "name": "Pumpkin",
+      "hex": "#FF7518",
+      "category": "oranges",
+      "description": "This orange evokes autumn leaves with its vibrant medium tone."
+    },
+    {
+      "name": "Purple",
+      "hex": "#6A0DAD",
+      "category": "purples",
+      "description": "This purple evokes lavender fields with its vibrant medium tone."
+    },
+    {
+      "name": "Purple (web)",
+      "hex": "#800080",
+      "category": "purples",
+      "description": "This purple evokes violet blossoms with its vibrant dark tone."
+    },
+    {
+      "name": "Purple (Munsell)",
+      "hex": "#9F00C5",
+      "category": "purples",
+      "description": "This purple evokes lavender fields with its vibrant medium tone."
+    },
+    {
+      "name": "Purple (X11)",
+      "hex": "#A020F0",
+      "category": "purples",
+      "description": "Similar to violet blossoms, it's a vibrant medium purple."
+    },
+    {
+      "name": "Purple mountain majesty",
+      "hex": "#9678B6",
+      "category": "purples",
+      "description": "A muted medium purple reminiscent of violet blossoms."
+    },
+    {
+      "name": "Purple navy",
+      "hex": "#4E5180",
+      "category": "blues",
+      "description": "Similar to naval uniforms, it's a muted medium blue."
+    },
+    {
+      "name": "Purple pizzazz[broken anchor]",
+      "hex": "#FE4EDA",
+      "category": "purples",
+      "description": "This purple evokes violet blossoms with its vibrant light tone."
+    },
+    {
+      "name": "Purple Plum",
+      "hex": "#9C51B6",
+      "category": "purples",
+      "description": "Similar to lavender fields, it's a soft medium purple."
+    },
+    {
+      "name": "Queen blue",
+      "hex": "#436B95",
+      "category": "blues",
+      "description": "A soft medium blue reminiscent of clear skies."
+    },
+    {
+      "name": "Queen pink",
+      "hex": "#E8CCD7",
+      "category": "purples",
+      "description": "A soft light purple reminiscent of lavender fields."
+    },
+    {
+      "name": "Quick Silver",
+      "hex": "#A6A6A6",
+      "category": "neutrals",
+      "description": "A muted light neutral reminiscent of weathered stone."
+    },
+    {
+      "name": "Quinacridone magenta",
+      "hex": "#8E3A59",
+      "category": "purples",
+      "description": "This purple evokes royal velvet with its soft medium tone."
+    },
+    {
+      "name": "Radical Red",
+      "hex": "#FF355E",
+      "category": "reds",
+      "description": "Similar to brick walls, it's a vibrant light red."
+    },
+    {
+      "name": "Raisin black",
+      "hex": "#242124",
+      "category": "neutrals",
+      "description": "This neutral evokes weathered stone with its muted dark tone."
+    },
+    {
+      "name": "Rajah",
+      "hex": "#FBAB60",
+      "category": "oranges",
+      "description": "A vibrant light orange reminiscent of a glowing sunset."
+    },
+    {
+      "name": "Raspberry",
+      "hex": "#E30B5D",
+      "category": "purples",
+      "description": "Named after violet blossoms, this purple has a vibrant medium look."
+    },
+    {
+      "name": "Raspberry glac\u00e9",
+      "hex": "#915F6D",
+      "category": "purples",
+      "description": "A muted medium purple reminiscent of lavender fields."
+    },
+    {
+      "name": "Raspberry rose",
+      "hex": "#B3446C",
+      "category": "purples",
+      "description": "A soft medium purple reminiscent of rose petals."
+    },
+    {
+      "name": "Raw sienna",
+      "hex": "#D68A59",
+      "category": "oranges",
+      "description": "Named after a glowing sunset, this orange has a vibrant medium look."
+    },
+    {
+      "name": "Raw umber",
+      "hex": "#826644",
+      "category": "oranges",
+      "description": "A soft medium orange reminiscent of a glowing sunset."
+    },
+    {
+      "name": "Razzle dazzle rose",
+      "hex": "#FF33CC",
+      "category": "purples",
+      "description": "Named after rose petals, this purple has a vibrant light look."
+    },
+    {
+      "name": "Razzmatazz",
+      "hex": "#E3256B",
+      "category": "purples",
+      "description": "This purple evokes lavender fields with its vibrant medium tone."
+    },
+    {
+      "name": "Razzmic Berry",
+      "hex": "#8D4E85",
+      "category": "purples",
+      "description": "A muted medium purple reminiscent of lavender fields."
+    },
+    {
+      "name": "Rebecca Purple",
+      "hex": "#663399",
+      "category": "purples",
+      "description": "Similar to lavender fields, it's a soft medium purple."
+    },
+    {
+      "name": "Red",
+      "hex": "#FF0000",
+      "category": "reds",
+      "description": "A vibrant medium red reminiscent of a fresh rose."
+    },
+    {
+      "name": "Red (Crayola)",
+      "hex": "#EE204D",
+      "category": "reds",
+      "description": "Named after ripe cherries, this red has a vibrant medium look."
+    },
+    {
+      "name": "Red (Munsell)",
+      "hex": "#F2003C",
+      "category": "reds",
+      "description": "Named after a fresh rose, this red has a vibrant medium look."
+    },
+    {
+      "name": "Red (NCS)",
+      "hex": "#C40233",
+      "category": "purples",
+      "description": "A vibrant medium purple reminiscent of lavender fields."
+    },
+    {
+      "name": "Red (Pantone)",
+      "hex": "#ED2939",
+      "category": "reds",
+      "description": "Named after a fresh rose, this red has a vibrant medium look."
+    },
+    {
+      "name": "Red (pigment)",
+      "hex": "#ED1C24",
+      "category": "reds",
+      "description": "A vibrant medium red reminiscent of ripe cherries."
+    },
+    {
+      "name": "Red (RYB)",
+      "hex": "#FE2712",
+      "category": "reds",
+      "description": "This red evokes a fresh rose with its vibrant medium tone."
+    },
+    {
+      "name": "Red-orange",
+      "hex": "#FF5349",
+      "category": "reds",
+      "description": "This red evokes ripe cherries with its vibrant light tone."
+    },
+    {
+      "name": "Red ocher (Red ochre)[2]",
+      "hex": "#913831",
+      "category": "reds",
+      "description": "Similar to a fresh rose, it's a soft medium red."
+    },
+    {
+      "name": "Red-orange (Crayola)",
+      "hex": "#FF681F",
+      "category": "oranges",
+      "description": "Similar to a glowing sunset, it's a vibrant medium orange."
+    },
+    {
+      "name": "Red-orange (Color wheel)",
+      "hex": "#FF4500",
+      "category": "oranges",
+      "description": "Named after a glowing sunset, this orange has a vibrant medium look."
+    },
+    {
+      "name": "Red-purple",
+      "hex": "#E40078",
+      "category": "purples",
+      "description": "A vibrant medium purple reminiscent of violet blossoms."
+    },
+    {
+      "name": "Red Salsa",
+      "hex": "#FD3A4A",
+      "category": "reds",
+      "description": "This red evokes brick walls with its vibrant light tone."
+    },
+    {
+      "name": "Red-violet",
+      "hex": "#C71585",
+      "category": "purples",
+      "description": "Named after royal velvet, this purple has a vibrant medium look."
+    },
+    {
+      "name": "Red-violet (Crayola)",
+      "hex": "#C0448F",
+      "category": "purples",
+      "description": "Named after violet blossoms, this purple has a soft medium look."
+    },
+    {
+      "name": "Red-violet (Color wheel)",
+      "hex": "#922B3E",
+      "category": "reds",
+      "description": "Named after a fresh rose, this red has a soft medium look."
+    },
+    {
+      "name": "Redwood",
+      "hex": "#A45A52",
+      "category": "reds",
+      "description": "Named after a fresh rose, this red has a soft medium look."
+    },
+    {
+      "name": "Resolution blue",
+      "hex": "#002387",
+      "category": "blues",
+      "description": "A vibrant dark blue reminiscent of a twilight horizon."
+    },
+    {
+      "name": "Rhythm",
+      "hex": "#777696",
+      "category": "blues",
+      "description": "Named after deep ocean water, this blue has a muted medium look."
+    },
+    {
+      "name": "Rich black",
+      "hex": "#004040",
+      "category": "blues",
+      "description": "Similar to deep ocean water, it's a vibrant dark blue."
+    },
+    {
+      "name": "Rich black (FOGRA29)",
+      "hex": "#010B13",
+      "category": "blues",
+      "description": "This blue evokes deep ocean water with its vibrant dark tone."
+    },
+    {
+      "name": "Rich black (FOGRA39)",
+      "hex": "#010203",
+      "category": "blues",
+      "description": "Named after a twilight horizon, this blue has a soft dark look."
+    },
+    {
+      "name": "Rifle green",
+      "hex": "#444C38",
+      "category": "greens",
+      "description": "A muted dark green reminiscent of spring grass."
+    },
+    {
+      "name": "Robin egg blue",
+      "hex": "#00CCCC",
+      "category": "blues",
+      "description": "A vibrant medium blue reminiscent of clear skies."
+    },
+    {
+      "name": "Rocket metallic",
+      "hex": "#8A7F80",
+      "category": "neutrals",
+      "description": "A muted medium neutral reminiscent of soft ash."
+    },
+    {
+      "name": "Rojo Spanish red",
+      "hex": "#A91101",
+      "category": "reds",
+      "description": "Similar to brick walls, it's a vibrant medium red."
+    },
+    {
+      "name": "Roman silver",
+      "hex": "#838996",
+      "category": "blues",
+      "description": "A muted medium blue reminiscent of clear skies."
+    },
+    {
+      "name": "Rose",
+      "hex": "#FF007F",
+      "category": "purples",
+      "description": "Similar to rose petals, it's a vibrant medium purple."
+    },
+    {
+      "name": "Rose bonbon",
+      "hex": "#F9429E",
+      "category": "purples",
+      "description": "A vibrant light purple reminiscent of rose petals."
+    },
+    {
+      "name": "Rose Dust",
+      "hex": "#9E5E6F",
+      "category": "purples",
+      "description": "Named after rose petals, this purple has a muted medium look."
+    },
+    {
+      "name": "Rose ebony",
+      "hex": "#674846",
+      "category": "reds",
+      "description": "Similar to rose petals, it's a muted medium red."
+    },
+    {
+      "name": "Rose pink",
+      "hex": "#FF66CC",
+      "category": "purples",
+      "description": "A vibrant light purple reminiscent of rose petals."
+    },
+    {
+      "name": "Rose Pompadour",
+      "hex": "#ED7A9B",
+      "category": "purples",
+      "description": "Similar to rose petals, it's a vibrant light purple."
+    },
+    {
+      "name": "Rose red",
+      "hex": "#C21E56",
+      "category": "purples",
+      "description": "Similar to rose petals, it's a vibrant medium purple."
+    },
+    {
+      "name": "Rose taupe",
+      "hex": "#905D5D",
+      "category": "reds",
+      "description": "Similar to rose petals, it's a muted medium red."
+    },
+    {
+      "name": "Rose vale",
+      "hex": "#AB4E52",
+      "category": "reds",
+      "description": "A soft medium red reminiscent of rose petals."
+    },
+    {
+      "name": "Rosewood",
+      "hex": "#65000B",
+      "category": "reds",
+      "description": "This red evokes rose petals with its vibrant dark tone."
+    },
+    {
+      "name": "Rosso corsa",
+      "hex": "#D40000",
+      "category": "reds",
+      "description": "Named after ripe cherries, this red has a vibrant medium look."
+    },
+    {
+      "name": "Rosy brown",
+      "hex": "#BC8F8F",
+      "category": "reds",
+      "description": "A muted light red reminiscent of ripe cherries."
+    },
+    {
+      "name": "Royal blue (dark)",
+      "hex": "#002366",
+      "category": "blues",
+      "description": "Similar to deep ocean water, it's a vibrant dark blue."
+    },
+    {
+      "name": "Royal blue (light)",
+      "hex": "#4169E1",
+      "category": "blues",
+      "description": "Similar to clear skies, it's a vibrant medium blue."
+    },
+    {
+      "name": "Royal yellow",
+      "hex": "#FADA5E",
+      "category": "yellows",
+      "description": "A vibrant light yellow reminiscent of ripe lemons."
+    },
+    {
+      "name": "Ruber",
+      "hex": "#CE4676",
+      "category": "purples",
+      "description": "Similar to lavender fields, it's a soft medium purple."
+    },
+    {
+      "name": "Rubine red",
+      "hex": "#D10056",
+      "category": "purples",
+      "description": "This purple evokes violet blossoms with its vibrant medium tone."
+    },
+    {
+      "name": "Ruby",
+      "hex": "#E0115F",
+      "category": "purples",
+      "description": "Similar to royal velvet, it's a vibrant medium purple."
+    },
+    {
+      "name": "Ruby red",
+      "hex": "#9B111E",
+      "category": "reds",
+      "description": "Similar to a fresh rose, it's a vibrant medium red."
+    },
+    {
+      "name": "Rufous",
+      "hex": "#A81C07",
+      "category": "reds",
+      "description": "This red evokes ripe cherries with its vibrant medium tone."
+    },
+    {
+      "name": "Russet",
+      "hex": "#80461B",
+      "category": "oranges",
+      "description": "Named after autumn leaves, this orange has a vibrant medium look."
+    },
+    {
+      "name": "Russian green",
+      "hex": "#679267",
+      "category": "greens",
+      "description": "This green evokes spring grass with its muted medium tone."
+    },
+    {
+      "name": "Russian violet",
+      "hex": "#32174D",
+      "category": "purples",
+      "description": "A soft dark purple reminiscent of lavender fields."
+    },
+    {
+      "name": "Rust",
+      "hex": "#B7410E",
+      "category": "oranges",
+      "description": "This orange evokes autumn leaves with its vibrant medium tone."
+    },
+    {
+      "name": "Rusty red",
+      "hex": "#DA2C43",
+      "category": "reds",
+      "description": "Named after a fresh rose, this red has a vibrant medium look."
+    },
+    {
+      "name": "Sacramento State green",
+      "hex": "#043927",
+      "category": "greens",
+      "description": "Similar to pine forests, it's a vibrant dark green."
+    },
+    {
+      "name": "Saddle brown",
+      "hex": "#8B4513",
+      "category": "oranges",
+      "description": "Similar to autumn leaves, it's a vibrant medium orange."
+    },
+    {
+      "name": "Safety orange",
+      "hex": "#FF7800",
+      "category": "oranges",
+      "description": "Similar to a glowing sunset, it's a vibrant medium orange."
+    },
+    {
+      "name": "Safety orange (blaze orange)",
+      "hex": "#FF6700",
+      "category": "oranges",
+      "description": "A vibrant medium orange reminiscent of tangerine peel."
+    },
+    {
+      "name": "Safety yellow",
+      "hex": "#EED202",
+      "category": "yellows",
+      "description": "This yellow evokes sunflower petals with its vibrant medium tone."
+    },
+    {
+      "name": "Saffron",
+      "hex": "#F4C430",
+      "category": "yellows",
+      "description": "A vibrant medium yellow reminiscent of sunflower petals."
+    },
+    {
+      "name": "Sage",
+      "hex": "#BCB88A",
+      "category": "yellows",
+      "description": "A muted light yellow reminiscent of morning sunlight."
+    },
+    {
+      "name": "St. Patrick's blue",
+      "hex": "#23297A",
+      "category": "blues",
+      "description": "Named after deep ocean water, this blue has a soft medium look."
+    },
+    {
+      "name": "Salmon",
+      "hex": "#FA8072",
+      "category": "reds",
+      "description": "Named after brick walls, this red has a vibrant light look."
+    },
+    {
+      "name": "Salmon pink",
+      "hex": "#FF91A4",
+      "category": "reds",
+      "description": "Named after a fresh rose, this red has a vibrant light look."
+    },
+    {
+      "name": "Sand",
+      "hex": "#C2B280",
+      "category": "yellows",
+      "description": "Similar to ripe lemons, it's a soft light yellow."
+    },
+    {
+      "name": "Sand dune",
+      "hex": "#967117",
+      "category": "oranges",
+      "description": "A vibrant medium orange reminiscent of autumn leaves."
+    },
+    {
+      "name": "Sandy brown",
+      "hex": "#F4A460",
+      "category": "oranges",
+      "description": "Named after a glowing sunset, this orange has a vibrant light look."
+    },
+    {
+      "name": "Sap green",
+      "hex": "#507D2A",
+      "category": "greens",
+      "description": "Similar to spring grass, it's a soft medium green."
+    },
+    {
+      "name": "Sapphire",
+      "hex": "#0F52BA",
+      "category": "blues",
+      "description": "Named after a twilight horizon, this blue has a vibrant medium look."
+    },
+    {
+      "name": "Sapphire blue",
+      "hex": "#0067A5",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a vibrant medium blue."
+    },
+    {
+      "name": "Sapphire (Crayola)",
+      "hex": "#2D5DA1",
+      "category": "blues",
+      "description": "This blue evokes clear skies with its soft medium tone."
+    },
+    {
+      "name": "Satin sheen gold",
+      "hex": "#CBA135",
+      "category": "oranges",
+      "description": "A soft medium orange reminiscent of a glowing sunset."
+    },
+    {
+      "name": "Scarlet",
+      "hex": "#FF2400",
+      "category": "reds",
+      "description": "This red evokes ripe cherries with its vibrant medium tone."
+    },
+    {
+      "name": "Schauss pink",
+      "hex": "#FF91AF",
+      "category": "purples",
+      "description": "This purple evokes royal velvet with its vibrant light tone."
+    },
+    {
+      "name": "School bus yellow",
+      "hex": "#FFD800",
+      "category": "yellows",
+      "description": "Similar to sunflower petals, it's a vibrant medium yellow."
+    },
+    {
+      "name": "Screamin' Green",
+      "hex": "#66FF66",
+      "category": "greens",
+      "description": "Similar to pine forests, it's a vibrant light green."
+    },
+    {
+      "name": "Sea green",
+      "hex": "#2E8B57",
+      "category": "greens",
+      "description": "A soft medium green reminiscent of the open sea."
+    },
+    {
+      "name": "Sea green (Crayola)",
+      "hex": "#00FFCD",
+      "category": "blues",
+      "description": "A vibrant medium blue reminiscent of the open sea."
+    },
+    {
+      "name": "Seance",
+      "hex": "#612086",
+      "category": "purples",
+      "description": "Named after the open sea, this purple has a vibrant medium look."
+    },
+    {
+      "name": "Seal brown",
+      "hex": "#59260B",
+      "category": "oranges",
+      "description": "Named after the open sea, this orange has a vibrant dark look."
+    },
+    {
+      "name": "Seashell",
+      "hex": "#FFF5EE",
+      "category": "neutrals",
+      "description": "This neutral evokes the open sea with its vibrant light tone."
+    },
+    {
+      "name": "Secret",
+      "hex": "#764374",
+      "category": "purples",
+      "description": "Named after violet blossoms, this purple has a muted medium look."
+    },
+    {
+      "name": "Selective yellow",
+      "hex": "#FFBA00",
+      "category": "oranges",
+      "description": "This orange evokes tangerine peel with its vibrant medium tone."
+    },
+    {
+      "name": "Sepia",
+      "hex": "#704214",
+      "category": "oranges",
+      "description": "Similar to tangerine peel, it's a vibrant dark orange."
+    },
+    {
+      "name": "Shadow",
+      "hex": "#8A795D",
+      "category": "oranges",
+      "description": "Named after autumn leaves, this orange has a muted medium look."
+    },
+    {
+      "name": "Shadow blue",
+      "hex": "#778BA5",
+      "category": "blues",
+      "description": "A muted medium blue reminiscent of a twilight horizon."
+    },
+    {
+      "name": "Shamrock green",
+      "hex": "#009E60",
+      "category": "greens",
+      "description": "A vibrant medium green reminiscent of pine forests."
+    },
+    {
+      "name": "Sheen green",
+      "hex": "#8FD400",
+      "category": "greens",
+      "description": "A vibrant medium green reminiscent of pine forests."
+    },
+    {
+      "name": "Shimmering Blush",
+      "hex": "#D98695",
+      "category": "reds",
+      "description": "Named after a fresh rose, this red has a soft light look."
+    },
+    {
+      "name": "Shiny Shamrock",
+      "hex": "#5FA778",
+      "category": "greens",
+      "description": "Named after fresh herbs, this green has a muted medium look."
+    },
+    {
+      "name": "Shocking pink",
+      "hex": "#FC0FC0",
+      "category": "purples",
+      "description": "Named after lavender fields, this purple has a vibrant medium look."
+    },
+    {
+      "name": "Shocking pink (Crayola)",
+      "hex": "#FF6FFF",
+      "category": "purples",
+      "description": "A vibrant light purple reminiscent of royal velvet."
+    },
+    {
+      "name": "Sienna",
+      "hex": "#882D17",
+      "category": "reds",
+      "description": "A vibrant medium red reminiscent of a fresh rose."
+    },
+    {
+      "name": "Silver",
+      "hex": "#C0C0C0",
+      "category": "neutrals",
+      "description": "This neutral evokes soft ash with its muted light tone."
+    },
+    {
+      "name": "Silver (Crayola)",
+      "hex": "#C9C0BB",
+      "category": "neutrals",
+      "description": "Named after driftwood, this neutral has a muted light look."
+    },
+    {
+      "name": "Silver (Metallic)",
+      "hex": "#AAA9AD",
+      "category": "neutrals",
+      "description": "Similar to driftwood, it's a muted light neutral."
+    },
+    {
+      "name": "Silver chalice",
+      "hex": "#ACACAC",
+      "category": "neutrals",
+      "description": "Named after weathered stone, this neutral has a muted light look."
+    },
+    {
+      "name": "Silver pink",
+      "hex": "#C4AEAD",
+      "category": "reds",
+      "description": "This red evokes ripe cherries with its muted light tone."
+    },
+    {
+      "name": "Silver sand",
+      "hex": "#BFC1C2",
+      "category": "neutrals",
+      "description": "Named after soft ash, this neutral has a muted light look."
+    },
+    {
+      "name": "Sinopia",
+      "hex": "#CB410B",
+      "category": "oranges",
+      "description": "A vibrant medium orange reminiscent of tangerine peel."
+    },
+    {
+      "name": "Sizzling Red",
+      "hex": "#FF3855",
+      "category": "reds",
+      "description": "Similar to a fresh rose, it's a vibrant light red."
+    },
+    {
+      "name": "Sizzling Sunrise",
+      "hex": "#FFDB00",
+      "category": "yellows",
+      "description": "Similar to morning sunlight, it's a vibrant medium yellow."
+    },
+    {
+      "name": "Skobeloff",
+      "hex": "#007474",
+      "category": "blues",
+      "description": "Similar to clear skies, it's a vibrant dark blue."
+    },
+    {
+      "name": "Skin color",
+      "hex": "#FFDEAD",
+      "category": "oranges",
+      "description": "A vibrant light orange reminiscent of autumn leaves."
+    },
+    {
+      "name": "Sky blue",
+      "hex": "#87CEEB",
+      "category": "blues",
+      "description": "A vibrant light blue reminiscent of a clear sky."
+    },
+    {
+      "name": "Sky blue (Crayola)",
+      "hex": "#76D7EA",
+      "category": "blues",
+      "description": "This blue evokes a clear sky with its vibrant light tone."
+    },
+    {
+      "name": "Sky magenta",
+      "hex": "#CF71AF",
+      "category": "purples",
+      "description": "Similar to a clear sky, it's a soft light purple."
+    },
+    {
+      "name": "Slate blue",
+      "hex": "#6A5ACD",
+      "category": "blues",
+      "description": "This blue evokes deep ocean water with its soft medium tone."
+    },
+    {
+      "name": "Slate gray",
+      "hex": "#708090",
+      "category": "blues",
+      "description": "A muted medium blue reminiscent of clear skies."
+    },
+    {
+      "name": "Slimy green",
+      "hex": "#299617",
+      "category": "greens",
+      "description": "Similar to spring grass, it's a vibrant medium green."
+    },
+    {
+      "name": "Smitten",
+      "hex": "#C84186",
+      "category": "purples",
+      "description": "This purple evokes violet blossoms with its soft medium tone."
+    },
+    {
+      "name": "Smoky black",
+      "hex": "#100C08",
+      "category": "oranges",
+      "description": "This orange evokes tangerine peel with its soft dark tone."
+    },
+    {
+      "name": "Snow",
+      "hex": "#FFFAFA",
+      "category": "neutrals",
+      "description": "A vibrant light neutral reminiscent of driftwood."
+    },
+    {
+      "name": "Solid pink",
+      "hex": "#893843",
+      "category": "reds",
+      "description": "Named after ripe cherries, this red has a soft medium look."
+    },
+    {
+      "name": "Sonic silver",
+      "hex": "#757575",
+      "category": "neutrals",
+      "description": "Named after soft ash, this neutral has a muted medium look."
+    },
+    {
+      "name": "Space cadet",
+      "hex": "#1D2951",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a soft dark blue."
+    },
+    {
+      "name": "Spanish bistre",
+      "hex": "#807532",
+      "category": "yellows",
+      "description": "Similar to morning sunlight, it's a soft medium yellow."
+    },
+    {
+      "name": "Spanish blue",
+      "hex": "#0070B8",
+      "category": "blues",
+      "description": "Named after clear skies, this blue has a vibrant medium look."
+    },
+    {
+      "name": "Spanish carmine",
+      "hex": "#D10047",
+      "category": "purples",
+      "description": "Named after violet blossoms, this purple has a vibrant medium look."
+    },
+    {
+      "name": "Spanish gray",
+      "hex": "#989898",
+      "category": "neutrals",
+      "description": "Similar to soft ash, it's a muted medium neutral."
+    },
+    {
+      "name": "Spanish green",
+      "hex": "#009150",
+      "category": "greens",
+      "description": "A vibrant dark green reminiscent of pine forests."
+    },
+    {
+      "name": "Spanish orange",
+      "hex": "#E86100",
+      "category": "oranges",
+      "description": "A vibrant medium orange reminiscent of a glowing sunset."
+    },
+    {
+      "name": "Spanish pink",
+      "hex": "#F7BFBE",
+      "category": "reds",
+      "description": "Named after a fresh rose, this red has a vibrant light look."
+    },
+    {
+      "name": "Spanish red",
+      "hex": "#E60026",
+      "category": "reds",
+      "description": "A vibrant medium red reminiscent of a fresh rose."
+    },
+    {
+      "name": "Spanish sky blue",
+      "hex": "#00FFFE",
+      "category": "blues",
+      "description": "A vibrant medium blue reminiscent of a clear sky."
+    },
+    {
+      "name": "Spanish violet",
+      "hex": "#4C2882",
+      "category": "purples",
+      "description": "Similar to royal velvet, it's a soft medium purple."
+    },
+    {
+      "name": "Spanish viridian",
+      "hex": "#007F5C",
+      "category": "greens",
+      "description": "A vibrant dark green reminiscent of spring grass."
+    },
+    {
+      "name": "Spring bud",
+      "hex": "#A7FC00",
+      "category": "greens",
+      "description": "Named after fresh herbs, this green has a vibrant medium look."
+    },
+    {
+      "name": "Spring Frost",
+      "hex": "#87FF2A",
+      "category": "greens",
+      "description": "A vibrant medium green reminiscent of pine forests."
+    },
+    {
+      "name": "Spring green",
+      "hex": "#00FF7F",
+      "category": "greens",
+      "description": "This green evokes pine forests with its vibrant medium tone."
+    },
+    {
+      "name": "Spring green (Crayola)",
+      "hex": "#ECEBBD",
+      "category": "yellows",
+      "description": "Named after ripe lemons, this yellow has a soft light look."
+    },
+    {
+      "name": "Star command blue",
+      "hex": "#007BB8",
+      "category": "blues",
+      "description": "This blue evokes a twilight horizon with its vibrant medium tone."
+    },
+    {
+      "name": "Steel blue",
+      "hex": "#4682B4",
+      "category": "blues",
+      "description": "Named after clear skies, this blue has a soft medium look."
+    },
+    {
+      "name": "Steel pink",
+      "hex": "#CC33CC",
+      "category": "purples",
+      "description": "Similar to violet blossoms, it's a vibrant medium purple."
+    },
+    {
+      "name": "Stil de grain yellow",
+      "hex": "#FADA5E",
+      "category": "yellows",
+      "description": "A vibrant light yellow reminiscent of morning sunlight."
+    },
+    {
+      "name": "Straw",
+      "hex": "#E4D96F",
+      "category": "yellows",
+      "description": "This yellow evokes morning sunlight with its vibrant light tone."
+    },
+    {
+      "name": "Strawberry",
+      "hex": "#FA5053",
+      "category": "reds",
+      "description": "This red evokes ripe cherries with its vibrant light tone."
+    },
+    {
+      "name": "Strawberry Blonde",
+      "hex": "#FF9361",
+      "category": "oranges",
+      "description": "Named after tangerine peel, this orange has a vibrant light look."
+    },
+    {
+      "name": "Strong Lime Green",
+      "hex": "#33CC33",
+      "category": "greens",
+      "description": "This green evokes pine forests with its vibrant medium tone."
+    },
+    {
+      "name": "Sugar Plum",
+      "hex": "#914E75",
+      "category": "purples",
+      "description": "Similar to royal velvet, it's a soft medium purple."
+    },
+    {
+      "name": "Sunglow",
+      "hex": "#FFCC33",
+      "category": "yellows",
+      "description": "Named after ripe lemons, this yellow has a vibrant light look."
+    },
+    {
+      "name": "Sunray",
+      "hex": "#E3AB57",
+      "category": "oranges",
+      "description": "Similar to a glowing sunset, it's a vibrant light orange."
+    },
+    {
+      "name": "Sunset",
+      "hex": "#FAD6A5",
+      "category": "oranges",
+      "description": "A vibrant light orange reminiscent of tangerine peel."
+    },
+    {
+      "name": "Super pink",
+      "hex": "#CF6BA9",
+      "category": "purples",
+      "description": "Similar to lavender fields, it's a soft light purple."
+    },
+    {
+      "name": "Sweet Brown",
+      "hex": "#A83731",
+      "category": "reds",
+      "description": "Similar to ripe cherries, it's a soft medium red."
+    },
+    {
+      "name": "Syracuse Orange",
+      "hex": "#D44500",
+      "category": "oranges",
+      "description": "Named after autumn leaves, this orange has a vibrant medium look."
+    },
+    {
+      "name": "Tan",
+      "hex": "#D2B48C",
+      "category": "oranges",
+      "description": "Similar to a glowing sunset, it's a soft light orange."
+    },
+    {
+      "name": "Tan (Crayola)",
+      "hex": "#D99A6C",
+      "category": "oranges",
+      "description": "This orange evokes tangerine peel with its soft light tone."
+    },
+    {
+      "name": "Tango pink",
+      "hex": "#E4717A",
+      "category": "reds",
+      "description": "A vibrant light red reminiscent of a fresh rose."
+    },
+    {
+      "name": "Tart Orange",
+      "hex": "#FB4D46",
+      "category": "reds",
+      "description": "This red evokes brick walls with its vibrant light tone."
+    },
+    {
+      "name": "Taupe",
+      "hex": "#483C32",
+      "category": "oranges",
+      "description": "Similar to a glowing sunset, it's a muted dark orange."
+    },
+    {
+      "name": "Taupe gray",
+      "hex": "#8B8589",
+      "category": "neutrals",
+      "description": "Named after driftwood, this neutral has a muted medium look."
+    },
+    {
+      "name": "Tea green",
+      "hex": "#D0F0C0",
+      "category": "greens",
+      "description": "A vibrant light green reminiscent of spring grass."
+    },
+    {
+      "name": "Tea rose",
+      "hex": "#F4C2C2",
+      "category": "reds",
+      "description": "Similar to rose petals, it's a vibrant light red."
+    },
+    {
+      "name": "Teal",
+      "hex": "#008080",
+      "category": "blues",
+      "description": "Named after a twilight horizon, this blue has a vibrant dark look."
+    },
+    {
+      "name": "Teal blue",
+      "hex": "#367588",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a soft medium blue."
+    },
+    {
+      "name": "Technobotanica",
+      "hex": "#00FFBF",
+      "category": "greens",
+      "description": "A vibrant medium green reminiscent of spring grass."
+    },
+    {
+      "name": "Telemagenta",
+      "hex": "#CF3476",
+      "category": "purples",
+      "description": "Named after lavender fields, this purple has a vibrant medium look."
+    },
+    {
+      "name": "Tenn\u00e9 (tawny)",
+      "hex": "#CD5700",
+      "category": "oranges",
+      "description": "Similar to tangerine peel, it's a vibrant medium orange."
+    },
+    {
+      "name": "Terra cotta",
+      "hex": "#E2725B",
+      "category": "reds",
+      "description": "Similar to ripe cherries, it's a vibrant light red."
+    },
+    {
+      "name": "Thistle",
+      "hex": "#D8BFD8",
+      "category": "purples",
+      "description": "This purple evokes royal velvet with its muted light tone."
+    },
+    {
+      "name": "Thulian pink",
+      "hex": "#DE6FA1",
+      "category": "purples",
+      "description": "Similar to violet blossoms, it's a vibrant light purple."
+    },
+    {
+      "name": "Tickle Me Pink",
+      "hex": "#FC89AC",
+      "category": "purples",
+      "description": "This purple evokes royal velvet with its vibrant light tone."
+    },
+    {
+      "name": "Tiffany Blue",
+      "hex": "#0ABAB5",
+      "category": "blues",
+      "description": "This blue evokes clear skies with its vibrant medium tone."
+    },
+    {
+      "name": "Timberwolf",
+      "hex": "#DBD7D2",
+      "category": "neutrals",
+      "description": "A muted light neutral reminiscent of weathered stone."
+    },
+    {
+      "name": "Titanium yellow",
+      "hex": "#EEE600",
+      "category": "yellows",
+      "description": "A vibrant medium yellow reminiscent of ripe lemons."
+    },
+    {
+      "name": "Tomato",
+      "hex": "#FF6347",
+      "category": "reds",
+      "description": "A vibrant light red reminiscent of brick walls."
+    },
+    {
+      "name": "Tourmaline",
+      "hex": "#86A1A9",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a muted medium blue."
+    },
+    {
+      "name": "Tropical rainforest",
+      "hex": "#00755E",
+      "category": "blues",
+      "description": "This blue evokes a twilight horizon with its vibrant dark tone."
+    },
+    {
+      "name": "True Blue",
+      "hex": "#2D68C4",
+      "category": "blues",
+      "description": "Named after a twilight horizon, this blue has a vibrant medium look."
+    },
+    {
+      "name": "Trypan Blue",
+      "hex": "#1C05B3",
+      "category": "blues",
+      "description": "This blue evokes clear skies with its vibrant medium tone."
+    },
+    {
+      "name": "Tufts blue",
+      "hex": "#3E8EDE",
+      "category": "blues",
+      "description": "This blue evokes clear skies with its vibrant medium tone."
+    },
+    {
+      "name": "Tumbleweed",
+      "hex": "#DEAA88",
+      "category": "oranges",
+      "description": "Named after tangerine peel, this orange has a soft light look."
+    },
+    {
+      "name": "Turquoise",
+      "hex": "#40E0D0",
+      "category": "blues",
+      "description": "Named after clear skies, this blue has a vibrant medium look."
+    },
+    {
+      "name": "Turquoise blue",
+      "hex": "#00FFEF",
+      "category": "blues",
+      "description": "This blue evokes deep ocean water with its vibrant medium tone."
+    },
+    {
+      "name": "Turquoise green",
+      "hex": "#A0D6B4",
+      "category": "greens",
+      "description": "Similar to pine forests, it's a soft light green."
+    },
+    {
+      "name": "Turtle green",
+      "hex": "#8A9A5B",
+      "category": "greens",
+      "description": "Named after fresh herbs, this green has a muted medium look."
+    },
+    {
+      "name": "Tuscan",
+      "hex": "#FAD6A5",
+      "category": "oranges",
+      "description": "This orange evokes autumn leaves with its vibrant light tone."
+    },
+    {
+      "name": "Tuscan brown",
+      "hex": "#6F4E37",
+      "category": "oranges",
+      "description": "Named after a glowing sunset, this orange has a soft medium look."
+    },
+    {
+      "name": "Tuscan red",
+      "hex": "#7C4848",
+      "category": "reds",
+      "description": "Similar to ripe cherries, it's a muted medium red."
+    },
+    {
+      "name": "Tuscan tan",
+      "hex": "#A67B5B",
+      "category": "oranges",
+      "description": "Named after tangerine peel, this orange has a muted medium look."
+    },
+    {
+      "name": "Tuscany",
+      "hex": "#C09999",
+      "category": "reds",
+      "description": "Similar to a fresh rose, it's a muted light red."
+    },
+    {
+      "name": "Twilight lavender",
+      "hex": "#8A496B",
+      "category": "purples",
+      "description": "Named after lavender blossoms, this purple has a soft medium look."
+    },
+    {
+      "name": "UA blue",
+      "hex": "#0033AA",
+      "category": "blues",
+      "description": "This blue evokes clear skies with its vibrant medium tone."
+    },
+    {
+      "name": "UA red",
+      "hex": "#D9004C",
+      "category": "purples",
+      "description": "This purple evokes lavender fields with its vibrant medium tone."
+    },
+    {
+      "name": "Ultramarine",
+      "hex": "#3F00FF",
+      "category": "blues",
+      "description": "A vibrant medium blue reminiscent of deep ocean water."
+    },
+    {
+      "name": "Ultramarine blue",
+      "hex": "#4166F5",
+      "category": "blues",
+      "description": "Named after a twilight horizon, this blue has a vibrant light look."
+    },
+    {
+      "name": "Ultra pink",
+      "hex": "#FF6FFF",
+      "category": "purples",
+      "description": "A vibrant light purple reminiscent of royal velvet."
+    },
+    {
+      "name": "Ultra red",
+      "hex": "#FC6C85",
+      "category": "reds",
+      "description": "A vibrant light red reminiscent of brick walls."
+    },
+    {
+      "name": "Umber",
+      "hex": "#635147",
+      "category": "oranges",
+      "description": "A muted medium orange reminiscent of a glowing sunset."
+    },
+    {
+      "name": "Unbleached silk",
+      "hex": "#FFDDCA",
+      "category": "oranges",
+      "description": "Similar to autumn leaves, it's a vibrant light orange."
+    },
+    {
+      "name": "United Nations blue",
+      "hex": "#009EDB",
+      "category": "blues",
+      "description": "This blue evokes deep ocean water with its vibrant medium tone."
+    },
+    {
+      "name": "University of Pennsylvania red",
+      "hex": "#A50021",
+      "category": "reds",
+      "description": "A vibrant medium red reminiscent of a fresh rose."
+    },
+    {
+      "name": "Unmellow yellow",
+      "hex": "#FFFF66",
+      "category": "yellows",
+      "description": "Named after sunflower petals, this yellow has a vibrant light look."
+    },
+    {
+      "name": "UP Forest green",
+      "hex": "#014421",
+      "category": "greens",
+      "description": "A vibrant dark green reminiscent of pine forests."
+    },
+    {
+      "name": "UP maroon",
+      "hex": "#7B1113",
+      "category": "reds",
+      "description": "A vibrant dark red reminiscent of a fresh rose."
+    },
+    {
+      "name": "Upsdell red",
+      "hex": "#AE2029",
+      "category": "reds",
+      "description": "Similar to a fresh rose, it's a vibrant medium red."
+    },
+    {
+      "name": "Uranian blue",
+      "hex": "#AFDBF5",
+      "category": "blues",
+      "description": "Named after clear skies, this blue has a vibrant light look."
+    },
+    {
+      "name": "USAFA blue",
+      "hex": "#004F98",
+      "category": "blues",
+      "description": "Similar to clear skies, it's a vibrant dark blue."
+    },
+    {
+      "name": "Van Dyke brown",
+      "hex": "#664228",
+      "category": "oranges",
+      "description": "A soft dark orange reminiscent of autumn leaves."
+    },
+    {
+      "name": "Vanilla",
+      "hex": "#F3E5AB",
+      "category": "yellows",
+      "description": "A vibrant light yellow reminiscent of ripe lemons."
+    },
+    {
+      "name": "Vanilla ice",
+      "hex": "#F38FA9",
+      "category": "purples",
+      "description": "Similar to lavender fields, it's a vibrant light purple."
+    },
+    {
+      "name": "Vantg blue",
+      "hex": "#5271FF",
+      "category": "blues",
+      "description": "This blue evokes clear skies with its vibrant light tone."
+    },
+    {
+      "name": "Vegas gold",
+      "hex": "#C5B358",
+      "category": "yellows",
+      "description": "Similar to sunflower petals, it's a soft medium yellow."
+    },
+    {
+      "name": "Venetian red",
+      "hex": "#C80815",
+      "category": "reds",
+      "description": "This red evokes a fresh rose with its vibrant medium tone."
+    },
+    {
+      "name": "Verdigris",
+      "hex": "#43B3AE",
+      "category": "blues",
+      "description": "Named after a twilight horizon, this blue has a soft medium look."
+    },
+    {
+      "name": "Veronica",
+      "hex": "#A020F0",
+      "category": "purples",
+      "description": "A vibrant medium purple reminiscent of violet blossoms."
+    },
+    {
+      "name": "Violet",
+      "hex": "#8F00FF",
+      "category": "purples",
+      "description": "This purple evokes royal velvet with its vibrant medium tone."
+    },
+    {
+      "name": "Violet (color wheel)",
+      "hex": "#7F00FF",
+      "category": "purples",
+      "description": "Named after violet blossoms, this purple has a vibrant medium look."
+    },
+    {
+      "name": "Violet (crayola)",
+      "hex": "#963D7F",
+      "category": "purples",
+      "description": "Similar to violet blossoms, it's a soft medium purple."
+    },
+    {
+      "name": "Violet (RYB)",
+      "hex": "#8601AF",
+      "category": "purples",
+      "description": "Similar to violet blossoms, it's a vibrant medium purple."
+    },
+    {
+      "name": "Violet (web)",
+      "hex": "#EE82EE",
+      "category": "purples",
+      "description": "A vibrant light purple reminiscent of violet blossoms."
+    },
+    {
+      "name": "Violet-blue",
+      "hex": "#324AB2",
+      "category": "blues",
+      "description": "Named after clear skies, this blue has a soft medium look."
+    },
+    {
+      "name": "Violet-blue (Crayola)",
+      "hex": "#766EC8",
+      "category": "blues",
+      "description": "Named after a twilight horizon, this blue has a soft light look."
+    },
+    {
+      "name": "Violet-red",
+      "hex": "#F75394",
+      "category": "purples",
+      "description": "A vibrant light purple reminiscent of violet blossoms."
+    },
+    {
+      "name": "Violet-red(PerBang)",
+      "hex": "#F0599C",
+      "category": "purples",
+      "description": "A vibrant light purple reminiscent of royal velvet."
+    },
+    {
+      "name": "Viridian green",
+      "hex": "#009698",
+      "category": "blues",
+      "description": "This blue evokes a twilight horizon with its vibrant dark tone."
+    },
+    {
+      "name": "Vivid burgundy",
+      "hex": "#9F1D35",
+      "category": "reds",
+      "description": "This red evokes brick walls with its vibrant medium tone."
+    },
+    {
+      "name": "Vivid sky blue",
+      "hex": "#00CCFF",
+      "category": "blues",
+      "description": "Similar to a clear sky, it's a vibrant medium blue."
+    },
+    {
+      "name": "Vivid tangerine",
+      "hex": "#FFA089",
+      "category": "reds",
+      "description": "A vibrant light red reminiscent of a fresh rose."
+    },
+    {
+      "name": "Vivid violet",
+      "hex": "#9F00FF",
+      "category": "purples",
+      "description": "Similar to lavender fields, it's a vibrant medium purple."
+    },
+    {
+      "name": "Volt",
+      "hex": "#CEFF00",
+      "category": "yellows",
+      "description": "Named after sunflower petals, this yellow has a vibrant medium look."
+    },
+    {
+      "name": "Warm black",
+      "hex": "#004242",
+      "category": "blues",
+      "description": "A vibrant dark blue reminiscent of clear skies."
+    },
+    {
+      "name": "Weezy Blue",
+      "hex": "#189BCC",
+      "category": "blues",
+      "description": "Similar to a twilight horizon, it's a vibrant medium blue."
+    },
+    {
+      "name": "Wheat",
+      "hex": "#F5DEB3",
+      "category": "oranges",
+      "description": "A vibrant light orange reminiscent of autumn leaves."
+    },
+    {
+      "name": "White",
+      "hex": "#FFFFFF",
+      "category": "neutrals",
+      "description": "Named after soft ash, this neutral has a muted light look."
+    },
+    {
+      "name": "Wild blue yonder",
+      "hex": "#A2ADD0",
+      "category": "blues",
+      "description": "Named after clear skies, this blue has a soft light look."
+    },
+    {
+      "name": "Wild orchid",
+      "hex": "#D470A2",
+      "category": "purples",
+      "description": "Similar to royal velvet, it's a soft light purple."
+    },
+    {
+      "name": "Wild Strawberry",
+      "hex": "#FF43A4",
+      "category": "purples",
+      "description": "A vibrant light purple reminiscent of lavender fields."
+    },
+    {
+      "name": "Wild watermelon",
+      "hex": "#FC6C85",
+      "category": "reds",
+      "description": "A vibrant light red reminiscent of a fresh rose."
+    },
+    {
+      "name": "Windsor tan",
+      "hex": "#A75502",
+      "category": "oranges",
+      "description": "This orange evokes a glowing sunset with its vibrant medium tone."
+    },
+    {
+      "name": "Wine",
+      "hex": "#722F37",
+      "category": "reds",
+      "description": "A soft medium red reminiscent of brick walls."
+    },
+    {
+      "name": "Wine dregs",
+      "hex": "#673147",
+      "category": "purples",
+      "description": "Similar to lavender fields, it's a soft dark purple."
+    },
+    {
+      "name": "Winter Sky",
+      "hex": "#FF007C",
+      "category": "purples",
+      "description": "This purple evokes a clear sky with its vibrant medium tone."
+    },
+    {
+      "name": "Wintergreen Dream",
+      "hex": "#56887D",
+      "category": "blues",
+      "description": "Similar to clear skies, it's a muted medium blue."
+    },
+    {
+      "name": "Wisteria",
+      "hex": "#C9A0DC",
+      "category": "purples",
+      "description": "Similar to lavender fields, it's a soft light purple."
+    },
+    {
+      "name": "Wood brown",
+      "hex": "#C19A6B",
+      "category": "oranges",
+      "description": "This orange evokes tangerine peel with its soft medium tone."
+    },
+    {
+      "name": "Xanadu",
+      "hex": "#738678",
+      "category": "greens",
+      "description": "Named after fresh herbs, this green has a muted medium look."
+    },
+    {
+      "name": "Xanthic",
+      "hex": "#EEED09",
+      "category": "yellows",
+      "description": "Named after morning sunlight, this yellow has a vibrant medium look."
+    },
+    {
+      "name": "Xanthous",
+      "hex": "#F1B42F",
+      "category": "oranges",
+      "description": "This orange evokes tangerine peel with its vibrant medium tone."
+    },
+    {
+      "name": "Yale Blue",
+      "hex": "#00356B",
+      "category": "blues",
+      "description": "A vibrant dark blue reminiscent of clear skies."
+    },
+    {
+      "name": "Yellow",
+      "hex": "#FFFF00",
+      "category": "yellows",
+      "description": "Named after morning sunlight, this yellow has a vibrant medium look."
+    },
+    {
+      "name": "Yellow (Crayola)",
+      "hex": "#FCE883",
+      "category": "yellows",
+      "description": "Similar to sunflower petals, it's a vibrant light yellow."
+    },
+    {
+      "name": "Yellow (Munsell)",
+      "hex": "#EFCC00",
+      "category": "yellows",
+      "description": "A vibrant medium yellow reminiscent of sunflower petals."
+    },
+    {
+      "name": "Yellow (NCS)",
+      "hex": "#FFD300",
+      "category": "yellows",
+      "description": "A vibrant medium yellow reminiscent of sunflower petals."
+    },
+    {
+      "name": "Yellow (Pantone)",
+      "hex": "#FEDF00",
+      "category": "yellows",
+      "description": "Similar to ripe lemons, it's a vibrant medium yellow."
+    },
+    {
+      "name": "Yellow (process)",
+      "hex": "#FFEF00",
+      "category": "yellows",
+      "description": "Named after morning sunlight, this yellow has a vibrant medium look."
+    },
+    {
+      "name": "Yellow (RYB)",
+      "hex": "#FEFE33",
+      "category": "yellows",
+      "description": "Named after morning sunlight, this yellow has a vibrant medium look."
+    },
+    {
+      "name": "Yellow-green",
+      "hex": "#9ACD32",
+      "category": "greens",
+      "description": "A vibrant medium green reminiscent of pine forests."
+    },
+    {
+      "name": "Yellow-green (Crayola)",
+      "hex": "#C5E384",
+      "category": "greens",
+      "description": "This green evokes fresh herbs with its vibrant light tone."
+    },
+    {
+      "name": "Yellow-green (Color Wheel)",
+      "hex": "#30B21A",
+      "category": "greens",
+      "description": "Similar to pine forests, it's a vibrant medium green."
+    },
+    {
+      "name": "Yellow Orange",
+      "hex": "#FFAE42",
+      "category": "oranges",
+      "description": "Similar to autumn leaves, it's a vibrant light orange."
+    },
+    {
+      "name": "Yellow Orange (Color Wheel)",
+      "hex": "#FF9505",
+      "category": "oranges",
+      "description": "A vibrant medium orange reminiscent of a glowing sunset."
+    },
+    {
+      "name": "Yellow Sunshine",
+      "hex": "#FFF700",
+      "category": "yellows",
+      "description": "Named after ripe lemons, this yellow has a vibrant medium look."
+    },
+    {
+      "name": "YInMn Blue",
+      "hex": "#2E5090",
+      "category": "blues",
+      "description": "Named after deep ocean water, this blue has a soft medium look."
+    },
+    {
+      "name": "Zaffer (Zaffre)",
+      "hex": "#0014A8",
+      "category": "blues",
+      "description": "Similar to deep ocean water, it's a vibrant medium blue."
+    },
+    {
+      "name": "Zarqa",
+      "hex": "#FF4500",
+      "category": "oranges",
+      "description": "Named after autumn leaves, this orange has a vibrant medium look."
+    },
+    {
+      "name": "Zinc white",
+      "hex": "#FDF8FF",
+      "category": "neutrals",
+      "description": "Named after driftwood, this neutral has a vibrant light look."
+    },
+    {
+      "name": "Zinnwaldite brown",
+      "hex": "#2C1608",
+      "category": "oranges",
+      "description": "Similar to a glowing sunset, it's a vibrant dark orange."
+    },
+    {
+      "name": "Zinzolin",
+      "hex": "#6C0277",
+      "category": "purples",
+      "description": "Named after violet blossoms, this purple has a vibrant dark look."
+    },
+    {
+      "name": "Zomp",
+      "hex": "#39A78E",
+      "category": "blues",
+      "description": "Named after clear skies, this blue has a soft medium look."
     }
   ]
 }
