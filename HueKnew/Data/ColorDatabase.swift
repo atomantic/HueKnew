@@ -48,7 +48,7 @@ class ColorDatabase: ObservableObject {
         loadColorsFromJSON()
     }
 
-    private func loadColorsFromJSON() {
+    func loadColorsFromJSON() {
         guard let url = Bundle.main.url(forResource: "colors", withExtension: "json") else {
             Logger.error("Could not find colors.json in bundle")
             return

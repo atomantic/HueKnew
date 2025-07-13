@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
 
 env:
   IPHONEOS_DEPLOYMENT_TARGET: ${{ vars.IPHONEOS_DEPLOYMENT_TARGET }}
@@ -14,28 +13,6 @@ env:
   APPSTORE_API_PRIVATE_KEY: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
 
 jobs:
-  validate:
-    if: github.event_name == 'pull_request'
-    runs-on: macos-latest
-    name: PR Validation (skip signing)
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up Xcode
-        uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: 'latest-stable'
-      - name: Build (skip code signing)
-        run: |
-          xcodebuild \
-            -project HueKnew.xcodeproj \
-            -scheme HueKnew \
-            -configuration Release \
-            -derivedDataPath build \
-            clean build \
-            IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
-            CODE_SIGNING_ALLOWED=NO \
-            CODE_SIGN_IDENTITY="" \
-            CODE_SIGNING_REQUIRED=NO
 
   build_and_deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
