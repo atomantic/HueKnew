@@ -19,15 +19,6 @@ struct ChallengeView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            // Header
-            VStack(spacing: 8) {
-                Text("Challenge Mode")
-                    .font(.headline)
-                    .foregroundColor(.orange)
-            }
-            .padding()
-            
-            Spacer()
             
             VStack(spacing: 32) {
                 // Question section
