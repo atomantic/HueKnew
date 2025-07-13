@@ -19,7 +19,8 @@ struct ColorWheelPicker: View {
             HStack(spacing: 20) {
                 ColorWheelView(
                     selectedHue: $selectedHue,
-                    selectedSaturation: $selectedSaturation
+                    selectedSaturation: $selectedSaturation,
+                    selectedValue: $selectedValue
                 )
                 .frame(width: 250, height: 250)
 
@@ -71,7 +72,7 @@ struct ColorWheelPicker: View {
                         )
                     )
                 }) {
-                    Text("start here")
+                    Text("Explore")
                         .font(.headline)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
@@ -88,6 +89,7 @@ struct ColorWheelPicker: View {
 struct ColorWheelView: View {
     @Binding var selectedHue: Double
     @Binding var selectedSaturation: Double
+    @Binding var selectedValue: Double
 
     var body: some View {
         GeometryReader { geometry in
@@ -96,20 +98,25 @@ struct ColorWheelView: View {
                 Circle()
                     .fill(
                         AngularGradient(
-                            gradient: Gradient(colors: hueColors),
+                            gradient: Gradient(colors: ColorWheelView.hueColors),
                             center: .center
                         )
                     )
                     .overlay(
                         RadialGradient(
                             gradient: Gradient(colors: [
-                                Color.white.opacity(0.8),
+                                Color.white.opacity(selectedValue),
                                 Color.clear
                             ]),
                             center: .center,
                             startRadius: 0,
                             endRadius: geometry.size.width / 2.0
                         )
+                    )
+                    .overlay(
+                        // Darken the entire wheel based on value
+                        Circle()
+                            .fill(Color.black.opacity(1.0 - selectedValue))
                     )
 
                 // Selection Indicator
@@ -147,8 +154,8 @@ struct ColorWheelView: View {
         }
     }
 
-    private var hueColors: [Color] {
-        (0...360).map { i in
+    private static var hueColors: [Color] {
+        return (0...360).map { i in
             Color(hue: Double(i) / 360.0, saturation: 1.0, brightness: 1.0)
         }
     }
@@ -221,6 +228,6 @@ struct HSBColor {
 
 #Preview {
     ColorWheelPicker { _ in
-        // Removed print(color.description)
+        // Preview action - in real usage this would handle the selected color
     }
 }

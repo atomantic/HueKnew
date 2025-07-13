@@ -146,11 +146,10 @@ extension ColorDatabase {
 
     private func mapStringToDifficulty(_ difficultyString: String) -> DifficultyLevel {
         switch difficultyString.lowercased() {
-        case "beginner": return .beginner
+        case "easy": return .easy
         case "intermediate": return .intermediate
         case "advanced": return .advanced
-        case "expert": return .expert
-        default: return .beginner
+        default: return .easy
         }
     }
     
@@ -259,6 +258,10 @@ extension ColorDatabase {
         
         // Weighted combination that prioritizes hue differences
         // Hue is most important for color perception, then saturation, then brightness
+        // This creates a perceptually accurate difference score where:
+        // - Low values (0-8): Very similar colors (Advanced difficulty)
+        // - Medium values (8-25): Moderately similar colors (Intermediate difficulty)  
+        // - High values (25+): Clearly different colors (Easy difficulty)
         let weightedDifference = (normalizedHueDiff * 0.6) + (satDiff * 0.25) + (brightDiff * 0.15)
         
         // Convert to a 0-100 scale for easier threshold setting
@@ -374,15 +377,15 @@ extension ColorPair {
     var difficultyLevel: DifficultyLevel {
         let deltaE = ColorDatabase.shared.calculateColorDifference(color1: primaryColor, color2: comparisonColor)
         
-        // New thresholds based on 0-100 scale with better perceptual accuracy
-        if deltaE < 5 {
-            return .expert      // Very similar colors (e.g., Gamboge vs Indian Yellow)
-        } else if deltaE < 15 {
-            return .advanced    // Similar colors with subtle differences
-        } else if deltaE < 35 {
-            return .intermediate // Moderately different colors
+        // Improved thresholds based on color similarity
+        // Colors that are very similar (low deltaE) are more advanced
+        // Colors that are very different (high deltaE) are easier
+        if deltaE < 8 {
+            return .advanced      // Very similar colors (e.g., Gamboge vs Indian Yellow)
+        } else if deltaE < 25 {
+            return .intermediate  // Moderately similar colors
         } else {
-            return .beginner    // Clearly different colors
+            return .easy          // Clearly different colors
         }
     }
 }
