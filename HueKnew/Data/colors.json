@@ -3046,7 +3046,7 @@
       "name": "Navajo white",
       "hex": "#FFDEAD",
       "category": "oranges",
-      "description": "A warm, off-white color inspired by the traditional white clay used by the Navajo people in their pottery and ceremonial practices. This color represents cultural heritage, craftsmanship, and the connection to natural materials. Navajo white's association with Native American traditions and sustainable living has made it popular in artisanal and cultural design."
+      "description": "A warm, off-white color inspired by the traditional white clay used by the Navajo people in their pottery and ceremonial practices. This color represents craftsmanship, tradition, and the connection to natural materials. Navajo white's association with Native American traditions and sustainable living has made it popular in artisanal and cultural design."
     },
     {
       "name": "Neon blue",
@@ -3688,7 +3688,7 @@
       "name": "Psychedelic purple",
       "hex": "#DF00FF",
       "category": "purples",
-      "description": "A bright, electric purple that captures the vibrant energy of 1960s counterculture and psychedelic art. This color represents artistic freedom, cultural revolution, and the exploration of consciousness. Psychedelic purple's association with creative expression and cultural innovation has made it popular in artistic and alternative design."
+      "description": "A bright, electric purple that captures the excitement and energy of 1960s counterculture and psychedelic art. This color represents artistic freedom, cultural revolution, and the exploration of consciousness. Psychedelic purple's association with creative expression and cultural innovation has made it popular in artistic and alternative design."
     },
     {
       "name": "Puce",
@@ -3994,7 +3994,7 @@
       "name": "Robin egg blue",
       "hex": "#00CCCC",
       "category": "blues",
-      "description": "A vibrant medium blue reminiscent of clear skies."
+      "description": "A gentle, refreshing green inspired by the rare green varieties of turquoise gemstone, which have been valued for their beauty and spiritual significance by cultures from ancient Persia to Native American tribes. Turquoise green evokes the lushness of verdant oases and the healing properties attributed to the stone. This color is often used in design to convey renewal, balance, and a harmonious connection to nature."
     },
     {
       "name": "Rocket metallic",
@@ -4103,12 +4103,6 @@
       "hex": "#FADA5E",
       "category": "yellows",
       "description": "A vibrant light yellow reminiscent of ripe lemons."
-    },
-    {
-      "name": "Ruber",
-      "hex": "#CE4676",
-      "category": "purples",
-      "description": "Similar to lavender fields, it's a soft medium purple."
     },
     {
       "name": "Rubine red",
@@ -4798,7 +4792,7 @@
       "name": "Terra cotta",
       "hex": "#E2725B",
       "category": "reds",
-      "description": "Similar to ripe cherries, it's a vibrant light red."
+      "description": "A soft, golden tan inspired by the sunlit hills and wheat fields of Tuscany, Italy. Tuscan tan reflects the region's agricultural heritage and the gentle warmth of Mediterranean light. This color is often used in design to evoke relaxation, rustic charm, and the timeless beauty of Italian countryside living."
     },
     {
       "name": "Thistle",
@@ -4828,25 +4822,25 @@
       "name": "Timberwolf",
       "hex": "#DBD7D2",
       "category": "neutrals",
-      "description": "A muted light neutral reminiscent of weathered stone."
+      "description": "A soft, pale gray inspired by the elusive timberwolf, whose fur blends seamlessly with misty forests and snowy landscapes. The color timberwolf evokes the quiet strength and adaptability of these iconic creatures, revered in Native American folklore as symbols of loyalty, intuition, and wilderness wisdom. This gentle neutral is often used in design to convey subtlety, calm, and a connection to the natural world."
     },
     {
       "name": "Titanium yellow",
       "hex": "#EEE600",
       "category": "yellows",
-      "description": "A vibrant medium yellow reminiscent of ripe lemons."
+      "description": "A bright, opaque yellow pigment made from titanium dioxide, introduced in the 20th century as a safe, non-toxic alternative to older yellow pigments. Titanium yellow is valued for its exceptional brightness, covering power, and resistance to fading, making it a favorite in both fine art and industrial applications. Its use in paints, plastics, and coatings has helped define the look of modern design, from vibrant signage to contemporary art."
     },
     {
       "name": "Tomato",
       "hex": "#FF6347",
       "category": "reds",
-      "description": "A vibrant light red reminiscent of brick walls."
+      "description": "A lively, juicy red inspired by the ripe tomato, a fruit native to the Americas and brought to Europe in the 16th century. Tomatoes revolutionized global cuisine, becoming a staple in dishes from Italian pasta sauces to Mexican salsas. The color tomato red is associated with freshness, vitality, and culinary creativity, and is often used in food branding to evoke appetite and warmth."
     },
     {
       "name": "Tourmaline",
       "hex": "#86A1A9",
       "category": "blues",
-      "description": "Similar to a twilight horizon, it's a muted medium blue."
+      "description": "A complex blue-gray named after the tourmaline gemstone, which is celebrated for its remarkable range of colors and its role in both ancient and modern jewelry. Tourmaline has been prized since antiquity in cultures from Egypt to China, believed to inspire creativity and protect against negative energy. The color tourmaline blue evokes the gemstone's rare blue-green varieties, which were once mistaken for sapphires and are now among the most valuable. This shade is associated with clarity, insight, and the mysterious beauty of natural minerals."
     },
     {
       "name": "Tropical rainforest",
@@ -4888,7 +4882,7 @@
       "name": "Turquoise blue",
       "hex": "#00FFEF",
       "category": "blues",
-      "description": "This blue evokes deep ocean water with its vibrant medium tone."
+      "description": "A vivid blue-green reminiscent of the shallow waters of tropical seas, turquoise blue draws its name from the gemstone that has been treasured for millennia by cultures from ancient Egypt to the American Southwest. This color evokes feelings of tranquility, clarity, and exotic beauty, and has been used in jewelry, art, and architecture to symbolize protection, healing, and the boundless spirit of the ocean."
     },
     {
       "name": "Turquoise green",
@@ -4912,7 +4906,7 @@
       "name": "Tuscan brown",
       "hex": "#6F4E37",
       "category": "oranges",
-      "description": "Named after a glowing sunset, this orange has a soft medium look."
+      "description": "A warm, earthy brown inspired by the sunbaked landscapes and rustic architecture of Tuscany, Italy. Tuscan brown evokes the region's terracotta rooftops, ancient olive groves, and the enduring beauty of traditional craftsmanship. This color is associated with comfort, heritage, and the timeless appeal of Mediterranean design, making it a favorite in interiors and artisanal products."
     },
     {
       "name": "Tuscan red",
@@ -4930,13 +4924,13 @@
       "name": "Tuscany",
       "hex": "#C09999",
       "category": "reds",
-      "description": "Similar to a fresh rose, it's a muted light red."
+      "description": "A muted, rosy red inspired by the romantic landscapes and artistic legacy of Tuscany, Italy. The color Tuscany evokes the region's historic cities, Renaissance art, and the soft glow of sunset over rolling vineyards. It is often used in design to convey elegance, nostalgia, and the timeless allure of Italian culture."
     },
     {
       "name": "Twilight lavender",
       "hex": "#8A496B",
       "category": "purples",
-      "description": "Named after lavender blossoms, this purple has a soft medium look."
+      "description": "A dusky, muted purple inspired by the fleeting colors of lavender fields at dusk. Twilight lavender captures the serene transition from day to night, evoking feelings of calm, reflection, and gentle mystery. This color is often used in design to suggest tranquility, romance, and the poetic beauty of evening light over blooming landscapes."
     },
     {
       "name": "UA blue",
@@ -5368,7 +5362,7 @@
       "name": "YInMn Blue",
       "hex": "#2E5090",
       "category": "blues",
-      "description": "A vibrant blue pigment discovered by accident in 2009 by chemist Mas Subramanian at Oregon State University. Named for its chemical composition (yttrium, indium, and manganese oxides), YInMn Blue is the first new blue pigment discovered in over 200 years. Its exceptional stability and non-toxic properties make it ideal for artists' paints, and its discovery has been hailed as a breakthrough in pigment chemistry. The pigment's intense hue and durability have made it highly sought after by artists and conservators."
+      "description": "A vivid blue pigment discovered by accident in 2009 by chemist Mas Subramanian at Oregon State University. Named for its chemical composition (yttrium, indium, and manganese oxides), YInMn Blue is the first new blue pigment discovered in over 200 years. Its exceptional stability and non-toxic properties make it ideal for artists' paints, and its discovery has been hailed as a breakthrough in pigment chemistry. The pigment's intense hue and durability have made it highly sought after by artists and conservators."
     },
     {
       "name": "Zaffer (Zaffre)",
