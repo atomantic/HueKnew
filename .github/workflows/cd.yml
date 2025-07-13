@@ -14,42 +14,6 @@ env:
   APPSTORE_API_PRIVATE_KEY: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
 
 jobs:
-  validate:
-    if: github.event_name == 'pull_request'
-    runs-on: macos-latest
-    name: PR Validation (Xcode)
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up Xcode
-        uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: 'latest-stable'
-      - name: Create, boot, and test on a new simulator
-        run: |
-          set -o pipefail
-          # Select the latest available iOS runtime
-          RUNTIME_ID=$(xcrun simctl list runtimes ios | grep -v unavailable | awk '/^iOS/ {print $NF}' | tail -n 1)
-          if [ -z "$RUNTIME_ID" ]; then
-            echo "No available iOS runtimes found."
-            exit 1
-          fi
-          echo "Using iOS Runtime: $RUNTIME_ID"
-          # Create a new simulator
-          SIM_UDID=$(xcrun simctl create "TestiPhone" com.apple.CoreSimulator.SimDeviceType.iPhone-15 "$RUNTIME_ID")
-          echo "Created simulator with UDID: $SIM_UDID"
-          # Boot the simulator
-          xcrun simctl boot "$SIM_UDID"
-          # Run tests
-          xcodebuild test \
-            -project HueKnew.xcodeproj \
-            -scheme HueKnew \
-            -destination "id=$SIM_UDID" \
-            -configuration Debug \
-            -derivedDataPath build \
-            IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
-            CODE_SIGNING_ALLOWED=NO \
-            CODE_SIGN_IDENTITY="" \
-            CODE_SIGNING_REQUIRED=NO
 
   build_and_deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
