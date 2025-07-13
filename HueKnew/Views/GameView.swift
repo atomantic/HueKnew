@@ -82,9 +82,9 @@ struct GameView: View {
                     
                     // Choose by Color Wheel
                     VStack(spacing: 16) {
-                        Text("explore a color:")
-                            .font(.headline)
-                            .fontWeight(.semibold)
+                        Text("or explore a color:")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
                         
                         ColorWheelPicker { hsbColor in
                             // This will be called when the user clicks "Find Similar Colors"

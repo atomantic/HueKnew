@@ -18,10 +18,6 @@ struct LearningView: View {
                 Text("Learning Mode")
                     .font(.headline)
                     .foregroundColor(.blue)
-                
-                Text("Study the differences")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
             }
             .padding()
             
@@ -114,6 +110,7 @@ struct ColorDisplayCard: View {
                 .fontWeight(.bold)
                 .foregroundColor(.primary)
                 .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
             
             // Hex value
             Text(colorInfo.hexValue)
