@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Foundation
+import AVFoundation
 
 enum GamePhase {
     case menu
@@ -83,6 +84,9 @@ class GameModel {
             if let currentPair = currentColorPair {
                 masteredPairs.insert(currentPair.id)
             }
+            
+            // Play success feedback
+            AudioManager.shared.playSuccessFeedback()
         } else {
             streak = 0
             score = max(0, score - 5)
