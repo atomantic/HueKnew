@@ -17,7 +17,7 @@ struct HeaderView: View {
         VStack(spacing: 8) {
             // App Title
             Text("Hue Knew")
-                .font(.largeTitle)
+                .font(.headline)
                 .fontWeight(.bold)
                 .foregroundColor(.primary)
 
