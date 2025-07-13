@@ -54,9 +54,9 @@ struct GameView: View {
                 // Game logo/title
                 VStack(spacing: 10) {
                     Text("Hue Knew")
-                        .font(.largeTitle)
+                        .font(.title)
                         .fontWeight(.bold)
-                        .multilineTextAlignment(.center)
+                        .foregroundColor(.primary)
                     
                     Text("Embark on a journey to discover colors")
                         .font(.subheadline)
