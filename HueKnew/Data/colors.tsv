@@ -357,9 +357,7 @@ Hex	Category	Name	Description
 #960018	reds	Carmine	A deep red pigment extracted from the cochineal insect (Dactylopius coccus), which lives on prickly pear cacti in Central and South America. This dye was highly prized by the Aztecs and was one of the most valuable exports from the New World to Europe. It takes approximately 70,000 insects to produce one pound of carmine dye. The pigment's intensity and permanence made it popular for royal garments and religious vestments, though modern versions often use synthetic alternatives.
 #963D7F	purples	Violet (crayola)	Similar to violet blossoms, it's a soft medium purple.
 #964B00	oranges	Brown	This orange evokes a glowing sunset with its vibrant dark tone.
-#967117	oranges	Bistre brown	Similar to tangerine peel, it's a vibrant medium orange.
-#967117	oranges	Mode beige	A sophisticated, warm beige that represents the refined elegance of high fashion and couture design. This color has been associated with luxury, sophistication, and timeless style. Mode beige's association with Parisian fashion and haute couture has made it popular in luxury branding and high-end design.
-#967117	oranges	Sand dune	A vibrant medium orange reminiscent of autumn leaves.
+#967117	oranges	Mode beige / Sand dune	A sophisticated, warm beige representing refined elegance in fashion. Also known as bistre brown, this earthy tone evokes timeless style and natural landscapes.
 #9678B6	purples	Purple mountain majesty	A majestic, mountain-inspired purple that captures the awe-inspiring beauty of alpine landscapes at sunset. This color represents the grandeur of nature, the spiritual connection to high places, and the timeless beauty of mountain vistas. Purple mountain majesty's association with natural grandeur and outdoor adventure has made it popular in environmental and outdoor branding.
 #96C8A2	greens	Eton blue	Named after pine forests, this green has a soft light look.
 #979AAA	blues	Manatee	This blue evokes a twilight horizon with its muted light tone.
@@ -756,22 +754,18 @@ Hex	Category	Name	Description
 #FF3800	reds	Coquelicot	A vibrant medium red reminiscent of a fresh rose.
 #FF3855	reds	Sizzling Red	Similar to a fresh rose, it's a vibrant light red.
 #FF43A4	purples	Wild Strawberry	A vibrant light purple reminiscent of lavender fields.
-#FF4500	oranges	Red-orange (Color wheel)	Named after a glowing sunset, this orange has a vibrant medium look.
-#FF4500	oranges	Zarqa	A vibrant orange-red inspired by the Arabic word 'zarqa,' meaning blue, though this color represents the warm, energetic tones of sunset and fire. Zarqa evokes the dramatic colors of desert sunsets, the warmth of Middle Eastern landscapes, and the cultural richness of Arabic traditions. This color is often used in design to convey energy, warmth, and the exotic beauty of desert environments.
-#FF5349	reds	Orange-red (Crayola)	Similar to a fresh rose, it's a vibrant light red.
-#FF5349	reds	Red-orange	This red evokes ripe cherries with its vibrant light tone.
+#FF4500	oranges	Red-orange / Zarqa	A vibrant orange-red reminiscent of glowing sunsets and desert warmth. Known as "zarqa" in Middle Eastern tradition, this hue conveys energy and exotic beauty.
+#FF5349	reds	Orange-red (Crayola) / Red-orange	A vibrant light red reminiscent of fresh roses and ripe cherries.
 #FF5470	reds	Fiery rose	Named after rose petals, this red has a vibrant light look.
 #FF5800	oranges	Orange (Pantone)	Named after autumn leaves, this orange has a vibrant medium look.
 #FF5A36	reds	Portland Orange	A bright, energetic orange named after the city of Portland, Oregon, known for its vibrant arts scene and progressive culture. This color represents urban creativity, community spirit, and the dynamic energy of modern city life. Portland Orange's association with artistic innovation and civic pride has made it popular in urban and cultural branding.
 #FF6347	reds	Tomato	A lively, juicy red inspired by the ripe tomato, a fruit native to the Americas and brought to Europe in the 16th century. Tomatoes revolutionized global cuisine, becoming a staple in dishes from Italian pasta sauces to Mexican salsas. The color tomato red is associated with freshness, vitality, and culinary creativity, and is often used in food branding to evoke appetite and warmth.
 #FF66CC	purples	Rose pink	A vibrant light purple reminiscent of rose petals.
 #FF6700	oranges	Safety orange (blaze orange)	A vibrant medium orange reminiscent of tangerine peel.
-#FF681F	oranges	Orange-red	A vibrant medium orange reminiscent of tangerine peel.
-#FF681F	oranges	Red-orange (Crayola)	Similar to a glowing sunset, it's a vibrant medium orange.
+#FF681F	oranges	Orange-red / Red-orange (Crayola)	A vibrant medium orange recalling tangerine peel and glowing sunsets.
 #FF69B4	purples	Hot pink	A vibrant light purple reminiscent of lavender fields.
 #FF6E4A	reds	Outrageous Orange	A vibrant light red reminiscent of a fresh rose.
-#FF6FFF	purples	Shocking pink (Crayola)	A vibrant light purple reminiscent of royal velvet.
-#FF6FFF	purples	Ultra pink	A vibrant light purple reminiscent of royal velvet.
+#FF6FFF	purples	Shocking pink (Crayola) / Ultra pink	A vibrant light purple reminiscent of royal velvet.
 #FF7518	oranges	Pumpkin	A warm, vibrant orange inspired by the pumpkin fruit, which has been cultivated in the Americas for over 7,000 years and is central to autumn celebrations and harvest traditions. This color represents seasonal abundance, cultural celebration, and the natural beauty of autumn. Pumpkin's association with harvest festivals and seasonal traditions has made it popular in seasonal and agricultural branding.
 #FF7538	oranges	Orange (Crayola)	This orange evokes a glowing sunset with its vibrant light tone.
 #FF7800	oranges	Safety orange	Similar to a glowing sunset, it's a vibrant medium orange.
@@ -781,11 +775,9 @@ Hex	Category	Name	Description
 #FF8243	oranges	Mango Tango	Similar to autumn leaves, it's a vibrant light orange.
 #FF8C00	oranges	Dark orange	This orange evokes tangerine peel with its vibrant medium tone.
 #FF91A4	reds	Salmon pink	Named after a fresh rose, this red has a vibrant light look.
-#FF91AF	purples	Baker-Miller pink	Named after lavender fields, this purple has a vibrant light look.
-#FF91AF	purples	Schauss pink	This purple evokes royal velvet with its vibrant light tone.
+#FF91AF	purples	Baker-Miller pink / Schauss pink	A vibrant light pink associated with psychological studies, evoking lavender fields and royal velvet.
 #FF9361	oranges	Strawberry Blonde	Named after tangerine peel, this orange has a vibrant light look.
 #FF948E	reds	Mona Lisa	A soft, warm coral inspired by the mysterious smile of Leonardo da Vinci's iconic painting. This color represents artistic genius, timeless beauty, and the enigmatic quality of great art. Mona Lisa's association with cultural heritage and artistic excellence has made it popular in museum and gallery design.
-#FF9500	oranges	Tangerine	A bright orange inspired by the tangerine fruit, which originated in Tangier, Morocco, and has been cultivated for its sweet, easy-to-peel segments for centuries. Tangerines are associated with good fortune in Chinese culture and are often given as gifts during the Lunar New Year. Tangerine's association with vitality, good luck, and natural sweetness has made it popular in food and cultural design.
 #FF9500	oranges	Tangerine	A bright orange inspired by the tangerine fruit, which originated in Tangier, Morocco, and has been cultivated for its sweet, easy-to-peel segments for centuries. Tangerines are associated with good fortune in Chinese culture and are often given as gifts during the Lunar New Year. Tangerine's association with vitality, good luck, and natural sweetness has made it popular in food and cultural design.
 #FF9505	oranges	Yellow Orange (Color Wheel)	A vibrant medium orange reminiscent of a glowing sunset.
 #FF9933	oranges	Deep saffron	Similar to tangerine peel, it's a vibrant light orange.
@@ -809,8 +801,7 @@ Hex	Category	Name	Description
 #FFC680	oranges	Buff	Named after a glowing sunset, this orange has a vibrant light look.
 #FFCBA4	oranges	Peach (Crayola)	This orange evokes fresh peaches with its vibrant light tone.
 #FFCC33	yellows	Sunglow	Named after ripe lemons, this yellow has a vibrant light look.
-#FFD300	yellows	Cyber yellow	Named after ripe lemons, this yellow has a vibrant medium look.
-#FFD300	yellows	Yellow (NCS)	A vibrant medium yellow reminiscent of sunflower petals.
+#FFD300	yellows	Cyber yellow / Yellow (NCS)	A vibrant medium yellow inspired by ripe lemons and sunflower petals.
 #FFD700	yellows	Gold (web) (Golden)	This yellow evokes morning sunlight with its vibrant medium tone.
 #FFD800	yellows	School bus yellow	Similar to sunflower petals, it's a vibrant medium yellow.
 #FFDAB9	oranges	Peach puff	Similar to fresh peaches, it's a vibrant light orange.
@@ -842,8 +833,7 @@ Hex	Category	Name	Description
 #FFFDD0	yellows	Cream	This yellow evokes ripe lemons with its vibrant light tone.
 #FFFF00	yellows	Yellow	The purest form of yellow, representing joy, optimism, and the energy of sunlight. Yellow has been associated with happiness and enlightenment across cultures, from the golden robes of Buddhist monks to the cheerful daffodils of spring. This color serves as a universal symbol of hope, creativity, and the bright promise of new beginnings.
 #FFFF31	yellows	Daffodil	A bright yellow with a hint of orange, inspired by the daffodil flower (Narcissus), which is celebrated as a symbol of spring and renewal in many cultures. Daffodils are associated with hope, new beginnings, and poetic inspiration, famously referenced in William Wordsworth's poetry. Their vibrant color marks the end of winter and the promise of warmer days, making daffodil yellow a favorite in seasonal art and celebrations.
-#FFFF66	yellows	Laser lemon	Named after morning sunlight, this yellow has a vibrant light look.
-#FFFF66	yellows	Unmellow yellow	Named after sunflower petals, this yellow has a vibrant light look.
+#FFFF66	yellows	Laser lemon / Unmellow yellow	A vibrant light yellow reminiscent of morning sunlight and sunflower petals.
 #FFFF99	yellows	Canary	Named after sunflower petals, this yellow has a vibrant light look.
 #FFFF9F	yellows	Lemon Yellow	A pale, cool yellow with green undertones inspired by the lemon fruit, which originated in Asia and has been cultivated for over 2,500 years. Lemons have been valued for their medicinal properties, culinary uses, and symbolic meaning of purification and freshness. Lemon yellow's association with cleanliness, vitality, and natural energy has made it popular in healthcare, food service, and wellness branding.
 #FFFFE0	yellows	Light yellow	A soft, gentle yellow that captures the warm glow of early morning sunlight. This color represents optimism, clarity, and gentle warmth. Light yellow's association with sunshine and positive energy has made it popular in children's products and wellness design. The color's cheerful, uplifting quality makes it ideal for creating bright, welcoming environments.
