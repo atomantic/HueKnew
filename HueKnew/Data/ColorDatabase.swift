@@ -22,53 +22,60 @@ struct ColorThresholds {
     static let mediumBrightnessThreshold: Double = 0.66
 }
 
-// MARK: - JSON Color Structures
-struct JSONColorData: Codable {
-    let colors: [JSONColor]
-}
-
-struct JSONColor: Codable {
-    let name: String
+// MARK: - TSV Color Structures
+struct TSVColor {
     let hex: String
     let category: String
+    let name: String
     let description: String
-
-    enum CodingKeys: String, CodingKey {
-        case name, hex, category, description
-    }
 }
 
 class ColorDatabase: ObservableObject {
     static let shared = ColorDatabase()
 
-    private var jsonData: JSONColorData?
+    private var tsvColors: [TSVColor] = []
     private var colorPairs: [ColorPair] = []
 
     private init() {
-        loadColorsFromJSON()
+        loadColorsFromTSV()
     }
 
-    private func loadColorsFromJSON() {
-        guard let url = Bundle.main.url(forResource: "colors", withExtension: "json") else {
-            Logger.error("Could not find colors.json in bundle")
+    private func loadColorsFromTSV() {
+        guard let url = Bundle.main.url(forResource: "colors", withExtension: "tsv") else {
+            Logger.error("Could not find colors.tsv in bundle")
             return
         }
 
         do {
-            let data = try Data(contentsOf: url)
-            jsonData = try JSONDecoder().decode(JSONColorData.self, from: data)
-            Logger.info("Successfully loaded \(jsonData?.colors.count ?? 0) colors from JSON")
+            let content = try String(contentsOf: url, encoding: .utf8)
+            let lines = content.components(separatedBy: .newlines)
+            
+            // Skip header line
+            for line in lines.dropFirst() where !line.isEmpty {
+                let components = line.components(separatedBy: "\t")
+                guard components.count >= 4 else { continue }
+                
+                let tsvColor = TSVColor(
+                    hex: components[0],
+                    category: components[1],
+                    name: components[2],
+                    description: components[3]
+                )
+                tsvColors.append(tsvColor)
+            }
+            
+            Logger.info("Successfully loaded \(tsvColors.count) colors from TSV")
             generateColorPairs()
         } catch {
-            Logger.error("Failed to load colors from JSON: \(error.localizedDescription)")
+            Logger.error("Failed to load colors from TSV: \(error.localizedDescription)")
         }
     }
 
     private func generateColorPairs() {
-        guard let jsonData = jsonData else { return }
+        guard !tsvColors.isEmpty else { return }
 
         // Group colors by category for pairing
-        let colorsByCategory = Dictionary(grouping: jsonData.colors) { $0.category }
+        let colorsByCategory = Dictionary(grouping: tsvColors) { $0.category }
 
         for (category, colors) in colorsByCategory {
             // Create pairs within each category
@@ -106,7 +113,7 @@ class ColorDatabase: ObservableObject {
         }
     }
 
-    private func generateComparisonNotes(color1: JSONColor, color2: JSONColor) -> String {
+    private func generateComparisonNotes(color1: TSVColor, color2: TSVColor) -> String {
         let info1 = ColorInfo(name: color1.name, hexValue: color1.hex, description: color1.description, category: mapStringToCategory(color1.category))
         let info2 = ColorInfo(name: color2.name, hexValue: color2.hex, description: color2.description, category: mapStringToCategory(color2.category))
 
@@ -218,15 +225,15 @@ extension ColorDatabase {
     }
 
     func getAllColors() -> [ColorInfo] {
-        // Get unique colors from the JSON data to avoid duplicates
-        guard let jsonData = jsonData else { return [] }
+        // Get unique colors from the TSV data to avoid duplicates
+        guard !tsvColors.isEmpty else { return [] }
         
-        return jsonData.colors.map { jsonColor in
+        return tsvColors.map { tsvColor in
             ColorInfo(
-                name: jsonColor.name,
-                hexValue: jsonColor.hex,
-                description: jsonColor.description,
-                category: mapStringToCategory(jsonColor.category)
+                name: tsvColor.name,
+                hexValue: tsvColor.hex,
+                description: tsvColor.description,
+                category: mapStringToCategory(tsvColor.category)
             )
         }
     }
@@ -240,8 +247,8 @@ extension ColorDatabase {
         return Array(allColors.shuffled().prefix(count))
     }
 
-    func getAvailableColors() -> [JSONColor] {
-        return jsonData?.colors ?? []
+    func getAvailableColors() -> [TSVColor] {
+        return tsvColors
     }
     
     func calculateColorDifference(color1: ColorInfo, color2: ColorInfo) -> Double {
