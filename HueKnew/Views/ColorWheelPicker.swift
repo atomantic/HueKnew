@@ -154,7 +154,7 @@ struct ColorWheelView: View {
         }
     }
 
-    private var hueColors: [Color] {
+    private static let hueColors: [Color] = {
         var colors: [Color] = []
         let step = 1.0 / 360.0
         
