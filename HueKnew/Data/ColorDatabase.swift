@@ -7,6 +7,46 @@
 
 import Foundation
 
+// MARK: - TSV Parsing Helper
+struct TSVParser {
+    static func parseTSVLine(_ line: String) -> [String] {
+        var fields: [String] = []
+        var currentField = ""
+        var inQuotes = false
+        var i = 0
+        
+        while i < line.count {
+            let char = line[line.index(line.startIndex, offsetBy: i)]
+            
+            if char == "\"" {
+                if inQuotes && i + 1 < line.count && line[line.index(line.startIndex, offsetBy: i + 1)] == "\"" {
+                    // Escaped quote
+                    currentField += "\""
+                    i += 2
+                } else {
+                    // Toggle quote state
+                    inQuotes.toggle()
+                    i += 1
+                }
+            } else if char == "\t" && !inQuotes {
+                // End of field
+                fields.append(currentField)
+                currentField = ""
+                i += 1
+            } else {
+                // Regular character
+                currentField += String(char)
+                i += 1
+            }
+        }
+        
+        // Add the last field
+        fields.append(currentField)
+        
+        return fields
+    }
+}
+
 // MARK: - Color Classification Constants
 struct ColorThresholds {
     // Hue thresholds for temperature classification (0-360 degrees)
@@ -52,7 +92,7 @@ class ColorDatabase: ObservableObject {
             
             // Skip header line
             for line in lines.dropFirst() where !line.isEmpty {
-                let components = line.components(separatedBy: "\t")
+                let components = TSVParser.parseTSVLine(line)
                 guard components.count >= 4 else { continue }
                 
                 let tsvColor = TSVColor(

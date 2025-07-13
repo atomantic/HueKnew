@@ -5,16 +5,57 @@ final class ColorDatabaseTests: XCTestCase {
     
     var colorDatabase: ColorDatabase!
     
-    override func setUp() {
-        super.setUp()
+    override func setUpWithError() throws {
         colorDatabase = ColorDatabase.shared
     }
     
-    override func tearDown() {
+    override func tearDownWithError() throws {
         colorDatabase = nil
-        super.tearDown()
     }
     
+    // MARK: - TSV Parser Tests
+    func testTSVParserBasicLine() {
+        let line = "red\t#FF0000\tRed\tA bright red color"
+        let fields = TSVParser.parseTSVLine(line)
+        XCTAssertEqual(fields.count, 4)
+        XCTAssertEqual(fields[0], "red")
+        XCTAssertEqual(fields[1], "#FF0000")
+        XCTAssertEqual(fields[2], "Red")
+        XCTAssertEqual(fields[3], "A bright red color")
+    }
+    
+    func testTSVParserQuotedField() {
+        let line = "red\t#FF0000\t\"Red, the primary color\"\tA bright red color"
+        let fields = TSVParser.parseTSVLine(line)
+        XCTAssertEqual(fields.count, 4)
+        XCTAssertEqual(fields[2], "Red, the primary color")
+    }
+    
+    func testTSVParserEscapedQuote() {
+        let line = "red\t#FF0000\t\"Red with \"\"quotes\"\" inside\"\tA bright red color"
+        let fields = TSVParser.parseTSVLine(line)
+        XCTAssertEqual(fields.count, 4)
+        XCTAssertEqual(fields[2], "Red with \"quotes\" inside")
+    }
+    
+    func testTSVParserTabInQuotedField() {
+        let line = "red\t#FF0000\t\"Red\twith\ttabs\"\tA bright red color"
+        let fields = TSVParser.parseTSVLine(line)
+        XCTAssertEqual(fields.count, 4)
+        XCTAssertEqual(fields[2], "Red\twith\ttabs")
+    }
+    
+    func testTSVParserEmptyFields() {
+        let line = "red\t\t\t"
+        let fields = TSVParser.parseTSVLine(line)
+        XCTAssertEqual(fields.count, 4)
+        XCTAssertEqual(fields[0], "red")
+        XCTAssertEqual(fields[1], "")
+        XCTAssertEqual(fields[2], "")
+        XCTAssertEqual(fields[3], "")
+    }
+
+    // MARK: - Color Database Tests
     func testLoadColorsFromTSV() {
         // Ensure the method does not crash
         // Data can be stubbed or mocked for more robust testing
