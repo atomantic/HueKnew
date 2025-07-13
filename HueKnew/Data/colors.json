@@ -5056,13 +5056,13 @@
       "name": "Vegas gold",
       "hex": "#C5B358",
       "category": "yellows",
-      "description": "Similar to sunflower petals, it's a soft medium yellow."
+      "description": "A shimmering, metallic gold inspired by the dazzling lights and opulence of Las Vegas. Vegas gold captures the glamour and excitement of the entertainment capital, evoking the golden age of show business and the allure of fortune. This color is often used in design to convey luxury, celebration, and the thrill of possibility."
     },
     {
       "name": "Venetian red",
       "hex": "#C80815",
       "category": "reds",
-      "description": "This red evokes a fresh rose with its vibrant medium tone."
+      "description": "A deep, rich red pigment originally made from iron oxide and named after the Italian city of Venice, where it was produced and traded during the Renaissance. Venetian red was prized by artists like Titian and Veronese for its warm, earthy quality and excellent covering power. This color evokes the artistic legacy of Venice and the rich cultural heritage of Italian painting traditions."
     },
     {
       "name": "Verdigris",
@@ -5074,13 +5074,13 @@
       "name": "Veronica",
       "hex": "#A020F0",
       "category": "purples",
-      "description": "A vibrant medium purple reminiscent of violet blossoms."
+      "description": "A bright, electric purple named after the speedwell flower (genus Veronica), which has been used in traditional medicine and garden design for centuries. Veronica purple captures the flower's vibrant beauty and is associated with healing, fidelity, and the simple pleasures of wildflowers. This color is often used in design to convey energy, creativity, and natural charm."
     },
     {
       "name": "Violet",
       "hex": "#8F00FF",
       "category": "purples",
-      "description": "This purple evokes royal velvet with its vibrant medium tone."
+      "description": "A deep, rich purple inspired by the violet flower, which has been celebrated in poetry, art, and folklore for its delicate beauty and sweet fragrance. Violets have been associated with modesty, faithfulness, and the arrival of spring since ancient times. The color violet represents creativity, spirituality, and the mysterious beauty of nature, making it a favorite in artistic and spiritual contexts."
     },
     {
       "name": "Violet (color wheel)",
@@ -5140,67 +5140,67 @@
       "name": "Vivid burgundy",
       "hex": "#9F1D35",
       "category": "reds",
-      "description": "This red evokes brick walls with its vibrant medium tone."
+      "description": "A deep, intense red inspired by the rich wines of Burgundy, France, a region celebrated for its centuries-old winemaking traditions. Burgundy red evokes the sophistication of fine wine, the warmth of French hospitality, and the enduring appeal of classic European elegance. This color is often used in design to convey luxury, tradition, and refined taste."
     },
     {
       "name": "Vivid sky blue",
       "hex": "#00CCFF",
       "category": "blues",
-      "description": "Similar to a clear sky, it's a vibrant medium blue."
+      "description": "A brilliant, intense blue that captures the pure, unclouded sky at its most vibrant. Vivid sky blue evokes feelings of freedom, clarity, and boundless possibility, reminiscent of perfect summer days and open horizons. This color is often used in design to convey optimism, freshness, and the exhilarating sense of wide-open spaces."
     },
     {
       "name": "Vivid tangerine",
       "hex": "#FFA089",
       "category": "reds",
-      "description": "A vibrant light red reminiscent of a fresh rose."
+      "description": "A bright, energetic orange-red inspired by the juicy tangerine fruit, which originated in Tangier, Morocco, and has been cultivated for its sweet, easy-to-peel segments. Vivid tangerine evokes the zest and vitality of citrus fruits, representing freshness, energy, and the invigorating taste of natural sweetness. This color is often used in design to convey enthusiasm, warmth, and appetizing appeal."
     },
     {
       "name": "Vivid violet",
       "hex": "#9F00FF",
       "category": "purples",
-      "description": "Similar to lavender fields, it's a vibrant medium purple."
+      "description": "A brilliant, intense purple that captures the most vibrant expression of the violet flower's natural beauty. Vivid violet represents artistic passion, creative energy, and the bold expression of individuality. This color is often used in design to convey confidence, artistic flair, and the courage to stand out from the crowd."
     },
     {
       "name": "Volt",
       "hex": "#CEFF00",
       "category": "yellows",
-      "description": "Named after sunflower petals, this yellow has a vibrant medium look."
+      "description": "A bright, electric yellow-green inspired by the high-voltage energy of electricity and the vibrant glow of neon lights. Volt captures the intensity and power of electrical energy, representing innovation, technology, and the dynamic force of modern progress. This color is often used in design to convey energy, excitement, and cutting-edge appeal."
     },
     {
       "name": "Warm black",
       "hex": "#004242",
       "category": "blues",
-      "description": "A vibrant dark blue reminiscent of clear skies."
+      "description": "A deep, rich black with subtle warm undertones that creates a softer, more approachable alternative to pure black. Warm black evokes the comforting darkness of a moonlit night or the rich depths of fertile soil. This color is often used in design to convey sophistication while maintaining warmth and accessibility."
     },
     {
       "name": "Weezy Blue",
       "hex": "#189BCC",
       "category": "blues",
-      "description": "Similar to a twilight horizon, it's a vibrant medium blue."
+      "description": "A bright, energetic blue inspired by the nickname 'Weezy' and the vibrant energy of contemporary culture. Weezy Blue captures the spirit of modern creativity and youthful expression, representing confidence, individuality, and the bold colors of contemporary design. This color is often used to convey freshness, innovation, and contemporary appeal."
     },
     {
       "name": "Wheat",
       "hex": "#F5DEB3",
       "category": "oranges",
-      "description": "A vibrant light orange reminiscent of autumn leaves."
+      "description": "A soft, golden tan inspired by ripe wheat fields at harvest time. Wheat color evokes the abundance of agriculture, the warmth of summer, and the timeless beauty of rural landscapes. This color is often used in design to convey natural warmth, rustic charm, and the comforting appeal of traditional craftsmanship."
     },
     {
       "name": "White",
       "hex": "#FFFFFF",
       "category": "neutrals",
-      "description": "Named after soft ash, this neutral has a muted light look."
+      "description": "The purest form of light, representing clarity, innocence, and new beginnings. White has been associated with purity and goodness across cultures, from bridal traditions to medical uniforms. This color serves as a blank canvas for creativity while symbolizing hope, cleanliness, and the potential for infinite possibilities."
     },
     {
       "name": "Wild blue yonder",
       "hex": "#A2ADD0",
       "category": "blues",
-      "description": "Named after clear skies, this blue has a soft light look."
+      "description": "A soft, dreamy blue inspired by the vast, open skies and the limitless possibilities of the horizon. Wild blue yonder evokes the freedom of flight, the romance of adventure, and the peaceful contemplation of endless skies. This color is often used in design to convey tranquility, imagination, and the gentle beauty of natural expanses."
     },
     {
       "name": "Wild orchid",
       "hex": "#D470A2",
       "category": "purples",
-      "description": "Similar to royal velvet, it's a soft light purple."
+      "description": "A soft, romantic pink-purple inspired by the delicate beauty of wild orchid flowers, which grow in diverse habitats from tropical rainforests to temperate woodlands. Wild orchid color evokes the exotic beauty of rare flowers, representing elegance, refinement, and the mysterious allure of natural wonders. This color is often used in design to convey sophistication, romance, and natural elegance."
     },
     {
       "name": "Wild Strawberry",
