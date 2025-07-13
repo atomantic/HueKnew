@@ -32,15 +32,15 @@ jobs:
             echo "No available simulators found."
             exit 1
           fi
-          xcodebuild test 
-            -project HueKnew.xcodeproj 
-            -scheme HueKnew 
-            -destination "id=$UDID" 
-            -configuration Debug 
-            -derivedDataPath build 
-            IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" 
-            CODE_SIGNING_ALLOWED=NO 
-            CODE_SIGN_IDENTITY="" 
+          xcodebuild test \
+            -project HueKnew.xcodeproj \
+            -scheme HueKnew \
+            -destination "id=$UDID" \
+            -configuration Debug \
+            -derivedDataPath build \
+            IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO
 
   build_and_deploy:
