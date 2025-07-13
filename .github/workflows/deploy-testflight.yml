@@ -24,14 +24,14 @@ jobs:
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: 'latest-stable'
-      - name: Build (skip code signing)
+      - name: Run Tests
         run: |
-          xcodebuild \
+          xcodebuild test \
             -project HueKnew.xcodeproj \
             -scheme HueKnew \
-            -configuration Release \
+            -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
+            -configuration Debug \
             -derivedDataPath build \
-            clean build \
             IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGN_IDENTITY="" \
