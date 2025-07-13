@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "111111111111111111111111"
+               BlueprintIdentifier = "C9B48E572E1F0B6700445079"
                BuildableName = "HueKnew.app"
                BlueprintName = "HueKnew"
                ReferencedContainer = "container:HueKnew.xcodeproj">
@@ -38,6 +38,16 @@
                ReferencedContainer = "container:HueKnew.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C9B48E702E1F0B6800445079"
+               BuildableName = "HueKnewUITests.xctest"
+               BlueprintName = "HueKnewUITests"
+               ReferencedContainer = "container:HueKnew.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -54,7 +64,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "111111111111111111111111"
+            BlueprintIdentifier = "C9B48E572E1F0B6700445079"
             BuildableName = "HueKnew.app"
             BlueprintName = "HueKnew"
             ReferencedContainer = "container:HueKnew.xcodeproj">
@@ -71,7 +81,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "111111111111111111111111"
+            BlueprintIdentifier = "C9B48E572E1F0B6700445079"
             BuildableName = "HueKnew.app"
             BlueprintName = "HueKnew"
             ReferencedContainer = "container:HueKnew.xcodeproj">
