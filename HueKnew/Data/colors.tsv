@@ -3,7 +3,7 @@ Hex	Category	Name	Description
 #000080	blues	Navy Blue	A dark blue with purple undertones that has been the standard color for naval uniforms since the 18th century. This color represents authority, discipline, and maritime tradition, having been adopted by navies worldwide for its practical camouflage properties and professional appearance. Navy blue's association with reliability and institutional trust has made it a staple in corporate and military design.
 #00009C	blues	Duke blue	Similar to a twilight horizon, it's a vibrant medium blue.
 #0000CD	blues	Medium blue	A classic, balanced blue that represents the ideal medium tone between light and dark blues. This color has been a staple in design and fashion for its versatility and reliability. Medium blue's association with trust, stability, and professionalism has made it popular in corporate branding and uniforms. The color's balanced, approachable quality makes it ideal for creating trustworthy, professional environments.
-#0000FF	blues	Blue	Named after clear skies, this blue has a vibrant medium look.
+#0000FF	blues	Blue	The default HTML blue (#0000FF) represents the purest digital primary blue. As one of the earliest named web colors, it is used widely in hyperlinks and digital graphics to signify clarity and reliability.
 #000F89	blues	Phthalo blue	A powerful, highly saturated blue pigment first synthesized in 1928. Phthalo blue (copper phthalocyanine) quickly became a staple for artists due to its intense color strength, lightfastness, and versatility. Its discovery revolutionized modern painting, offering a non-toxic, affordable alternative to Prussian blue and cobalt blue. The pigment's vibrant hue is prized in both fine art and industrial applications, from automotive paints to printing inks.
 #0014A8	blues	Zaffer (Zaffre)	A deep blue pigment made from roasted cobalt ore, used extensively in glassmaking and ceramics since the Middle Ages. The name comes from the Arabic 'safra,' meaning yellow, though the pigment produces a rich blue color. Zaffer was essential for creating the famous blue glass of Venice and was used in Chinese porcelain. This pigment's discovery and trade played a crucial role in the development of European glass and ceramic industries.
 #0018A8	blues	Blue (Pantone)	Similar to a twilight horizon, it's a vibrant medium blue.
@@ -16,12 +16,12 @@ Hex	Category	Name	Description
 #004040	blues	Rich black	Similar to deep ocean water, it's a vibrant dark blue.
 #0040FF	blues	Cerulean (RGB)	A vibrant medium blue reminiscent of a twilight horizon.
 #00416A	blues	Indigo dye	Similar to clear skies, it's a vibrant dark blue.
-#004225	greens	British racing green	Named after fresh herbs, this green has a vibrant dark look.
+#004225	greens	British racing green	A deep, rich green associated with British motorsport since the early 1900s. It became iconic after British cars adopted the color for international racing events, symbolizing tradition and speed.
 #004242	blues	Warm black	A deep, rich black with subtle warm undertones that creates a softer, more approachable alternative to pure black. Warm black evokes the comforting darkness of a moonlit night or the rich depths of fertile soil. This color is often used in design to convey sophistication while maintaining warmth and accessibility.
 #0047AB	blues	Cobalt Blue	A vivid blue pigment made from cobalt(II) aluminate, discovered in 1802 by French chemist Louis Jacques Thénard. Cobalt blue offered artists a stable, lightfast alternative to ultramarine and was quickly adopted by painters like J.M.W. Turner and Vincent van Gogh. Its pure, cool hue is ideal for depicting skies and water, and it remains a cornerstone of both traditional and modern palettes.
 #0048BA	blues	Absolute Zero	A deep, intense blue that represents the theoretical temperature of absolute zero (-273.15°C). This color embodies the coldest possible temperature in physics, where all molecular motion ceases. The pigment's depth and saturation mirror the profound stillness and infinite cold of this scientific concept.
-#004953	blues	Midnight green (eagle green)	This blue evokes deep ocean water with its vibrant dark tone.
-#004B49	blues	Deep jungle green	Named after deep ocean water, this blue has a vibrant dark look.
+#004953	blues	Midnight green (eagle green)	A dark teal shade used by the Philadelphia Eagles, conjuring the shadowy greens of a midnight forest and conveying athletic determination.
+#004B49	blues	Deep jungle green	A dark, bluish-green capturing the dense foliage of tropical jungles. Popularized by Crayola in the 1990s, it suggests exotic locales and adventurous spirit.
 #004F98	blues	USAFA blue	Similar to clear skies, it's a vibrant dark blue.
 #00573F	greens	Gotham green	This green evokes fresh herbs with its vibrant dark tone.
 #006400	greens	Dark green (X11)	A vibrant dark green reminiscent of fresh herbs.
@@ -29,85 +29,85 @@ Hex	Category	Name	Description
 #0067A5	blues	Sapphire blue	Similar to a twilight horizon, it's a vibrant medium blue.
 #006B3C	greens	Cadmium green	This green evokes pine forests with its vibrant dark tone.
 #006DB0	blues	Honolulu blue	This blue evokes a twilight horizon with its vibrant medium tone.
-#0070B8	blues	Spanish blue	Named after clear skies, this blue has a vibrant medium look.
-#0072BB	blues	French blue	Named after a twilight horizon, this blue has a vibrant medium look.
+#0070B8	blues	Spanish blue	A bright azure commonly seen in Spanish heraldry and regional flags. Its lively tone conveys Mediterranean vibrancy and cultural pride.
+#0072BB	blues	French blue	A mid-tone blue reminiscent of traditional French workwear and national uniforms, symbolizing craftsmanship and the elegance associated with French design.
 #007474	blues	Skobeloff	Similar to clear skies, it's a vibrant dark blue.
 #00755E	blues	Tropical rainforest	This blue evokes a twilight horizon with its vibrant dark tone.
 #007BA7	blues	Cerulean	A serene sky-blue pigment discovered in 1805 by Swiss chemist Albrecht Höpfner. This cobalt stannate pigment captures the essence of a clear summer sky and was immediately embraced by landscape painters. Its name comes from the Latin 'caeruleus,' meaning sky blue. Cerulean's stability and resistance to fading made it a favorite of Impressionist painters, particularly Claude Monet, who used it extensively in his water lily series.
 #007BB8	blues	Star command blue	This blue evokes a twilight horizon with its vibrant medium tone.
 #007F5C	greens	Spanish viridian	A vibrant dark green reminiscent of spring grass.
-#007F66	blues	Generic viridian	Named after clear skies, this blue has a vibrant dark look.
-#008000	greens	Green (web)	Named after pine forests, this green has a vibrant dark look.
-#008080	blues	Teal	Named after a twilight horizon, this blue has a vibrant dark look.
+#007F66	blues	Generic viridian	A standard version of viridian, this deep blue-green serves as a staple pigment in printing and painting, valued for its balanced mix of green and cyan.
+#008000	greens	Green (web)	Hex #008000 is the original green from the early web color palette. Its straightforward hue became a default choice in HTML for representing pure green on screens.
+#008080	blues	Teal	Teal blends blue and green in equal measure, named after the stripe on the common teal duck. The color became a design favorite in the 1990s for its calm yet modern feel.
 #0080FF	blues	Azure	A bright blue with slight purple undertones inspired by the azure sky, a term derived from the Persian word 'lazhward' meaning blue. This color has been associated with clarity, truth, and divine inspiration throughout history, appearing in heraldry, religious art, and classical architecture. Azure's association with open spaces and limitless possibilities has made it popular in technology and aviation design.
 #0087BD	blues	Blue (NCS)	This blue evokes clear skies with its vibrant medium tone.
 #008B8B	blues	Dark cyan	Similar to a twilight horizon, it's a vibrant dark blue.
-#009150	greens	Spanish green	A vibrant dark green reminiscent of pine forests.
-#0093AF	blues	Blue (Munsell)	Named after deep ocean water, this blue has a vibrant medium look.
-#009698	blues	Viridian green	This blue evokes a twilight horizon with its vibrant dark tone.
+#009150	greens	Spanish green	A deep emerald shade rooted in Spanish artistic traditions, often seen in classic tilework and lush Mediterranean landscapes.
+#0093AF	blues	Blue (Munsell)	This hue is defined by the Munsell color system as a balanced medium blue, serving as a reference point for color calibration in design and printing.
+#009698	blues	Viridian green	Viridian green is a darker variant of the historic viridian pigment, prized by painters for its cool tone and excellent permanence.
 #009B7D	blues	Paolo Veronese green	A rich, vibrant green named after the Italian Renaissance painter Paolo Veronese, who was known for his masterful use of color and dramatic compositions. This color represents artistic excellence, classical beauty, and the enduring legacy of Renaissance art. Paolo Veronese green's association with fine art and cultural heritage has made it significant in artistic and museum contexts.
-#009E60	greens	Shamrock green	A vibrant medium green reminiscent of pine forests.
-#009EDB	blues	United Nations blue	This blue evokes deep ocean water with its vibrant medium tone.
-#009F6B	greens	Green (NCS)	Similar to pine forests, it's a vibrant medium green.
-#00A550	greens	Green (pigment)	Named after pine forests, this green has a vibrant medium look.
+#009E60	greens	Shamrock green	Named after Ireland's iconic shamrock, this cheerful green evokes good luck and features prominently in St. Patrick's Day celebrations.
+#009EDB	blues	United Nations blue	The signature blue of the United Nations flag, chosen to symbolize peace and international cooperation. It stands out on peacekeeper helmets and UN branding.
+#009F6B	greens	Green (NCS)	A medium green defined by the Natural Color System, providing a standardized reference for architects and designers across Europe.
+#00A550	greens	Green (pigment)	A general-purpose pigment green used in art materials for its neutral undertone and versatility in mixing.
 #00A693	blues	Persian green	A vibrant, turquoise green inspired by the traditional ceramics and architecture of Persia, where this color has been used in decorative arts for centuries. This color represents the fusion of natural beauty and human artistry, and the rich cultural traditions of the Middle East. Persian green's association with classical elegance and cultural heritage has made it popular in heritage and luxury design.
-#00A877	greens	Green (Munsell)	This green evokes pine forests with its vibrant medium tone.
-#00AB66	greens	GO green	Similar to pine forests, it's a vibrant medium green.
-#00AD43	greens	Green (Pantone)	Named after pine forests, this green has a vibrant medium look.
+#00A877	greens	Green (Munsell)	A specific Munsell notation of green, valued in color science for its consistency across mediums.
+#00AB66	greens	GO green	A bright, energetic green often associated with environmental initiatives and the call to 'go green' in sustainable design.
+#00AD43	greens	Green (Pantone)	Pantone's standard bright green, widely referenced in graphic design and printing for its vibrant presence.
 #00B7EB	blues	Cyan (process)	This blue evokes a twilight horizon with its vibrant medium tone.
 #00BFFF	blues	Deep sky blue	A brilliant, intense blue that captures the pure color of a cloudless summer sky at its zenith. This color represents openness, freedom, and infinite possibility, embodying the vastness of the heavens. Deep sky blue's association with clarity and optimism has made it popular in aviation, technology, and outdoor brands, while its vibrant hue appeals to designers seeking to create uplifting, expansive environments.
-#00CC99	blues	Caribbean green	Similar to deep ocean water, it's a vibrant medium blue.
+#00CC99	blues	Caribbean green	A turquoise shade reminiscent of clear Caribbean waters, evoking tropical beaches and relaxation.
 #00CCCC	blues	Robin egg blue	A gentle, refreshing green inspired by the rare green varieties of turquoise gemstone, which have been valued for their beauty and spiritual significance by cultures from ancient Persia to Native American tribes. Turquoise green evokes the lushness of verdant oases and the healing properties attributed to the stone. This color is often used in design to convey renewal, balance, and a harmonious connection to nature.
 #00CCFF	blues	Vivid sky blue	A brilliant, intense blue that captures the pure, unclouded sky at its most vibrant. Vivid sky blue evokes feelings of freedom, clarity, and boundless possibility, reminiscent of perfect summer days and open horizons. This color is often used in design to convey optimism, freshness, and the exhilarating sense of wide-open spaces.
 #00CED1	blues	Dark turquoise	A deep, rich blue-green that captures the mysterious depths of tropical waters. This color evokes the tranquility and beauty of coral reefs and deep ocean environments. Dark turquoise's association with water and nature has made it popular in spa and wellness design, while its sophisticated depth appeals to luxury fashion and interior design. The color's calming properties make it ideal for creating peaceful, restorative environments.
 #00FA9A	greens	Medium spring green	A bright, fresh green that captures the vibrant energy of early spring growth. This color represents renewal, new beginnings, and the promise of warmer days ahead. Medium spring green's association with nature's awakening and environmental consciousness has made it popular in seasonal design and eco-friendly branding.
-#00FF00	greens	Lime Green	A vibrant medium green reminiscent of fresh herbs.
-#00FF40	greens	Erin	A vibrant medium green reminiscent of pine forests.
-#00FF7F	greens	Spring green	This green evokes pine forests with its vibrant medium tone.
-#00FFBF	greens	Technobotanica	A vibrant medium green reminiscent of spring grass.
-#00FFCD	blues	Sea green (Crayola)	A vibrant medium blue reminiscent of the open sea.
+#00FF00	greens	Lime Green	A vivid hue inspired by the rind of limes; popularized in pop art and neon designs for its eye-catching brightness.
+#00FF40	greens	Erin	This bright yellow-green takes its name from an old poetic term for Ireland, conjuring images of the island's lush countryside.
+#00FF7F	greens	Spring green	A lively shade halfway between cyan and green on the RGB wheel, representing the first shoots of vegetation in spring.
+#00FFBF	greens	Technobotanica	A playful synthetic green-blue created for digital palettes, suggesting futuristic plant life and high-tech aesthetics.
+#00FFCD	blues	Sea green (Crayola)	Crayola introduced this cheerful blue-green to capture the inviting hue of shallow seawater.
 #00FFEF	blues	Turquoise blue	A vivid blue-green reminiscent of the shallow waters of tropical seas, turquoise blue draws its name from the gemstone that has been treasured for millennia by cultures from ancient Egypt to the American Southwest. This color evokes feelings of tranquility, clarity, and exotic beauty, and has been used in jewelry, art, and architecture to symbolize protection, healing, and the boundless spirit of the ocean.
-#00FFFE	blues	Spanish sky blue	A vibrant medium blue reminiscent of a clear sky.
+#00FFFE	blues	Spanish sky blue	A bright sky blue often used in Spanish sports uniforms and coastal imagery.
 #00FFFF	blues	Aqua/Cyan	A bright, electric blue-green that is one of the three primary colors in the subtractive color model (CMYK). The name comes from the Greek 'kyanos,' meaning dark blue. Cyan is essential in color printing and photography, where it combines with magenta and yellow to create a full color spectrum. This color's association with technology and digital media has made it a popular choice for modern design and user interfaces.
-#010203	neutrals	Rich black	Named after a twilight horizon, this blue has a soft dark look.
-#014421	greens	UP Forest green	A vibrant dark green reminiscent of pine forests.
+#010203	neutrals	Rich black	In printing, rich black combines multiple inks to achieve a deeper black than standard black alone, producing a more saturated neutral.
+#014421	greens	UP Forest green	The official color of the University of the Philippines, this dark green represents growth and academic tradition.
 #01796F	blues	Pine green	A deep, rich green inspired by the needles of pine trees, which have been valued for their beauty and practical uses for thousands of years. This color represents the enduring strength of evergreen forests and the natural beauty of coniferous landscapes. Pine green's association with forest conservation and outdoor recreation has made it popular in environmental and outdoor branding.
-#043927	greens	Sacramento State green	Similar to pine forests, it's a vibrant dark green.
-#0A7E8C	blues	Metallic Seaweed	Similar to the open sea, it's a vibrant dark blue.
+#043927	greens	Sacramento State green	Adopted by Sacramento State University, this rich green reflects the school's tree-filled campus and regional heritage.
+#0A7E8C	blues	Metallic Seaweed	A dark turquoise with a subtle metallic sheen, reminiscent of glistening seaweed under coastal waters.
 #0ABAB5	blues	Tiffany Blue	A distinctive robin's egg blue that has become synonymous with luxury and elegance since Tiffany & Co. adopted it in 1845. This color was chosen by founder Charles Lewis Tiffany for the cover of the company's Blue Book catalog, and has since become one of the most recognizable brand colors in the world. The shade's association with Tiffany's iconic jewelry boxes and the promise of precious gifts has made it a symbol of romance and sophistication.
 #0BDA51	greens	Malachite	A vibrant green pigment derived from the mineral malachite, a copper carbonate hydroxide. This ancient pigment was used in Egyptian wall paintings and medieval illuminated manuscripts. The mineral's distinctive banded patterns, formed by copper deposits, create the characteristic green color. Malachite was ground into powder and mixed with egg yolk or oil to create paint, though modern versions use synthetic copper compounds for safety.
-#0F52BA	blues	Sapphire	Named after a twilight horizon, this blue has a vibrant medium look.
-#100C08	oranges	Smoky black	This orange evokes tangerine peel with its soft dark tone.
-#1164B4	blues	Green-blue	A vibrant medium blue reminiscent of deep ocean water.
+#0F52BA	blues	Sapphire	Named after the precious gemstone, sapphire blue conveys luxury and has been prized in jewelry and royal regalia.
+#100C08	oranges	Smoky black	This deep brownish-black resembles charred wood or thick smoke, lending a moody warmth to designs.
+#1164B4	blues	Green-blue	A balanced teal often used in scientific illustrations to depict water or algae.
 #123524	greens	Phthalo green	A deep, intense green pigment first synthesized in 1938, known for its exceptional color strength and lightfastness. This synthetic pigment revolutionized green colors in art, offering artists a powerful, non-toxic alternative to traditional green pigments. Phthalo green's association with modern artistic innovation and technical excellence has made it significant in contemporary art and industrial applications.
-#126180	blues	Blue sapphire	A vibrant dark blue reminiscent of deep ocean water.
+#126180	blues	Blue sapphire	A dark, jewel-toned blue modeled after sapphire gemstones, valued in fashion for its richness.
 #130a8f	blues	International Klein Blue	A deep, ultramarine blue created by French artist Yves Klein in the 1950s. This pigment was developed specifically for Klein's monochromatic paintings and became his signature color. The artist patented the color and used it extensively in his 'Anthropometries' series, where he used nude models as 'living brushes.' International Klein Blue represents the artist's quest for pure color and his belief in the spiritual power of monochromatic art.
-#138808	greens	India green	A vibrant dark green reminiscent of fresh herbs.
+#138808	greens	India green	The green of India's national flag, symbolizing fertility, faith, and the land's lush landscapes.
 #1560BD	blues	Denim	A classic blue inspired by the durable cotton twill fabric that revolutionized workwear in the late 19th century. Denim's name comes from 'de Nîmes,' referring to the French city where the fabric was first woven. This color represents durability, authenticity, and American culture, as denim jeans became a symbol of rebellion and youth culture in the 1950s. The color's association with hard work and casual style has made it a timeless choice in fashion and design.
 #177245	greens	Dark spring green	A deep, vibrant green that captures the rich color of new growth in early spring. This color represents renewal and vitality, embodying the energy of nature's awakening after winter. Dark spring green's association with growth and new beginnings has made it popular in environmental and wellness contexts, while its natural depth appeals to designers seeking to bring the outdoors inside.
-#18453B	blues	MSU green	Similar to clear skies, it's a soft dark blue.
+#18453B	blues	MSU green	Michigan State University's official green, representing school pride and the greenery of the campus.
 #189BCC	blues	Weezy Blue	A bright, energetic blue inspired by the nickname 'Weezy' and the vibrant energy of contemporary culture. Weezy Blue captures the spirit of modern creativity and youthful expression, representing confidence, individuality, and the bold colors of contemporary design. This color is often used to convey freshness, innovation, and contemporary appeal.
 #191970	blues	Midnight blue	A deep, rich blue that captures the color of the night sky just before dawn. This color represents the quiet hours of reflection and the promise of a new day. Midnight blue's association with sophistication and depth has made it popular in formal wear and luxury branding.
 #195905	greens	Lincoln green	A deep, rich green named after the English city of Lincoln, where this color was traditionally used for woolen cloth. This color has strong associations with English folklore and the legend of Robin Hood, who was said to wear Lincoln green. The color represents the deep forests of medieval England and the connection between nature and English heritage.
-#1A2421	greens	Dark jungle green	A muted dark green reminiscent of pine forests.
+#1A2421	greens	Dark jungle green	A muted deep green that echoes the dense shade of thick tropical forests.
 #1B1B1B	neutrals	Eerie black	Similar to driftwood, it's a muted dark neutral.
-#1C05B3	blues	Trypan Blue	This blue evokes clear skies with its vibrant medium tone.
+#1C05B3	blues	Trypan Blue	A synthetic dye originally developed for biological staining, known for its intense purplish blue.
 #1C39BB	blues	Persian blue	A deep, rich blue inspired by the traditional ceramics and textiles of Persia (modern-day Iran), which have been celebrated for their beauty and craftsmanship for thousands of years. This color represents cultural heritage, artistic excellence, and the rich traditions of Middle Eastern art. Persian blue's association with classical beauty and cultural sophistication has made it popular in heritage and luxury design.
 #1CA9C9	blues	Pacific blue	A bright, tropical blue that captures the clear, warm waters of the Pacific Ocean. This color represents adventure, exploration, and the vast beauty of marine environments. Pacific blue's association with coastal living and ocean conservation has made it popular in marine and environmental branding.
-#1CAC78	greens	Green (Crayola)	A vibrant medium green reminiscent of spring grass.
-#1D2951	blues	Space cadet	Similar to a twilight horizon, it's a soft dark blue.
+#1CAC78	greens	Green (Crayola)	Crayola's standard green crayon, introduced in 1903, capturing a bright grassy hue loved by children.
+#1D2951	blues	Space cadet	A dark blue introduced in the 2000s, conjuring images of futuristic space uniforms.
 #1DACD6	blues	Cerulean (Crayola)	A vibrant medium blue reminiscent of a twilight horizon.
 #1E90FF	blues	Dodger blue	Named after a twilight horizon, this blue has a vibrant medium look.
 #1F005E	purples	Paua	A deep, iridescent purple inspired by the paua shell, a type of abalone native to New Zealand that has been used in traditional Maori jewelry and art for centuries. This color represents the connection between ocean and land, and the cultural heritage of indigenous peoples. Paua's association with natural beauty and cultural tradition has made it popular in artisanal and cultural design.
-#1F75FE	blues	Blue (Crayola)	This blue evokes a twilight horizon with its vibrant medium tone.
+#1F75FE	blues	Blue (Crayola)	This bright blue crayon color has been part of Crayola's palette for decades, symbolizing clear skies and creativity.
 #20B2AA	blues	Light sea green	A refreshing blue-green that captures the color of shallow tropical waters and coral reefs. This color represents the beauty and tranquility of coastal environments and the rich biodiversity of marine ecosystems. Light sea green's association with ocean conservation and beach vacations has made it popular in travel and environmental branding.
 #214FC6	blues	New Car	A bright, metallic blue that captures the pristine appearance of a brand new automobile. This color represents luxury, success, and the excitement of new beginnings. New Car's association with automotive excellence and achievement has made it popular in automotive branding and luxury design.
-#2243B6	blues	Denim blue	Named after deep ocean water, this blue has a vibrant medium look.
+#2243B6	blues	Denim blue	Named for the rugged denim fabric, this medium blue reflects the enduring appeal of blue jeans.
 #228B22	greens	Forest Green	A dark green inspired by the deep canopies of mature forests, which have been the foundation of terrestrial ecosystems for millions of years. This color represents the abundance of life, natural wisdom, and the vital role of forests in maintaining Earth's biodiversity. Forest green's association with environmental conservation and natural heritage has made it popular in outdoor and eco-friendly branding.
-#23297A	blues	St. Patrick's blue	Named after deep ocean water, this blue has a soft medium look.
+#23297A	blues	St. Patrick's blue	Historically used as the national color of Ireland before green, this soft blue appears on many Irish coats of arms.
 #242124	neutrals	Raisin black	A deep, rich black inspired by the dried grape fruit, which has been valued for its concentrated sweetness and nutritional benefits for thousands of years. This color represents natural preservation, traditional food preparation, and the wisdom of ancient culinary practices. Raisin black's association with natural health and traditional cooking has made it popular in health food and heritage branding.
 #26619C	blues	Lapis lazuli	A deep blue pigment ground from the semi-precious stone lapis lazuli, which contains the mineral lazurite. This stone was mined in the Sar-e-Sang valley of Afghanistan for over 6,000 years and traded along the Silk Road. Ancient Egyptians used it for jewelry and cosmetics, while medieval artists ground it into ultramarine pigment. The stone's distinctive golden pyrite inclusions create a starry night effect that made it highly prized by royalty and artists alike.
-#299617	greens	Slimy green	Similar to spring grass, it's a vibrant medium green.
+#299617	greens	Slimy green	A quirky yellow-green reminiscent of cartoon slime, popular in playful or nostalgic designs.
 #29AB87	greens	Jungle green	A deep, rich green that captures the lush, mysterious quality of tropical rainforests. This color represents the dense, humid environment of jungle ecosystems and their incredible biodiversity. Jungle green's association with adventure, exploration, and untamed nature has made it popular in outdoor gear and adventure sports. The color's depth and complexity evoke the hidden wonders and challenges of jungle environments.
 #2a3439	blues	Gunmetal	A dark, metallic gray-blue that mimics the appearance of gunmetal, an alloy of copper, tin, and zinc used in firearms and machinery since the 16th century. This color represents strength, durability, and industrial power, making it popular in automotive design, military equipment, and industrial applications. Gunmetal's association with precision engineering and reliability has made it a favorite in technical and professional contexts.
 #2A52BE	blues	Cerulean blue	A classic sky-blue pigment made from cobalt(II) stannate, introduced in the 19th century as a safer alternative to earlier blue pigments. Cerulean blue is valued for its subtle, naturalistic hue and its stability in mixtures, making it a favorite for painting skies and seascapes. Its gentle, slightly greenish undertone distinguishes it from other blues, and it remains a staple in artists' palettes for landscape painting.
