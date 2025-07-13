@@ -93,9 +93,6 @@ struct ChallengeView: View {
             case .colorToName:
                 // Show color, ask to pick name
                 VStack(spacing: 8) {
-                    Text("What is this color called?")
-                        .font(.title2)
-                        .foregroundColor(.primary)
                     
                     Rectangle()
                         .fill(targetColor?.color ?? Color.gray)
@@ -115,9 +112,6 @@ struct ChallengeView: View {
     @ViewBuilder
     private var answerOptionsSection: some View {
         VStack(spacing: 16) {
-            Text("Choose your answer:")
-                .font(.headline)
-                .foregroundColor(.primary)
             
             switch challengeType {
             case .nameToColor:
