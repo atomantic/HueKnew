@@ -27,11 +27,16 @@ jobs:
       - name: Find and use available simulator
         run: |
           set -o pipefail
-          UDID=$(xcrun simctl list devices available | grep -oE '[A-F0-9]{8}-([A-F0-9]{4}-){3}[A-F0-9]{12}' | head -n 1)
+          UDID=$(xcrun simctl list devices --json | jq -r '.devices | .[] | .[] | select(.isAvailable == true and (.name | contains("iPhone")) and .state != "Shutdown") | .udid' | head -n 1)
           if [ -z "$UDID" ]; then
-            echo "No available simulators found."
+            echo "No booted iPhone simulator found, trying to find a shutdown one..."
+            UDID=$(xcrun simctl list devices --json | jq -r '.devices | .[] | .[] | select(.isAvailable == true and (.name | contains("iPhone"))) | .udid' | head -n 1)
+          fi
+          if [ -z "$UDID" ]; then
+            echo "No available iPhone simulators found."
             exit 1
           fi
+          echo "Using simulator with UDID: $UDID"
           xcodebuild test \
             -project HueKnew.xcodeproj \
             -scheme HueKnew \
