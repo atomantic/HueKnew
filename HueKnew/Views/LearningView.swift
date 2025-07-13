@@ -18,10 +18,6 @@ struct LearningView: View {
                 Text("Learning Mode")
                     .font(.headline)
                     .foregroundColor(.blue)
-                
-                Text("Study the differences")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
             }
             .padding()
             
