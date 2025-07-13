@@ -40,13 +40,13 @@
       "name": "Indian Yellow",
       "hex": "#E3B505",
       "category": "yellows",
-      "description": "A rich, warm yellow with slightly more orange undertones than Gamboge"
+      "description": "A deep, golden yellow pigment with a controversial history. Originally made from the urine of cows fed exclusively on mango leaves in India, this pigment was prized by European artists for its transparency and warm undertones. The practice was banned in 1908 due to animal cruelty concerns. Modern Indian yellow is typically made from synthetic compounds, though some artists still seek the original pigment for its unique luminescent quality and historical authenticity."
     },
     {
       "name": "Cadmium Yellow",
       "hex": "#FFF600",
       "category": "yellows",
-      "description": "A pure, bright yellow with no warm or cool undertones"
+      "description": "A brilliant, opaque yellow pigment made from cadmium sulfide, discovered in 1817 by German chemist Friedrich Stromeyer. This synthetic pigment replaced the toxic orpiment (arsenic sulfide) and provided artists with a stable, lightfast yellow. Cadmium yellow's exceptional covering power and resistance to fading made it essential for Impressionist and Post-Impressionist painters seeking to capture sunlight and warmth in their work."
     },
     {
       "name": "Lemon Yellow",
@@ -76,37 +76,37 @@
       "name": "Vermillion",
       "hex": "#E34234",
       "category": "reds",
-      "description": "A bright red-orange, traditionally made from cinnabar mineral"
+      "description": "A brilliant red-orange pigment with a rich history dating back to ancient China, where it was first created from cinnabar (mercury sulfide). This toxic but vibrant color was highly prized in medieval manuscripts and Renaissance paintings, often used to depict the robes of saints and royalty. The pigment's intensity comes from its mercury content, making it both beautiful and dangerous."
     },
     {
       "name": "Cinnabar",
       "hex": "#E44D2E",
       "category": "reds",
-      "description": "A deep red with orange undertones, the mineral form of mercury sulfide"
+      "description": "A brilliant red-orange pigment derived from the mineral cinnabar (mercury sulfide), one of the most toxic natural pigments known. Ancient Chinese alchemists believed it contained the essence of immortality, while Roman artists used it for frescoes and cosmetics. The pigment's toxicity comes from its mercury content, which can cause severe neurological damage. Despite its dangers, cinnabar's vibrant color and permanence made it highly valued until safer synthetic alternatives were developed."
     },
     {
       "name": "Cadmium Red",
       "hex": "#E30022",
       "category": "reds",
-      "description": "A pure, intense red with no blue or yellow undertones"
+      "description": "A deep, opaque red pigment created by heating cadmium yellow with selenium. This synthetic pigment, developed in the early 20th century, offers exceptional lightfastness and covering power. Unlike many red pigments that fade or change over time, cadmium red maintains its intensity for centuries. Artists prize it for its ability to create vibrant, permanent reds that don't require multiple layers to achieve full opacity."
     },
     {
       "name": "Alizarin Crimson / Rose Madder",
       "hex": "#E32636",
       "category": "reds",
-      "description": "A deep red with purple undertones, historically made from madder root"
+      "description": "A deep, transparent red with subtle purple undertones, originally derived from the roots of the madder plant (Rubia tinctorum). This ancient dye was used in Egyptian tombs and medieval tapestries. In 1868, German chemists synthesized alizarin, revolutionizing the textile industry and making this once-rare color widely available. The pigment's transparency makes it perfect for glazing techniques in oil painting."
     },
     {
       "name": "Viridian",
       "hex": "#40826D",
       "category": "greens",
-      "description": "A blue-green with cool, transparent qualities"
+      "description": "A cool, transparent blue-green pigment discovered in 1859 by French chemist Guignet. This synthetic chromium oxide hydrate replaced the toxic emerald green (copper arsenite) that had been poisoning artists. Viridian's transparency and stability made it a favorite of Impressionist painters like Monet, who used it extensively in his garden paintings. The pigment's name comes from the Latin 'viridis,' meaning green."
     },
     {
       "name": "Malachite",
       "hex": "#0BDA51",
       "category": "greens",
-      "description": "A bright green with blue undertones, named after the mineral"
+      "description": "A vibrant green pigment derived from the mineral malachite, a copper carbonate hydroxide. This ancient pigment was used in Egyptian wall paintings and medieval illuminated manuscripts. The mineral's distinctive banded patterns, formed by copper deposits, create the characteristic green color. Malachite was ground into powder and mixed with egg yolk or oil to create paint, though modern versions use synthetic copper compounds for safety."
     },
     {
       "name": "Forest Green",
@@ -124,7 +124,7 @@
       "name": "Tyrian Purple",
       "hex": "#66023C",
       "category": "purples",
-      "description": "A deep purple-red, historically made from murex shells"
+      "description": "The legendary royal purple of antiquity, extracted from the mucus of Mediterranean sea snails (Murex brandaris). This incredibly expensive dye required thousands of snails to produce a single gram, making it worth more than gold. Roman emperors reserved it exclusively for their togas, and Byzantine rulers used it to sign imperial decrees. The color's rarity and cost made it the ultimate symbol of power and wealth in the ancient world."
     },
     {
       "name": "Royal Purple",
@@ -148,7 +148,7 @@
       "name": "Absolute Zero",
       "hex": "#0048BA",
       "category": "blues",
-      "description": "This blue evokes clear skies with its vibrant medium tone."
+      "description": "A deep, intense blue that represents the theoretical temperature of absolute zero (-273.15°C). This color embodies the coldest possible temperature in physics, where all molecular motion ceases. The pigment's depth and saturation mirror the profound stillness and infinite cold of this scientific concept."
     },
     {
       "name": "Acid green",
@@ -160,7 +160,7 @@
       "name": "Aero",
       "hex": "#7CB9E8",
       "category": "blues",
-      "description": "A vibrant light blue reminiscent of clear skies."
+      "description": "A delicate, airy blue inspired by the color of the sky seen from high altitudes. The name 'Aero' comes from the Latin word for air, and this shade was popularized in the early 20th century for use in aviation uniforms and insignia. Its light, uplifting tone evokes the optimism of early flight and the boundless possibilities of the open sky."
     },
     {
       "name": "African violet",
@@ -322,7 +322,7 @@
       "name": "Aureolin",
       "hex": "#FDEE00",
       "category": "yellows",
-      "description": "A vibrant medium yellow reminiscent of sunflower petals."
+      "description": "A bright, transparent yellow pigment made from potassium cobaltinitrite, discovered in 1831 by German chemist Nikolaus Wolfgang Fischer. This synthetic pigment was the first stable yellow alternative to the toxic orpiment and was immediately adopted by artists. Aureolin's transparency and cool undertones make it perfect for glazing techniques and creating luminous effects in watercolor painting. The name comes from the Latin 'aureus,' meaning golden."
     },
     {
       "name": "Azure (X11/web color)",
@@ -574,7 +574,7 @@
       "name": "Bluetiful",
       "hex": "#3C69E7",
       "category": "blues",
-      "description": "A vibrant medium blue reminiscent of clear skies."
+      "description": "A rich, saturated blue with a slight purple undertone, created by Crayola in 2017 as part of their 'Colors of the World' campaign. This modern synthetic pigment captures the essence of deep sapphire gems and represents the company's commitment to inclusive color naming."
     },
     {
       "name": "Blush",
@@ -670,13 +670,13 @@
       "name": "Burnt sienna",
       "hex": "#E97451",
       "category": "reds",
-      "description": "Similar to brick walls, it's a vibrant light red."
+      "description": "A warm, earthy red-brown pigment made by heating raw sienna (iron oxide clay) to drive off water and convert the yellow-brown color to a rich red-orange. This pigment has been used since prehistoric times and was particularly popular in Renaissance fresco painting. The name comes from the Italian city of Siena, where the clay was originally mined. Burnt sienna's transparency and warm undertones make it essential for creating flesh tones and warm shadows in traditional painting."
     },
     {
       "name": "Burnt umber",
       "hex": "#8A3324",
       "category": "reds",
-      "description": "This red evokes ripe cherries with its soft medium tone."
+      "description": "A deep, warm brown pigment created by heating raw umber (iron oxide and manganese oxide clay) to intensify its color. This ancient pigment was used in prehistoric cave paintings and has been a staple in artists' palettes for centuries. The name 'umber' comes from the Latin 'umbra,' meaning shadow, reflecting its use in creating dark tones. Burnt umber's rich, transparent quality makes it perfect for underpainting and creating depth in oil paintings."
     },
     {
       "name": "Byzantine",
@@ -778,7 +778,7 @@
       "name": "Carmine",
       "hex": "#960018",
       "category": "reds",
-      "description": "Named after a fresh rose, this red has a vibrant dark look."
+      "description": "A deep red pigment extracted from the cochineal insect (Dactylopius coccus), which lives on prickly pear cacti in Central and South America. This dye was highly prized by the Aztecs and was one of the most valuable exports from the New World to Europe. It takes approximately 70,000 insects to produce one pound of carmine dye. The pigment's intensity and permanence made it popular for royal garments and religious vestments, though modern versions often use synthetic alternatives."
     },
     {
       "name": "Carmine (M&P)",
@@ -844,13 +844,13 @@
       "name": "Cerulean",
       "hex": "#007BA7",
       "category": "blues",
-      "description": "A pure, medium blue reminiscent of clear skies"
+      "description": "A serene sky-blue pigment discovered in 1805 by Swiss chemist Albrecht Höpfner. This cobalt stannate pigment captures the essence of a clear summer sky and was immediately embraced by landscape painters. Its name comes from the Latin 'caeruleus,' meaning sky blue. Cerulean's stability and resistance to fading made it a favorite of Impressionist painters, particularly Claude Monet, who used it extensively in his water lily series."
     },
     {
       "name": "Cerulean blue",
       "hex": "#2A52BE",
       "category": "blues",
-      "description": "A vibrant medium blue reminiscent of deep ocean water."
+      "description": "A classic sky-blue pigment made from cobalt(II) stannate, introduced in the 19th century as a safer alternative to earlier blue pigments. Cerulean blue is valued for its subtle, naturalistic hue and its stability in mixtures, making it a favorite for painting skies and seascapes. Its gentle, slightly greenish undertone distinguishes it from other blues, and it remains a staple in artists' palettes for landscape painting."
     },
     {
       "name": "Cerulean frost",
@@ -1480,7 +1480,7 @@
       "name": "Emerald",
       "hex": "#50C878",
       "category": "greens",
-      "description": "Similar to pine forests, it's a soft medium green."
+      "description": "A brilliant green pigment inspired by the precious gemstone emerald, which gets its color from trace amounts of chromium and vanadium. The synthetic pigment was developed in the 19th century as a safer alternative to the toxic emerald green (copper arsenite). This color captures the lush, vibrant quality of the gemstone and has been used extensively in decorative arts and fashion, particularly during the Art Nouveau period when emerald green was a signature color."
     },
     {
       "name": "Eminence",
@@ -2068,7 +2068,7 @@
       "name": "Jasmine",
       "hex": "#F8DE7E",
       "category": "yellows",
-      "description": "Similar to morning sunlight, it's a vibrant light yellow."
+      "description": "A delicate, warm yellow inspired by the fragrant jasmine flower (Jasminum), which has been cultivated in Asia for over 1,000 years. Jasmine's golden hue captures the flower's ethereal beauty and its association with love, purity, and spiritual enlightenment in many cultures. The color's soft, luminous quality makes it popular in bridal and spring fashion, while its connection to the flower's intoxicating scent evokes feelings of romance and tranquility."
     },
     {
       "name": "Jazzberry jam",
@@ -2164,7 +2164,7 @@
       "name": "Lapis lazuli",
       "hex": "#26619C",
       "category": "blues",
-      "description": "This blue evokes a twilight horizon with its vibrant medium tone."
+      "description": "A deep blue pigment ground from the semi-precious stone lapis lazuli, which contains the mineral lazurite. This stone was mined in the Sar-e-Sang valley of Afghanistan for over 6,000 years and traded along the Silk Road. Ancient Egyptians used it for jewelry and cosmetics, while medieval artists ground it into ultramarine pigment. The stone's distinctive golden pyrite inclusions create a starry night effect that made it highly prized by royalty and artists alike."
     },
     {
       "name": "Laser lemon",
@@ -2464,7 +2464,7 @@
       "name": "Madder Lake",
       "hex": "#CC3336",
       "category": "reds",
-      "description": "This red evokes ripe cherries with its vibrant medium tone."
+      "description": "A deep, transparent red pigment made by precipitating dye from the madder root (Rubia tinctorum) onto an inert substrate, such as alumina. Used since antiquity, madder lake was prized for its rich, glowing color and was a favorite of Old Masters for glazing techniques. The pigment's lightfastness varies depending on preparation, but its historical significance and unique hue have made it a staple in both textile dyeing and fine art painting for centuries."
     },
     {
       "name": "Magenta",
@@ -2686,7 +2686,7 @@
       "name": "Maya blue",
       "hex": "#73C2FB",
       "category": "blues",
-      "description": "Similar to deep ocean water, it's a vibrant light blue."
+      "description": "An ancient, brilliantly durable blue pigment created by the Maya civilization around 800 CE. Maya blue is a unique combination of indigo dye and the clay mineral palygorskite, resulting in a color that has survived centuries on murals and pottery. Its secret recipe was lost for centuries and only recently rediscovered by scientists. The pigment's resilience and vibrant hue made it sacred in Maya rituals and art."
     },
     {
       "name": "Medium aquamarine",
@@ -2920,7 +2920,7 @@
       "name": "Mint",
       "hex": "#3EB489",
       "category": "greens",
-      "description": "A soft medium green reminiscent of mint leaves."
+      "description": "A fresh, cool green inspired by the leaves of the mint plant (Mentha), which has been cultivated for over 3,000 years for its aromatic and medicinal properties. Mint green captures the crisp, invigorating quality of the herb and has been used in interior design and fashion to create a sense of freshness and cleanliness. The color's association with mint's cooling properties makes it popular in healthcare and wellness contexts."
     },
     {
       "name": "Mint cream",
@@ -3100,7 +3100,7 @@
       "name": "Ocher (Ochre)",
       "hex": "#CC7722",
       "category": "oranges",
-      "description": "A vibrant medium orange reminiscent of autumn leaves."
+      "description": "A natural earth pigment composed of iron oxide and clay, one of the oldest pigments used by humans. Evidence of ochre use dates back over 100,000 years, with prehistoric cave paintings in France and Australia featuring this warm, earthy color. The pigment's name comes from the Greek 'ochros,' meaning pale yellow. Ochre was used for body painting, cave art, and early textiles, and remains a staple in traditional painting techniques today."
     },
     {
       "name": "Old burgundy",
@@ -3538,7 +3538,7 @@
       "name": "Phthalo blue",
       "hex": "#000F89",
       "category": "blues",
-      "description": "A vibrant dark blue reminiscent of a twilight horizon."
+      "description": "A powerful, highly saturated blue pigment first synthesized in 1928. Phthalo blue (copper phthalocyanine) quickly became a staple for artists due to its intense color strength, lightfastness, and versatility. Its discovery revolutionized modern painting, offering a non-toxic, affordable alternative to Prussian blue and cobalt blue. The pigment's vibrant hue is prized in both fine art and industrial applications, from automotive paints to printing inks."
     },
     {
       "name": "Phthalo green",
@@ -3555,8 +3555,8 @@
     {
       "name": "Pictorial carmine",
       "hex": "#C30B4E",
-      "category": "purples",
-      "description": "Named after lavender fields, this purple has a vibrant medium look."
+      "category": "reds",
+      "description": "A deep, rich red pigment made from the cochineal insect (Dactylopius coccus), which lives on prickly pear cacti in Central and South America. This dye was highly prized by the Aztecs and was one of the most valuable exports from the New World to Europe. It takes approximately 7,000 insects to produce one pound of carmine dye. The pigment's intensity and permanence made it popular for royal garments and religious vestments, though modern versions often use synthetic alternatives."
     },
     {
       "name": "Piggy pink",
@@ -3682,7 +3682,7 @@
       "name": "Prussian Blue",
       "hex": "#003153",
       "category": "blues",
-      "description": "A very dark blue with slight green undertones, historically important pigment"
+      "description": "A deep, dark blue pigment accidentally discovered in 1704 by German chemist Johann Jacob Diesbach while trying to create a red pigment. This iron ferrocyanide compound was the first modern synthetic pigment and revolutionized the art world by providing an affordable, stable blue alternative to expensive ultramarine. Prussian blue's discovery marked the beginning of modern synthetic pigment chemistry and was used extensively by artists like Van Gogh and Hokusai."
     },
     {
       "name": "Psychedelic purple",
@@ -4198,7 +4198,7 @@
       "name": "Saffron",
       "hex": "#F4C430",
       "category": "yellows",
-      "description": "A vibrant medium yellow reminiscent of sunflower petals."
+      "description": "A precious golden-yellow pigment derived from the dried stigmas of the saffron crocus (Crocus sativus). This ancient dye, worth more than gold by weight, was used in royal garments, illuminated manuscripts, and religious ceremonies. Saffron's distinctive color comes from crocin, a carotenoid compound that gives it both its hue and its value. The labor-intensive harvesting process - each flower produces only three stigmas - made saffron a symbol of wealth and luxury throughout history."
     },
     {
       "name": "Sage",
@@ -4276,7 +4276,7 @@
       "name": "Scarlet",
       "hex": "#FF2400",
       "category": "reds",
-      "description": "This red evokes ripe cherries with its vibrant medium tone."
+      "description": "A brilliant red-orange color with a rich history dating back to medieval Europe. The name 'scarlet' originally referred to a fine woolen cloth dyed with kermes, a red dye made from the dried bodies of scale insects. This expensive dye was reserved for the highest ranks of society and was used in royal garments and ecclesiastical vestments. Scarlet's association with power and prestige continues today, where it represents authority and importance in uniforms and ceremonial dress."
     },
     {
       "name": "Schauss pink",
@@ -4300,7 +4300,7 @@
       "name": "Sea green",
       "hex": "#2E8B57",
       "category": "greens",
-      "description": "A soft medium green reminiscent of the open sea."
+      "description": "A deep, rich green that captures the color of the ocean's depths. This color evokes the mysterious, life-giving quality of the sea and has been used in maritime contexts for centuries. Sea green's association with water and nature makes it a popular choice for environmental and conservation organizations, while its calming properties have made it a favorite in spa and wellness design."
     },
     {
       "name": "Sea green (Crayola)",
@@ -4396,7 +4396,7 @@
       "name": "Sienna",
       "hex": "#882D17",
       "category": "reds",
-      "description": "A vibrant medium red reminiscent of a fresh rose."
+      "description": "A natural earth pigment composed of iron oxide and clay minerals, named after the Italian city of Siena in Tuscany where it was originally mined. This warm, transparent pigment has been used since prehistoric times and was particularly valued during the Renaissance for its ability to create natural flesh tones and warm shadows. Raw sienna has a yellow-brown color that becomes a rich red-orange when heated to create burnt sienna."
     },
     {
       "name": "Silver",
@@ -4822,7 +4822,7 @@
       "name": "Tiffany Blue",
       "hex": "#0ABAB5",
       "category": "blues",
-      "description": "This blue evokes clear skies with its vibrant medium tone."
+      "description": "A distinctive robin's egg blue that has become synonymous with luxury and elegance since Tiffany & Co. adopted it in 1845. This color was chosen by founder Charles Lewis Tiffany for the cover of the company's Blue Book catalog, and has since become one of the most recognizable brand colors in the world. The shade's association with Tiffany's iconic jewelry boxes and the promise of precious gifts has made it a symbol of romance and sophistication."
     },
     {
       "name": "Timberwolf",
@@ -4882,7 +4882,7 @@
       "name": "Turquoise",
       "hex": "#40E0D0",
       "category": "blues",
-      "description": "Named after clear skies, this blue has a vibrant medium look."
+      "description": "A distinctive blue-green color named after the precious gemstone turquoise, which has been prized for over 6,000 years. The stone's color comes from copper and aluminum phosphates, and was mined extensively by ancient civilizations in Persia, Egypt, and the Americas. Turquoise was considered sacred by many cultures - the Aztecs used it in royal masks, while Native American tribes valued it for spiritual protection. The color's unique balance of blue and green makes it universally appealing and culturally significant across many societies."
     },
     {
       "name": "Turquoise blue",
@@ -4954,7 +4954,7 @@
       "name": "Ultramarine",
       "hex": "#3F00FF",
       "category": "blues",
-      "description": "A vibrant medium blue reminiscent of deep ocean water."
+      "description": "A deep, rich blue pigment originally ground from the semi-precious stone lapis lazuli, imported from Afghanistan. The name 'ultramarine' means 'beyond the sea' in Latin, reflecting its exotic origins. This pigment was so expensive that it was often reserved for the robes of the Virgin Mary in medieval paintings. In 1826, French chemist Jean-Baptiste Guimet created a synthetic version, making this once-rare color accessible to all artists."
     },
     {
       "name": "Ultramarine blue",
@@ -5044,7 +5044,7 @@
       "name": "Vanilla",
       "hex": "#F3E5AB",
       "category": "yellows",
-      "description": "A vibrant light yellow reminiscent of ripe lemons."
+      "description": "A warm, creamy yellow inspired by the vanilla orchid (Vanilla planifolia), native to Mexico and Central America. Vanilla was first cultivated by the Totonac people and later spread worldwide by Spanish conquistadors. The color captures the rich, comforting quality of vanilla's flavor and aroma, making it popular in food packaging, cosmetics, and interior design. Vanilla's association with sweetness and comfort has made it a beloved color in home decor and fashion."
     },
     {
       "name": "Vanilla ice",
@@ -5074,7 +5074,7 @@
       "name": "Verdigris",
       "hex": "#43B3AE",
       "category": "blues",
-      "description": "Named after a twilight horizon, this blue has a soft medium look."
+      "description": "A blue-green pigment created by exposing copper to acetic acid vapors, resulting in copper acetate. This ancient pigment was used extensively in medieval illuminated manuscripts and Renaissance paintings. The name comes from the Old French 'vert de Grece' (green of Greece), though it was produced throughout Europe. Verdigris has a unique aging process - it starts as a bright green but gradually darkens to a deep blue-green over time, making it unpredictable but beautiful in historical artworks."
     },
     {
       "name": "Veronica",
@@ -5368,13 +5368,13 @@
       "name": "YInMn Blue",
       "hex": "#2E5090",
       "category": "blues",
-      "description": "Named after deep ocean water, this blue has a soft medium look."
+      "description": "A vibrant blue pigment discovered by accident in 2009 by chemist Mas Subramanian at Oregon State University. Named for its chemical composition (yttrium, indium, and manganese oxides), YInMn Blue is the first new blue pigment discovered in over 200 years. Its exceptional stability and non-toxic properties make it ideal for artists' paints, and its discovery has been hailed as a breakthrough in pigment chemistry. The pigment's intense hue and durability have made it highly sought after by artists and conservators."
     },
     {
       "name": "Zaffer (Zaffre)",
       "hex": "#0014A8",
       "category": "blues",
-      "description": "Similar to deep ocean water, it's a vibrant medium blue."
+      "description": "A deep blue pigment made from roasted cobalt ore, used extensively in glassmaking and ceramics since the Middle Ages. The name comes from the Arabic 'safra,' meaning yellow, though the pigment produces a rich blue color. Zaffer was essential for creating the famous blue glass of Venice and was used in Chinese porcelain. This pigment's discovery and trade played a crucial role in the development of European glass and ceramic industries."
     },
     {
       "name": "Zarqa",
@@ -5405,6 +5405,12 @@
       "hex": "#39A78E",
       "category": "blues",
       "description": "Named after clear skies, this blue has a soft medium look."
+    },
+    {
+      "name": "Cobalt Blue",
+      "hex": "#0047AB",
+      "category": "blues",
+      "description": "A vivid blue pigment made from cobalt(II) aluminate, discovered in 1802 by French chemist Louis Jacques Thénard. Cobalt blue offered artists a stable, lightfast alternative to ultramarine and was quickly adopted by painters like J.M.W. Turner and Vincent van Gogh. Its pure, cool hue is ideal for depicting skies and water, and it remains a cornerstone of both traditional and modern palettes."
     }
   ]
 }
