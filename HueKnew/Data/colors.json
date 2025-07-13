@@ -91,10 +91,10 @@
       "description": "A deep, opaque red pigment created by heating cadmium yellow with selenium. This synthetic pigment, developed in the early 20th century, offers exceptional lightfastness and covering power. Unlike many red pigments that fade or change over time, cadmium red maintains its intensity for centuries. Artists prize it for its ability to create vibrant, permanent reds that don't require multiple layers to achieve full opacity."
     },
     {
-      "name": "Alizarin Crimson / Rose Madder",
-      "hex": "#E32636",
+      "name": "Alizarin",
+      "hex": "#DB2D43",
       "category": "reds",
-      "description": "A deep, transparent red with subtle purple undertones, originally derived from the roots of the madder plant (Rubia tinctorum). This ancient dye was used in Egyptian tombs and medieval tapestries. In 1868, German chemists synthesized alizarin, revolutionizing the textile industry and making this once-rare color widely available. The pigment's transparency makes it perfect for glazing techniques in oil painting."
+      "description": "A deep, rich red pigment originally derived from the roots of the madder plant, used in textile dyeing for thousands of years. In 1868, German chemists synthesized alizarin, revolutionizing the dye industry and making this once-rare color widely available. Alizarin's association with traditional craftsmanship and artistic innovation has made it significant in heritage and textile design."
     },
     {
       "name": "Viridian",
@@ -154,7 +154,7 @@
       "name": "Acid green",
       "hex": "#B0BF1A",
       "category": "yellows",
-      "description": "A vibrant medium yellow reminiscent of ripe lemons."
+      "description": "A bright, electric yellow-green that captures the intensity of modern urban aesthetics and digital culture. This color represents high energy, attention-grabbing design, and the bold visual language of contemporary art and advertising. Acid green's association with youth culture and high-impact design has made it popular in entertainment and alternative branding."
     },
     {
       "name": "Aero",
@@ -166,37 +166,37 @@
       "name": "African violet",
       "hex": "#B284BE",
       "category": "purples",
-      "description": "Similar to royal velvet, it's a soft light purple."
+      "description": "A soft, gentle purple inspired by the African violet flower (Saintpaulia), which is native to Tanzania and Kenya. These delicate flowers have been cultivated as houseplants since the 19th century and are beloved for their year-round blooming and easy care. African violet's association with domestic comfort and natural beauty has made it popular in home decor and garden design."
     },
     {
       "name": "Air superiority blue",
       "hex": "#72A0C1",
       "category": "blues",
-      "description": "Similar to deep ocean water, it's a soft light blue."
+      "description": "A sophisticated blue-gray that represents the technological advantage and strategic dominance of modern air forces. This color symbolizes the precision, power, and advanced capabilities of military aviation, having been used in aircraft livery and military insignia. Air superiority blue's association with technological excellence and strategic advantage has made it significant in aerospace and defense design."
     },
     {
       "name": "Alice blue",
       "hex": "#F0F8FF",
       "category": "neutrals",
-      "description": "Similar to weathered stone, it's a vibrant light neutral."
+      "description": "A soft, pale blue inspired by Alice Roosevelt Longworth, daughter of President Theodore Roosevelt, who wore dresses of this color in the early 1900s. This color represents the elegance of the Gilded Age and the refined tastes of American high society. Alice blue's association with classical beauty and historical charm has made it popular in heritage and bridal design."
     },
     {
       "name": "Alizarin",
       "hex": "#DB2D43",
       "category": "reds",
-      "description": "This red evokes a fresh rose with its vibrant medium tone."
+      "description": "A deep, rich red pigment originally derived from the roots of the madder plant, used in textile dyeing for thousands of years. In 1868, German chemists synthesized alizarin, revolutionizing the dye industry and making this once-rare color widely available. Alizarin's association with traditional craftsmanship and artistic innovation has made it significant in heritage and textile design."
     },
     {
       "name": "Alloy orange",
       "hex": "#C46210",
       "category": "oranges",
-      "description": "Similar to tangerine peel, it's a vibrant medium orange."
+      "description": "A warm, metallic orange inspired by the appearance of copper alloys and industrial metals. This color represents the strength and durability of engineered materials, having been used in automotive and industrial applications. Alloy orange's association with precision engineering and material science has made it popular in automotive and industrial design."
     },
     {
       "name": "Almond",
       "hex": "#EED9C4",
       "category": "oranges",
-      "description": "A soft light orange reminiscent of tangerine peel."
+      "description": "A soft, warm beige inspired by the almond nut, which has been cultivated in the Mediterranean region for over 4,000 years. Almonds are associated with health, wisdom, and prosperity in many cultures, and their subtle color represents natural elegance and wholesome living. Almond's association with natural beauty and healthy living has made it popular in wellness and organic design."
     },
     {
       "name": "Amaranth deep purple",
