@@ -72,7 +72,7 @@ struct ColorWheelPicker: View {
                         )
                     )
                 }) {
-                    Text("start here")
+                    Text("explore")
                         .font(.headline)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
@@ -234,7 +234,7 @@ struct HSBColor {
 }
 
 #Preview {
-    ColorWheelPicker { _ in
-        // Removed print(color.description)
+    ColorWheelPicker { color in
+        // Preview action - in real usage this would handle the selected color
     }
 }
