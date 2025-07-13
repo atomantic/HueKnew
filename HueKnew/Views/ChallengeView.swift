@@ -18,40 +18,56 @@ struct ChallengeView: View {
     @State private var targetColor: ColorInfo?
     
     var body: some View {
-        VStack(spacing: 0) {
-            
-            VStack(spacing: 32) {
-                // Question section
-                questionSection
+        ZStack {
+            VStack(spacing: 0) {
                 
-                // Answer options
-                answerOptionsSection
-                
-                // Submit button
-                if selectedAnswer != nil && !showingResult {
-                    Button(action: submitAnswer) {
-                        Text("Submit Answer")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.orange)
-                            .cornerRadius(12)
+                VStack(spacing: 32) {
+                    // Question section
+                    questionSection
+                    
+                    // Answer options
+                    answerOptionsSection
+                    
+                    // Submit button
+                    if selectedAnswer != nil && !showingResult {
+                        Button(action: submitAnswer) {
+                            Text("Submit Answer")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.orange)
+                                .cornerRadius(12)
+                        }
+                        .padding(.horizontal)
+                        .animation(.easeInOut(duration: 0.3), value: selectedAnswer)
                     }
-                    .padding(.horizontal)
-                    .animation(.easeInOut(duration: 0.3), value: selectedAnswer)
                 }
                 
-                // Result section
-                if showingResult {
+                Spacer()
+            }
+            .background(Color(.systemBackground))
+            
+            // Result overlay
+            if showingResult {
+                Color.black.opacity(0.3)
+                    .ignoresSafeArea()
+                    .onTapGesture {
+                        // Optional: dismiss on background tap
+                    }
+                
+                VStack {
+                    Spacer()
+                    
                     resultSection
+                        .padding(.horizontal)
+                        .padding(.bottom, 50) // Add space for footer
+                    
+                    Spacer()
                 }
             }
-            
-            Spacer()
         }
-        .background(Color(.systemBackground))
         .onAppear {
             setupChallenge()
         }
