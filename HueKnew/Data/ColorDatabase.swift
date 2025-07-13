@@ -40,7 +40,7 @@ class ColorDatabase: ObservableObject {
         loadColorsFromTSV()
     }
 
-    private func loadColorsFromTSV() {
+    func loadColorsFromTSV() {
         guard let url = Bundle.main.url(forResource: "colors", withExtension: "tsv") else {
             Logger.error("Could not find colors.tsv in bundle")
             return

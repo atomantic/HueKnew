@@ -15,12 +15,12 @@ final class ColorDatabaseTests: XCTestCase {
         super.tearDown()
     }
     
-    func testLoadColorsFromJSON() {
+    func testLoadColorsFromTSV() {
         // Ensure the method does not crash
         // Data can be stubbed or mocked for more robust testing
-        colorDatabase.loadColorsFromJSON()
+        colorDatabase.loadColorsFromTSV()
         let allColors = colorDatabase.getAllColors()
-        XCTAssertFalse(allColors.isEmpty, "Colors should be loaded from JSON")
+        XCTAssertFalse(allColors.isEmpty, "Colors should be loaded from TSV")
     }
     
     func testGenerateColorPairs() {
