@@ -4,37 +4,37 @@
       "name": "Gamboge",
       "hex": "#E49B0F",
       "category": "yellows",
-      "description": "A deep golden yellow with warm undertones, traditionally made from tree resin"
+      "description": "A deep golden yellow pigment derived from the resin of Garcinia trees native to Southeast Asia. Used in Buddhist art and manuscripts for centuries, gamboge was prized for its vibrant hue and transparency. Its name comes from Cambodia (formerly 'Camboja'), where the resin was harvested and traded along ancient spice routes. The pigment's spiritual and artistic significance endures in both Eastern and Western art."
     },
     {
       "name": "Buttercup",
       "hex": "#F7D716",
       "category": "yellows",
-      "description": "A bright, vivid yellow resembling a buttercup flower"
+      "description": "A bright, vivid yellow inspired by the buttercup flower (Ranunculus), which is found in meadows and fields across the Northern Hemisphere. Buttercups have long been associated with childhood games, folklore, and the arrival of spring. Their cheerful color symbolizes joy, innocence, and the simple pleasures of nature, making buttercup yellow a favorite in children's art and springtime celebrations."
     },
     {
       "name": "Goldenrod",
       "hex": "#DAA520",
       "category": "yellows",
-      "description": "A deeper, more muted yellow with golden undertones"
+      "description": "A deeper, muted yellow inspired by the goldenrod plant (Solidago), which blooms in late summer and early autumn across North America and Europe. Goldenrod has been used in folk medicine, dyeing, and as a symbol of encouragement and good fortune. Its warm, earthy hue evokes the changing seasons and the richness of natural landscapes, making it a popular choice in rustic and botanical art."
     },
     {
       "name": "Daffodil",
       "hex": "#FFFF31",
       "category": "yellows",
-      "description": "A bright yellow with a hint of orange, like daffodil petals"
+      "description": "A bright yellow with a hint of orange, inspired by the daffodil flower (Narcissus), which is celebrated as a symbol of spring and renewal in many cultures. Daffodils are associated with hope, new beginnings, and poetic inspiration, famously referenced in William Wordsworth's poetry. Their vibrant color marks the end of winter and the promise of warmer days, making daffodil yellow a favorite in seasonal art and celebrations."
     },
     {
       "name": "Banana",
       "hex": "#FFE135",
       "category": "yellows",
-      "description": "A creamy yellow reminiscent of ripe bananas"
+      "description": "A creamy yellow inspired by the banana fruit, which has been cultivated for over 7,000 years and is one of the world's most important food crops. Bananas are native to Southeast Asia and have spread globally, becoming a symbol of tropical abundance and natural sweetness. Banana yellow's association with health, energy, and tropical living has made it popular in food packaging and wellness design."
     },
     {
       "name": "Flaxen",
       "hex": "#EEDC82",
       "category": "yellows",
-      "description": "A muted yellow with brown undertones, like the color of flax"
+      "description": "A muted yellow with brown undertones inspired by flax (Linum usitatissimum), one of the oldest cultivated plants in human history. Flax has been used for fiber, oil, and food for over 30,000 years, with evidence of cultivation dating back to ancient Egypt and Mesopotamia. Flaxen's association with traditional crafts, natural materials, and sustainable living has made it popular in heritage and artisanal design."
     },
     {
       "name": "Indian Yellow",
@@ -52,25 +52,25 @@
       "name": "Lemon Yellow",
       "hex": "#FFFF9F",
       "category": "yellows",
-      "description": "A pale, cool yellow with green undertones"
+      "description": "A pale, cool yellow with green undertones inspired by the lemon fruit, which originated in Asia and has been cultivated for over 2,500 years. Lemons have been valued for their medicinal properties, culinary uses, and symbolic meaning of purification and freshness. Lemon yellow's association with cleanliness, vitality, and natural energy has made it popular in healthcare, food service, and wellness branding."
     },
     {
       "name": "Navy Blue",
       "hex": "#000080",
       "category": "blues",
-      "description": "A dark blue with purple undertones, named after naval uniforms"
+      "description": "A dark blue with purple undertones that has been the standard color for naval uniforms since the 18th century. This color represents authority, discipline, and maritime tradition, having been adopted by navies worldwide for its practical camouflage properties and professional appearance. Navy blue's association with reliability and institutional trust has made it a staple in corporate and military design."
     },
     {
       "name": "Azure",
       "hex": "#0080FF",
       "category": "blues",
-      "description": "A bright blue with slight purple undertones, lighter than Cerulean"
+      "description": "A bright blue with slight purple undertones inspired by the azure sky, a term derived from the Persian word 'lazhward' meaning blue. This color has been associated with clarity, truth, and divine inspiration throughout history, appearing in heraldry, religious art, and classical architecture. Azure's association with open spaces and limitless possibilities has made it popular in technology and aviation design."
     },
     {
       "name": "Winter Glaucous",
       "hex": "#5B8DBF",
       "category": "blues",
-      "description": "A clearer, more vibrant blue-gray with cooler undertones"
+      "description": "A clearer, vibrant blue-gray inspired by the glaucous appearance of plants in winter, where a waxy coating gives leaves and stems a cool, bluish tint. This color represents the quiet beauty of winter landscapes and the resilience of nature during cold seasons. Winter Glaucous's association with seasonal change and natural adaptation has made it popular in environmental and seasonal design."
     },
     {
       "name": "Vermillion",
@@ -112,13 +112,13 @@
       "name": "Forest Green",
       "hex": "#228B22",
       "category": "greens",
-      "description": "A dark green reminiscent of deep forest canopies"
+      "description": "A dark green inspired by the deep canopies of mature forests, which have been the foundation of terrestrial ecosystems for millions of years. This color represents the abundance of life, natural wisdom, and the vital role of forests in maintaining Earth's biodiversity. Forest green's association with environmental conservation and natural heritage has made it popular in outdoor and eco-friendly branding."
     },
     {
       "name": "Sage Green",
       "hex": "#9CAF88",
       "category": "greens",
-      "description": "A muted green with gray undertones, like the herb"
+      "description": "A muted green with gray undertones inspired by the sage plant (Salvia), which has been revered for its medicinal and culinary properties for thousands of years. Sage has been used in traditional medicine, spiritual cleansing rituals, and as a symbol of wisdom and healing. Sage green's association with natural healing and peaceful wisdom has made it popular in wellness and heritage design."
     },
     {
       "name": "Tyrian Purple",
@@ -130,19 +130,19 @@
       "name": "Royal Purple",
       "hex": "#7851A9",
       "category": "purples",
-      "description": "A rich purple with blue undertones, associated with royalty"
+      "description": "A rich purple with blue undertones that has been associated with royalty, power, and divine authority since ancient times. This color represents the highest levels of social status and spiritual significance, having been reserved for monarchs, religious leaders, and the elite throughout history. Royal purple's association with luxury and authority has made it a staple in ceremonial and high-end design."
     },
     {
       "name": "Burnt Orange",
       "hex": "#CC5500",
       "category": "oranges",
-      "description": "A dark orange with brown undertones"
+      "description": "A dark orange with brown undertones inspired by the process of heating or 'burning' orange pigments to create deeper, more muted tones. This technique has been used in traditional painting and ceramics for centuries. Burnt orange represents the warmth of autumn, the richness of harvest time, and the enduring appeal of earth tones in art and design."
     },
     {
       "name": "Tangerine",
       "hex": "#FF9500",
       "category": "oranges",
-      "description": "A bright orange like the citrus fruit"
+      "description": "A bright orange inspired by the tangerine fruit, which originated in Tangier, Morocco, and has been cultivated for its sweet, easy-to-peel segments for centuries. Tangerines are associated with good fortune in Chinese culture and are often given as gifts during the Lunar New Year. Tangerine's association with vitality, good luck, and natural sweetness has made it popular in food and cultural design."
     },
     {
       "name": "Absolute Zero",
@@ -2608,7 +2608,7 @@
       "name": "Mauve taupe",
       "hex": "#915F6D",
       "category": "purples",
-      "description": "Similar to royal velvet, it's a muted medium purple."
+      "description": "A sophisticated, muted purple inspired by glacé fruits, which are candied fruits preserved in sugar syrup. This color represents the refined art of food preservation and the elegant traditions of European confectionery. Raspberry glacé's association with luxury desserts and artisanal craftsmanship has made it popular in gourmet and heritage design."
     },
     {
       "name": "Mauvelous",
@@ -2782,7 +2782,7 @@
       "name": "Metallic gold",
       "hex": "#D3AF37",
       "category": "yellows",
-      "description": "A rich, warm yellow that mimics the appearance of precious gold metal. This color has been associated with wealth, power, and divine favor throughout human history, from ancient Egyptian pharaohs to modern luxury brands. Metallic gold's association with success and achievement has made it a staple in high-end design and ceremonial objects."
+      "description": "A rich, warm yellow that mimics the appearance of precious gold metal. This color has been associated with wealth, power, and divinity throughout human history, from ancient Egyptian pharaohs to modern luxury brands. Metallic gold's association with luxury and success has made it a staple in high-end design, jewelry, and ceremonial objects. The color's ability to catch and reflect light gives it a special luminosity that has fascinated artists and craftsmen for millennia."
     },
     {
       "name": "Metallic Seaweed",
@@ -3562,19 +3562,19 @@
       "name": "Piggy pink",
       "hex": "#FDDDE6",
       "category": "purples",
-      "description": "This purple evokes violet blossoms with its vibrant light tone."
+      "description": "A soft, playful pink inspired by the gentle color of piglets and young farm animals. This color represents innocence, playfulness, and the simple joys of rural life. Piggy pink's association with childhood memories and natural simplicity has made it popular in children's design and pastoral aesthetics."
     },
     {
       "name": "Pine green",
       "hex": "#01796F",
       "category": "blues",
-      "description": "A vibrant dark blue reminiscent of clear skies."
+      "description": "A deep, rich green inspired by the needles of pine trees, which have been valued for their beauty and practical uses for thousands of years. This color represents the enduring strength of evergreen forests and the natural beauty of coniferous landscapes. Pine green's association with forest conservation and outdoor recreation has made it popular in environmental and outdoor branding."
     },
     {
       "name": "Pink",
       "hex": "#FFC0CB",
       "category": "reds",
-      "description": "Named after a fresh rose, this red has a vibrant light look."
+      "description": "A soft, gentle color that has been associated with femininity, romance, and tenderness throughout human history. This color represents love, compassion, and the gentle qualities of human nature. Pink's association with nurturing and emotional warmth has made it popular in healthcare, beauty, and romantic design."
     },
     {
       "name": "Pink (Pantone)",
@@ -3598,25 +3598,25 @@
       "name": "Pink Sherbet",
       "hex": "#F78FA7",
       "category": "reds",
-      "description": "Similar to a fresh rose, it's a vibrant light red."
+      "description": "A sweet, creamy pink inspired by the frozen dessert sherbet, which has been enjoyed for its refreshing taste and vibrant colors since the 19th century. This color represents summer sweetness, childhood memories, and the joy of simple pleasures. Pink Sherbet's association with nostalgic treats and carefree moments has made it popular in dessert and retro design."
     },
     {
       "name": "Pistachio",
       "hex": "#93C572",
       "category": "greens",
-      "description": "Named after fresh herbs, this green has a soft light look."
+      "description": "A fresh, natural green inspired by the pistachio nut, which has been cultivated in the Middle East for over 3,000 years. This color represents natural abundance, healthy living, and the rich traditions of Mediterranean agriculture. Pistachio's association with natural food and wellness has made it popular in organic and health-conscious branding."
     },
     {
       "name": "Platinum",
       "hex": "#E5E4E2",
       "category": "neutrals",
-      "description": "This neutral evokes driftwood with its muted light tone."
+      "description": "A cool, metallic gray inspired by the platinum metal, which has been prized for its beauty, rarity, and resistance to tarnishing since ancient times. This color represents luxury, sophistication, and enduring quality. Platinum's association with high-end jewelry and premium products has made it popular in luxury branding and automotive design."
     },
     {
       "name": "Plum",
       "hex": "#8E4585",
       "category": "purples",
-      "description": "A soft medium purple reminiscent of royal velvet."
+      "description": "A deep, rich purple inspired by the plum fruit, which has been cultivated for its sweet taste and nutritional value for thousands of years. This color represents abundance, wisdom, and the natural sweetness of autumn harvests. Plum's association with seasonal beauty and natural abundance has made it popular in food and seasonal design."
     },
     {
       "name": "Plum (web)",
@@ -3628,55 +3628,55 @@
       "name": "Plump Purple",
       "hex": "#5946B2",
       "category": "blues",
-      "description": "A soft medium blue reminiscent of deep ocean water."
+      "description": "A rich, vibrant purple that captures the fullness and vitality of ripe fruit. This color represents abundance, satisfaction, and the natural beauty of harvest time. Plump Purple's association with natural richness and seasonal abundance has made it popular in food and agricultural branding."
     },
     {
       "name": "Polished Pine",
       "hex": "#5DA493",
       "category": "blues",
-      "description": "Similar to a twilight horizon, it's a muted medium blue."
+      "description": "A refined, sophisticated green inspired by polished pine wood, which has been valued for its beauty and workability in furniture making for centuries. This color represents craftsmanship, natural elegance, and the enduring appeal of wooden furniture. Polished Pine's association with traditional woodworking and home design has made it popular in furniture and interior design."
     },
     {
       "name": "Pomp and Power",
       "hex": "#86608E",
       "category": "purples",
-      "description": "Named after violet blossoms, this purple has a muted medium look."
+      "description": "A dignified, authoritative purple that represents ceremonial grandeur and institutional authority. This color symbolizes the weight of tradition, the dignity of official proceedings, and the solemnity of important occasions. Pomp and Power's association with formal ceremonies and institutional prestige has made it significant in governmental and ceremonial contexts."
     },
     {
       "name": "Popstar",
       "hex": "#BE4F62",
       "category": "reds",
-      "description": "This red evokes a fresh rose with its soft medium tone."
+      "description": "A vibrant, energetic pink-red that captures the glamour and excitement of celebrity culture and entertainment. This color represents fame, charisma, and the magnetic appeal of popular culture. Popstar's association with show business and celebrity lifestyle has made it popular in entertainment and fashion branding."
     },
     {
       "name": "Portland Orange",
       "hex": "#FF5A36",
       "category": "reds",
-      "description": "A vibrant light red reminiscent of a fresh rose."
+      "description": "A bright, energetic orange named after the city of Portland, Oregon, known for its vibrant arts scene and progressive culture. This color represents urban creativity, community spirit, and the dynamic energy of modern city life. Portland Orange's association with artistic innovation and civic pride has made it popular in urban and cultural branding."
     },
     {
       "name": "Powder blue",
       "hex": "#B0E0E6",
       "category": "blues",
-      "description": "Similar to a twilight horizon, it's a soft light blue."
+      "description": "A soft, gentle blue inspired by the delicate color of powdered cosmetics and traditional face powders. This color represents refinement, gentleness, and the subtle beauty of traditional grooming practices. Powder blue's association with classic beauty and timeless elegance has made it popular in cosmetic and heritage design."
     },
     {
       "name": "Prairie gold",
       "hex": "#E1CA7A",
       "category": "yellows",
-      "description": "Similar to morning sunlight, it's a vibrant light yellow."
+      "description": "A warm, golden yellow inspired by the vast grasslands of the American prairie, where golden wheat and grasses stretch to the horizon. This color represents agricultural abundance, the American heartland, and the natural beauty of open landscapes. Prairie gold's association with rural heritage and agricultural tradition has made it popular in heritage and agricultural branding."
     },
     {
       "name": "Princeton orange",
       "hex": "#F58025",
       "category": "oranges",
-      "description": "Named after autumn leaves, this orange has a vibrant medium look."
+      "description": "A bright, energetic orange named after Princeton University, one of America's oldest and most prestigious academic institutions. This color represents intellectual excellence, academic tradition, and the pursuit of knowledge. Princeton orange's association with educational achievement and institutional heritage has made it popular in academic and professional branding."
     },
     {
       "name": "Prune",
       "hex": "#701C1C",
       "category": "reds",
-      "description": "This red evokes a fresh rose with its vibrant dark tone."
+      "description": "A deep, rich red-brown inspired by the dried plum fruit, which has been valued for its nutritional benefits and sweet taste for thousands of years. This color represents natural preservation, traditional food preparation, and the wisdom of ancient culinary practices. Prune's association with natural health and traditional cooking has made it popular in health food and heritage branding."
     },
     {
       "name": "Prussian Blue",
@@ -3688,31 +3688,31 @@
       "name": "Psychedelic purple",
       "hex": "#DF00FF",
       "category": "purples",
-      "description": "This purple evokes violet blossoms with its vibrant medium tone."
+      "description": "A bright, electric purple that captures the vibrant energy of 1960s counterculture and psychedelic art. This color represents artistic freedom, cultural revolution, and the exploration of consciousness. Psychedelic purple's association with creative expression and cultural innovation has made it popular in artistic and alternative design."
     },
     {
       "name": "Puce",
       "hex": "#CC8899",
       "category": "reds",
-      "description": "A soft light red reminiscent of brick walls."
+      "description": "A muted, dusty pink that was popular in 18th-century French fashion, particularly during the reign of Marie Antoinette. This color represents the opulence of the French court and the dramatic shifts in fashion that preceded the French Revolution. Puce's association with historical fashion and aristocratic taste has made it significant in costume and heritage design."
     },
     {
       "name": "Pullman Brown (UPS Brown)",
       "hex": "#644117",
       "category": "oranges",
-      "description": "Similar to autumn leaves, it's a vibrant dark orange."
+      "description": "A deep, reliable brown named after the Pullman Company, which manufactured luxury railroad cars, and later adopted by UPS for their delivery vehicles. This color represents reliability, trustworthiness, and the dependable service of transportation and logistics. Pullman Brown's association with professional service and corporate reliability has made it significant in business and delivery branding."
     },
     {
       "name": "Pumpkin",
       "hex": "#FF7518",
       "category": "oranges",
-      "description": "This orange evokes autumn leaves with its vibrant medium tone."
+      "description": "A warm, vibrant orange inspired by the pumpkin fruit, which has been cultivated in the Americas for over 7,000 years and is central to autumn celebrations and harvest traditions. This color represents seasonal abundance, cultural celebration, and the natural beauty of autumn. Pumpkin's association with harvest festivals and seasonal traditions has made it popular in seasonal and agricultural branding."
     },
     {
       "name": "Purple",
       "hex": "#6A0DAD",
       "category": "purples",
-      "description": "This purple evokes lavender fields with its vibrant medium tone."
+      "description": "A deep, regal purple that has been associated with royalty, luxury, and spiritual significance throughout human history. This color represents power, wisdom, and the mysterious depths of human consciousness. Purple's association with nobility and spiritual insight has made it popular in luxury branding and spiritual design."
     },
     {
       "name": "Purple (web)",
@@ -3736,73 +3736,73 @@
       "name": "Purple mountain majesty",
       "hex": "#9678B6",
       "category": "purples",
-      "description": "A muted medium purple reminiscent of violet blossoms."
+      "description": "A majestic, mountain-inspired purple that captures the awe-inspiring beauty of alpine landscapes at sunset. This color represents the grandeur of nature, the spiritual connection to high places, and the timeless beauty of mountain vistas. Purple mountain majesty's association with natural grandeur and outdoor adventure has made it popular in environmental and outdoor branding."
     },
     {
       "name": "Purple navy",
       "hex": "#4E5180",
       "category": "blues",
-      "description": "Similar to naval uniforms, it's a muted medium blue."
+      "description": "A deep, sophisticated blue-purple that combines the authority of navy with the elegance of purple. This color represents professional dignity, institutional trust, and the balance between tradition and innovation. Purple navy's association with corporate authority and professional excellence has made it popular in business and institutional branding."
     },
     {
       "name": "Purple pizzazz[broken anchor]",
       "hex": "#FE4EDA",
       "category": "purples",
-      "description": "This purple evokes violet blossoms with its vibrant light tone."
+      "description": "A bright, electric purple that captures the excitement and energy of modern entertainment and pop culture. This color represents creativity, fun, and the vibrant energy of contemporary youth culture. Purple pizzazz's association with entertainment and playful design has made it popular in gaming and youth-oriented branding."
     },
     {
       "name": "Purple Plum",
       "hex": "#9C51B6",
       "category": "purples",
-      "description": "Similar to lavender fields, it's a soft medium purple."
+      "description": "A rich, deep purple inspired by the plum fruit, which has been cultivated for its sweet taste and nutritional value for thousands of years. This color represents natural abundance, seasonal beauty, and the rich traditions of fruit cultivation. Purple Plum's association with natural food and seasonal harvests has made it popular in agricultural and food branding."
     },
     {
       "name": "Queen blue",
       "hex": "#436B95",
       "category": "blues",
-      "description": "A soft medium blue reminiscent of clear skies."
+      "description": "A dignified, royal blue that represents the authority and grace of queenship. This color symbolizes regal power, feminine leadership, and the balance of strength and elegance. Queen blue's association with royal authority and feminine power has made it significant in ceremonial and luxury design."
     },
     {
       "name": "Queen pink",
       "hex": "#E8CCD7",
       "category": "purples",
-      "description": "A soft light purple reminiscent of lavender fields."
+      "description": "A soft, elegant pink that represents the refined beauty and gentle authority of queenship. This color symbolizes feminine grace, royal dignity, and the balance of power and compassion. Queen pink's association with royal elegance and feminine leadership has made it popular in luxury and ceremonial design."
     },
     {
       "name": "Quick Silver",
       "hex": "#A6A6A6",
       "category": "neutrals",
-      "description": "A muted light neutral reminiscent of weathered stone."
+      "description": "A bright, metallic gray inspired by the mercury metal, which has been valued for its unique liquid properties and reflective surface since ancient times. This color represents speed, fluidity, and the mysterious properties of rare metals. Quick Silver's association with scientific discovery and industrial innovation has made it popular in technology and automotive design."
     },
     {
       "name": "Quinacridone magenta",
       "hex": "#8E3A59",
       "category": "purples",
-      "description": "This purple evokes royal velvet with its soft medium tone."
+      "description": "A deep, rich magenta pigment first synthesized in 1958, known for its exceptional lightfastness and color strength. This synthetic pigment revolutionized magenta colors in art, offering artists a powerful, permanent alternative to traditional organic dyes. Quinacridone magenta's association with modern artistic innovation and technical excellence has made it significant in contemporary art and industrial applications."
     },
     {
       "name": "Radical Red",
       "hex": "#FF355E",
       "category": "reds",
-      "description": "Similar to brick walls, it's a vibrant light red."
+      "description": "A bold, intense red that represents revolutionary change, political activism, and the energy of social movements. This color symbolizes the power of collective action and the courage to challenge established norms. Radical Red's association with political change and social justice has made it significant in activist and progressive design."
     },
     {
       "name": "Raisin black",
       "hex": "#242124",
       "category": "neutrals",
-      "description": "This neutral evokes weathered stone with its muted dark tone."
+      "description": "A deep, rich black inspired by the dried grape fruit, which has been valued for its concentrated sweetness and nutritional benefits for thousands of years. This color represents natural preservation, traditional food preparation, and the wisdom of ancient culinary practices. Raisin black's association with natural health and traditional cooking has made it popular in health food and heritage branding."
     },
     {
       "name": "Rajah",
       "hex": "#FBAB60",
       "category": "oranges",
-      "description": "A vibrant light orange reminiscent of a glowing sunset."
+      "description": "A warm, golden orange inspired by the title 'Rajah,' which refers to Indian princes and rulers. This color represents the opulence of Indian royalty, the richness of South Asian culture, and the golden traditions of the subcontinent. Rajah's association with cultural heritage and royal splendor has made it popular in heritage and luxury design."
     },
     {
       "name": "Raspberry",
       "hex": "#E30B5D",
       "category": "purples",
-      "description": "Named after violet blossoms, this purple has a vibrant medium look."
+      "description": "A vibrant, rich pink-red inspired by the raspberry fruit, which has been cultivated for its sweet taste and nutritional value for thousands of years. This color represents natural sweetness, summer abundance, and the joy of berry picking. Raspberry's association with natural food and seasonal beauty has made it popular in food and garden design."
     },
     {
       "name": "Raspberry glac\u00e9",
@@ -4729,10 +4729,10 @@
       "description": "This orange evokes tangerine peel with its soft light tone."
     },
     {
-      "name": "Tango pink",
-      "hex": "#E4717A",
-      "category": "reds",
-      "description": "A vibrant light red reminiscent of a fresh rose."
+      "name": "Tangerine",
+      "hex": "#FF9500",
+      "category": "oranges",
+      "description": "A bright orange inspired by the tangerine fruit, which originated in Tangier, Morocco, and has been cultivated for its sweet, easy-to-peel segments for centuries. Tangerines are associated with good fortune in Chinese culture and are often given as gifts during the Lunar New Year. Tangerine's association with vitality, good luck, and natural sweetness has made it popular in food and cultural design."
     },
     {
       "name": "Tart Orange",
