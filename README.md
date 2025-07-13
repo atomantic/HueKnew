@@ -4,6 +4,23 @@ Your ability to understand the world is limited by the language you have to desc
 
 An open-source SwiftUI color learning game that helps you discover the subtle differences between similar colors and learn their proper names.
 
+## Screenshots
+
+<p align="center">
+<img src="Images/HueKnew_01.png" width="300" alt="Home Screen">
+<img src="Images/HueKnew_02.png" width="300" alt="Learning">
+</p>
+
+<p align="center">
+<img src="Images/HueKnew_03.png" width="300" alt="Game">
+<img src="Images/HueKnew_04.png" width="300" alt="Lesson">
+</p>
+
+<p align="center">
+<img src="Images/HueKnew_05.png" width="300" alt="Catalog">
+<img src="Images/HueKnew_06.png" width="300" alt="Details">
+</p>
+
 ## 🎯 Game Overview
 
 **Hue Knew** is designed to train your eye to distinguish between similar colors that are often confused, such as:
