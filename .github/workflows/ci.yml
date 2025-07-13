@@ -19,18 +19,18 @@ jobs:
         with:
           xcode-version: '16.2'
 
-      - name: Verify iOS 18.2 runtime
+      - name: Verify iOS 18.5 runtime
         run: |
-          if ! xcrun simctl list runtimes | grep -q "com.apple.CoreSimulator.SimRuntime.iOS-18-2"; then
-            echo "❌ iOS 18.2 runtime not installed"
+          if ! xcrun simctl list runtimes | grep -q "com.apple.CoreSimulator.SimRuntime.iOS-18-5"; then
+            echo "❌ iOS 18.5 runtime not installed"
             exit 1
           fi
 
-      - name: Create & boot iOS 18.2 simulator
+      - name: Create & boot iOS 18.5 simulator
         run: |
           SIM_UDID=$(xcrun simctl create "test-sim" \
-            com.apple.CoreSimulator.SimDeviceType.iPhone-14 \
-            com.apple.CoreSimulator.SimRuntime.iOS-18-2)
+            com.apple.CoreSimulator.SimDeviceType.iPhone-16 \
+            com.apple.CoreSimulator.SimRuntime.iOS-18-5)
           echo "SIM_UDID=$SIM_UDID" >> $GITHUB_ENV
 
           # Boot it and wait for it to fully start
@@ -46,6 +46,6 @@ jobs:
             -destination-timeout 60 \
             -configuration Debug \
             -derivedDataPath build \
-            IPHONEOS_DEPLOYMENT_TARGET=18.2 \
+            IPHONEOS_DEPLOYMENT_TARGET=18.5 \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO

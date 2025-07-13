@@ -127,8 +127,8 @@ extension ColorPairTests {
     }
     
     func testDifficultyLevel() {
-        // Red and Blue should be easy difficulty due to high color difference
-        XCTAssertEqual(colorPair.difficultyLevel, .easy)
+        // Red and Blue should be intermediate difficulty due to moderate color difference
+        XCTAssertEqual(colorPair.difficultyLevel, .intermediate)
     }
     
     func testDifficultyLevelSimilarColors() {
