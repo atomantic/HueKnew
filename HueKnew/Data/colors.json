@@ -1114,7 +1114,7 @@
       "name": "Crimson",
       "hex": "#DC143C",
       "category": "reds",
-      "description": "This red evokes a fresh rose with its vibrant medium tone."
+      "description": "A deep, rich red with a slight blue undertone, originally derived from the kermes insect (Kermes vermilio) found on Mediterranean oak trees. This ancient dye was used by the Phoenicians and Romans, and its name comes from the Arabic 'qirmiz.' Crimson was so valuable that it was often worth more than gold, reserved for royal garments and religious vestments. The color's association with power and prestige continues today, where it represents authority and importance in academic and military contexts."
     },
     {
       "name": "Crimson (UA)",
@@ -1132,7 +1132,7 @@
       "name": "Cyan",
       "hex": "#00FFFF",
       "category": "blues",
-      "description": "This blue evokes deep ocean water with its vibrant medium tone."
+      "description": "A bright, electric blue-green that is one of the three primary colors in the subtractive color model (CMYK). The name comes from the Greek 'kyanos,' meaning dark blue. Cyan is essential in color printing and photography, where it combines with magenta and yellow to create a full color spectrum. This color's association with technology and digital media has made it a popular choice for modern design and user interfaces."
     },
     {
       "name": "Cyan (process)",
@@ -1162,7 +1162,7 @@
       "name": "Dandelion",
       "hex": "#FED85D",
       "category": "yellows",
-      "description": "This yellow evokes sunflower petals with its vibrant light tone."
+      "description": "A bright, cheerful yellow inspired by the common dandelion flower (Taraxacum officinale), which has been used for food and medicine for centuries. The dandelion's golden hue represents resilience and hope, as this hardy plant can grow almost anywhere. The color captures the flower's sunny disposition and its association with spring and new beginnings. Dandelion yellow is often used in children's products and spring fashion to evoke feelings of joy and optimism."
     },
     {
       "name": "Dark brown",
@@ -1234,7 +1234,7 @@
       "name": "Dark olive green",
       "hex": "#556B2F",
       "category": "greens",
-      "description": "A soft medium green reminiscent of olive groves."
+      "description": "A deep, earthy green inspired by the olive tree (Olea europaea), which has been cultivated in the Mediterranean for over 6,000 years. Olive green's association with peace comes from the olive branch as a symbol of reconciliation. This color has been used extensively in military uniforms for its camouflage properties, and its natural, muted quality makes it popular in outdoor gear and sustainable design."
     },
     {
       "name": "Dark orange",
@@ -1252,7 +1252,7 @@
       "name": "Dark purple",
       "hex": "#301934",
       "category": "purples",
-      "description": "A soft dark purple reminiscent of royal velvet."
+      "description": "A deep, mysterious purple that has been associated with royalty and spirituality throughout history. This rich shade was once so expensive to produce that only the wealthiest could afford purple garments, leading to its association with power and prestige. Dark purple's connection to wisdom and creativity has made it popular in educational and artistic contexts, while its sophisticated depth appeals to luxury brands and high-end design."
     },
     {
       "name": "Dark red",
@@ -1276,7 +1276,7 @@
       "name": "Dark sienna",
       "hex": "#3C1414",
       "category": "reds",
-      "description": "A soft dark red reminiscent of ripe cherries."
+      "description": "A deep, warm red-brown pigment made by heating raw sienna to intensify its color. This earth pigment has been used by artists for centuries, particularly in Renaissance painting for creating rich shadows and underpainting. Dark sienna's transparency and warm undertones make it essential for traditional oil painting techniques, where it's used to establish tonal values and create depth in portraits and landscapes."
     },
     {
       "name": "Dark sky blue",
@@ -1300,13 +1300,13 @@
       "name": "Dark spring green",
       "hex": "#177245",
       "category": "greens",
-      "description": "Named after fresh herbs, this green has a vibrant dark look."
+      "description": "A deep, vibrant green that captures the rich color of new growth in early spring. This color represents renewal and vitality, embodying the energy of nature's awakening after winter. Dark spring green's association with growth and new beginnings has made it popular in environmental and wellness contexts, while its natural depth appeals to designers seeking to bring the outdoors inside."
     },
     {
       "name": "Dark turquoise",
       "hex": "#00CED1",
       "category": "blues",
-      "description": "Similar to deep ocean water, it's a vibrant medium blue."
+      "description": "A deep, rich blue-green that captures the mysterious depths of tropical waters. This color evokes the tranquility and beauty of coral reefs and deep ocean environments. Dark turquoise's association with water and nature has made it popular in spa and wellness design, while its sophisticated depth appeals to luxury fashion and interior design. The color's calming properties make it ideal for creating peaceful, restorative environments."
     },
     {
       "name": "Dark violet",
@@ -1360,7 +1360,7 @@
       "name": "Deep sky blue",
       "hex": "#00BFFF",
       "category": "blues",
-      "description": "A vibrant medium blue reminiscent of a clear sky."
+      "description": "A brilliant, intense blue that captures the pure color of a cloudless summer sky at its zenith. This color represents openness, freedom, and infinite possibility, embodying the vastness of the heavens. Deep sky blue's association with clarity and optimism has made it popular in aviation, technology, and outdoor brands, while its vibrant hue appeals to designers seeking to create uplifting, expansive environments."
     },
     {
       "name": "Deep Space Sparkle",
@@ -1378,7 +1378,7 @@
       "name": "Denim",
       "hex": "#1560BD",
       "category": "blues",
-      "description": "Named after a twilight horizon, this blue has a vibrant medium look."
+      "description": "A classic blue inspired by the durable cotton twill fabric that revolutionized workwear in the late 19th century. Denim's name comes from 'de Nîmes,' referring to the French city where the fabric was first woven. This color represents durability, authenticity, and American culture, as denim jeans became a symbol of rebellion and youth culture in the 1950s. The color's association with hard work and casual style has made it a timeless choice in fashion and design."
     },
     {
       "name": "Denim blue",
@@ -1684,7 +1684,7 @@
       "name": "Fuchsia",
       "hex": "#FF00FF",
       "category": "purples",
-      "description": "This purple evokes lavender fields with its vibrant medium tone."
+      "description": "A bold, electric purple-pink named after the fuchsia flower, which was discovered in the Caribbean in the 17th century and named after German botanist Leonhart Fuchs. This color represents the perfect balance between red and blue in the color spectrum, making it one of the primary colors in digital color models. Fuchsia's vibrant, attention-grabbing quality has made it popular in fashion, advertising, and digital design, where it's used to create high-impact visual statements."
     },
     {
       "name": "Fuchsia (Crayola)",
@@ -1726,7 +1726,7 @@
       "name": "Glaucous",
       "hex": "#6082B6",
       "category": "blues",
-      "description": "A grayish-blue with muted, dusty appearance."
+      "description": "A soft, dusty blue-gray that takes its name from the Greek 'glaukos,' meaning bluish-gray or silvery. This color is often used to describe the powdery bloom on grapes, plums, and other fruits, as well as the subtle blue-gray tint of certain leaves. Glaucous has a gentle, understated quality that makes it popular in interior design and fashion, where it provides a sophisticated alternative to more vibrant blues."
     },
     {
       "name": "Glossy grape",
@@ -1744,7 +1744,7 @@
       "name": "Gold (metallic)",
       "hex": "#D4AF37",
       "category": "yellows",
-      "description": "Named after ripe lemons, this yellow has a vibrant medium look."
+      "description": "A rich, warm yellow that mimics the appearance of precious gold metal. This color has been associated with wealth, power, and divinity throughout human history, from ancient Egyptian pharaohs to Byzantine emperors. Metallic gold's association with luxury and success has made it a staple in high-end design, jewelry, and ceremonial objects. The color's ability to catch and reflect light gives it a special luminosity that has fascinated artists and craftsmen for millennia."
     },
     {
       "name": "Gold (web) (Golden)",
@@ -1774,7 +1774,7 @@
       "name": "Golden poppy",
       "hex": "#FCC200",
       "category": "yellows",
-      "description": "Similar to ripe lemons, it's a vibrant medium yellow."
+      "description": "A bright, cheerful yellow inspired by the California poppy (Eschscholzia californica), the state flower of California. This wildflower's golden hue has become a symbol of the American West and its natural beauty. The color captures the flower's sunny disposition and its ability to thrive in arid conditions, making it a symbol of resilience and optimism. Golden poppy's association with California's golden hills and spring wildflowers has made it a beloved color in Western design and culture."
     },
     {
       "name": "Golden yellow",
@@ -1798,7 +1798,7 @@
       "name": "Granny Smith apple",
       "hex": "#A8E4A0",
       "category": "greens",
-      "description": "A soft light green reminiscent of fresh herbs."
+      "description": "A crisp, tart green inspired by the Granny Smith apple, which was first cultivated in Australia in the 1860s by Maria Ann Smith. This apple's distinctive green color comes from its high chlorophyll content, even when ripe. The color represents freshness, health, and natural tartness, making it popular in food packaging and wellness design. Granny Smith green's association with crisp, refreshing flavors has made it a favorite in culinary and beverage branding."
     },
     {
       "name": "Gray (web)",
@@ -1876,7 +1876,7 @@
       "name": "Gunmetal",
       "hex": "#2a3439",
       "category": "blues",
-      "description": "This blue evokes deep ocean water with its muted dark tone."
+      "description": "A dark, metallic gray-blue that mimics the appearance of gunmetal, an alloy of copper, tin, and zinc used in firearms and machinery since the 16th century. This color represents strength, durability, and industrial power, making it popular in automotive design, military equipment, and industrial applications. Gunmetal's association with precision engineering and reliability has made it a favorite in technical and professional contexts."
     },
     {
       "name": "Hansa yellow",
@@ -1906,7 +1906,7 @@
       "name": "Heliotrope",
       "hex": "#DF73FF",
       "category": "purples",
-      "description": "This purple evokes lavender fields with its vibrant light tone."
+      "description": "A bright purple-pink named after the heliotrope flower (Heliotropium), which was believed to turn toward the sun. The name comes from the Greek 'helios' (sun) and 'trope' (turn). This color represents devotion and faithfulness, as the flower was thought to follow the sun's path across the sky. Heliotrope's vibrant, romantic quality has made it popular in Victorian gardens and continues to appeal in modern floral design and fashion."
     },
     {
       "name": "Heliotrope gray",
@@ -2002,7 +2002,7 @@
       "name": "Indigo",
       "hex": "#6A5DFF",
       "category": "blues",
-      "description": "Similar to a twilight horizon, it's a vibrant light blue."
+      "description": "A deep blue-purple dye derived from the indigo plant (Indigofera tinctoria), which has been cultivated for over 4,000 years. Indigo was one of the most valuable trade goods in history, driving exploration and colonization. The dye was used to create the iconic blue jeans and has been associated with wisdom, intuition, and spirituality. Indigo's rich, complex hue has made it a favorite in textile arts and continues to inspire artists and designers worldwide."
     },
     {
       "name": "Indigo dye",
@@ -2014,7 +2014,7 @@
       "name": "International Klein Blue",
       "hex": "#130a8f",
       "category": "blues",
-      "description": "Named after clear skies, this blue has a vibrant medium look."
+      "description": "A deep, ultramarine blue created by French artist Yves Klein in the 1950s. This pigment was developed specifically for Klein's monochromatic paintings and became his signature color. The artist patented the color and used it extensively in his 'Anthropometries' series, where he used nude models as 'living brushes.' International Klein Blue represents the artist's quest for pure color and his belief in the spiritual power of monochromatic art."
     },
     {
       "name": "International orange (engineering)",
@@ -2086,7 +2086,7 @@
       "name": "Jonquil",
       "hex": "#F4CA16",
       "category": "yellows",
-      "description": "This yellow evokes ripe lemons with its vibrant medium tone."
+      "description": "A bright, cheerful yellow inspired by the jonquil daffodil (Narcissus jonquilla), which is native to Spain and Portugal. This flower's golden hue represents the arrival of spring and new beginnings. Jonquil yellow captures the flower's sunny disposition and its ability to naturalize in gardens, making it a symbol of resilience and hope. The color's association with early spring flowers has made it popular in seasonal design and spring fashion."
     },
     {
       "name": "June bud",
@@ -2098,13 +2098,13 @@
       "name": "Jungle green",
       "hex": "#29AB87",
       "category": "greens",
-      "description": "A vibrant medium green reminiscent of pine forests."
+      "description": "A deep, rich green that captures the lush, mysterious quality of tropical rainforests. This color represents the dense, humid environment of jungle ecosystems and their incredible biodiversity. Jungle green's association with adventure, exploration, and untamed nature has made it popular in outdoor gear and adventure sports. The color's depth and complexity evoke the hidden wonders and challenges of jungle environments."
     },
     {
       "name": "Kelly green",
       "hex": "#4CBB17",
       "category": "greens",
-      "description": "Similar to pine forests, it's a vibrant medium green."
+      "description": "A bright, vivid green named after the common Irish surname Kelly, representing the lush green landscape of Ireland. This color has become strongly associated with Irish culture and St. Patrick's Day celebrations. Kelly green's vibrant, cheerful quality has made it popular in sports uniforms, particularly for teams with Irish heritage. The color's association with luck, nature, and Irish pride has made it a beloved choice in fashion and design."
     },
     {
       "name": "Keppel",
@@ -2116,13 +2116,13 @@
       "name": "Key lime",
       "hex": "#E8F48C",
       "category": "yellows",
-      "description": "Similar to sunflower petals, it's a vibrant light yellow."
+      "description": "A bright, tart yellow-green inspired by the key lime (Citrus aurantifolia), a small, aromatic citrus fruit native to Southeast Asia and cultivated in the Florida Keys. This lime's distinctive color comes from its high chlorophyll content and represents the fresh, zesty quality of tropical citrus. Key lime's association with refreshing flavors and tropical climates has made it popular in food packaging and summer design."
     },
     {
       "name": "Khaki (web)",
       "hex": "#C3B091",
       "category": "oranges",
-      "description": "Similar to a glowing sunset, it's a muted light orange."
+      "description": "A light brownish-yellow color that takes its name from the Persian word 'khak,' meaning dust or earth. Khaki was first used for military uniforms in the 19th century by British troops in India, where the dusty color provided excellent camouflage. This practical color has since become a staple in casual wear and outdoor clothing, representing durability, utility, and understated style."
     },
     {
       "name": "Khaki (X11) (Light khaki)",
@@ -2182,13 +2182,13 @@
       "name": "Lava",
       "hex": "#CF1020",
       "category": "reds",
-      "description": "A vibrant medium red reminiscent of a fresh rose."
+      "description": "A brilliant red-orange that captures the intense heat and energy of molten rock flowing from volcanoes. This color represents the raw power of Earth's geological forces and the primal energy of volcanic eruptions. Lava's association with destruction and creation has made it a symbol of transformation and renewal. The color's intensity and warmth have made it popular in automotive design and high-energy branding."
     },
     {
       "name": "Lavender (floral)",
       "hex": "#B57EDC",
       "category": "purples",
-      "description": "A soft light purple reminiscent of lavender blossoms."
+      "description": "A soft, fragrant purple inspired by the lavender flower (Lavandula), which has been cultivated in the Mediterranean for over 2,500 years. Lavender's soothing color represents tranquility, healing, and spiritual purification. The flower's essential oils have been used in aromatherapy and traditional medicine for centuries. This color's calming properties have made it popular in spa design, sleep products, and wellness branding."
     },
     {
       "name": "Lavender (web)",
@@ -2218,13 +2218,13 @@
       "name": "Lawn green",
       "hex": "#7CFC00",
       "category": "greens",
-      "description": "Similar to pine forests, it's a vibrant medium green."
+      "description": "A bright, vivid green that captures the fresh, manicured appearance of a well-maintained lawn. This color represents the ideal of suburban perfection and outdoor leisure. Lawn green's association with outdoor activities, sports, and family gatherings has made it popular in athletic equipment and outdoor furniture. The color's cheerful, natural quality evokes feelings of summer and outdoor recreation."
     },
     {
       "name": "Lemon",
       "hex": "#FFF700",
       "category": "yellows",
-      "description": "Similar to ripe lemons, it's a vibrant medium yellow."
+      "description": "A bright, zesty yellow inspired by the lemon fruit (Citrus limon), which originated in Southeast Asia and was introduced to Europe by Arab traders. Lemon's vibrant color represents freshness, vitality, and the tangy flavor of citrus. This color has been associated with cleanliness and purity, making it popular in household products and cleaning supplies. Lemon yellow's cheerful, energizing quality has made it a favorite in food packaging and summer design."
     },
     {
       "name": "Lemon chiffon",
@@ -2254,49 +2254,49 @@
       "name": "Liberty",
       "hex": "#545AA7",
       "category": "blues",
-      "description": "This blue evokes a twilight horizon with its soft medium tone."
+      "description": "A dignified blue-purple that represents the ideals of freedom, democracy, and independence. This color has been associated with liberty and justice throughout history, particularly in the context of American democracy. Liberty blue's association with constitutional rights and civic pride has made it popular in government and educational institutions. The color's balanced, authoritative quality reflects the stability and strength of democratic principles."
     },
     {
       "name": "Light blue",
       "hex": "#ADD8E6",
       "category": "blues",
-      "description": "This blue evokes clear skies with its soft light tone."
+      "description": "A gentle, soothing blue that captures the soft, peaceful quality of a clear morning sky. This color represents tranquility, calmness, and open spaces. Light blue's association with serenity and trust has made it popular in healthcare, baby products, and corporate branding. The color's gentle, approachable quality makes it ideal for creating welcoming, peaceful environments."
     },
     {
       "name": "Light coral",
       "hex": "#F08080",
       "category": "reds",
-      "description": "Named after brick walls, this red has a vibrant light look."
+      "description": "A soft, warm pink-red inspired by the delicate coral reefs found in tropical oceans. This color represents the beauty and fragility of marine ecosystems. Light coral's gentle, nurturing quality has made it popular in cosmetics, fashion, and interior design. The color's association with tropical waters and natural beauty has made it a favorite in beach-themed and summer designs."
     },
     {
       "name": "Light cornflower blue",
       "hex": "#93CCEA",
       "category": "blues",
-      "description": "Similar to deep ocean water, it's a vibrant light blue."
+      "description": "A soft, delicate blue inspired by the cornflower (Centaurea cyanus), a wildflower native to Europe that was once a common sight in grain fields. This color represents the gentle beauty of wildflowers and the pastoral landscapes of rural Europe. Light cornflower blue's association with natural beauty and simplicity has made it popular in cottage-style design and romantic fashion."
     },
     {
       "name": "Light cyan",
       "hex": "#E0FFFF",
       "category": "blues",
-      "description": "This blue evokes clear skies with its vibrant light tone."
+      "description": "A pale, ethereal blue-green that represents the purest form of light and clarity. This color captures the crystalline quality of clear water and the transparency of ice. Light cyan's association with purity, cleanliness, and technology has made it popular in medical and scientific applications. The color's cool, refreshing quality makes it ideal for creating a sense of space and cleanliness."
     },
     {
       "name": "Light French beige",
       "hex": "#C8AD7F",
       "category": "oranges",
-      "description": "This orange evokes a glowing sunset with its soft light tone."
+      "description": "A warm, sophisticated beige that captures the refined elegance of French design and architecture. This color represents the timeless beauty of Parisian interiors and the understated luxury of French fashion. Light French beige's association with classic style and European sophistication has made it popular in high-end interior design and luxury branding."
     },
     {
       "name": "Light goldenrod yellow",
       "hex": "#FAFAD2",
       "category": "yellows",
-      "description": "This yellow evokes ripe lemons with its vibrant light tone."
+      "description": "A soft, warm yellow inspired by the goldenrod flower (Solidago), which blooms in late summer and early fall. This color represents the gentle warmth of autumn sunlight and the golden fields of late summer. Light goldenrod yellow's association with harvest time and natural abundance has made it popular in seasonal design and rustic interiors."
     },
     {
       "name": "Light gray",
       "hex": "#D3D3D3",
       "category": "neutrals",
-      "description": "A muted light neutral reminiscent of soft ash."
+      "description": "A soft, neutral gray that represents balance, sophistication, and understated elegance. This color serves as a versatile foundation in design, providing a clean backdrop that allows other colors to shine. Light gray's association with professionalism and reliability has made it popular in corporate environments and modern interiors. The color's calming, neutral quality makes it ideal for creating harmonious, balanced spaces."
     },
     {
       "name": "Light green",
