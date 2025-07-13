@@ -72,7 +72,7 @@ struct ColorWheelPicker: View {
                         )
                     )
                 }) {
-                    Text("explore")
+                    Text("Explore")
                         .font(.headline)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
