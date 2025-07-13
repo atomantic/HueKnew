@@ -155,16 +155,9 @@ struct ColorWheelView: View {
     }
 
     private static let hueColors: [Color] = {
-        var colors: [Color] = []
-        let step = 1.0 / 360.0
-        
-        for i in 0...360 {
-            let hue = Double(i) * step
-            let color = Color(hue: hue, saturation: 1.0, brightness: 1.0)
-            colors.append(color)
+        (0...360).map { i in
+            Color(hue: Double(i) / 360.0, saturation: 1.0, brightness: 1.0)
         }
-        
-        return colors
     }
 }
 
