@@ -185,7 +185,7 @@ struct ColorListRow: View {
                 Text(color.name)
                     .font(.headline)
                     .foregroundColor(.primary)
-                    .lineLimit(1)
+                    .multilineTextAlignment(.leading)
                 
                 Text(color.description)
                     .font(.caption)

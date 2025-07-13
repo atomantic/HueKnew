@@ -18,49 +18,56 @@ struct ChallengeView: View {
     @State private var targetColor: ColorInfo?
     
     var body: some View {
-        VStack(spacing: 0) {
-            // Header
-            VStack(spacing: 8) {
-                Text("Challenge Mode")
-                    .font(.headline)
-                    .foregroundColor(.orange)
-            }
-            .padding()
-            
-            Spacer()
-            
-            VStack(spacing: 32) {
-                // Question section
-                questionSection
+        ZStack {
+            VStack(spacing: 0) {
                 
-                // Answer options
-                answerOptionsSection
-                
-                // Submit button
-                if selectedAnswer != nil && !showingResult {
-                    Button(action: submitAnswer) {
-                        Text("Submit Answer")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.orange)
-                            .cornerRadius(12)
+                VStack(spacing: 32) {
+                    // Question section
+                    questionSection
+                    
+                    // Answer options
+                    answerOptionsSection
+                    
+                    // Submit button
+                    if selectedAnswer != nil && !showingResult {
+                        Button(action: submitAnswer) {
+                            Text("Submit Answer")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.orange)
+                                .cornerRadius(12)
+                        }
+                        .padding(.horizontal)
+                        .animation(.easeInOut(duration: 0.3), value: selectedAnswer)
                     }
-                    .padding(.horizontal)
-                    .animation(.easeInOut(duration: 0.3), value: selectedAnswer)
                 }
                 
-                // Result section
-                if showingResult {
+                Spacer()
+            }
+            .background(Color(.systemBackground))
+            
+            // Result overlay
+            if showingResult {
+                Color.black.opacity(0.3)
+                    .ignoresSafeArea()
+                    .onTapGesture {
+                        // Optional: dismiss on background tap
+                    }
+                
+                VStack {
+                    Spacer()
+                    
                     resultSection
+                        .padding(.horizontal)
+                        .padding(.bottom, 50) // Add space for footer
+                    
+                    Spacer()
                 }
             }
-            
-            Spacer()
         }
-        .background(Color(.systemBackground))
         .onAppear {
             setupChallenge()
         }
@@ -165,10 +172,29 @@ struct ChallengeView: View {
                     .foregroundColor(isCorrect ? .green : .red)
                 
                 if !isCorrect {
-                    Text("The correct answer was: \(targetColor?.name ?? "")")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                        .multilineTextAlignment(.center)
+                    VStack(spacing: 8) {
+                        Text("The correct answer was:")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                        
+                        if challengeType == .nameToColor {
+                            // Show the correct color swatch
+                            Rectangle()
+                                .fill(targetColor?.color ?? Color.gray)
+                                .frame(height: 60)
+                                .cornerRadius(8)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.green, lineWidth: 3)
+                                )
+                        }
+                        
+                        Text(targetColor?.name ?? "")
+                            .font(.subheadline)
+                            .fontWeight(.bold)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                    }
                 }
             }
             .padding()
@@ -259,11 +285,6 @@ struct NameOptionCard: View {
     var body: some View {
         Button(action: onTap) {
             HStack {
-                Rectangle()
-                    .fill(colorInfo.color)
-                    .frame(width: 20, height: 20)
-                    .cornerRadius(4)
-                
                 Text(colorInfo.name)
                     .font(.body)
                     .foregroundColor(.primary)
