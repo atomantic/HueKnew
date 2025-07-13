@@ -227,7 +227,7 @@ struct HSBColor {
 }
 
 #Preview {
-    ColorWheelPicker { color in
+    ColorWheelPicker { _ in
         // Preview action - in real usage this would handle the selected color
     }
 }
