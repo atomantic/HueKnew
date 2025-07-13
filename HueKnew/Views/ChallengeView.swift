@@ -16,6 +16,10 @@ struct ChallengeView: View {
     @State private var showingResult = false
     @State private var answerOptions: [ColorInfo] = []
     @State private var targetColor: ColorInfo?
+
+    /// Delay before automatically advancing to the next challenge after
+    /// showing the result.
+    private let autoAdvanceDelay: TimeInterval = 1.5
     
     var body: some View {
         ZStack {
@@ -151,9 +155,12 @@ struct ChallengeView: View {
     
     @ViewBuilder
     private var resultSection: some View {
+        // Determine if the user's answer was correct so it can be used both
+        // in the view and when automatically progressing to the next challenge.
+        let isCorrect = selectedAnswer?.name == targetColor?.name
+
         VStack(spacing: 16) {
             // Result indicator
-            let isCorrect = selectedAnswer?.name == targetColor?.name
             
             VStack(spacing: 8) {
                 Image(systemName: isCorrect ? "checkmark.circle.fill" : "xmark.circle.fill")
@@ -195,22 +202,14 @@ struct ChallengeView: View {
             .background(Color(.systemGray6))
             .cornerRadius(12)
             
-            // Continue button
-            Button(action: {
-                onAnswerSelected(isCorrect)
-            }) {
-                Text("Continue")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(12)
-            }
-            .padding(.horizontal)
         }
         .animation(.easeInOut(duration: 0.5), value: showingResult)
+        .onAppear {
+            // Automatically move to the next challenge after a short delay.
+            DispatchQueue.main.asyncAfter(deadline: .now() + autoAdvanceDelay) {
+                onAnswerSelected(isCorrect)
+            }
+        }
     }
     
     private func setupChallenge() {
