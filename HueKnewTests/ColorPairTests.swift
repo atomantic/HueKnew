@@ -1,4 +1,5 @@
 import XCTest
+import SwiftUI
 @testable import HueKnew
 
 final class ColorPairTests: XCTestCase {
