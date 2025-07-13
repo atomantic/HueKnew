@@ -1,0 +1,51 @@
+name: CI – Build & Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '16.2'
+
+      - name: Verify iOS 18.2 runtime
+        run: |
+          if ! xcrun simctl list runtimes | grep -q "com.apple.CoreSimulator.SimRuntime.iOS-18-2"; then
+            echo "❌ iOS 18.5 runtime not installed"
+            exit 1
+          fi
+
+      - name: Create & boot iOS 18.2 simulator
+        run: |
+          SIM_UDID=$(xcrun simctl create "test-sim" \
+            com.apple.CoreSimulator.SimDeviceType.iPhone-16 \
+            com.apple.CoreSimulator.SimRuntime.iOS-18-2)
+          echo "SIM_UDID=$SIM_UDID" >> $GITHUB_ENV
+
+          # Boot it and wait for it to fully start
+          xcrun simctl boot "$SIM_UDID"
+          xcrun simctl bootstatus "$SIM_UDID" -b
+
+      - name: Run unit tests on simulator
+        run: |
+          xcodebuild test \
+            -project HueKnew.xcodeproj \
+            -scheme HueKnew \
+            -destination "id=$SIM_UDID" \
+            -destination-timeout 60 \
+            -configuration Debug \
+            -derivedDataPath build \
+            IPHONEOS_DEPLOYMENT_TARGET=18.2 \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO
