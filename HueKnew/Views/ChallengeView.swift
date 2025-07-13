@@ -156,10 +156,29 @@ struct ChallengeView: View {
                     .foregroundColor(isCorrect ? .green : .red)
                 
                 if !isCorrect {
-                    Text("The correct answer was: \(targetColor?.name ?? "")")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                        .multilineTextAlignment(.center)
+                    VStack(spacing: 8) {
+                        Text("The correct answer was:")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                        
+                        if challengeType == .nameToColor {
+                            // Show the correct color swatch
+                            Rectangle()
+                                .fill(targetColor?.color ?? Color.gray)
+                                .frame(height: 60)
+                                .cornerRadius(8)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.green, lineWidth: 3)
+                                )
+                        }
+                        
+                        Text(targetColor?.name ?? "")
+                            .font(.subheadline)
+                            .fontWeight(.bold)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                    }
                 }
             }
             .padding()
