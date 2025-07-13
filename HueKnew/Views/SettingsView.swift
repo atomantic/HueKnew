@@ -9,8 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var soundEnabled = true
-    @State private var vibrationEnabled = true
+    @StateObject private var audioManager = AudioManager.shared
     @State private var showingResetAlert = false
     
     let gameModel: GameModel
@@ -19,8 +18,13 @@ struct SettingsView: View {
         NavigationView {
             Form {
                 Section("Audio & Feedback") {
-                    Toggle("Sound Effects", isOn: $soundEnabled)
-                    Toggle("Vibration", isOn: $vibrationEnabled)
+                    Toggle("Sound Effects", isOn: $audioManager.soundEnabled)
+                    Toggle("Vibration", isOn: $audioManager.vibrationEnabled)
+                    
+                    Button("Test Sound & Vibration") {
+                        AudioManager.shared.playSuccessFeedback()
+                    }
+                    .foregroundColor(.blue)
                 }
                 
                 Section("Game Progress") {
