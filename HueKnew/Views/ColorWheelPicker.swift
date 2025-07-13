@@ -98,7 +98,7 @@ struct ColorWheelView: View {
                 Circle()
                     .fill(
                         AngularGradient(
-                            gradient: Gradient(colors: hueColors),
+                            gradient: Gradient(colors: ColorWheelView.hueColors),
                             center: .center
                         )
                     )
@@ -154,8 +154,8 @@ struct ColorWheelView: View {
         }
     }
 
-    private static let hueColors: [Color] = {
-        (0...360).map { i in
+    private static var hueColors: [Color] {
+        return (0...360).map { i in
             Color(hue: Double(i) / 360.0, saturation: 1.0, brightness: 1.0)
         }
     }
