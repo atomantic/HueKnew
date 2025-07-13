@@ -117,18 +117,26 @@ final class GameModelTests: XCTestCase {
         XCTAssertEqual(gameModel.currentPhase, .results)
     }
     
-    func testResumeOrStartGame() {
-        // Test starting new game
+    func testResumeOrStartGameWhenNotActive() {
+        // Test starting new game when no game is active
+        XCTAssertFalse(gameModel.isGameActive)
+        
         gameModel.resumeOrStartGame()
         
         XCTAssertEqual(gameModel.currentPhase, .learning)
         XCTAssertTrue(gameModel.isGameActive)
-        
-        // Test resuming existing game
+    }
+    
+    func testResumeOrStartGameWhenActive() {
+        // Test resuming existing game when game is already active
+        gameModel.startLearningSession()
         gameModel.currentPhase = .menu
+        XCTAssertTrue(gameModel.isGameActive)
+        
         gameModel.resumeOrStartGame()
         
         XCTAssertEqual(gameModel.currentPhase, .learning)
+        XCTAssertTrue(gameModel.isGameActive)
     }
     
     func testGoToMenu() {
