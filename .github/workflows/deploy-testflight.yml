@@ -24,23 +24,26 @@ jobs:
         uses: maxim-lobanov/setup-xcode@v1
         with:
           xcode-version: 'latest-stable'
-      - name: Find and use available simulator
+      - name: Create, boot, and test on a new simulator
         run: |
           set -o pipefail
-          UDID=$(xcrun simctl list devices --json | jq -r '.devices | .[] | .[] | select(.isAvailable == true and (.name | contains("iPhone")) and .state != "Shutdown") | .udid' | head -n 1)
-          if [ -z "$UDID" ]; then
-            echo "No booted iPhone simulator found, trying to find a shutdown one..."
-            UDID=$(xcrun simctl list devices --json | jq -r '.devices | .[] | .[] | select(.isAvailable == true and (.name | contains("iPhone"))) | .udid' | head -n 1)
-          fi
-          if [ -z "$UDID" ]; then
-            echo "No available iPhone simulators found."
+          # Select the latest available iOS runtime
+          RUNTIME_ID=$(xcrun simctl list runtimes ios | grep -v unavailable | awk '/^iOS/ {print $NF}' | tail -n 1)
+          if [ -z "$RUNTIME_ID" ]; then
+            echo "No available iOS runtimes found."
             exit 1
           fi
-          echo "Using simulator with UDID: $UDID"
+          echo "Using iOS Runtime: $RUNTIME_ID"
+          # Create a new simulator
+          SIM_UDID=$(xcrun simctl create "TestiPhone" com.apple.CoreSimulator.SimDeviceType.iPhone-15 "$RUNTIME_ID")
+          echo "Created simulator with UDID: $SIM_UDID"
+          # Boot the simulator
+          xcrun simctl boot "$SIM_UDID"
+          # Run tests
           xcodebuild test \
             -project HueKnew.xcodeproj \
             -scheme HueKnew \
-            -destination "id=$UDID" \
+            -destination "id=$SIM_UDID" \
             -configuration Debug \
             -derivedDataPath build \
             IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
