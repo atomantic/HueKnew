@@ -56,7 +56,7 @@ struct GameView: View {
                     Text("Hue Knew")
                         .font(.title)
                         .fontWeight(.bold)
-                        .multilineTextAlignment(.center)
+                        .foregroundColor(.primary)
                     
                     Text("Embark on a journey to discover colors")
                         .font(.subheadline)
