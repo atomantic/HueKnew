@@ -147,8 +147,8 @@ class GameModel {
         let baseScore = 10
         let levelMultiplier = level
         let streakBonus = min(streak, 10) // Cap streak bonus at 10
-        let difficultyMultiplier = currentColorPair?.difficultyLevel == .expert ? 3 : 
-                                   currentColorPair?.difficultyLevel == .advanced ? 2 : 1
+        let difficultyMultiplier = currentColorPair?.difficultyLevel == .advanced ? 3 : 
+                                   currentColorPair?.difficultyLevel == .intermediate ? 2 : 1
         
         return baseScore * levelMultiplier * difficultyMultiplier + streakBonus
     }

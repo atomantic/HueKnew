@@ -123,26 +123,23 @@ enum ColorCategory: String, CaseIterable, Codable {
 }
 
 enum DifficultyLevel: String, CaseIterable, Codable {
-    case beginner = "Beginner"
+    case easy = "Easy"
     case intermediate = "Intermediate"
     case advanced = "Advanced"
-    case expert = "Expert"
     
     var color: Color {
         switch self {
-        case .beginner: return .green
-        case .intermediate: return .yellow
-        case .advanced: return .orange
-        case .expert: return .red
+        case .easy: return .green
+        case .intermediate: return .orange
+        case .advanced: return .red
         }
     }
     
     var starIcons: String {
         switch self {
-        case .beginner: return "⭐"
+        case .easy: return "⭐"
         case .intermediate: return "⭐⭐"
         case .advanced: return "⭐⭐⭐"
-        case .expert: return "⭐⭐⭐⭐"
         }
     }
 }
