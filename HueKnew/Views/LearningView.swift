@@ -148,7 +148,7 @@ struct ColorDisplayCard: View {
                     let characteristics = getComparativeCharacteristics()
                     let otherColor = isPrimaryColor ? colorPair.comparisonColor : colorPair.primaryColor
                     if characteristics.isEmpty {
-                        Text("No differences found")
+                        Text("Identical for human eyes")
                             .font(.caption)
                             .foregroundColor(.secondary)
                             .accessibilityLabel("No differences found between colors")

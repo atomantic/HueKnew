@@ -32,7 +32,7 @@ struct SimilarColorCard: View {
             VStack(alignment: .leading, spacing: 2) {
                 let characteristics = ColorDatabase.shared.getColorComparisons(color1: colorInfo, color2: baseColor)
                 if characteristics.isEmpty {
-                    Text("No differences found")
+                    Text("Identical for human eyes")
                         .font(.caption)
                         .foregroundColor(.secondary)
                         .accessibilityLabel("No differences found between colors")
