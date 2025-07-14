@@ -287,6 +287,15 @@ extension ColorDatabase {
         return Array(allColors.shuffled().prefix(count))
     }
 
+    func getMostSimilarColors(to color: ColorInfo, count: Int) -> [ColorInfo] {
+        let allColors = getAllColors().filter { $0.id != color.id }
+        let sorted = allColors.sorted {
+            calculateColorDifference(color1: color, color2: $0) <
+            calculateColorDifference(color1: color, color2: $1)
+        }
+        return Array(sorted.prefix(count))
+    }
+
     func getAvailableColors() -> [TSVColor] {
         return tsvColors
     }
