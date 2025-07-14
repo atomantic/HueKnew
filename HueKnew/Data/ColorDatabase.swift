@@ -287,6 +287,29 @@ extension ColorDatabase {
         return Array(allColors.shuffled().prefix(count))
     }
 
+    func getMostSimilarColors(to color: ColorInfo, count: Int) -> [ColorInfo] {
+        guard count > 0 else { return [] }
+
+        var bestMatches: [(info: ColorInfo, diff: Double)] = []
+        let candidates = getAllColors().filter { $0.id != color.id }
+
+        for candidate in candidates {
+            let diff = calculateColorDifference(color1: color, color2: candidate)
+
+            if bestMatches.count < count {
+                // Insert while maintaining ascending order by difference
+                let index = bestMatches.firstIndex { diff < $0.diff } ?? bestMatches.count
+                bestMatches.insert((candidate, diff), at: index)
+            } else if let worst = bestMatches.last, diff < worst.diff {
+                bestMatches.removeLast()
+                let index = bestMatches.firstIndex { diff < $0.diff } ?? bestMatches.count
+                bestMatches.insert((candidate, diff), at: index)
+            }
+        }
+
+        return bestMatches.map { $0.info }
+    }
+
     func getAvailableColors() -> [TSVColor] {
         return tsvColors
     }
@@ -337,26 +360,32 @@ extension ColorDatabase {
         
         // Compare saturation (relative to color1)
         let satDiff = hsb1.saturation - hsb2.saturation
-        if abs(satDiff) > 0.1 {
-            if satDiff > 0 {
-                comparisons.append("More Saturated")
+        if abs(satDiff) > 0.02 {
+            if abs(satDiff) > 0.05 {
+                comparisons.append(satDiff > 0 ? "More Saturated" : "Less Saturated")
             } else {
-                comparisons.append("Less Saturated")
+                comparisons.append(satDiff > 0 ? "Slightly More Saturated" : "Slightly Less Saturated")
             }
-            Logger.debug("Added saturation comparison: \(satDiff > 0 ? "More" : "Less") Saturated")
+            Logger.debug("Added saturation comparison: \(satDiff)" )
         }
         
         // Compare brightness (relative to color1)
         let brightDiff = hsb1.brightness - hsb2.brightness
-        if abs(brightDiff) > 0.1 {
-            if brightDiff > 0 {
-                comparisons.append("Brighter")
+        if abs(brightDiff) > 0.02 {
+            if abs(brightDiff) > 0.05 {
+                comparisons.append(brightDiff > 0 ? "Brighter" : "Darker")
             } else {
-                comparisons.append("Darker")
+                comparisons.append(brightDiff > 0 ? "Slightly Brighter" : "Slightly Darker")
             }
-            Logger.debug("Added brightness comparison: \(brightDiff > 0 ? "Brighter" : "Darker")")
+            Logger.debug("Added brightness comparison: \(brightDiff)")
         }
-        
+
+        // Vibrancy indicator
+        if satDiff < -0.05 && brightDiff < -0.02 {
+            comparisons.append("More Muted")
+        } else if satDiff > 0.05 && brightDiff > 0.02 {
+            comparisons.append("More Vibrant")
+        }
         Logger.debug("Final comparisons for \(color1.name): \(comparisons)")
         return comparisons
     }
@@ -402,21 +431,30 @@ extension ColorDatabase {
         
         let color1 = getColorName(for: hue1)
         let color2 = getColorName(for: hue2)
-        
+
+        let adjustedDiff = hueDiff > 180 ? hueDiff - 360 : (hueDiff < -180 ? hueDiff + 360 : hueDiff)
+
         if color1 != color2 {
-            return "More \(color1.capitalized)"
+            return adjustedDiff > 0 ? "More \(color1.capitalized)" : "Less \(color1.capitalized)"
         } else {
-            // Same color family, but different shades
-            if abs(hueDiff) > 20 {
-                if hueDiff > 0 && hueDiff < 180 || hueDiff < -180 {
-                    return "More \(color1.capitalized)"
-                } else {
-                    return "Less \(color1.capitalized)"
-                }
+            guard abs(adjustedDiff) > 1 else { return "" }
+            let neighbor = adjacentColorName(for: color1, direction: adjustedDiff)
+            if abs(adjustedDiff) < 5 {
+                return "Hint of \(neighbor.capitalized)"
+            } else {
+                return "More \(neighbor.capitalized)"
             }
         }
-        
-        return ""
+    }
+
+    private func adjacentColorName(for color: String, direction: Double) -> String {
+        let order = ["red", "orange", "yellow", "green", "blue", "purple", "magenta", "red"]
+        guard let index = order.firstIndex(of: color) else { return color }
+        if direction > 0 {
+            return order[index + 1]
+        } else {
+            return order[index == 0 ? order.count - 2 : index - 1]
+        }
     }
 }
 

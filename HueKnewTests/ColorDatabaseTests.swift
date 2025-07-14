@@ -92,8 +92,48 @@ final class ColorDatabaseTests: XCTestCase {
     func testTemperatureCategory() {
         let color = ColorInfo(name: "Cyan", hexValue: "#00FFFF", description: "", category: .blues)
         let temperature = colorDatabase.temperatureCategory(for: color)
-        
+
         XCTAssertEqual(temperature, "cool", "Cyan should be classified as a cool color")
+    }
+
+    func testGetMostSimilarColors() {
+        let allColors = colorDatabase.getAllColors()
+        guard let firstColor = allColors.first else {
+            XCTFail("No colors loaded")
+            return
+        }
+
+        let similar = colorDatabase.getMostSimilarColors(to: firstColor, count: 2)
+        XCTAssertEqual(similar.count, 2)
+        XCTAssertFalse(similar.contains(firstColor))
+    }
+
+    func testComparisonsBetweenSimilarReds() {
+        let colors = colorDatabase.getAllColors()
+        guard
+            let burnt = colors.first(where: { $0.name == "Burnt Sienna" }),
+            let terra = colors.first(where: { $0.name == "Terra Cotta" })
+        else {
+            XCTFail("Required colors not found")
+            return
+        }
+
+        let comparisons = colorDatabase.getColorComparisons(color1: burnt, color2: terra)
+        XCTAssertFalse(comparisons.isEmpty, "Burnt Sienna and Terra Cotta should have distinguishing characteristics")
+    }
+
+    func testCarnelianVsFirebrickComparisons() {
+        let colors = colorDatabase.getAllColors()
+        guard
+            let carnelian = colors.first(where: { $0.name == "Carnelian" }),
+            let firebrick = colors.first(where: { $0.name == "Firebrick" })
+        else {
+            XCTFail("Required colors not found")
+            return
+        }
+
+        let comparisons = colorDatabase.getColorComparisons(color1: carnelian, color2: firebrick)
+        XCTAssertFalse(comparisons.isEmpty, "Carnelian and Firebrick should have distinguishing characteristics")
     }
 }
 
