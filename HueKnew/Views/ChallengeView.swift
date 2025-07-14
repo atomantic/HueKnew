@@ -14,6 +14,7 @@ struct ChallengeView: View {
     
     @State private var selectedAnswer: ColorInfo?
     @State private var showingResult = false
+    @State private var showInlineIncorrect = false
     @State private var answerOptions: [ColorInfo] = []
     @State private var targetColor: ColorInfo?
 
@@ -140,10 +141,12 @@ struct ChallengeView: View {
                         NameOptionCard(
                             colorInfo: colorInfo,
                             isSelected: selectedAnswer?.name == colorInfo.name,
-                            borderColor: nil
+                            showSwatch: showInlineIncorrect,
+                            borderColor: showInlineIncorrect ? borderColor(for: colorInfo) : nil
                         ) {
                             selectedAnswer = colorInfo
                         }
+                        .disabled(showInlineIncorrect)
                     }
                 }
                 .padding(.horizontal)
@@ -238,6 +241,8 @@ struct ChallengeView: View {
     }
     
     private func setupChallenge() {
+        showInlineIncorrect = false
+        selectedAnswer = nil
         // Set target color (randomly pick one from the pair)
         targetColor = [colorPair.primaryColor, colorPair.comparisonColor].randomElement()
         
@@ -258,7 +263,15 @@ struct ChallengeView: View {
     }
     
     private func submitAnswer() {
-        showingResult = true
+        let isCorrect = selectedAnswer?.name == targetColor?.name
+        if challengeType == .colorToName && !isCorrect {
+            showInlineIncorrect = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + autoAdvanceDelay) {
+                onAnswerSelected(isCorrect)
+            }
+        } else {
+            showingResult = true
+        }
     }
 
     private func borderColor(for option: ColorInfo) -> Color? {
@@ -309,12 +322,19 @@ struct ColorOptionCard: View {
 struct NameOptionCard: View {
     let colorInfo: ColorInfo
     let isSelected: Bool
+    let showSwatch: Bool
     let borderColor: Color?
     let onTap: () -> Void
-    
+
     var body: some View {
         Button(action: onTap) {
             HStack {
+                if showSwatch {
+                    Rectangle()
+                        .fill(colorInfo.color)
+                        .frame(width: 24, height: 24)
+                        .cornerRadius(4)
+                }
                 Text(colorInfo.name)
                     .font(.body)
                     .foregroundColor(.primary)
