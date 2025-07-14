@@ -9,7 +9,12 @@ import SwiftUI
 
 struct ColorDetailView: View {
     let color: ColorInfo
-    
+    private let colorDatabase = ColorDatabase.shared
+
+    private var similarColors: [ColorInfo] {
+        colorDatabase.getMostSimilarColors(to: color, count: 2)
+    }
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -60,6 +65,20 @@ struct ColorDetailView: View {
                 }
                 .padding(.horizontal)
                 .padding(.bottom)
+
+                if !similarColors.isEmpty {
+                    Text("Similar Colors")
+                        .font(.headline)
+                        .padding(.horizontal)
+
+                    HStack(spacing: 16) {
+                        ForEach(similarColors, id: \.id) { similar in
+                            SimilarColorCard(colorInfo: similar, baseColor: color)
+                        }
+                    }
+                    .padding(.horizontal)
+                    .padding(.bottom)
+                }
             }
         }
         .navigationTitle(color.name)

@@ -92,8 +92,20 @@ final class ColorDatabaseTests: XCTestCase {
     func testTemperatureCategory() {
         let color = ColorInfo(name: "Cyan", hexValue: "#00FFFF", description: "", category: .blues)
         let temperature = colorDatabase.temperatureCategory(for: color)
-        
+
         XCTAssertEqual(temperature, "cool", "Cyan should be classified as a cool color")
+    }
+
+    func testGetMostSimilarColors() {
+        let allColors = colorDatabase.getAllColors()
+        guard let firstColor = allColors.first else {
+            XCTFail("No colors loaded")
+            return
+        }
+
+        let similar = colorDatabase.getMostSimilarColors(to: firstColor, count: 2)
+        XCTAssertEqual(similar.count, 2)
+        XCTAssertFalse(similar.contains(firstColor))
     }
 }
 
