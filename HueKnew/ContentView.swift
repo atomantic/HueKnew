@@ -11,6 +11,7 @@ struct ContentView: View {
     @State private var gameModel = GameModel()
     @State private var showingSettings = false
     @State private var showingColorDictionary = false
+    @State private var showingPhotoPicker = false
 
     var body: some View {
         NavigationView {
@@ -19,7 +20,8 @@ struct ContentView: View {
                 FooterView(
                     onHome: { gameModel.goToMenu() },
                     onSettings: { showingSettings = true },
-                    onCatalog: { showingColorDictionary = true }
+                    onCatalog: { showingColorDictionary = true },
+                    onCamera: { showingPhotoPicker = true }
                 )
                 .safeAreaPadding(.bottom)
             }
@@ -30,6 +32,9 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showingColorDictionary) {
                 ColorDictionaryView()
+            }
+            .sheet(isPresented: $showingPhotoPicker) {
+                PhotoColorPickerView()
             }
         }
     }
