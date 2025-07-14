@@ -337,7 +337,7 @@ extension ColorDatabase {
         
         // Compare saturation (relative to color1)
         let satDiff = hsb1.saturation - hsb2.saturation
-        if satDiff != 0 {
+        if abs(satDiff) > 0.1 {
             if satDiff > 0 {
                 comparisons.append("More Saturated")
             } else {
@@ -348,7 +348,7 @@ extension ColorDatabase {
         
         // Compare brightness (relative to color1)
         let brightDiff = hsb1.brightness - hsb2.brightness
-        if brightDiff != 0 {
+        if abs(brightDiff) > 0.1 {
             if brightDiff > 0 {
                 comparisons.append("Brighter")
             } else {
@@ -371,8 +371,8 @@ extension ColorDatabase {
         // Define hue ranges for primary and secondary colors
         let redRange = 350.0...360.0
         let redRange2 = 0.0...10.0
-        let orangeRange = 10.0...45.0
-        let yellowRange = 45.0...75.0
+        let orangeRange = 10.0...40.0
+        let yellowRange = 40.0...75.0
         let greenRange = 75.0...165.0
         let blueRange = 165.0...255.0
         let purpleRange = 255.0...285.0
