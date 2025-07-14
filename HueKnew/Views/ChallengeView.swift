@@ -33,8 +33,21 @@ struct ChallengeView: View {
                     // Answer options
                     answerOptionsSection
                     
-                    // Submit button
-                    if selectedAnswer != nil && !showingResult {
+                    // Submit or continue button
+                    if showInlineIncorrect {
+                        Button(action: { onAnswerSelected(false) }) {
+                            Text("Continue")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.orange)
+                                .cornerRadius(12)
+                        }
+                        .padding(.horizontal)
+                        .animation(.easeInOut(duration: 0.3), value: showInlineIncorrect)
+                    } else if selectedAnswer != nil && !showingResult {
                         Button(action: submitAnswer) {
                             Text("Submit Answer")
                                 .font(.title2)
@@ -266,9 +279,6 @@ struct ChallengeView: View {
         let isCorrect = selectedAnswer?.name == targetColor?.name
         if challengeType == .colorToName && !isCorrect {
             showInlineIncorrect = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + autoAdvanceDelay) {
-                onAnswerSelected(isCorrect)
-            }
         } else {
             showingResult = true
         }
