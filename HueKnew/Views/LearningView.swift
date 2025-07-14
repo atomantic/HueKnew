@@ -10,6 +10,7 @@ import SwiftUI
 struct LearningView: View {
     let colorPair: ColorPair
     let onContinue: () -> Void
+    @State private var selectedColorForDetail: ColorInfo?
     
     var body: some View {
         VStack(spacing: 0) {
@@ -47,7 +48,8 @@ struct LearningView: View {
                                 showDescription: true,
                                 learningNotes: colorPair.learningNotes,
                                 isPrimaryColor: true,
-                                colorPair: colorPair
+                                colorPair: colorPair,
+                                onMoreInfo: { selectedColorForDetail = colorPair.primaryColor }
                             )
                             
                             // Comparison color
@@ -57,7 +59,8 @@ struct LearningView: View {
                                 showDescription: true,
                                 learningNotes: colorPair.learningNotes,
                                 isPrimaryColor: false,
-                                colorPair: colorPair
+                                colorPair: colorPair,
+                                onMoreInfo: { selectedColorForDetail = colorPair.comparisonColor }
                             )
                         }
                         .padding(.horizontal)
@@ -80,6 +83,9 @@ struct LearningView: View {
             }
         }
         .background(Color(.systemBackground))
+        .sheet(item: $selectedColorForDetail) { color in
+            ColorDetailView(color: color)
+        }
     }
 }
 
@@ -90,6 +96,7 @@ struct ColorDisplayCard: View {
     let learningNotes: String
     let isPrimaryColor: Bool
     let colorPair: ColorPair
+    let onMoreInfo: () -> Void
     
     var body: some View {
         VStack(spacing: 12) {
@@ -129,7 +136,13 @@ struct ColorDisplayCard: View {
                     .multilineTextAlignment(.center)
                     .lineLimit(3)
                     .padding(.horizontal, 4)
-                
+
+                Button(action: onMoreInfo) {
+                    Text("More Info")
+                        .font(.caption2)
+                        .foregroundColor(.blue)
+                }
+
                 // Comparative characteristics
                 VStack(alignment: .leading, spacing: 2) {
                     let characteristics = getComparativeCharacteristics()
