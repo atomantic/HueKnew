@@ -14,6 +14,7 @@ struct ChallengeView: View {
     
     @State private var selectedAnswer: ColorInfo?
     @State private var showingResult = false
+    @State private var showInlineIncorrect = false
     @State private var answerOptions: [ColorInfo] = []
     @State private var targetColor: ColorInfo?
 
@@ -32,8 +33,21 @@ struct ChallengeView: View {
                     // Answer options
                     answerOptionsSection
                     
-                    // Submit button
-                    if selectedAnswer != nil && !showingResult {
+                    // Submit or continue button
+                    if showInlineIncorrect {
+                        Button(action: { onAnswerSelected(false) }) {
+                            Text("Continue")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.orange)
+                                .cornerRadius(12)
+                        }
+                        .padding(.horizontal)
+                        .animation(.easeInOut(duration: 0.3), value: showInlineIncorrect)
+                    } else if selectedAnswer != nil && !showingResult {
                         Button(action: submitAnswer) {
                             Text("Submit Answer")
                                 .font(.title2)
@@ -140,10 +154,13 @@ struct ChallengeView: View {
                         NameOptionCard(
                             colorInfo: colorInfo,
                             isSelected: selectedAnswer?.name == colorInfo.name,
-                            borderColor: nil
+                            showSwatch: showInlineIncorrect,
+                            borderColor: showInlineIncorrect ? borderColor(for: colorInfo) : nil,
+                            showIncorrectIcon: showInlineIncorrect && selectedAnswer?.name == colorInfo.name
                         ) {
                             selectedAnswer = colorInfo
                         }
+                        .disabled(showInlineIncorrect)
                     }
                 }
                 .padding(.horizontal)
@@ -238,6 +255,8 @@ struct ChallengeView: View {
     }
     
     private func setupChallenge() {
+        showInlineIncorrect = false
+        selectedAnswer = nil
         // Set target color (randomly pick one from the pair)
         targetColor = [colorPair.primaryColor, colorPair.comparisonColor].randomElement()
         
@@ -258,7 +277,12 @@ struct ChallengeView: View {
     }
     
     private func submitAnswer() {
-        showingResult = true
+        let isCorrect = selectedAnswer?.name == targetColor?.name
+        if challengeType == .colorToName && !isCorrect {
+            showInlineIncorrect = true
+        } else {
+            showingResult = true
+        }
     }
 
     private func borderColor(for option: ColorInfo) -> Color? {
@@ -309,12 +333,20 @@ struct ColorOptionCard: View {
 struct NameOptionCard: View {
     let colorInfo: ColorInfo
     let isSelected: Bool
+    let showSwatch: Bool
     let borderColor: Color?
+    let showIncorrectIcon: Bool
     let onTap: () -> Void
-    
+
     var body: some View {
         Button(action: onTap) {
             HStack {
+                if showSwatch {
+                    Rectangle()
+                        .fill(colorInfo.color)
+                        .frame(width: 24, height: 24)
+                        .cornerRadius(4)
+                }
                 Text(colorInfo.name)
                     .font(.body)
                     .foregroundColor(.primary)
@@ -323,8 +355,8 @@ struct NameOptionCard: View {
                 Spacer()
 
                 if isSelected {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundColor(.blue)
+                    Image(systemName: showIncorrectIcon ? "xmark.circle.fill" : "checkmark.circle.fill")
+                        .foregroundColor(showIncorrectIcon ? .red : .blue)
                 }
             }
             .padding()
