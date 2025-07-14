@@ -288,6 +288,8 @@ extension ColorDatabase {
     }
 
     func getMostSimilarColors(to color: ColorInfo, count: Int) -> [ColorInfo] {
+        guard count > 0 else { return [] }
+
         var bestMatches: [(info: ColorInfo, diff: Double)] = []
         let candidates = getAllColors().filter { $0.id != color.id }
 
@@ -295,12 +297,13 @@ extension ColorDatabase {
             let diff = calculateColorDifference(color1: color, color2: candidate)
 
             if bestMatches.count < count {
-                bestMatches.append((candidate, diff))
-                bestMatches.sort { $0.diff < $1.diff }
+                // Insert while maintaining ascending order by difference
+                let index = bestMatches.firstIndex { diff < $0.diff } ?? bestMatches.count
+                bestMatches.insert((candidate, diff), at: index)
             } else if let worst = bestMatches.last, diff < worst.diff {
                 bestMatches.removeLast()
-                bestMatches.append((candidate, diff))
-                bestMatches.sort { $0.diff < $1.diff }
+                let index = bestMatches.firstIndex { diff < $0.diff } ?? bestMatches.count
+                bestMatches.insert((candidate, diff), at: index)
             }
         }
 
