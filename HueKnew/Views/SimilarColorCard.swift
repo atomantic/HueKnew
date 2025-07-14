@@ -21,6 +21,14 @@ struct SimilarColorCard: View {
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
 
+            Text(colorInfo.hexValue)
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .background(Color(.systemGray5))
+                .cornerRadius(6)
+
             VStack(alignment: .leading, spacing: 2) {
                 let characteristics = ColorDatabase.shared.getColorComparisons(color1: colorInfo, color2: baseColor)
                 if characteristics.isEmpty {
