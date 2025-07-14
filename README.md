@@ -130,6 +130,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
  - https://en.wikipedia.org/wiki/List_of_colors:_A%E2%80%93F
  - https://en.wikipedia.org/wiki/List_of_colors:_G%E2%80%93M
  - https://en.wikipedia.org/wiki/List_of_colors:_N%E2%80%93Z
+- Thanks to [Placehold.co](https://placehold.co/) for the color swatch previews in this file and other places :)
 
 
 # Development
