@@ -153,7 +153,7 @@ struct ColorDisplayCard: View {
                             .foregroundColor(.secondary)
                             .accessibilityLabel("No differences found between colors")
                     } else {
-                        ForEach(characteristics, id: \.self) { characteristic in
+                        ForEach(Array(characteristics.enumerated()), id: \.offset) { _, characteristic in
                             HStack(alignment: .top, spacing: 4) {
                                 Text("•")
                                     .font(.caption)
