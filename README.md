@@ -1,33 +1,41 @@
 # Hue Knew 🎨
 
-Your ability to understand the world is limited by the language you have to describe it. Expand your world!
+The ability for humans to observe and record memmories of the world is limited by the language they have to describe it.
 
-An open-source SwiftUI color learning game that helps you discover the subtle differences between similar colors and learn their proper names.
+Hue Knew is an open-source SwiftUI color learning game that helps humans discover new colors, learn the subtle differences between similar colors, and learn their proper names.
+
+## Goal
+
+As a human, I want to be able to articulate the visual reality that humans experience with more accuracy. Rather than saying "that person is wearing a yellow-orange shirt with brown-ish accent lines," if I know the names of more colors, I can say, "that person is wearing a gamboge shirt with brown-sugar accent lines."
+
+I want to be able to recognize colors in the real world and connect them to more distinct language.
+I want to be able to hear a color name and visualize it in my mind.
 
 ## Screenshots
 
 <p align="center">
-<img src="Images/HueKnew_01.png" width="300" alt="Home Screen">
-<img src="Images/HueKnew_02.png" width="300" alt="Learning">
+<img src="Images/HueKnew_01.png" width="200" alt="Home Screen">
+<img src="Images/HueKnew_02.png" width="200" alt="Learning">
+<img src="Images/HueKnew_03.png" width="200" alt="Game">
 </p>
 
 <p align="center">
-<img src="Images/HueKnew_03.png" width="300" alt="Game">
-<img src="Images/HueKnew_04.png" width="300" alt="Lesson">
-</p>
-
-<p align="center">
-<img src="Images/HueKnew_05.png" width="300" alt="Catalog">
-<img src="Images/HueKnew_06.png" width="300" alt="Details">
+<img src="Images/HueKnew_04.png" width="200" alt="Lesson">
+<img src="Images/HueKnew_05.png" width="200" alt="Catalog">
+<img src="Images/HueKnew_06.png" width="200" alt="Details">
 </p>
 
 ## 🎯 Game Overview
 
 **Hue Knew** is designed to train your eye to distinguish between similar colors that are often confused, such as:
-- Gamboge vs. Indian Yellow
-- Muted Glaucous vs. Winter Glaucous
-- Vermillion vs. Cinnabar
-- Prussian Blue vs. Navy Blue
+- ![](https://placehold.co/16x16/E49B0F/E49B0F.png) Gamboge (#E49B0F) vs. ![](https://placehold.co/16x16/E3B505/E3B505.png) Indian Yellow (#E3B505)
+- ![](https://placehold.co/16x16/003153/003153.png) Prussian Blue (#003153) vs. ![](https://placehold.co/16x16/002147/002147.png) Oxford Blue (#002147)
+- ![](https://placehold.co/16x16/DC143C/DC143C.png) Crimson (#DC143C) vs. ![](https://placehold.co/16x16/B22222/B22222.png) Firebrick (#B22222)
+- ![](https://placehold.co/16x16/6A0DAD/6A0DAD.png) Purple (#6A0DAD) vs. ![](https://placehold.co/16x16/702670/702670.png) Midnight (#702670)
+- ![](https://placehold.co/16x16/CC5500/CC5500.png) Burnt Orange (#CC5500) vs. ![](https://placehold.co/16x16/D2691E/D2691E.png) Chocolate (#D2691E)
+- ![](https://placehold.co/16x16/FFFF00/FFFF00.png) Yellow (#FFFF00) vs. ![](https://placehold.co/16x16/FFF700/FFF700.png) Lemon (#FFF700)
+- ![](https://placehold.co/16x16/228B22/228B22.png) Forest Green (#228B22) vs. ![](https://placehold.co/16x16/355E3B/355E3B.png) Hunter Green (#355E3B)
+- ![](https://placehold.co/16x16/696969/696969.png) Dim Gray (#696969) vs. ![](https://placehold.co/16x16/555555/555555.png) Davy's Grey (#555555)
 
 The game uses a progressive learning approach with two main phases:
 
