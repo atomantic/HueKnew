@@ -33,7 +33,7 @@ struct ColorWheelPicker: View {
             }
 
             // Hue & Saturation sliders
-            VStack(spacing: 12) {
+            VStack(spacing: 8) {
                 HStack {
                     Text("Hue")
                         .frame(width: 80, alignment: .leading)
