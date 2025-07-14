@@ -155,7 +155,8 @@ struct ChallengeView: View {
                             colorInfo: colorInfo,
                             isSelected: selectedAnswer?.name == colorInfo.name,
                             showSwatch: showInlineIncorrect,
-                            borderColor: showInlineIncorrect ? borderColor(for: colorInfo) : nil
+                            borderColor: showInlineIncorrect ? borderColor(for: colorInfo) : nil,
+                            showIncorrectIcon: showInlineIncorrect && selectedAnswer?.name == colorInfo.name
                         ) {
                             selectedAnswer = colorInfo
                         }
@@ -334,6 +335,7 @@ struct NameOptionCard: View {
     let isSelected: Bool
     let showSwatch: Bool
     let borderColor: Color?
+    let showIncorrectIcon: Bool
     let onTap: () -> Void
 
     var body: some View {
@@ -353,8 +355,8 @@ struct NameOptionCard: View {
                 Spacer()
 
                 if isSelected {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundColor(.blue)
+                    Image(systemName: showIncorrectIcon ? "xmark.circle.fill" : "checkmark.circle.fill")
+                        .foregroundColor(showIncorrectIcon ? .red : .blue)
                 }
             }
             .padding()
