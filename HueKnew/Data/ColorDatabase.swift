@@ -288,12 +288,23 @@ extension ColorDatabase {
     }
 
     func getMostSimilarColors(to color: ColorInfo, count: Int) -> [ColorInfo] {
-        let allColors = getAllColors().filter { $0.id != color.id }
-        let sorted = allColors.sorted {
-            calculateColorDifference(color1: color, color2: $0) <
-            calculateColorDifference(color1: color, color2: $1)
+        var bestMatches: [(info: ColorInfo, diff: Double)] = []
+        let candidates = getAllColors().filter { $0.id != color.id }
+
+        for candidate in candidates {
+            let diff = calculateColorDifference(color1: color, color2: candidate)
+
+            if bestMatches.count < count {
+                bestMatches.append((candidate, diff))
+                bestMatches.sort { $0.diff < $1.diff }
+            } else if let worst = bestMatches.last, diff < worst.diff {
+                bestMatches.removeLast()
+                bestMatches.append((candidate, diff))
+                bestMatches.sort { $0.diff < $1.diff }
+            }
         }
-        return Array(sorted.prefix(count))
+
+        return bestMatches.map { $0.info }
     }
 
     func getAvailableColors() -> [TSVColor] {
