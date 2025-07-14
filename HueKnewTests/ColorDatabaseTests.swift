@@ -121,5 +121,19 @@ final class ColorDatabaseTests: XCTestCase {
         let comparisons = colorDatabase.getColorComparisons(color1: burnt, color2: terra)
         XCTAssertFalse(comparisons.isEmpty, "Burnt Sienna and Terra Cotta should have distinguishing characteristics")
     }
+
+    func testCarnelianVsFirebrickComparisons() {
+        let colors = colorDatabase.getAllColors()
+        guard
+            let carnelian = colors.first(where: { $0.name == "Carnelian" }),
+            let firebrick = colors.first(where: { $0.name == "Firebrick" })
+        else {
+            XCTFail("Required colors not found")
+            return
+        }
+
+        let comparisons = colorDatabase.getColorComparisons(color1: carnelian, color2: firebrick)
+        XCTAssertFalse(comparisons.isEmpty, "Carnelian and Firebrick should have distinguishing characteristics")
+    }
 }
 
