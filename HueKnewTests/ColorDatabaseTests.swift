@@ -107,5 +107,19 @@ final class ColorDatabaseTests: XCTestCase {
         XCTAssertEqual(similar.count, 2)
         XCTAssertFalse(similar.contains(firstColor))
     }
+
+    func testComparisonsBetweenSimilarReds() {
+        let colors = colorDatabase.getAllColors()
+        guard
+            let burnt = colors.first(where: { $0.name == "Burnt Sienna" }),
+            let terra = colors.first(where: { $0.name == "Terra Cotta" })
+        else {
+            XCTFail("Required colors not found")
+            return
+        }
+
+        let comparisons = colorDatabase.getColorComparisons(color1: burnt, color2: terra)
+        XCTAssertFalse(comparisons.isEmpty, "Burnt Sienna and Terra Cotta should have distinguishing characteristics")
+    }
 }
 
