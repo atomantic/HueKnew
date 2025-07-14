@@ -343,10 +343,10 @@ Hex	Category	Name	Description
 #8FD400	greens	Sheen green	A vibrant medium green reminiscent of pine forests.
 #905D5D	reds	Rose taupe	Similar to rose petals, it's a muted medium red.
 #90EE90	greens	Light green	A fresh, bright green that captures the vibrant energy of new spring growth. This color represents renewal, vitality, and the promise of new beginnings. Light green's association with nature and growth has made it popular in environmental and wellness branding. The color's cheerful, uplifting quality makes it ideal for creating positive, energizing environments.
-#913831	reds	Red ocher (Red ochre)[2]	Similar to a fresh rose, it's a soft medium red.
+#913831	reds	Red ocher (Red ochre)	Similar to a fresh rose, it's a soft medium red.
 #914E75	purples	Sugar Plum	Similar to royal velvet, it's a soft medium purple.
 #915C83	purples	Antique fuchsia	This purple evokes violet blossoms with its muted medium tone.
-#915F6D	purples	Mauve taupe	A sophisticated, muted purple inspired by glacé fruits, which are candied fruits preserved in sugar syrup. This color represents the refined art of food preservation and the elegant traditions of European confectionery. Raspberry glacé's association with luxury desserts and artisanal craftsmanship has made it popular in gourmet and heritage design.
+#915F6D	purples	Mauve taupe	A sophisticated, muted purple inspired by glacé fruits, which are candied fruits preserved in sugar syrup. This color represents the refined art of food preservation and the elegant traditions of European confectionery. Mauve taupe's association with luxury desserts and artisanal craftsmanship has made it popular in gourmet and heritage design.
 #91A3B0	blues	Cadet grey	Similar to clear skies, it's a muted light blue.
 #922B3E	reds	Red-violet (Color wheel)	Named after a fresh rose, this red has a soft medium look.
 #9370DB	purples	Medium purple	A balanced purple that represents the ideal medium tone between light and dark purples. This color has been associated with creativity, spirituality, and artistic expression throughout history. Medium purple's association with imagination and innovation has made it popular in creative industries and educational settings.
@@ -361,7 +361,7 @@ Hex	Category	Name	Description
 #9678B6	purples	Purple mountain majesty	A majestic, mountain-inspired purple that captures the awe-inspiring beauty of alpine landscapes at sunset. This color represents the grandeur of nature, the spiritual connection to high places, and the timeless beauty of mountain vistas. Purple mountain majesty's association with natural grandeur and outdoor adventure has made it popular in environmental and outdoor branding.
 #96C8A2	greens	Eton blue	Named after pine forests, this green has a soft light look.
 #979AAA	blues	Manatee	This blue evokes a twilight horizon with its muted light tone.
-#987456	oranges	Liver chestnut	A muted medium orange reminiscent of tangerine peel.
+#987456	oranges	Liver chestnut	A muted reddish brown reminiscent of liver or chestnuts.
 #98817B	reds	Cinereous	Similar to a fresh rose, it's a muted medium red.
 #989898	neutrals	Spanish gray	Similar to soft ash, it's a muted medium neutral.
 #98FF98	greens	Mint green	A bright, fresh green that captures the crisp, invigorating quality of mint leaves. This color represents renewal, vitality, and natural freshness. Mint green's association with cool, clean sensations has made it popular in personal care products and wellness branding.
@@ -654,7 +654,7 @@ Hex	Category	Name	Description
 #EFBBCC	purples	Cameo pink	Named after royal velvet, this purple has a vibrant light look.
 #EFCC00	yellows	Yellow (Munsell)	A vibrant medium yellow reminiscent of sunflower petals.
 #EFDFBB	oranges	Dutch white	A vibrant light orange reminiscent of a glowing sunset.
-#F0599C	purples	Violet-red(PerBang)	A vibrant light purple reminiscent of royal velvet.
+#F0599C	purples	Violet-red (PerBang)	A vibrant light purple reminiscent of royal velvet.
 #F08080	reds	Light coral	A soft, warm pink-red inspired by the delicate coral reefs found in tropical oceans. This color represents the beauty and fragility of marine ecosystems. Light coral's gentle, nurturing quality has made it popular in cosmetics, fashion, and interior design. The color's association with tropical waters and natural beauty has made it a favorite in beach-themed and summer designs.
 #F0E68C	yellows	Khaki (X11) (Light khaki)	Similar to ripe lemons, it's a vibrant light yellow.
 #F0EAD6	yellows	Eggshell	This yellow evokes ripe lemons with its soft light tone.
@@ -686,7 +686,7 @@ Hex	Category	Name	Description
 #F5F5DC	yellows	Beige	This yellow evokes ripe lemons with its soft light tone.
 #F5F5F5	neutrals	Cultured Pearl	A muted light neutral reminiscent of soft ash.
 #F5FFFA	neutrals	Mint cream	A soft, cool white with a subtle green tint inspired by the refreshing quality of mint. This color represents cleanliness, freshness, and natural purity. Mint cream's association with cool, soothing sensations has made it popular in healthcare and spa design, where it creates a sense of calm and cleanliness.
-#F653A6	purples	Magenta (Crayola)[broken anchor]	A vibrant light purple reminiscent of violet blossoms.
+#F653A6	purples	Magenta (Crayola)	A vibrant light purple reminiscent of violet blossoms.
 #F6ADC6	purples	Nadeshiko pink	A soft, gentle pink named after the Nadeshiko (Dianthus superbus), the national flower of Japan. This color represents traditional Japanese femininity, grace, and the beauty of natural simplicity. Nadeshiko pink's association with Japanese culture and traditional values has made it popular in Asian design and cultural branding.
 #F6EABE	yellows	Lemon meringue	This yellow evokes ripe lemons with its vibrant light tone.
 #F75394	purples	Violet-red	A vibrant light purple reminiscent of violet blossoms.
@@ -734,7 +734,7 @@ Hex	Category	Name	Description
 #FE2712	reds	Red (RYB)	This red evokes a fresh rose with its vibrant medium tone.
 #FE28A2	purples	Persian rose	A vibrant, romantic pink inspired by the traditional gardens and textiles of Persia, where this color has been used in decorative arts for centuries. This color represents the beauty of Persian gardens and the romantic traditions of Middle Eastern culture. Persian rose's association with classical romance and cultural elegance has made it popular in heritage and luxury design.
 #FE4164	reds	Neon fuchsia	A vibrant light red reminiscent of brick walls.
-#FE4EDA	purples	Purple pizzazz[broken anchor]	A bright, electric purple that captures the excitement and energy of modern entertainment and pop culture. This color represents creativity, fun, and the vibrant energy of contemporary youth culture. Purple pizzazz's association with entertainment and playful design has made it popular in gaming and youth-oriented branding.
+#FE4EDA	purples	Purple pizzazz	A bright, electric purple that captures the excitement and energy of modern entertainment and pop culture. This color represents creativity, fun, and the vibrant energy of contemporary youth culture. Purple pizzazz's association with entertainment and playful design has made it popular in gaming and youth-oriented branding.
 #FEBAAD	reds	Melon	A soft, warm pink-orange inspired by the flesh of ripe melons, which have been cultivated for their sweet, refreshing taste for thousands of years. This color represents summer abundance, natural sweetness, and healthy refreshment. Melon's association with fresh fruit and summer enjoyment has made it popular in food packaging and seasonal design.
 #FED85D	yellows	Dandelion	A bright, cheerful yellow inspired by the common dandelion flower (Taraxacum officinale), which has been used for food and medicine for centuries. The dandelion's golden hue represents resilience and hope, as this hardy plant can grow almost anywhere. The color captures the flower's sunny disposition and its association with spring and new beginnings. Dandelion yellow is often used in children's products and spring fashion to evoke feelings of joy and optimism.
 #FED8B1	oranges	Light orange	A soft, warm orange that captures the gentle glow of late afternoon sunlight. This color represents warmth, comfort, and the peaceful transition from day to evening. Light orange's association with sunset and golden hour has made it popular in hospitality and wellness design. The color's soothing, inviting quality makes it ideal for creating welcoming, comfortable environments.
@@ -747,7 +747,7 @@ Hex	Category	Name	Description
 #FF0090	purples	Magenta (process)	A vibrant medium purple reminiscent of royal velvet.
 #FF00FF	purples	Magenta	A bold, electric pink-purple named after the Battle of Magenta in 1859, where French and Sardinian forces defeated Austrian troops. This color represents the perfect balance between red and blue in the color spectrum and is one of the primary colors in digital color models. Magenta's vibrant, attention-grabbing quality has made it popular in advertising, fashion, and digital design.
 #FF1493	purples	Deep pink	Similar to violet blossoms, it's a vibrant medium purple.
-#FF1DCE	purples	Hot magenta[broken anchor]	This purple evokes royal velvet with its vibrant medium tone.
+#FF1DCE	purples	Hot magenta	This purple evokes royal velvet with its vibrant medium tone.
 #FF2400	reds	Scarlet	A brilliant red-orange color with a rich history dating back to medieval Europe. The name 'scarlet' originally referred to a fine woolen cloth dyed with kermes, a red dye made from the dried bodies of scale insects. This expensive dye was reserved for the highest ranks of society and was used in royal garments and ecclesiastical vestments. Scarlet's association with power and prestige continues today, where it represents authority and importance in uniforms and ceremonial dress.
 #FF33CC	purples	Razzle dazzle rose	Named after rose petals, this purple has a vibrant light look.
 #FF355E	reds	Radical Red	A bold, intense red that represents revolutionary change, political activism, and the energy of social movements. This color symbolizes the power of collective action and the courage to challenge established norms. Radical Red's association with political change and social justice has made it significant in activist and progressive design.
