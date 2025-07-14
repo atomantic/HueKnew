@@ -26,6 +26,12 @@ class GameModel {
     var bestStreak: Int = 0
     var totalQuestionsAnswered: Int = 0
     var correctAnswers: Int = 0
+
+    // Color vision settings
+    var colorVisionDeficient: Bool {
+        get { UserDefaults.standard.bool(forKey: "colorVisionDeficient") }
+        set { UserDefaults.standard.set(newValue, forKey: "colorVisionDeficient") }
+    }
     
     // Current session
     var currentColorPair: ColorPair?
@@ -135,6 +141,11 @@ class GameModel {
         } else {
             availablePairs = colorDatabase.getAllColorPairs()
         }
+
+        if colorVisionDeficient {
+            availablePairs = availablePairs.filter { $0.difficultyLevel == .easy }
+        }
+
         let unmasteredPairs = availablePairs.filter { !masteredPairs.contains($0.id) }
         if !unmasteredPairs.isEmpty {
             currentColorPair = unmasteredPairs.randomElement()

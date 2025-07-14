@@ -11,6 +11,7 @@ struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var audioManager = AudioManager.shared
     @State private var showingResetAlert = false
+    @State private var showingTest = false
 
     private static let versionKey = "CFBundleShortVersionString"
     private static let buildKey = "CFBundleVersion"
@@ -34,6 +35,15 @@ struct SettingsView: View {
                         AudioManager.shared.playSuccessFeedback()
                     }
                     .foregroundColor(.blue)
+                }
+
+                Section("Accessibility") {
+                    Button("Run Color Vision Test") {
+                        showingTest = true
+                    }
+                    .foregroundColor(.blue)
+
+                    Toggle("Color Vision Assistance", isOn: $gameModel.colorVisionDeficient)
                 }
                 
                 Section("Game Progress") {
@@ -74,6 +84,9 @@ struct SettingsView: View {
                 }
             } message: {
                 Text("This will reset all your game progress including score, level, streak, and mastered colors. This action cannot be undone.")
+            }
+            .sheet(isPresented: $showingTest) {
+                ColorVisionTestView(gameModel: gameModel)
             }
         }
     }
