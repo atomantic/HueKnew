@@ -11,6 +11,15 @@ struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var audioManager = AudioManager.shared
     @State private var showingResetAlert = false
+
+    private static let versionKey = "CFBundleShortVersionString"
+    private static let buildKey = "CFBundleVersion"
+
+    private var versionString: String {
+        let version = Bundle.main.infoDictionary?[Self.versionKey] as? String ?? "1.0"
+        let build = Bundle.main.infoDictionary?[Self.buildKey] as? String ?? "1"
+        return "\(version) (build \(build))"
+    }
     
     let gameModel: GameModel
     
@@ -38,7 +47,7 @@ struct SettingsView: View {
                     HStack {
                         Text("Version")
                         Spacer()
-                        Text("1.0.0")
+                        Text(versionString)
                             .foregroundColor(.secondary)
                     }
                     
