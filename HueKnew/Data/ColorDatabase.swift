@@ -360,7 +360,7 @@ extension ColorDatabase {
         
         // Compare saturation (relative to color1)
         let satDiff = hsb1.saturation - hsb2.saturation
-        if abs(satDiff) > 0.1 {
+        if abs(satDiff) > 0.05 {
             if satDiff > 0 {
                 comparisons.append("More Saturated")
             } else {
@@ -371,7 +371,7 @@ extension ColorDatabase {
         
         // Compare brightness (relative to color1)
         let brightDiff = hsb1.brightness - hsb2.brightness
-        if abs(brightDiff) > 0.1 {
+        if abs(brightDiff) > 0.05 {
             if brightDiff > 0 {
                 comparisons.append("Brighter")
             } else {
@@ -430,7 +430,7 @@ extension ColorDatabase {
             return "More \(color1.capitalized)"
         } else {
             // Same color family, but different shades
-            if abs(hueDiff) > 20 {
+            if abs(hueDiff) > 2 {
                 if hueDiff > 0 && hueDiff < 180 || hueDiff < -180 {
                     return "More \(color1.capitalized)"
                 } else {
