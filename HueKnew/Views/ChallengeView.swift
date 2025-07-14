@@ -128,7 +128,8 @@ struct ChallengeView: View {
                         ColorOptionCard(
                             colorInfo: colorInfo,
                             isSelected: selectedAnswer?.name == colorInfo.name,
-                            showName: false
+                            showName: false,
+                            borderColor: nil
                         ) {
                             selectedAnswer = colorInfo
                         }
@@ -142,7 +143,8 @@ struct ChallengeView: View {
                     ForEach(answerOptions) { colorInfo in
                         NameOptionCard(
                             colorInfo: colorInfo,
-                            isSelected: selectedAnswer?.name == colorInfo.name
+                            isSelected: selectedAnswer?.name == colorInfo.name,
+                            borderColor: nil
                         ) {
                             selectedAnswer = colorInfo
                         }
@@ -177,7 +179,7 @@ struct ChallengeView: View {
                         Text("The correct answer was:")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
-                        
+
                         if challengeType == .nameToColor {
                             // Show the correct color swatch
                             Rectangle()
@@ -188,13 +190,40 @@ struct ChallengeView: View {
                                     RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.green, lineWidth: 3)
                                 )
+
+                            Text(targetColor?.name ?? "")
+                                .font(.subheadline)
+                                .fontWeight(.bold)
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.center)
+
+                            // Show which color user selected
+                            if let selected = selectedAnswer {
+                                Text("You chose: \(selected.name)")
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                            }
+                        } else {
+                            // colorToName: highlight correct name and show swatches
+                            Text(targetColor?.name ?? "")
+                                .font(.subheadline)
+                                .fontWeight(.bold)
+                                .foregroundColor(.green)
+                                .multilineTextAlignment(.center)
+
+                            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 8) {
+                                ForEach(answerOptions) { option in
+                                    ColorOptionCard(
+                                        colorInfo: option,
+                                        isSelected: false,
+                                        showName: true,
+                                        borderColor: borderColor(for: option)
+                                    ) {
+                                        // no action in result view
+                                    }
+                                }
+                            }
                         }
-                        
-                        Text(targetColor?.name ?? "")
-                            .font(.subheadline)
-                            .fontWeight(.bold)
-                            .foregroundColor(.secondary)
-                            .multilineTextAlignment(.center)
                     }
                 }
             }
@@ -235,12 +264,23 @@ struct ChallengeView: View {
     private func submitAnswer() {
         showingResult = true
     }
+
+    private func borderColor(for option: ColorInfo) -> Color? {
+        if option.name == targetColor?.name {
+            return .green
+        } else if option.name == selectedAnswer?.name {
+            return .red
+        } else {
+            return nil
+        }
+    }
 }
 
 struct ColorOptionCard: View {
     let colorInfo: ColorInfo
     let isSelected: Bool
     let showName: Bool
+    let borderColor: Color?
     let onTap: () -> Void
     
     var body: some View {
@@ -251,7 +291,7 @@ struct ColorOptionCard: View {
                     .frame(height: 80)
                     .overlay(
                         RoundedRectangle(cornerRadius: 8)
-                            .stroke(isSelected ? Color.blue : Color.clear, lineWidth: 3)
+                            .stroke(borderColor ?? (isSelected ? Color.blue : Color.clear), lineWidth: (borderColor != nil || isSelected) ? 3 : 0)
                     )
                     .cornerRadius(8)
                 
@@ -273,6 +313,7 @@ struct ColorOptionCard: View {
 struct NameOptionCard: View {
     let colorInfo: ColorInfo
     let isSelected: Bool
+    let borderColor: Color?
     let onTap: () -> Void
     
     var body: some View {
@@ -282,9 +323,9 @@ struct NameOptionCard: View {
                     .font(.body)
                     .foregroundColor(.primary)
                     .multilineTextAlignment(.leading)
-                
+
                 Spacer()
-                
+
                 if isSelected {
                     Image(systemName: "checkmark.circle.fill")
                         .foregroundColor(.blue)
@@ -292,6 +333,10 @@ struct NameOptionCard: View {
             }
             .padding()
             .background(isSelected ? Color.blue.opacity(0.1) : Color(.systemGray6))
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(borderColor ?? Color.clear, lineWidth: borderColor != nil ? 3 : 0)
+            )
             .cornerRadius(12)
         }
         .buttonStyle(PlainButtonStyle())
