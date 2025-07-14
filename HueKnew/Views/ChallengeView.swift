@@ -84,14 +84,12 @@ struct ChallengeView: View {
             case .nameToColor:
                 // Show color name, ask to pick color
                 VStack(spacing: 8) {
-                    
+
                     Text(targetColor?.name ?? "")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(.orange)
                         .padding()
-                        .background(Color(.systemGray6))
-                        .cornerRadius(12)
                 }
                 
             case .colorToName:
@@ -108,8 +106,6 @@ struct ChallengeView: View {
             }
         }
         .padding()
-        .background(Color(.systemGray6))
-        .cornerRadius(16)
         .padding(.horizontal)
     }
     
