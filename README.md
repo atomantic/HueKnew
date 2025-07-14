@@ -25,7 +25,7 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-The ability for humans to observe and record memmories of the world is limited by the language they have to describe it.
+The ability for humans to observe and record memories of the world is limited by the language they have to describe it.
 
 Hue Knew is an open-source SwiftUI color learning game that helps humans discover new colors, learn the subtle differences between similar colors, and learn their proper names.
 
