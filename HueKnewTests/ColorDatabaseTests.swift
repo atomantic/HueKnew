@@ -1,4 +1,5 @@
 import XCTest
+import UIKit
 @testable import HueKnew
 
 final class ColorDatabaseTests: XCTestCase {
@@ -120,6 +121,12 @@ final class ColorDatabaseTests: XCTestCase {
 
         let comparisons = colorDatabase.getColorComparisons(color1: burnt, color2: terra)
         XCTAssertFalse(comparisons.isEmpty, "Burnt Sienna and Terra Cotta should have distinguishing characteristics")
+    }
+
+    func testClosestColorToPureRed() {
+        let red = UIColor.red
+        let closest = colorDatabase.getClosestColor(to: red)
+        XCTAssertNotNil(closest)
     }
 
     func testCarnelianVsFirebrickComparisons() {
