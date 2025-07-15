@@ -42,11 +42,13 @@ class GameModel {
     // Game flow control
     var isGameActive: Bool = false
     var isPaused: Bool = false
+    var hasColorVisionDeficiency: Bool = UserDefaults.standard.bool(forKey: "colorVisionDeficiency")
     
     private let colorDatabase = ColorDatabase.shared
     
     init() {
-        // No debug logic
+        // Load color vision data if available
+        hasColorVisionDeficiency = UserDefaults.standard.bool(forKey: "colorVisionDeficiency")
     }
     
     // MARK: - Game Flow Methods
@@ -135,6 +137,9 @@ class GameModel {
         } else {
             availablePairs = colorDatabase.getAllColorPairs()
         }
+        if hasColorVisionDeficiency {
+            availablePairs = availablePairs.filter { $0.difficultyLevel == .easy }
+        }
         let unmasteredPairs = availablePairs.filter { !masteredPairs.contains($0.id) }
         if !unmasteredPairs.isEmpty {
             currentColorPair = unmasteredPairs.randomElement()
@@ -156,10 +161,16 @@ class GameModel {
     private func updateLevel() {
         // Level up based on accuracy and total questions answered
         let accuracy = totalQuestionsAnswered > 0 ? Double(correctAnswers) / Double(totalQuestionsAnswered) : 0
-        
+
         if accuracy >= 0.8 && totalQuestionsAnswered >= level * 20 {
             level += 1
         }
+    }
+
+    // MARK: - Color Vision Support
+    func setColorVisionDeficiency(_ value: Bool) {
+        hasColorVisionDeficiency = value
+        UserDefaults.standard.set(value, forKey: "colorVisionDeficiency")
     }
     
     // MARK: - Statistics

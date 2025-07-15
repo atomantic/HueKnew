@@ -84,6 +84,7 @@ The game uses a progressive learning approach with two main phases:
 - **Smart color pairs**: Curated color combinations that are commonly confused
 - **Achievement system**: Track your progress and unlock new color categories
 - **Streak tracking**: Monitor your learning momentum
+- **Color vision test**: Optional accessibility test to adapt challenges
 - **Category-based learning**: Focus on specific color families (blues, yellows, reds, etc.)
 
 ## 🎨 Color Categories
