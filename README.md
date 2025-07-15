@@ -122,7 +122,7 @@ The game uses a progressive learning approach with two main phases:
 
 ## 📄 License
 
-This project is licensed under the HueKnew License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the HueKnew License - see the [LICENSE.md](LICENSE.md) file for details. Contribute to this project via a fork or issue on github :)
 
 ## 🙏 Acknowledgments
 
