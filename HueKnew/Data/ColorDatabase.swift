@@ -456,6 +456,36 @@ extension ColorDatabase {
             return order[index == 0 ? order.count - 2 : index - 1]
         }
     }
+
+    // MARK: - Closest Color Helpers
+    func calculateColorDifference(hsb1: (hue: Double, saturation: Double, brightness: Double), color2: ColorInfo) -> Double {
+        let hsb2 = color2.hsbComponents
+
+        let hueDiff = min(abs(hsb1.hue - hsb2.hue), 360 - abs(hsb1.hue - hsb2.hue))
+        let normalizedHueDiff = hueDiff / 360.0
+
+        let satDiff = abs(hsb1.saturation - hsb2.saturation)
+        let brightDiff = abs(hsb1.brightness - hsb2.brightness)
+
+        let weightedDifference = (normalizedHueDiff * 0.6) + (satDiff * 0.25) + (brightDiff * 0.15)
+        return weightedDifference * 100.0
+    }
+
+    func getClosestColor(to uiColor: UIColor) -> ColorInfo? {
+        let hsb1 = uiColor.hsbComponents
+        var best: (color: ColorInfo, diff: Double)?
+
+        for color in getAllColors() {
+            let diff = calculateColorDifference(hsb1: hsb1, color2: color)
+            if let currentBest = best {
+                if diff < currentBest.diff { best = (color, diff) }
+            } else {
+                best = (color, diff)
+            }
+        }
+
+        return best?.color
+    }
 }
 
 extension ColorPair {

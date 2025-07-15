@@ -11,6 +11,7 @@ struct FooterView: View {
     let onHome: () -> Void
     let onSettings: () -> Void
     let onCatalog: () -> Void
+    let onCamera: () -> Void
     
     var body: some View {
         HStack {
@@ -50,6 +51,19 @@ struct FooterView: View {
                 }
             }
             .frame(maxWidth: .infinity)
+
+            Spacer()
+
+            // Camera button
+            Button(action: onCamera) {
+                VStack {
+                    Image(systemName: "camera")
+                        .font(.title2)
+                    Text("Photo")
+                        .font(.caption)
+                }
+            }
+            .frame(maxWidth: .infinity)
         }
         .background(Color(.systemGray6))
     }
@@ -59,7 +73,8 @@ struct FooterView: View {
     FooterView(
         onHome: { print("Home tapped") },
         onSettings: { print("Settings tapped") },
-        onCatalog: { print("Catalog tapped") }
+        onCatalog: { print("Catalog tapped") },
+        onCamera: {}
     )
     .padding()
 }
