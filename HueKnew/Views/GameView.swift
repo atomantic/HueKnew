@@ -10,6 +10,7 @@ import SwiftUI
 struct GameView: View {
     @Bindable var gameModel: GameModel
     @State private var showingColorDictionary = false
+    @State private var showingCameraPicker = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -96,6 +97,20 @@ struct GameView: View {
                             gameModel.startLearningSession(hsbFilter: filter)
                         }
                     }
+                    VStack(spacing: 16) {
+                        Text("or sample from camera:")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                        Button(action: { showingCameraPicker = true }) {
+                            Label("Open Camera", systemImage: "camera")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.blue)
+                                .cornerRadius(12)
+                        }
+                    }
                     
                     // Choose by Difficulty
                     VStack(spacing: 12) {
@@ -114,6 +129,9 @@ struct GameView: View {
                 }
             }
             .padding()
+            .sheet(isPresented: $showingCameraPicker) {
+                CameraColorPickerView()
+            }
             .sheet(isPresented: $showingColorDictionary) {
                 ColorDictionaryView()
             }
