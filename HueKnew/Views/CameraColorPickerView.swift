@@ -148,10 +148,7 @@ struct CameraColorPickerView: View {
         let relativeX = (location.x - originX) / displaySize.width
         let relativeY = (location.y - originY) / displaySize.height
         guard relativeX >= 0, relativeY >= 0, relativeX <= 1, relativeY <= 1 else { return }
-        var imgPoint = CGPoint(x: imgSize.width * relativeX, y: imgSize.height * relativeY)
-        if mode == .ar && imgSize.width > imgSize.height {
-            imgPoint = CGPoint(x: imgPoint.y, y: imgSize.width - imgPoint.x)
-        }
+        let imgPoint = CGPoint(x: imgSize.width * relativeX, y: imgSize.height * relativeY)
         imagePoint = imgPoint
         if let uiColor = img.color(at: imgPoint) {
             selectedColor = Color(uiColor)
@@ -279,7 +276,7 @@ struct CameraCaptureView: UIViewControllerRepresentable {
 
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let img = info[.originalImage] as? UIImage {
-                parent.image = img.normalizedOrientation()
+                parent.image = img.normalizedOrientation().toPortrait()
             }
             parent.presentationMode.wrappedValue.dismiss()
         }
@@ -316,7 +313,7 @@ struct PhotoPickerView: UIViewControllerRepresentable {
                 provider.loadObject(ofClass: UIImage.self) { object, _ in
                     if let uiImage = object as? UIImage {
                         DispatchQueue.main.async {
-                            self.parent.image = uiImage.normalizedOrientation()
+                            self.parent.image = uiImage.normalizedOrientation().toPortrait()
                         }
                     }
                 }
@@ -364,7 +361,7 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         let ciImage = CIImage(cvPixelBuffer: buffer)
         if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
             let oriented = UIImage(cgImage: cgImage, scale: 1.0, orientation: .right)
-            delegate?.didOutput(image: oriented.normalizedOrientation())
+            delegate?.didOutput(image: oriented.normalizedOrientation().toPortrait())
         }
     }
 }
@@ -407,6 +404,24 @@ private extension UIImage {
         let normalized = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return normalized ?? self
+    }
+
+    func toPortrait() -> UIImage {
+        if size.width <= size.height { return self }
+        let newSize = CGSize(width: size.height, height: size.width)
+        UIGraphicsBeginImageContextWithOptions(newSize, false, scale)
+        guard let context = UIGraphicsGetCurrentContext() else {
+            draw(in: CGRect(origin: .zero, size: newSize))
+            let rotated = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return rotated ?? self
+        }
+        context.translateBy(x: newSize.width / 2, y: newSize.height / 2)
+        context.rotate(by: .pi / 2)
+        draw(in: CGRect(x: -size.width / 2, y: -size.height / 2, width: size.width, height: size.height))
+        let rotated = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return rotated ?? self
     }
 }
 
