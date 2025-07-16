@@ -25,6 +25,7 @@ struct CameraColorPickerView: View {
         GeometryReader { geo in
             ZStack {
                 contentView
+                    .ignoresSafeArea()
                     .gesture(
                         DragGesture(minimumDistance: 0)
                             .onChanged { value in
@@ -36,26 +37,30 @@ struct CameraColorPickerView: View {
                                 showSelector = false
                             }
                     )
+
                 if let baseImage = currentImage, showSelector {
                     MagnifierView(image: baseImage, location: touchLocation, geometrySize: geo.size)
                         .frame(width: 80, height: 80)
-                        .position(touchLocation)
+                        .position(x: touchLocation.x, y: max(CGFloat(40), touchLocation.y - 60))
                 }
 
                 VStack {
                     ColorInfoPanel(color: selectedColor, name: colorName)
                         .opacity(colorName.isEmpty ? 0 : 1)
+                        .padding(.top, geo.safeAreaInsets.top + 8)
                     Spacer()
                     ModePicker(selection: $mode)
+                        .padding(.bottom, geo.safeAreaInsets.bottom + 8)
                 }
                 .padding()
             }
-            .ignoresSafeArea()
         }
         .onChange(of: mode) { _, newMode in
             switch newMode {
             case .photos:
-                showPhotoPicker = true
+                if image == nil && !showCamera {
+                    showPhotoPicker = true
+                }
             case .takePhoto:
                 showCamera = true
             case .ar:
@@ -174,6 +179,7 @@ struct ColorSamplingImage: View {
             Image(uiImage: image)
                 .resizable()
                 .scaledToFit()
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
                 .onAppear { /* noop */ }
                 .gesture(
                     DragGesture(minimumDistance: 0)
@@ -228,6 +234,13 @@ struct MagnifierView: View {
             .frame(width: 80, height: 80)
             .clipShape(Circle())
             .overlay(Circle().stroke(Color.white, lineWidth: 2))
+            .overlay(alignment: .bottom) {
+                Image(systemName: "arrowtriangle.down.fill")
+                    .resizable()
+                    .frame(width: 12, height: 6)
+                    .foregroundColor(.white)
+                    .offset(y: 4)
+            }
     }
 }
 
