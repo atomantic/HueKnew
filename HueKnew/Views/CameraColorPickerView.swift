@@ -36,8 +36,6 @@ struct CameraColorPickerView: View {
                                 showSelector = false
                             }
                     )
-                    .ignoresSafeArea()
-
                 if let baseImage = currentImage, showSelector {
                     MagnifierView(image: baseImage, location: touchLocation, geometrySize: geo.size)
                         .frame(width: 80, height: 80)
@@ -52,6 +50,7 @@ struct CameraColorPickerView: View {
                 }
                 .padding()
             }
+            .ignoresSafeArea()
         }
         .onChange(of: mode) { _, newMode in
             switch newMode {
@@ -103,7 +102,12 @@ struct CameraColorPickerView: View {
         guard let img = currentImage else { return }
         let imgSize = img.size
         let viewSize = geo.size
-        let scale = min(viewSize.width / imgSize.width, viewSize.height / imgSize.height)
+        let scale: CGFloat
+        if mode == .ar {
+            scale = max(viewSize.width / imgSize.width, viewSize.height / imgSize.height)
+        } else {
+            scale = min(viewSize.width / imgSize.width, viewSize.height / imgSize.height)
+        }
         let displaySize = CGSize(width: imgSize.width * scale, height: imgSize.height * scale)
         let origin = CGPoint(x: (viewSize.width - displaySize.width) / 2, y: (viewSize.height - displaySize.height) / 2)
         let relativeX = (location.x - origin.x) / displaySize.width
@@ -214,11 +218,13 @@ struct MagnifierView: View {
 
     var body: some View {
         let scale: CGFloat = 2.0
-        let anchor = UnitPoint(x: location.x / geometrySize.width, y: location.y / geometrySize.height)
         return Image(uiImage: image)
             .resizable()
-            .scaledToFit()
-            .scaleEffect(scale, anchor: anchor)
+            .scaledToFill()
+            .frame(width: geometrySize.width, height: geometrySize.height)
+            .scaleEffect(scale, anchor: .topLeading)
+            .offset(x: -location.x * (scale - 1),
+                    y: -location.y * (scale - 1))
             .frame(width: 80, height: 80)
             .clipShape(Circle())
             .overlay(Circle().stroke(Color.white, lineWidth: 2))
@@ -329,8 +335,8 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         guard let buffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         let ciImage = CIImage(cvPixelBuffer: buffer)
         if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
-            let image = UIImage(cgImage: cgImage)
-            delegate?.didOutput(image: image)
+            let oriented = UIImage(cgImage: cgImage, scale: 1.0, orientation: .right)
+            delegate?.didOutput(image: oriented.normalizedOrientation())
         }
     }
 }
