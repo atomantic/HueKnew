@@ -1,73 +1,227 @@
 import SwiftUI
+import AVFoundation
+import PhotosUI
+
+enum CameraMode: String, CaseIterable, Identifiable {
+    case ar = "AR"
+    case photos = "Photos"
+    case takePhoto = "Take Photo"
+    var id: String { rawValue }
+}
 
 struct CameraColorPickerView: View {
+    @State private var mode: CameraMode = .ar
     @State private var image: UIImage?
+    @State private var liveFrame: UIImage?
     @State private var showCamera = false
+    @State private var showPhotoPicker = false
     @State private var touchLocation: CGPoint = .zero
     @State private var selectedColor: Color = .clear
     @State private var colorName: String = ""
     @State private var showSelector = false
+    private let colorDatabase = ColorDatabase.shared
 
     var body: some View {
-        VStack(spacing: 0) {
+        GeometryReader { geo in
             ZStack {
-                if let image {
-                    ZoomableColorImage(
-                        image: image,
-                        touchLocation: $touchLocation,
-                        selectedColor: $selectedColor,
-                        colorName: $colorName,
-                        showSelector: $showSelector
+                contentView
+                    .gesture(
+                        DragGesture(minimumDistance: 0)
+                            .onChanged { value in
+                                touchLocation = value.location
+                                showSelector = true
+                                updateColor(at: value.location, in: geo)
+                            }
+                            .onEnded { _ in
+                                showSelector = false
+                            }
                     )
                     .ignoresSafeArea()
-                } else {
-                    Color.black.ignoresSafeArea()
-                }
 
-                if image == nil {
-                    Button(action: { showCamera = true }) {
-                        Label("Take Photo", systemImage: "camera")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color.blue)
-                            .cornerRadius(12)
-                    }
-                    .fullScreenCover(isPresented: $showCamera) {
-                        CameraCaptureView(image: $image)
-                    }
-                }
-
-                if showSelector {
-                    Circle()
-                        .stroke(Color.white, lineWidth: 2)
+                if let baseImage = currentImage, showSelector {
+                    MagnifierView(image: baseImage, location: touchLocation, geometrySize: geo.size)
                         .frame(width: 80, height: 80)
                         .position(touchLocation)
-                    Circle()
-                        .fill(selectedColor)
-                        .frame(width: 40, height: 40)
-                        .position(touchLocation)
                 }
-            }
 
-            if !colorName.isEmpty {
-                HStack {
-                    Circle()
-                        .fill(selectedColor)
-                        .frame(width: 24, height: 24)
-                        .overlay(Circle().stroke(Color.white, lineWidth: 1))
-
-                    Text(colorName)
-                        .font(.caption)
-                        .foregroundColor(.primary)
-
+                VStack {
+                    ColorInfoPanel(color: selectedColor, name: colorName)
+                        .opacity(colorName.isEmpty ? 0 : 1)
                     Spacer()
+                    ModePicker(selection: $mode)
                 }
-                .padding(8)
-                .frame(maxWidth: .infinity)
-                .background(Color(.systemBackground).opacity(0.8))
+                .padding()
             }
         }
+        .onChange(of: mode) { _, newMode in
+            switch newMode {
+            case .photos:
+                showPhotoPicker = true
+            case .takePhoto:
+                showCamera = true
+            case .ar:
+                break
+            }
+        }
+        .sheet(isPresented: $showCamera) {
+            CameraCaptureView(image: $image)
+                .onDisappear {
+                    if image != nil { mode = .photos }
+                }
+        }
+        .sheet(isPresented: $showPhotoPicker) {
+            PhotoPickerView(image: $image)
+                .onDisappear {
+                    if image != nil { mode = .photos }
+                }
+        }
+    }
+
+    private var contentView: some View {
+        Group {
+            if mode == .ar {
+                LiveCameraView(frame: $liveFrame)
+            } else if let img = image {
+                ColorSamplingImage(
+                    image: img,
+                    touchLocation: $touchLocation,
+                    selectedColor: $selectedColor,
+                    colorName: $colorName,
+                    showSelector: $showSelector
+                )
+            } else {
+                Color.black
+            }
+        }
+    }
+
+    private var currentImage: UIImage? {
+        if mode == .ar { return liveFrame } else { return image }
+    }
+
+    private func updateColor(at location: CGPoint, in geo: GeometryProxy) {
+        guard let img = currentImage else { return }
+        let imgSize = img.size
+        let viewSize = geo.size
+        let scale = min(viewSize.width / imgSize.width, viewSize.height / imgSize.height)
+        let displaySize = CGSize(width: imgSize.width * scale, height: imgSize.height * scale)
+        let origin = CGPoint(x: (viewSize.width - displaySize.width) / 2, y: (viewSize.height - displaySize.height) / 2)
+        let relativeX = (location.x - origin.x) / displaySize.width
+        let relativeY = (location.y - origin.y) / displaySize.height
+        guard relativeX >= 0, relativeY >= 0, relativeX <= 1, relativeY <= 1 else { return }
+        let imgPoint = CGPoint(x: imgSize.width * relativeX, y: imgSize.height * relativeY)
+        if let uiColor = img.color(at: imgPoint) {
+            selectedColor = Color(uiColor)
+            let hsb = uiColor.hsbComponents
+            if let closest = colorDatabase.closestColor(hue: hsb.hue, saturation: hsb.saturation, brightness: hsb.brightness) {
+                colorName = closest.name
+            } else {
+                colorName = ""
+            }
+        }
+    }
+}
+
+struct ModePicker: View {
+    @Binding var selection: CameraMode
+    var body: some View {
+        Picker("", selection: $selection) {
+            ForEach(CameraMode.allCases) { mode in
+                Text(mode.rawValue).tag(mode)
+            }
+        }
+        .pickerStyle(.segmented)
+        .padding(6)
+        .background(Color(.systemBackground).opacity(0.8))
+        .clipShape(Capsule())
+    }
+}
+
+struct ColorInfoPanel: View {
+    let color: Color
+    let name: String
+    var body: some View {
+        HStack {
+            Circle()
+                .fill(color)
+                .frame(width: 24, height: 24)
+                .overlay(Circle().stroke(Color.white, lineWidth: 1))
+            Text(name)
+                .font(.caption)
+                .foregroundColor(.primary)
+            Spacer()
+        }
+        .padding(8)
+        .background(Color(.systemBackground).opacity(0.8))
+        .cornerRadius(8)
+    }
+}
+
+struct ColorSamplingImage: View {
+    let image: UIImage
+    @Binding var touchLocation: CGPoint
+    @Binding var selectedColor: Color
+    @Binding var colorName: String
+    @Binding var showSelector: Bool
+    private let colorDatabase = ColorDatabase.shared
+
+    var body: some View {
+        GeometryReader { geo in
+            Image(uiImage: image)
+                .resizable()
+                .scaledToFit()
+                .onAppear { /* noop */ }
+                .gesture(
+                    DragGesture(minimumDistance: 0)
+                        .onChanged { value in
+                            touchLocation = value.location
+                            showSelector = true
+                            updateColor(at: value.location, in: geo)
+                        }
+                        .onEnded { _ in
+                            showSelector = false
+                        }
+                )
+        }
+    }
+
+    private func updateColor(at location: CGPoint, in geo: GeometryProxy) {
+        let imgSize = image.size
+        let viewSize = geo.size
+        let scale = min(viewSize.width / imgSize.width, viewSize.height / imgSize.height)
+        let displaySize = CGSize(width: imgSize.width * scale, height: imgSize.height * scale)
+        let origin = CGPoint(x: (viewSize.width - displaySize.width) / 2, y: (viewSize.height - displaySize.height) / 2)
+        let relativeX = (location.x - origin.x) / displaySize.width
+        let relativeY = (location.y - origin.y) / displaySize.height
+        guard relativeX >= 0, relativeY >= 0, relativeX <= 1, relativeY <= 1 else { return }
+        let imgPoint = CGPoint(x: imgSize.width * relativeX, y: imgSize.height * relativeY)
+        if let uiColor = image.color(at: imgPoint) {
+            selectedColor = Color(uiColor)
+            let hsb = uiColor.hsbComponents
+            if let closest = colorDatabase.closestColor(hue: hsb.hue, saturation: hsb.saturation, brightness: hsb.brightness) {
+                colorName = closest.name
+            } else {
+                colorName = ""
+            }
+        }
+    }
+}
+
+struct MagnifierView: View {
+    let image: UIImage
+    let location: CGPoint
+    let geometrySize: CGSize
+
+    var body: some View {
+        let scale: CGFloat = 2.0
+        let anchor = UnitPoint(x: location.x / geometrySize.width, y: location.y / geometrySize.height)
+        return Image(uiImage: image)
+            .resizable()
+            .scaledToFit()
+            .scaleEffect(scale, anchor: anchor)
+            .frame(width: 80, height: 80)
+            .clipShape(Circle())
+            .overlay(Circle().stroke(Color.white, lineWidth: 2))
     }
 }
 
@@ -108,64 +262,100 @@ struct CameraCaptureView: UIViewControllerRepresentable {
     }
 }
 
-struct ZoomableColorImage: View {
-    let image: UIImage
-    @Binding var touchLocation: CGPoint
-    @Binding var selectedColor: Color
-    @Binding var colorName: String
-    @Binding var showSelector: Bool
+struct PhotoPickerView: UIViewControllerRepresentable {
+    @Environment(\.presentationMode) private var presentationMode
+    @Binding var image: UIImage?
 
-    @State private var scale: CGFloat = 1.0
-    @GestureState private var tempScale: CGFloat = 1.0
-    private let colorDatabase = ColorDatabase.shared
-
-    var body: some View {
-        GeometryReader { geo in
-            Image(uiImage: image)
-                .resizable()
-                .scaledToFit()
-                .scaleEffect(scale * tempScale)
-                .gesture(
-                    MagnificationGesture()
-                        .updating($tempScale) { value, state, _ in
-                            state = value
-                        }
-                        .onEnded { value in
-                            scale *= value
-                        }
-                )
-                .simultaneousGesture(
-                    DragGesture(minimumDistance: 0)
-                        .onChanged { value in
-                            touchLocation = value.location
-                            showSelector = true
-                            updateColor(at: value.location, in: geo)
-                        }
-                        .onEnded { _ in
-                            showSelector = false
-                            colorName = ""
-                        }
-                )
-        }
+    func makeUIViewController(context: Context) -> PHPickerViewController {
+        var config = PHPickerConfiguration()
+        config.filter = .images
+        let picker = PHPickerViewController(configuration: config)
+        picker.delegate = context.coordinator
+        return picker
     }
 
-    private func updateColor(at location: CGPoint, in geo: GeometryProxy) {
-        let imgSize = image.size
-        let viewSize = geo.size
-        let baseScale = min(viewSize.width / imgSize.width, viewSize.height / imgSize.height)
-        let displaySize = CGSize(width: imgSize.width * baseScale * scale, height: imgSize.height * baseScale * scale)
-        let origin = CGPoint(x: (viewSize.width - displaySize.width) / 2, y: (viewSize.height - displaySize.height) / 2)
-        let relativeX = (location.x - origin.x) / displaySize.width
-        let relativeY = (location.y - origin.y) / displaySize.height
-        guard relativeX >= 0, relativeY >= 0, relativeX < 1, relativeY < 1 else { return }
-        let imgPoint = CGPoint(x: imgSize.width * relativeX, y: imgSize.height * relativeY)
-        if let uiColor = image.color(at: imgPoint) {
-            selectedColor = Color(uiColor)
-            let hsb = uiColor.hsbComponents
-            if let closest = colorDatabase.closestColor(hue: hsb.hue, saturation: hsb.saturation, brightness: hsb.brightness) {
-                colorName = closest.name
-            } else {
-                colorName = ""
+    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {}
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    class Coordinator: NSObject, PHPickerViewControllerDelegate {
+        let parent: PhotoPickerView
+        init(_ parent: PhotoPickerView) { self.parent = parent }
+        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+            if let provider = results.first?.itemProvider, provider.canLoadObject(ofClass: UIImage.self) {
+                provider.loadObject(ofClass: UIImage.self) { object, _ in
+                    if let uiImage = object as? UIImage {
+                        DispatchQueue.main.async {
+                            self.parent.image = uiImage.normalizedOrientation()
+                        }
+                    }
+                }
+            }
+            parent.presentationMode.wrappedValue.dismiss()
+        }
+    }
+}
+
+protocol CameraControllerDelegate: AnyObject {
+    func didOutput(image: UIImage)
+}
+
+class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+    weak var delegate: CameraControllerDelegate?
+    private let session = AVCaptureSession()
+    private let context = CIContext()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        session.sessionPreset = .photo
+        guard let device = AVCaptureDevice.default(for: .video),
+              let input = try? AVCaptureDeviceInput(device: device) else { return }
+        session.addInput(input)
+
+        let preview = AVCaptureVideoPreviewLayer(session: session)
+        preview.videoGravity = .resizeAspectFill
+        preview.frame = view.bounds
+        view.layer.addSublayer(preview)
+
+        let output = AVCaptureVideoDataOutput()
+        output.setSampleBufferDelegate(self, queue: DispatchQueue(label: "camera.frame"))
+        session.addOutput(output)
+        session.startRunning()
+    }
+
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        guard let buffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+        let ciImage = CIImage(cvPixelBuffer: buffer)
+        if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
+            let image = UIImage(cgImage: cgImage)
+            delegate?.didOutput(image: image)
+        }
+    }
+}
+
+struct LiveCameraView: UIViewControllerRepresentable {
+    @Binding var frame: UIImage?
+
+    func makeUIViewController(context: Context) -> CameraController {
+        let controller = CameraController()
+        controller.delegate = context.coordinator
+        return controller
+    }
+
+    func updateUIViewController(_ uiViewController: CameraController, context: Context) {}
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    class Coordinator: NSObject, CameraControllerDelegate {
+        let parent: LiveCameraView
+        init(_ parent: LiveCameraView) { self.parent = parent }
+        func didOutput(image: UIImage) {
+            DispatchQueue.main.async {
+                self.parent.frame = image
             }
         }
     }
@@ -176,15 +366,21 @@ private extension UIImage {
         guard let cgImage else { return nil }
         return cgImage.color(at: point)
     }
+    func normalizedOrientation() -> UIImage {
+        if imageOrientation == .up { return self }
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        draw(in: CGRect(origin: .zero, size: size))
+        let normalized = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return normalized ?? self
+    }
 }
 
 private extension CGImage {
     func color(at point: CGPoint) -> UIColor? {
-        guard
-            let dataProvider = dataProvider,
-            let data = dataProvider.data,
-            let pixelData = CFDataGetBytePtr(data)
-        else { return nil }
+        guard let dataProvider = dataProvider,
+              let data = dataProvider.data,
+              let pixelData = CFDataGetBytePtr(data) else { return nil }
         let bytesPerPixel = 4
         let bytesPerRow = bytesPerPixel * width
         let x = Int(point.x)
@@ -201,23 +397,12 @@ private extension CGImage {
 
 private extension UIColor {
     var hsbComponents: (hue: Double, saturation: Double, brightness: Double) {
-        var hue: CGFloat = 0
-        var sat: CGFloat = 0
-        var bri: CGFloat = 0
-        var alpha: CGFloat = 0
-        getHue(&hue, saturation: &sat, brightness: &bri, alpha: &alpha)
-        return (Double(hue) * 360.0, Double(sat), Double(bri))
-    }
-}
-
-private extension UIImage {
-    func normalizedOrientation() -> UIImage {
-        if imageOrientation == .up { return self }
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        draw(in: CGRect(origin: .zero, size: size))
-        let normalized = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return normalized ?? self
+        var h: CGFloat = 0
+        var s: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+        getHue(&h, saturation: &s, brightness: &b, alpha: &a)
+        return (Double(h) * 360.0, Double(s), Double(b))
     }
 }
 
