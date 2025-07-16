@@ -1,31 +1,34 @@
 import SwiftUI
-import PhotosUI
 
 struct CameraColorPickerView: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var selectedItem: PhotosPickerItem?
     @State private var image: UIImage?
+    @State private var showCamera = false
     @State private var touchLocation: CGPoint = .zero
     @State private var selectedColor: Color = .clear
     @State private var colorName: String = ""
+    @State private var showSelector = false
 
     var body: some View {
         ZStack {
             if let image {
-                ZoomableColorImage(image: image, touchLocation: $touchLocation, selectedColor: $selectedColor, colorName: $colorName)
+                ZoomableColorImage(image: image, touchLocation: $touchLocation, selectedColor: $selectedColor, colorName: $colorName, showSelector: $showSelector)
                     .ignoresSafeArea()
             } else {
                 Color.black.ignoresSafeArea()
             }
 
             if image == nil {
-                PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
+                Button(action: { showCamera = true }) {
                     Label("Take Photo", systemImage: "camera")
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
                         .background(Color.blue)
                         .cornerRadius(12)
+                }
+                .fullScreenCover(isPresented: $showCamera) {
+                    CameraCaptureView(image: $image)
                 }
             }
 
@@ -39,14 +42,16 @@ struct CameraColorPickerView: View {
                     .position(x: touchLocation.x, y: touchLocation.y - 60)
             }
 
-            Circle()
-                .stroke(Color.white, lineWidth: 2)
-                .frame(width: 80, height: 80)
-                .position(touchLocation)
-            Circle()
-                .fill(selectedColor)
-                .frame(width: 40, height: 40)
-                .position(touchLocation)
+            if showSelector {
+                Circle()
+                    .stroke(Color.white, lineWidth: 2)
+                    .frame(width: 80, height: 80)
+                    .position(touchLocation)
+                Circle()
+                    .fill(selectedColor)
+                    .frame(width: 40, height: 40)
+                    .position(touchLocation)
+            }
 
             VStack {
                 HStack {
@@ -63,13 +68,42 @@ struct CameraColorPickerView: View {
                 Spacer()
             }
         }
-        .onChange(of: selectedItem) { _, newItem in
-            guard let newItem else { return }
-            Task {
-                if let data = try? await newItem.loadTransferable(type: Data.self) {
-                    image = UIImage(data: data)
-                }
+    }
+}
+
+struct CameraCaptureView: UIViewControllerRepresentable {
+    @Environment(\.presentationMode) private var presentationMode
+    @Binding var image: UIImage?
+
+    func makeUIViewController(context: Context) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.sourceType = .camera
+        picker.delegate = context.coordinator
+        picker.cameraCaptureMode = .photo
+        return picker
+    }
+
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+        let parent: CameraCaptureView
+        init(_ parent: CameraCaptureView) {
+            self.parent = parent
+        }
+
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let img = info[.originalImage] as? UIImage {
+                parent.image = img.normalizedOrientation()
             }
+            parent.presentationMode.wrappedValue.dismiss()
+        }
+
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            parent.presentationMode.wrappedValue.dismiss()
         }
     }
 }
@@ -79,6 +113,7 @@ struct ZoomableColorImage: View {
     @Binding var touchLocation: CGPoint
     @Binding var selectedColor: Color
     @Binding var colorName: String
+    @Binding var showSelector: Bool
 
     @State private var scale: CGFloat = 1.0
     @GestureState private var tempScale: CGFloat = 1.0
@@ -108,11 +143,14 @@ struct ZoomableColorImage: View {
                         .updating($tempOffset) { value, state, _ in
                             state = value.translation
                             touchLocation = value.location
+                            showSelector = true
                             updateColor(at: value.location, in: geo)
                         }
                         .onEnded { value in
                             offset.width += value.translation.width
                             offset.height += value.translation.height
+                            showSelector = false
+                            colorName = ""
                         }
                 )
         }
@@ -176,6 +214,17 @@ private extension UIColor {
         var alpha: CGFloat = 0
         getHue(&hue, saturation: &sat, brightness: &bri, alpha: &alpha)
         return (Double(hue) * 360.0, Double(sat), Double(bri))
+    }
+}
+
+private extension UIImage {
+    func normalizedOrientation() -> UIImage {
+        if imageOrientation == .up { return self }
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        draw(in: CGRect(origin: .zero, size: size))
+        let normalized = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return normalized ?? self
     }
 }
 
