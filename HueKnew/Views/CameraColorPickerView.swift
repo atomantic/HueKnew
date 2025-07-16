@@ -15,9 +15,11 @@ struct CameraColorPickerView: View {
     @State private var liveFrame: UIImage?
     @State private var showCamera = false
     @State private var showPhotoPicker = false
+    @State private var showColorDetail = false
     @State private var touchLocation: CGPoint = .zero
     @State private var selectedColor: Color = .clear
     @State private var colorName: String = ""
+    @State private var selectedColorInfo: ColorInfo?
     @State private var showSelector = false
     private let colorDatabase = ColorDatabase.shared
 
@@ -25,7 +27,7 @@ struct CameraColorPickerView: View {
         GeometryReader { geo in
             ZStack {
                 contentView
-                    .ignoresSafeArea()
+                    .ignoresSafeArea(edges: .top)
                     .gesture(
                         DragGesture(minimumDistance: 0)
                             .onChanged { value in
@@ -45,7 +47,9 @@ struct CameraColorPickerView: View {
                 }
 
                 VStack {
-                    ColorInfoPanel(color: selectedColor, name: colorName)
+                    ColorInfoPanel(color: selectedColor, name: colorName) {
+                        showColorDetail = true
+                    }
                         .opacity(colorName.isEmpty ? 0 : 1)
                         .padding(.top, geo.safeAreaInsets.top + 8)
                     Spacer()
@@ -78,6 +82,11 @@ struct CameraColorPickerView: View {
                 .onDisappear {
                     if image != nil { mode = .photos }
                 }
+        }
+        .sheet(isPresented: $showColorDetail) {
+            if let colorInfo = selectedColorInfo {
+                ColorDetailView(color: colorInfo)
+            }
         }
     }
 
@@ -124,8 +133,10 @@ struct CameraColorPickerView: View {
             let hsb = uiColor.hsbComponents
             if let closest = colorDatabase.closestColor(hue: hsb.hue, saturation: hsb.saturation, brightness: hsb.brightness) {
                 colorName = closest.name
+                selectedColorInfo = closest
             } else {
                 colorName = ""
+                selectedColorInfo = nil
             }
         }
     }
@@ -149,20 +160,25 @@ struct ModePicker: View {
 struct ColorInfoPanel: View {
     let color: Color
     let name: String
+    let onInfo: () -> Void
     var body: some View {
-        HStack {
+        HStack(spacing: 12) {
             Circle()
                 .fill(color)
-                .frame(width: 24, height: 24)
+                .frame(width: 32, height: 32)
                 .overlay(Circle().stroke(Color.white, lineWidth: 1))
             Text(name)
-                .font(.caption)
+                .font(.body)
                 .foregroundColor(.primary)
             Spacer()
+            Button(action: onInfo) {
+                Image(systemName: "info.circle")
+                    .font(.title3)
+            }
         }
-        .padding(8)
-        .background(Color(.systemBackground).opacity(0.8))
-        .cornerRadius(8)
+        .padding(12)
+        .background(Color(.systemBackground).opacity(0.9))
+        .cornerRadius(12)
     }
 }
 
