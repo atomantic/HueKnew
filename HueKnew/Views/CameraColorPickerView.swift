@@ -63,7 +63,7 @@ struct CameraColorPickerView: View {
                 Spacer()
             }
         }
-        .onChange(of: selectedItem) { newItem in
+        .onChange(of: selectedItem) { _, newItem in
             guard let newItem else { return }
             Task {
                 if let data = try? await newItem.loadTransferable(type: Data.self) {
