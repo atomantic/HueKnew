@@ -17,7 +17,6 @@ struct CameraColorPickerView: View {
     @State private var showPhotoPicker = false
     @State private var showColorDetail = false
     @State private var touchLocation: CGPoint = .zero
-    @State private var selectedColor: Color = .clear
     @State private var colorName: String = ""
     @State private var selectedColorInfo: ColorInfo?
     @State private var showSelector = false
@@ -48,7 +47,7 @@ struct CameraColorPickerView: View {
 
 
                 VStack {
-                    ColorInfoPanel(color: selectedColorInfo?.color ?? selectedColor, name: colorName) {
+                    ColorInfoPanel(color: selectedColorInfo?.color ?? .clear, name: colorName) {
                         showColorDetail = true
                     }
                         .opacity(colorName.isEmpty ? 0 : 1)
@@ -130,7 +129,6 @@ struct CameraColorPickerView: View {
               let imgPoint = imagePoint(for: location, in: geo, image: img) else { return }
         imagePoint = imgPoint
         if let uiColor = img.color(at: imgPoint) {
-            selectedColor = Color(uiColor)
             let hsb = uiColor.hsbComponents
             if let closest = colorDatabase.closestColor(hue: hsb.hue, saturation: hsb.saturation, brightness: hsb.brightness) {
                 colorName = closest.name
