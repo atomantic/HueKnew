@@ -65,6 +65,7 @@ struct FooterView: View {
             }
             .frame(maxWidth: .infinity)
         }
+        .padding(.vertical, 6)
         .background(Color(.systemGray6))
     }
 }
