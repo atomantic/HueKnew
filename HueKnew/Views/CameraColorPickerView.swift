@@ -21,29 +21,59 @@ struct CameraColorPickerView: View {
     @State private var colorName: String = ""
     @State private var selectedColorInfo: ColorInfo?
     @State private var showSelector = false
+    @State private var imagePoint: CGPoint = .zero
+    @State private var scale: CGFloat = 1.0
+    @State private var lastScale: CGFloat = 1.0
+    @State private var offset: CGSize = .zero
+    @State private var lastOffset: CGSize = .zero
     private let colorDatabase = ColorDatabase.shared
 
     var body: some View {
         GeometryReader { geo in
+            let sampleGesture = DragGesture(minimumDistance: 0)
+                .onChanged { value in
+                    touchLocation = value.location
+                    showSelector = true
+                    updateColor(at: value.location, in: geo)
+                }
+                .onEnded { _ in
+                    showSelector = false
+                }
+
+            let panGesture = DragGesture()
+                .onChanged { value in
+                    offset = CGSize(width: lastOffset.width + value.translation.width,
+                                    height: lastOffset.height + value.translation.height)
+                }
+                .onEnded { _ in
+                    lastOffset = offset
+                }
+
+            let pinchGesture = MagnificationGesture()
+                .onChanged { value in
+                    scale = lastScale * value
+                }
+                .onEnded { _ in
+                    lastScale = scale
+                }
+
             ZStack {
                 contentView
                     .ignoresSafeArea(edges: .top)
-                    .gesture(
-                        DragGesture(minimumDistance: 0)
-                            .onChanged { value in
-                                touchLocation = value.location
-                                showSelector = true
-                                updateColor(at: value.location, in: geo)
-                            }
-                            .onEnded { _ in
-                                showSelector = false
-                            }
-                    )
+                    .gesture(panGesture)
+                    .simultaneousGesture(pinchGesture)
+                    .simultaneousGesture(sampleGesture)
 
                 if let baseImage = currentImage, showSelector {
-                    MagnifierView(image: baseImage, location: touchLocation, geometrySize: geo.size)
+                    MagnifierView(image: baseImage, imagePoint: imagePoint)
                         .frame(width: 80, height: 80)
                         .position(x: touchLocation.x, y: max(CGFloat(40), touchLocation.y - 60))
+                    Text(colorName)
+                        .font(.caption)
+                        .padding(6)
+                        .background(Color(.systemBackground).opacity(0.8))
+                        .cornerRadius(6)
+                        .position(x: touchLocation.x, y: max(CGFloat(20), touchLocation.y - 100))
                 }
 
                 VStack {
@@ -100,7 +130,9 @@ struct CameraColorPickerView: View {
                     touchLocation: $touchLocation,
                     selectedColor: $selectedColor,
                     colorName: $colorName,
-                    showSelector: $showSelector
+                    showSelector: $showSelector,
+                    scale: $scale,
+                    offset: $offset
                 )
             } else {
                 Color.black
@@ -116,18 +148,20 @@ struct CameraColorPickerView: View {
         guard let img = currentImage else { return }
         let imgSize = img.size
         let viewSize = geo.size
-        let scale: CGFloat
+        let baseScale: CGFloat
         if mode == .ar {
-            scale = max(viewSize.width / imgSize.width, viewSize.height / imgSize.height)
+            baseScale = max(viewSize.width / imgSize.width, viewSize.height / imgSize.height)
         } else {
-            scale = min(viewSize.width / imgSize.width, viewSize.height / imgSize.height)
+            baseScale = min(viewSize.width / imgSize.width, viewSize.height / imgSize.height)
         }
-        let displaySize = CGSize(width: imgSize.width * scale, height: imgSize.height * scale)
-        let origin = CGPoint(x: (viewSize.width - displaySize.width) / 2, y: (viewSize.height - displaySize.height) / 2)
-        let relativeX = (location.x - origin.x) / displaySize.width
-        let relativeY = (location.y - origin.y) / displaySize.height
+        let displaySize = CGSize(width: imgSize.width * baseScale, height: imgSize.height * baseScale)
+        let origin = CGPoint(x: (viewSize.width - displaySize.width) / 2 + offset.width,
+                            y: (viewSize.height - displaySize.height) / 2 + offset.height)
+        let relativeX = (location.x - origin.x) / (displaySize.width * scale)
+        let relativeY = (location.y - origin.y) / (displaySize.height * scale)
         guard relativeX >= 0, relativeY >= 0, relativeX <= 1, relativeY <= 1 else { return }
         let imgPoint = CGPoint(x: imgSize.width * relativeX, y: imgSize.height * relativeY)
+        imagePoint = imgPoint
         if let uiColor = img.color(at: imgPoint) {
             selectedColor = Color(uiColor)
             let hsb = uiColor.hsbComponents
@@ -188,68 +222,40 @@ struct ColorSamplingImage: View {
     @Binding var selectedColor: Color
     @Binding var colorName: String
     @Binding var showSelector: Bool
-    private let colorDatabase = ColorDatabase.shared
+    @Binding var scale: CGFloat
+    @Binding var offset: CGSize
 
     var body: some View {
-        GeometryReader { geo in
-            Image(uiImage: image)
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-                .onAppear { /* noop */ }
-                .gesture(
-                    DragGesture(minimumDistance: 0)
-                        .onChanged { value in
-                            touchLocation = value.location
-                            showSelector = true
-                            updateColor(at: value.location, in: geo)
-                        }
-                        .onEnded { _ in
-                            showSelector = false
-                        }
-                )
-        }
-    }
-
-    private func updateColor(at location: CGPoint, in geo: GeometryProxy) {
-        let imgSize = image.size
-        let viewSize = geo.size
-        let scale = min(viewSize.width / imgSize.width, viewSize.height / imgSize.height)
-        let displaySize = CGSize(width: imgSize.width * scale, height: imgSize.height * scale)
-        let origin = CGPoint(x: (viewSize.width - displaySize.width) / 2, y: (viewSize.height - displaySize.height) / 2)
-        let relativeX = (location.x - origin.x) / displaySize.width
-        let relativeY = (location.y - origin.y) / displaySize.height
-        guard relativeX >= 0, relativeY >= 0, relativeX <= 1, relativeY <= 1 else { return }
-        let imgPoint = CGPoint(x: imgSize.width * relativeX, y: imgSize.height * relativeY)
-        if let uiColor = image.color(at: imgPoint) {
-            selectedColor = Color(uiColor)
-            let hsb = uiColor.hsbComponents
-            if let closest = colorDatabase.closestColor(hue: hsb.hue, saturation: hsb.saturation, brightness: hsb.brightness) {
-                colorName = closest.name
-            } else {
-                colorName = ""
-            }
-        }
+        Image(uiImage: image)
+            .resizable()
+            .scaledToFit()
+            .scaleEffect(scale)
+            .offset(offset)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
     }
 }
 
 struct MagnifierView: View {
     let image: UIImage
-    let location: CGPoint
-    let geometrySize: CGSize
+    let imagePoint: CGPoint
 
     var body: some View {
-        let scale: CGFloat = 2.0
-        return Image(uiImage: image)
+        let cropSize: CGFloat = 40
+        let originX = max(min(imagePoint.x - cropSize / 2, image.size.width - cropSize), 0)
+        let originY = max(min(imagePoint.y - cropSize / 2, image.size.height - cropSize), 0)
+        let rect = CGRect(x: originX, y: originY, width: cropSize, height: cropSize)
+        let cropped = image.cgImage?.cropping(to: rect).map { UIImage(cgImage: $0) } ?? image
+        return Image(uiImage: cropped)
             .resizable()
             .scaledToFill()
-            .frame(width: geometrySize.width, height: geometrySize.height)
-            .scaleEffect(scale, anchor: .topLeading)
-            .offset(x: -location.x * (scale - 1),
-                    y: -location.y * (scale - 1))
             .frame(width: 80, height: 80)
             .clipShape(Circle())
             .overlay(Circle().stroke(Color.white, lineWidth: 2))
+            .overlay(
+                Rectangle()
+                    .stroke(Color.white, lineWidth: 1)
+                    .frame(width: 6, height: 6)
+            )
             .overlay(alignment: .bottom) {
                 Image(systemName: "arrowtriangle.down.fill")
                     .resizable()
@@ -352,10 +358,16 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         let preview = AVCaptureVideoPreviewLayer(session: session)
         preview.videoGravity = .resizeAspectFill
         preview.frame = view.bounds
+        if let connection = preview.connection {
+            connection.videoOrientation = .portrait
+        }
         view.layer.addSublayer(preview)
 
         let output = AVCaptureVideoDataOutput()
         output.setSampleBufferDelegate(self, queue: DispatchQueue(label: "camera.frame"))
+        if let connection = output.connection(with: .video) {
+            connection.videoOrientation = .portrait
+        }
         session.addOutput(output)
         session.startRunning()
     }
