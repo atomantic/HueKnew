@@ -81,7 +81,9 @@ struct ZoomableColorImage: View {
     @Binding var colorName: String
 
     @State private var scale: CGFloat = 1.0
+    @GestureState private var tempScale: CGFloat = 1.0
     @State private var offset: CGSize = .zero
+    @GestureState private var tempOffset: CGSize = .zero
     private let colorDatabase = ColorDatabase.shared
 
     var body: some View {
@@ -89,19 +91,28 @@ struct ZoomableColorImage: View {
             Image(uiImage: image)
                 .resizable()
                 .scaledToFit()
-                .scaleEffect(scale)
-                .offset(offset)
+                .scaleEffect(scale * tempScale)
+                .offset(x: offset.width + tempOffset.width,
+                        y: offset.height + tempOffset.height)
                 .gesture(
                     MagnificationGesture()
-                        .onChanged { value in
-                            scale = value
+                        .updating($tempScale) { value, state, _ in
+                            state = value
+                        }
+                        .onEnded { value in
+                            scale *= value
                         }
                 )
-                .gesture(
+                .simultaneousGesture(
                     DragGesture(minimumDistance: 0)
-                        .onChanged { value in
+                        .updating($tempOffset) { value, state, _ in
+                            state = value.translation
                             touchLocation = value.location
                             updateColor(at: value.location, in: geo)
+                        }
+                        .onEnded { value in
+                            offset.width += value.translation.width
+                            offset.height += value.translation.height
                         }
                 )
         }

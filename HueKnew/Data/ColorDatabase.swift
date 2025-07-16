@@ -75,6 +75,7 @@ class ColorDatabase: ObservableObject {
 
     private var tsvColors: [TSVColor] = []
     private var colorPairs: [ColorPair] = []
+    private var closestColorCache: [String: ColorInfo] = [:]
 
     private init() {
         loadColorsFromTSV()
@@ -445,6 +446,7 @@ extension ColorDatabase {
                 return "More \(neighbor.capitalized)"
             }
         }
+    }
     private func adjacentColorName(for color: String, direction: Double) -> String {
         let order = ["red", "orange", "yellow", "green", "blue", "purple", "magenta", "red"]
         guard let index = order.firstIndex(of: color) else { return color }
@@ -456,6 +458,11 @@ extension ColorDatabase {
     }
 
     func closestColor(hue: Double, saturation: Double, brightness: Double) -> ColorInfo? {
+        let key = String(format: "%.2f-%.2f-%.2f", hue, saturation, brightness)
+        if let cached = closestColorCache[key] {
+            return cached
+        }
+
         var best: ColorInfo?
         var bestDiff = Double.greatestFiniteMagnitude
         for color in getAllColors() {
@@ -465,6 +472,10 @@ extension ColorDatabase {
                 bestDiff = diff
                 best = color
             }
+        }
+
+        if let best {
+            closestColorCache[key] = best
         }
         return best
     }
@@ -476,7 +487,6 @@ extension ColorDatabase {
         let brightDiff = abs(hsb1.brightness - hsb2.brightness)
         let weightedDifference = (normalizedHueDiff * 0.6) + (satDiff * 0.25) + (brightDiff * 0.15)
         return weightedDifference * 100.0
-    }
     }
 }
 
