@@ -1,10 +1,9 @@
 import SwiftUI
-import PhotosUI
 
 struct CameraColorPickerView: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var selectedItem: PhotosPickerItem?
     @State private var image: UIImage?
+    @State private var showCamera = false
     @State private var touchLocation: CGPoint = .zero
     @State private var selectedColor: Color = .clear
     @State private var colorName: String = ""
@@ -20,13 +19,16 @@ struct CameraColorPickerView: View {
             }
 
             if image == nil {
-                PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
+                Button(action: { showCamera = true }) {
                     Label("Take Photo", systemImage: "camera")
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
                         .background(Color.blue)
                         .cornerRadius(12)
+                }
+                .fullScreenCover(isPresented: $showCamera) {
+                    CameraCaptureView(image: $image)
                 }
             }
 
@@ -66,15 +68,42 @@ struct CameraColorPickerView: View {
                 Spacer()
             }
         }
-        .onChange(of: selectedItem) { _, newItem in
-            guard let newItem else { return }
-            Task {
-                if let data = try? await newItem.loadTransferable(type: Data.self) {
-                    if let uiImage = UIImage(data: data)?.normalizedOrientation() {
-                        image = uiImage
-                    }
-                }
+    }
+}
+
+struct CameraCaptureView: UIViewControllerRepresentable {
+    @Environment(\.presentationMode) private var presentationMode
+    @Binding var image: UIImage?
+
+    func makeUIViewController(context: Context) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.sourceType = .camera
+        picker.delegate = context.coordinator
+        picker.cameraCaptureMode = .photo
+        return picker
+    }
+
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+        let parent: CameraCaptureView
+        init(_ parent: CameraCaptureView) {
+            self.parent = parent
+        }
+
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let img = info[.originalImage] as? UIImage {
+                parent.image = img.normalizedOrientation()
             }
+            parent.presentationMode.wrappedValue.dismiss()
+        }
+
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            parent.presentationMode.wrappedValue.dismiss()
         }
     }
 }
