@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FooterView: View {
     let onHome: () -> Void
+    let onCamera: () -> Void
     let onSettings: () -> Void
     let onCatalog: () -> Void
     
@@ -24,9 +25,22 @@ struct FooterView: View {
                 }
             }
             .frame(maxWidth: .infinity)
-            
+
             Spacer()
-            
+
+            // Camera button
+            Button(action: onCamera) {
+                VStack {
+                    Image(systemName: "camera")
+                        .font(.title2)
+                    Text("Camera")
+                        .font(.caption)
+                }
+            }
+            .frame(maxWidth: .infinity)
+
+            Spacer()
+
             // Settings button
             Button(action: onSettings) {
                 VStack {
@@ -37,9 +51,9 @@ struct FooterView: View {
                 }
             }
             .frame(maxWidth: .infinity)
-            
+
             Spacer()
-            
+
             // Catalog button
             Button(action: onCatalog) {
                 VStack {
@@ -58,6 +72,7 @@ struct FooterView: View {
 #Preview {
     FooterView(
         onHome: { print("Home tapped") },
+        onCamera: { print("Camera tapped") },
         onSettings: { print("Settings tapped") },
         onCatalog: { print("Catalog tapped") }
     )
