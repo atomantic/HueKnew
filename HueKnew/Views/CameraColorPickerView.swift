@@ -22,10 +22,6 @@ struct CameraColorPickerView: View {
     @State private var selectedColorInfo: ColorInfo?
     @State private var showSelector = false
     @State private var imagePoint: CGPoint = .zero
-    @State private var scale: CGFloat = 1.0
-    @State private var lastScale: CGFloat = 1.0
-    @State private var offset: CGSize = .zero
-    @State private var lastOffset: CGSize = .zero
     private let colorDatabase = ColorDatabase.shared
 
     var body: some View {
@@ -40,40 +36,15 @@ struct CameraColorPickerView: View {
                     showSelector = false
                 }
 
-            let panGesture = DragGesture()
-                .onChanged { value in
-                    offset = CGSize(width: lastOffset.width + value.translation.width,
-                                    height: lastOffset.height + value.translation.height)
-                }
-                .onEnded { _ in
-                    lastOffset = offset
-                }
-
-            let pinchGesture = MagnificationGesture()
-                .onChanged { value in
-                    scale = lastScale * value
-                }
-                .onEnded { _ in
-                    lastScale = scale
-                }
-
             ZStack {
                 contentView
                     .ignoresSafeArea(edges: .top)
-                    .gesture(panGesture)
-                    .simultaneousGesture(pinchGesture)
-                    .simultaneousGesture(sampleGesture)
+                    .gesture(sampleGesture)
 
                 if let baseImage = currentImage, showSelector {
                     MagnifierView(image: baseImage, imagePoint: imagePoint)
                         .frame(width: 80, height: 80)
                         .position(x: touchLocation.x, y: max(CGFloat(40), touchLocation.y - 60))
-                    Text(colorName)
-                        .font(.caption)
-                        .padding(6)
-                        .background(Color(.systemBackground).opacity(0.8))
-                        .cornerRadius(6)
-                        .position(x: touchLocation.x, y: max(CGFloat(20), touchLocation.y - 100))
                 }
 
                 VStack {
@@ -81,7 +52,7 @@ struct CameraColorPickerView: View {
                         showColorDetail = true
                     }
                         .opacity(colorName.isEmpty ? 0 : 1)
-                        .padding(.top, geo.safeAreaInsets.top + 8)
+                        .padding(.top, geo.safeAreaInsets.top + 2)
                     Spacer()
                     ModePicker(selection: $mode)
                         .padding(.bottom, geo.safeAreaInsets.bottom + 8)
@@ -130,9 +101,7 @@ struct CameraColorPickerView: View {
                     touchLocation: $touchLocation,
                     selectedColor: $selectedColor,
                     colorName: $colorName,
-                    showSelector: $showSelector,
-                    scale: $scale,
-                    offset: $offset
+                    showSelector: $showSelector
                 )
             } else {
                 Color.black
@@ -155,10 +124,15 @@ struct CameraColorPickerView: View {
             baseScale = min(viewSize.width / imgSize.width, viewSize.height / imgSize.height)
         }
         let displaySize = CGSize(width: imgSize.width * baseScale, height: imgSize.height * baseScale)
-        let origin = CGPoint(x: (viewSize.width - displaySize.width) / 2 + offset.width,
-                            y: (viewSize.height - displaySize.height) / 2 + offset.height)
-        let relativeX = (location.x - origin.x) / (displaySize.width * scale)
-        let relativeY = (location.y - origin.y) / (displaySize.height * scale)
+        let originX = (viewSize.width - displaySize.width) / 2
+        let originY: CGFloat
+        if mode == .ar {
+            originY = (viewSize.height - displaySize.height) / 2
+        } else {
+            originY = viewSize.height - displaySize.height
+        }
+        let relativeX = (location.x - originX) / displaySize.width
+        let relativeY = (location.y - originY) / displaySize.height
         guard relativeX >= 0, relativeY >= 0, relativeX <= 1, relativeY <= 1 else { return }
         let imgPoint = CGPoint(x: imgSize.width * relativeX, y: imgSize.height * relativeY)
         imagePoint = imgPoint
@@ -222,15 +196,11 @@ struct ColorSamplingImage: View {
     @Binding var selectedColor: Color
     @Binding var colorName: String
     @Binding var showSelector: Bool
-    @Binding var scale: CGFloat
-    @Binding var offset: CGSize
 
     var body: some View {
         Image(uiImage: image)
             .resizable()
             .scaledToFit()
-            .scaleEffect(scale)
-            .offset(offset)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
     }
 }
