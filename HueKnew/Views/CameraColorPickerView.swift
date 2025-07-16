@@ -52,12 +52,26 @@ struct CameraColorPickerView: View {
                         showColorDetail = true
                     }
                         .opacity(colorName.isEmpty ? 0 : 1)
-                        .padding(.top, geo.safeAreaInsets.top + 2)
+                        .padding(.top, geo.safeAreaInsets.top)
                     Spacer()
                     ModePicker(selection: $mode)
                         .padding(.bottom, geo.safeAreaInsets.bottom + 8)
                 }
-                .padding()
+                .padding(.horizontal)
+
+                if mode == .photos {
+                    HStack {
+                        Spacer()
+                        Button(action: { showPhotoPicker = true }) {
+                            Image(systemName: "photo")
+                                .padding(8)
+                                .background(Color(.systemBackground).opacity(0.8))
+                                .clipShape(Circle())
+                        }
+                        .padding(.top, geo.safeAreaInsets.top + 8)
+                        .padding(.trailing, 8)
+                    }
+                }
             }
         }
         .onChange(of: mode) { _, newMode in
@@ -134,7 +148,10 @@ struct CameraColorPickerView: View {
         let relativeX = (location.x - originX) / displaySize.width
         let relativeY = (location.y - originY) / displaySize.height
         guard relativeX >= 0, relativeY >= 0, relativeX <= 1, relativeY <= 1 else { return }
-        let imgPoint = CGPoint(x: imgSize.width * relativeX, y: imgSize.height * relativeY)
+        var imgPoint = CGPoint(x: imgSize.width * relativeX, y: imgSize.height * relativeY)
+        if mode == .ar && imgSize.width > imgSize.height {
+            imgPoint = CGPoint(x: imgPoint.y, y: imgSize.width - imgPoint.x)
+        }
         imagePoint = imgPoint
         if let uiColor = img.color(at: imgPoint) {
             selectedColor = Color(uiColor)
