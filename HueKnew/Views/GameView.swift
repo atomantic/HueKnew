@@ -96,7 +96,6 @@ struct GameView: View {
                             gameModel.startLearningSession(hsbFilter: filter)
                         }
                     }
-                    
                     // Choose by Difficulty
                     VStack(spacing: 12) {
                         Text("or choose by difficulty:")

@@ -11,6 +11,7 @@ struct ContentView: View {
     @State private var gameModel = GameModel()
     @State private var showingSettings = false
     @State private var showingColorDictionary = false
+    @State private var showingCameraPicker = false
 
     var body: some View {
         NavigationView {
@@ -18,6 +19,7 @@ struct ContentView: View {
                 GameView(gameModel: gameModel)
                 FooterView(
                     onHome: { gameModel.goToMenu() },
+                    onCamera: { showingCameraPicker = true },
                     onSettings: { showingSettings = true },
                     onCatalog: { showingColorDictionary = true }
                 )
@@ -30,6 +32,9 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showingColorDictionary) {
                 ColorDictionaryView()
+            }
+            .sheet(isPresented: $showingCameraPicker) {
+                CameraColorPickerView()
             }
         }
     }
