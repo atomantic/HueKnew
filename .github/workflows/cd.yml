@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - testflight
 
 env:
   IPHONEOS_DEPLOYMENT_TARGET: ${{ vars.IPHONEOS_DEPLOYMENT_TARGET }}
