@@ -276,7 +276,7 @@ struct CameraCaptureView: UIViewControllerRepresentable {
 
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let img = info[.originalImage] as? UIImage {
-                parent.image = img.normalizedOrientation().toPortrait()
+                parent.image = img.normalizedOrientation()
             }
             parent.presentationMode.wrappedValue.dismiss()
         }
@@ -313,7 +313,7 @@ struct PhotoPickerView: UIViewControllerRepresentable {
                 provider.loadObject(ofClass: UIImage.self) { object, _ in
                     if let uiImage = object as? UIImage {
                         DispatchQueue.main.async {
-                            self.parent.image = uiImage.normalizedOrientation().toPortrait()
+                            self.parent.image = uiImage.normalizedOrientation()
                         }
                     }
                 }
@@ -360,8 +360,8 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         guard let buffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         let ciImage = CIImage(cvPixelBuffer: buffer)
         if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
-            let oriented = UIImage(cgImage: cgImage, scale: 1.0, orientation: .right)
-            delegate?.didOutput(image: oriented.normalizedOrientation().toPortrait())
+            let frameImage = UIImage(cgImage: cgImage)
+            delegate?.didOutput(image: frameImage.normalizedOrientation())
         }
     }
 }
@@ -406,23 +406,6 @@ private extension UIImage {
         return normalized ?? self
     }
 
-    func toPortrait() -> UIImage {
-        if size.width <= size.height { return self }
-        let newSize = CGSize(width: size.height, height: size.width)
-        UIGraphicsBeginImageContextWithOptions(newSize, false, scale)
-        guard let context = UIGraphicsGetCurrentContext() else {
-            draw(in: CGRect(origin: .zero, size: newSize))
-            let rotated = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            return rotated ?? self
-        }
-        context.translateBy(x: newSize.width / 2, y: newSize.height / 2)
-        context.rotate(by: .pi / 2)
-        draw(in: CGRect(x: -size.width / 2, y: -size.height / 2, width: size.width, height: size.height))
-        let rotated = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return rotated ?? self
-    }
 }
 
 private extension CGImage {
