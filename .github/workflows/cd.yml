@@ -16,7 +16,6 @@ env:
 jobs:
 
   build_and_deploy:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: macos-latest
     name: Archive (unsigned) + Export (signed)
     steps:
