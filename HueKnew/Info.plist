@@ -41,9 +41,11 @@
 	</dict>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
-	<key>UILaunchScreen</key>
-	<dict/>
-	<key>UISupportedInterfaceOrientations</key>
+        <key>UILaunchScreen</key>
+        <dict/>
+        <key>NSCameraUsageDescription</key>
+        <string>This app needs access to the camera to capture photos for color matching.</string>
+        <key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
