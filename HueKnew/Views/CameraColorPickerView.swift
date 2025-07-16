@@ -22,10 +22,6 @@ struct CameraColorPickerView: View {
     @State private var selectedColorInfo: ColorInfo?
     @State private var showSelector = false
     @State private var imagePoint: CGPoint = .zero
-    @State private var zoom: CGFloat = 1.0
-    @State private var lastZoom: CGFloat = 1.0
-    @State private var offset: CGSize = .zero
-    @State private var lastOffset: CGSize = .zero
     private let colorDatabase = ColorDatabase.shared
 
     var body: some View {
@@ -50,14 +46,6 @@ struct CameraColorPickerView: View {
                         .position(x: touchLocation.x, y: max(CGFloat(40), touchLocation.y - 60))
                 }
 
-                if showSelector && !colorName.isEmpty {
-                    Text(colorName)
-                        .font(.caption2)
-                        .padding(4)
-                        .background(Color(.systemBackground).opacity(0.8))
-                        .clipShape(Capsule())
-                        .position(x: touchLocation.x, y: max(CGFloat(12), touchLocation.y - 90))
-                }
 
                 VStack {
                     ColorInfoPanel(color: selectedColorInfo?.color ?? selectedColor, name: colorName) {
@@ -122,14 +110,11 @@ struct CameraColorPickerView: View {
             if mode == .ar {
                 LiveCameraView(frame: $liveFrame)
             } else if let img = image {
-                ColorSamplingImage(
-                    image: img,
-                    zoom: $zoom,
-                    offset: $offset,
-                    lastZoom: $lastZoom,
-                    lastOffset: $lastOffset
-                )
-                .simultaneousGesture(sampleGesture)
+                Image(uiImage: img)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                    .gesture(sampleGesture)
             } else {
                 Color.black
             }
@@ -163,12 +148,11 @@ struct CameraColorPickerView: View {
         let baseScale: CGFloat = mode == .ar
             ? max(viewSize.width / imgSize.width, viewSize.height / imgSize.height)
             : min(viewSize.width / imgSize.width, viewSize.height / imgSize.height)
-        let totalScale = baseScale * zoom
-        let displaySize = CGSize(width: imgSize.width * totalScale, height: imgSize.height * totalScale)
-        let originX = (viewSize.width - displaySize.width) / 2 + offset.width
+        let displaySize = CGSize(width: imgSize.width * baseScale, height: imgSize.height * baseScale)
+        let originX = (viewSize.width - displaySize.width) / 2
         let originY: CGFloat = mode == .ar
-            ? (viewSize.height - displaySize.height) / 2 + offset.height
-            : viewSize.height - displaySize.height + offset.height
+            ? (viewSize.height - displaySize.height) / 2
+            : viewSize.height - displaySize.height
         let relativeX = (location.x - originX) / displaySize.width
         let relativeY = (location.y - originY) / displaySize.height
         guard relativeX >= 0, relativeY >= 0, relativeX <= 1, relativeY <= 1 else { return nil }
@@ -216,41 +200,6 @@ struct ColorInfoPanel: View {
     }
 }
 
-struct ColorSamplingImage: View {
-    let image: UIImage
-    @Binding var zoom: CGFloat
-    @Binding var offset: CGSize
-    @Binding var lastZoom: CGFloat
-    @Binding var lastOffset: CGSize
-
-    var body: some View {
-        let panGesture = DragGesture()
-            .onChanged { value in
-                offset = CGSize(width: lastOffset.width + value.translation.width,
-                                height: lastOffset.height + value.translation.height)
-            }
-            .onEnded { value in
-                lastOffset.width += value.translation.width
-                lastOffset.height += value.translation.height
-            }
-
-        let pinchGesture = MagnificationGesture()
-            .onChanged { value in
-                zoom = lastZoom * value
-            }
-            .onEnded { _ in
-                lastZoom = zoom
-            }
-
-        Image(uiImage: image)
-            .resizable()
-            .scaledToFit()
-            .scaleEffect(zoom)
-            .offset(offset)
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
-            .gesture(panGesture.simultaneously(with: pinchGesture))
-    }
-}
 
 struct MagnifierView: View {
     let image: UIImage
