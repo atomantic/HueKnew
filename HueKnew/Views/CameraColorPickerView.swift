@@ -8,11 +8,12 @@ struct CameraColorPickerView: View {
     @State private var touchLocation: CGPoint = .zero
     @State private var selectedColor: Color = .clear
     @State private var colorName: String = ""
+    @State private var showSelector = false
 
     var body: some View {
         ZStack {
             if let image {
-                ZoomableColorImage(image: image, touchLocation: $touchLocation, selectedColor: $selectedColor, colorName: $colorName)
+                ZoomableColorImage(image: image, touchLocation: $touchLocation, selectedColor: $selectedColor, colorName: $colorName, showSelector: $showSelector)
                     .ignoresSafeArea()
             } else {
                 Color.black.ignoresSafeArea()
@@ -39,14 +40,16 @@ struct CameraColorPickerView: View {
                     .position(x: touchLocation.x, y: touchLocation.y - 60)
             }
 
-            Circle()
-                .stroke(Color.white, lineWidth: 2)
-                .frame(width: 80, height: 80)
-                .position(touchLocation)
-            Circle()
-                .fill(selectedColor)
-                .frame(width: 40, height: 40)
-                .position(touchLocation)
+            if showSelector {
+                Circle()
+                    .stroke(Color.white, lineWidth: 2)
+                    .frame(width: 80, height: 80)
+                    .position(touchLocation)
+                Circle()
+                    .fill(selectedColor)
+                    .frame(width: 40, height: 40)
+                    .position(touchLocation)
+            }
 
             VStack {
                 HStack {
@@ -67,7 +70,9 @@ struct CameraColorPickerView: View {
             guard let newItem else { return }
             Task {
                 if let data = try? await newItem.loadTransferable(type: Data.self) {
-                    image = UIImage(data: data)
+                    if let uiImage = UIImage(data: data)?.normalizedOrientation() {
+                        image = uiImage
+                    }
                 }
             }
         }
@@ -79,6 +84,7 @@ struct ZoomableColorImage: View {
     @Binding var touchLocation: CGPoint
     @Binding var selectedColor: Color
     @Binding var colorName: String
+    @Binding var showSelector: Bool
 
     @State private var scale: CGFloat = 1.0
     @GestureState private var tempScale: CGFloat = 1.0
@@ -108,11 +114,14 @@ struct ZoomableColorImage: View {
                         .updating($tempOffset) { value, state, _ in
                             state = value.translation
                             touchLocation = value.location
+                            showSelector = true
                             updateColor(at: value.location, in: geo)
                         }
                         .onEnded { value in
                             offset.width += value.translation.width
                             offset.height += value.translation.height
+                            showSelector = false
+                            colorName = ""
                         }
                 )
         }
@@ -176,6 +185,17 @@ private extension UIColor {
         var alpha: CGFloat = 0
         getHue(&hue, saturation: &sat, brightness: &bri, alpha: &alpha)
         return (Double(hue) * 360.0, Double(sat), Double(bri))
+    }
+}
+
+private extension UIImage {
+    func normalizedOrientation() -> UIImage {
+        if imageOrientation == .up { return self }
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        draw(in: CGRect(origin: .zero, size: size))
+        let normalized = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return normalized ?? self
     }
 }
 
