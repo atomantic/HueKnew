@@ -15,13 +15,23 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            VStack {
-                GameView(gameModel: gameModel)
+            VStack(spacing: 0) {
+                if showingCameraPicker {
+                    CameraColorPickerView()
+                } else {
+                    GameView(gameModel: gameModel)
+                }
                 FooterView(
-                    onHome: { gameModel.goToMenu() },
+                    onHome: {
+                        showingCameraPicker = false
+                        gameModel.goToMenu()
+                    },
                     onCamera: { showingCameraPicker = true },
                     onSettings: { showingSettings = true },
-                    onCatalog: { showingColorDictionary = true }
+                    onCatalog: {
+                        showingCameraPicker = false
+                        showingColorDictionary = true
+                    }
                 )
                 .safeAreaPadding(.bottom)
             }
@@ -32,9 +42,6 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showingColorDictionary) {
                 ColorDictionaryView()
-            }
-            .sheet(isPresented: $showingCameraPicker) {
-                CameraColorPickerView()
             }
         }
     }

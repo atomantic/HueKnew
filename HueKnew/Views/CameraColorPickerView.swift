@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct CameraColorPickerView: View {
-    @Environment(\.dismiss) private var dismiss
     @State private var image: UIImage?
     @State private var showCamera = false
     @State private var touchLocation: CGPoint = .zero
@@ -10,62 +9,63 @@ struct CameraColorPickerView: View {
     @State private var showSelector = false
 
     var body: some View {
-        ZStack {
-            if let image {
-                ZoomableColorImage(image: image, touchLocation: $touchLocation, selectedColor: $selectedColor, colorName: $colorName, showSelector: $showSelector)
+        VStack(spacing: 0) {
+            ZStack {
+                if let image {
+                    ZoomableColorImage(
+                        image: image,
+                        touchLocation: $touchLocation,
+                        selectedColor: $selectedColor,
+                        colorName: $colorName,
+                        showSelector: $showSelector
+                    )
                     .ignoresSafeArea()
-            } else {
-                Color.black.ignoresSafeArea()
-            }
-
-            if image == nil {
-                Button(action: { showCamera = true }) {
-                    Label("Take Photo", systemImage: "camera")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(12)
+                } else {
+                    Color.black.ignoresSafeArea()
                 }
-                .fullScreenCover(isPresented: $showCamera) {
-                    CameraCaptureView(image: $image)
+
+                if image == nil {
+                    Button(action: { showCamera = true }) {
+                        Label("Take Photo", systemImage: "camera")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(12)
+                    }
+                    .fullScreenCover(isPresented: $showCamera) {
+                        CameraCaptureView(image: $image)
+                    }
+                }
+
+                if showSelector {
+                    Circle()
+                        .stroke(Color.white, lineWidth: 2)
+                        .frame(width: 80, height: 80)
+                        .position(touchLocation)
+                    Circle()
+                        .fill(selectedColor)
+                        .frame(width: 40, height: 40)
+                        .position(touchLocation)
                 }
             }
 
             if !colorName.isEmpty {
-                Text(colorName)
-                    .font(.caption)
-                    .padding(6)
-                    .background(Color.black.opacity(0.7))
-                    .foregroundColor(.white)
-                    .cornerRadius(6)
-                    .position(x: touchLocation.x, y: touchLocation.y - 60)
-            }
-
-            if showSelector {
-                Circle()
-                    .stroke(Color.white, lineWidth: 2)
-                    .frame(width: 80, height: 80)
-                    .position(touchLocation)
-                Circle()
-                    .fill(selectedColor)
-                    .frame(width: 40, height: 40)
-                    .position(touchLocation)
-            }
-
-            VStack {
                 HStack {
+                    Circle()
+                        .fill(selectedColor)
+                        .frame(width: 24, height: 24)
+                        .overlay(Circle().stroke(Color.white, lineWidth: 1))
+
+                    Text(colorName)
+                        .font(.caption)
+                        .foregroundColor(.primary)
+
                     Spacer()
-                    Button(action: { dismiss() }) {
-                        Image(systemName: "xmark.circle.fill")
-                            .font(.title)
-                            .padding(8)
-                            .background(Color.black.opacity(0.5))
-                            .clipShape(Circle())
-                    }
-                    .padding()
                 }
-                Spacer()
+                .padding(8)
+                .frame(maxWidth: .infinity)
+                .background(Color(.systemBackground).opacity(0.8))
             }
         }
     }
@@ -117,8 +117,6 @@ struct ZoomableColorImage: View {
 
     @State private var scale: CGFloat = 1.0
     @GestureState private var tempScale: CGFloat = 1.0
-    @State private var offset: CGSize = .zero
-    @GestureState private var tempOffset: CGSize = .zero
     private let colorDatabase = ColorDatabase.shared
 
     var body: some View {
@@ -127,8 +125,6 @@ struct ZoomableColorImage: View {
                 .resizable()
                 .scaledToFit()
                 .scaleEffect(scale * tempScale)
-                .offset(x: offset.width + tempOffset.width,
-                        y: offset.height + tempOffset.height)
                 .gesture(
                     MagnificationGesture()
                         .updating($tempScale) { value, state, _ in
@@ -140,15 +136,12 @@ struct ZoomableColorImage: View {
                 )
                 .simultaneousGesture(
                     DragGesture(minimumDistance: 0)
-                        .updating($tempOffset) { value, state, _ in
-                            state = value.translation
+                        .onChanged { value in
                             touchLocation = value.location
                             showSelector = true
                             updateColor(at: value.location, in: geo)
                         }
-                        .onEnded { value in
-                            offset.width += value.translation.width
-                            offset.height += value.translation.height
+                        .onEnded { _ in
                             showSelector = false
                             colorName = ""
                         }
@@ -161,7 +154,7 @@ struct ZoomableColorImage: View {
         let viewSize = geo.size
         let baseScale = min(viewSize.width / imgSize.width, viewSize.height / imgSize.height)
         let displaySize = CGSize(width: imgSize.width * baseScale * scale, height: imgSize.height * baseScale * scale)
-        let origin = CGPoint(x: (viewSize.width - displaySize.width) / 2 + offset.width, y: (viewSize.height - displaySize.height) / 2 + offset.height)
+        let origin = CGPoint(x: (viewSize.width - displaySize.width) / 2, y: (viewSize.height - displaySize.height) / 2)
         let relativeX = (location.x - origin.x) / displaySize.width
         let relativeY = (location.y - origin.y) / displaySize.height
         guard relativeX >= 0, relativeY >= 0, relativeX < 1, relativeY < 1 else { return }
