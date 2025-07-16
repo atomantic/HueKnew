@@ -48,7 +48,7 @@ struct CameraColorPickerView: View {
                 }
 
                 VStack {
-                    ColorInfoPanel(color: selectedColor, name: colorName) {
+                    ColorInfoPanel(color: selectedColorInfo?.color ?? selectedColor, name: colorName) {
                         showColorDetail = true
                     }
                         .opacity(colorName.isEmpty ? 0 : 1)
