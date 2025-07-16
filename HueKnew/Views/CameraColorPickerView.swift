@@ -149,8 +149,11 @@ private extension UIImage {
 
 private extension CGImage {
     func color(at point: CGPoint) -> UIColor? {
-        guard let dataProvider = dataProvider, let data = dataProvider.data else { return nil }
-        let pixelData = CFDataGetBytePtr(data)
+        guard
+            let dataProvider = dataProvider,
+            let data = dataProvider.data,
+            let pixelData = CFDataGetBytePtr(data)
+        else { return nil }
         let bytesPerPixel = 4
         let bytesPerRow = bytesPerPixel * width
         let x = Int(point.x)
