@@ -61,6 +61,7 @@ struct CameraColorPickerView: View {
                 showPhotoPicker = true
             }
         }
+        
         .sheet(isPresented: $showPhotoPicker) {
             PhotoPickerView(image: $image)
                 .onDisappear {
