@@ -41,8 +41,8 @@ struct CameraColorPickerView: View {
 
                 if let baseImage = currentImage, showSelector {
                     MagnifierView(image: baseImage, imagePoint: imagePoint)
-                        .frame(width: 80, height: 80)
-                        .position(x: touchLocation.x, y: max(CGFloat(40), touchLocation.y - 60))
+                        .frame(width: 120, height: 120)
+                        .position(x: touchLocation.x, y: max(CGFloat(60), touchLocation.y - 150))
                 }
 
 
@@ -204,7 +204,7 @@ struct MagnifierView: View {
     let imagePoint: CGPoint
 
     var body: some View {
-        let cropSize: CGFloat = 40
+        let cropSize: CGFloat = 80
         let originX = max(min(imagePoint.x - cropSize / 2, image.size.width - cropSize), 0)
         let originY = max(min(imagePoint.y - cropSize / 2, image.size.height - cropSize), 0)
         let rect = CGRect(x: originX, y: originY, width: cropSize, height: cropSize)
@@ -212,58 +212,30 @@ struct MagnifierView: View {
         return Image(uiImage: cropped)
             .resizable()
             .scaledToFill()
-            .frame(width: 80, height: 80)
+            .frame(width: 120, height: 120)
             .clipShape(Circle())
             .overlay(Circle().stroke(Color.white, lineWidth: 2))
             .overlay(
                 Rectangle()
                     .stroke(Color.white, lineWidth: 1)
-                    .frame(width: 6, height: 6)
+                    .frame(width: 8, height: 8)
             )
             .overlay(alignment: .bottom) {
-                Image(systemName: "arrowtriangle.down.fill")
-                    .resizable()
-                    .frame(width: 12, height: 6)
-                    .foregroundColor(.white)
-                    .offset(y: 4)
+                StingerShape()
+                    .fill(Color.white)
+                    .frame(width: 20, height: 20)
+                    .offset(y: 10)
             }
     }
 }
 
-struct CameraCaptureView: UIViewControllerRepresentable {
-    @Environment(\.presentationMode) private var presentationMode
-    @Binding var image: UIImage?
-
-    func makeUIViewController(context: Context) -> UIImagePickerController {
-        let picker = UIImagePickerController()
-        picker.sourceType = .camera
-        picker.delegate = context.coordinator
-        picker.cameraCaptureMode = .photo
-        return picker
-    }
-
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-        let parent: CameraCaptureView
-        init(_ parent: CameraCaptureView) {
-            self.parent = parent
-        }
-
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let img = info[.originalImage] as? UIImage {
-                parent.image = img.normalizedOrientation()
-            }
-            parent.presentationMode.wrappedValue.dismiss()
-        }
-
-        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            parent.presentationMode.wrappedValue.dismiss()
-        }
+struct StingerShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.midX, y: rect.maxY))
+        path.addQuadCurve(to: CGPoint(x: rect.midX, y: rect.minY), control: CGPoint(x: rect.minX, y: rect.midY))
+        path.addQuadCurve(to: CGPoint(x: rect.midX, y: rect.maxY), control: CGPoint(x: rect.maxX, y: rect.midY))
+        return path
     }
 }
 
