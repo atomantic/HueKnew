@@ -22,7 +22,7 @@ struct SettingsView: View {
         return "\(version) (build \(build))"
     }
     
-    let gameModel: GameModel
+    @Bindable var gameModel: GameModel
     
     var body: some View {
         NavigationView {
@@ -31,10 +31,10 @@ struct SettingsView: View {
                     Toggle("Sound Effects", isOn: $audioManager.soundEnabled)
                     Toggle("Vibration", isOn: $audioManager.vibrationEnabled)
                     
-                    Button("Test Sound & Vibration") {
-                        AudioManager.shared.playSuccessFeedback()
-                    }
-                    .foregroundColor(.blue)
+//                    Button("Test Sound & Vibration") {
+//                        AudioManager.shared.playSuccessFeedback()
+//                    }
+//                    .foregroundColor(.blue)
                 }
                 
                 Section("Game Progress") {
@@ -56,7 +56,9 @@ struct SettingsView: View {
                             .foregroundColor(.secondary)
                     }
                 }
+
                 
+
                 Section("About") {
                     HStack {
                         Text("Version")

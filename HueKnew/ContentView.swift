@@ -11,15 +11,38 @@ struct ContentView: View {
     @State private var gameModel = GameModel()
     @State private var showingSettings = false
     @State private var showingColorDictionary = false
+    @State private var showingCameraPicker = false
+    @State private var activeView: ActiveView = .home
 
     var body: some View {
         NavigationView {
-            VStack {
-                GameView(gameModel: gameModel)
+            VStack(spacing: 0) {
+                if showingCameraPicker {
+                    CameraColorPickerView()
+                } else {
+                    GameView(gameModel: gameModel)
+                }
                 FooterView(
-                    onHome: { gameModel.goToMenu() },
-                    onSettings: { showingSettings = true },
-                    onCatalog: { showingColorDictionary = true }
+                    onHome: {
+                        showingCameraPicker = false
+                        gameModel.goToMenu()
+                        activeView = .home
+                    },
+                    onCamera: {
+                        showingCameraPicker = true
+                        activeView = .camera
+                    },
+                    onSettings: {
+                        showingSettings = true
+                        activeView = .settings
+                    },
+                    onCatalog: {
+                        showingCameraPicker = false
+                        showingColorDictionary = true
+                        activeView = .catalog
+                    },
+                    showCamera: true,
+                    activeView: $activeView
                 )
                 .safeAreaPadding(.bottom)
             }
@@ -27,9 +50,11 @@ struct ContentView: View {
             .navigationBarHidden(true)
             .sheet(isPresented: $showingSettings) {
                 SettingsView(gameModel: gameModel)
+                    .onDisappear { activeView = .home }
             }
             .sheet(isPresented: $showingColorDictionary) {
                 ColorDictionaryView()
+                    .onDisappear { activeView = .home }
             }
         }
     }

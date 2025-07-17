@@ -44,11 +44,13 @@ class GameModel {
     var isPaused: Bool = false
     var hasColorVisionDeficiency: Bool = UserDefaults.standard.bool(forKey: "colorVisionDeficiency")
     
+    
     private let colorDatabase = ColorDatabase.shared
     
     init() {
         // Load color vision data if available
         hasColorVisionDeficiency = UserDefaults.standard.bool(forKey: "colorVisionDeficiency")
+        
     }
     
     // MARK: - Game Flow Methods
@@ -172,6 +174,8 @@ class GameModel {
         hasColorVisionDeficiency = value
         UserDefaults.standard.set(value, forKey: "colorVisionDeficiency")
     }
+
+    
     
     // MARK: - Statistics
     

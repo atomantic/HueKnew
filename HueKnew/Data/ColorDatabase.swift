@@ -75,6 +75,7 @@ class ColorDatabase: ObservableObject {
 
     private var tsvColors: [TSVColor] = []
     private var colorPairs: [ColorPair] = []
+    private var closestColorCache: [String: ColorInfo] = [:]
 
     private init() {
         loadColorsFromTSV()
@@ -446,7 +447,6 @@ extension ColorDatabase {
             }
         }
     }
-
     private func adjacentColorName(for color: String, direction: Double) -> String {
         let order = ["red", "orange", "yellow", "green", "blue", "purple", "magenta", "red"]
         guard let index = order.firstIndex(of: color) else { return color }
@@ -455,6 +455,38 @@ extension ColorDatabase {
         } else {
             return order[index == 0 ? order.count - 2 : index - 1]
         }
+    }
+
+    func closestColor(hue: Double, saturation: Double, brightness: Double) -> ColorInfo? {
+        let key = String(format: "%.2f-%.2f-%.2f", hue, saturation, brightness)
+        if let cached = closestColorCache[key] {
+            return cached
+        }
+
+        var best: ColorInfo?
+        var bestDiff = Double.greatestFiniteMagnitude
+        for color in getAllColors() {
+            let hsb = color.hsbComponents
+            let diff = calculateColorDifference(hsb1: (hue, saturation, brightness), hsb2: hsb)
+            if diff < bestDiff {
+                bestDiff = diff
+                best = color
+            }
+        }
+
+        if let best {
+            closestColorCache[key] = best
+        }
+        return best
+    }
+
+    private func calculateColorDifference(hsb1: (hue: Double, saturation: Double, brightness: Double), hsb2: (hue: Double, saturation: Double, brightness: Double)) -> Double {
+        let hueDiff = min(abs(hsb1.hue - hsb2.hue), 360 - abs(hsb1.hue - hsb2.hue))
+        let normalizedHueDiff = hueDiff / 360.0
+        let satDiff = abs(hsb1.saturation - hsb2.saturation)
+        let brightDiff = abs(hsb1.brightness - hsb2.brightness)
+        let weightedDifference = (normalizedHueDiff * 0.6) + (satDiff * 0.25) + (brightDiff * 0.15)
+        return weightedDifference * 100.0
     }
 }
 
