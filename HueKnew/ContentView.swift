@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var showingSettings = false
     @State private var showingColorDictionary = false
     @State private var showingCameraPicker = false
+    @State private var activeView: ActiveView = .home
 
     var body: some View {
         NavigationView {
@@ -25,14 +26,23 @@ struct ContentView: View {
                     onHome: {
                         showingCameraPicker = false
                         gameModel.goToMenu()
+                        activeView = .home
                     },
-                    onCamera: { showingCameraPicker = true },
-                    onSettings: { showingSettings = true },
+                    onCamera: {
+                        showingCameraPicker = true
+                        activeView = .camera
+                    },
+                    onSettings: {
+                        showingSettings = true
+                        activeView = .settings
+                    },
                     onCatalog: {
                         showingCameraPicker = false
                         showingColorDictionary = true
+                        activeView = .catalog
                     },
-                    showCamera: true
+                    showCamera: true,
+                    activeView: $activeView
                 )
                 .safeAreaPadding(.bottom)
             }
@@ -40,9 +50,11 @@ struct ContentView: View {
             .navigationBarHidden(true)
             .sheet(isPresented: $showingSettings) {
                 SettingsView(gameModel: gameModel)
+                    .onDisappear { activeView = .home }
             }
             .sheet(isPresented: $showingColorDictionary) {
                 ColorDictionaryView()
+                    .onDisappear { activeView = .home }
             }
         }
     }

@@ -7,12 +7,17 @@
 
 import SwiftUI
 
+enum ActiveView {
+    case home, camera, settings, catalog
+}
+
 struct FooterView: View {
     let onHome: () -> Void
     let onCamera: () -> Void
     let onSettings: () -> Void
     let onCatalog: () -> Void
     var showCamera: Bool = true
+    @Binding var activeView: ActiveView
     
     var body: some View {
         HStack {
@@ -26,6 +31,7 @@ struct FooterView: View {
                 }
             }
             .frame(maxWidth: .infinity)
+            .foregroundColor(activeView == .home ? .blue : .primary)
 
             Spacer()
 
@@ -40,22 +46,10 @@ struct FooterView: View {
                     }
                 }
                 .frame(maxWidth: .infinity)
+                .foregroundColor(activeView == .camera ? .blue : .primary)
 
                 Spacer()
             }
-
-            // Settings button
-            Button(action: onSettings) {
-                VStack {
-                    Image(systemName: "gear")
-                        .font(.title2)
-                    Text("Settings")
-                        .font(.caption)
-                }
-            }
-            .frame(maxWidth: .infinity)
-
-            Spacer()
 
             // Catalog button
             Button(action: onCatalog) {
@@ -67,6 +61,21 @@ struct FooterView: View {
                 }
             }
             .frame(maxWidth: .infinity)
+            .foregroundColor(activeView == .catalog ? .blue : .primary)
+
+            Spacer()
+
+            // Settings button
+            Button(action: onSettings) {
+                VStack {
+                    Image(systemName: "gear")
+                        .font(.title2)
+                    Text("Settings")
+                        .font(.caption)
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .foregroundColor(activeView == .settings ? .blue : .primary)
         }
         .padding(.vertical, 6)
         .background(Color(.systemGray6))
@@ -79,7 +88,8 @@ struct FooterView: View {
         onCamera: { print("Camera tapped") },
         onSettings: { print("Settings tapped") },
         onCatalog: { print("Catalog tapped") },
-        showCamera: true
+        showCamera: true,
+        activeView: .constant(.home)
     )
     .padding()
 }

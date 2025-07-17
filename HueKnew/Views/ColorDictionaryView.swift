@@ -159,7 +159,7 @@ struct ColorDictionaryView: View {
                 }
                 .listStyle(PlainListStyle())
             }
-            .navigationTitle("Color Dictionary")
+            .navigationTitle("Color Catalog")
             .navigationBarTitleDisplayMode(.large)
         }
     }

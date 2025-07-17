@@ -52,39 +52,27 @@ struct GameView: View {
         ScrollView {
             VStack(spacing: 20) {
                 // Game logo/title
-                VStack(spacing: 10) {
-                    Text("Hue Knew")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(.primary)
-                    
-                    Text("Embark on a journey to discover colors")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                        .multilineTextAlignment(.center)
-                }
+//                VStack(spacing: 10) {
+////                    Text("Hue Knew")
+////                        .font(.title)
+////                        .fontWeight(.bold)
+////                        .foregroundColor(.primary)
+//                    
+////                    Text("Embark on a journey to discover colors")
+////                        .font(.subheadline)
+////                        .foregroundColor(.secondary)
+////                        .multilineTextAlignment(.center)
+//                }
                 
                 // Play options
                 VStack(spacing: 10) {
                     
-                    // Resume/Start New Game button
-                    Button(action: { gameModel.resumeOrStartGame() }) {
-                        Text(gameModel.isGameActive ? "Resume your progress" : "New game")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.blue)
-                            .cornerRadius(12)
-                    }
-                    .buttonStyle(PlainButtonStyle())
                     
                     // Choose by Color Wheel
                     VStack(spacing: 16) {
-                        Text("or explore a color:")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
+//                        Text("or explore a color:")
+//                            .font(.subheadline)
+//                            .foregroundColor(.secondary)
                         
                         ColorWheelPicker { hsbColor in
                             // This will be called when the user clicks "Find Similar Colors"
@@ -97,18 +85,33 @@ struct GameView: View {
                         }
                     }
                     // Choose by Difficulty
-                    VStack(spacing: 12) {
-                        Text("or choose by difficulty:")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                        
-                        HStack(spacing: 12) {
-                            ForEach(DifficultyLevel.allCases, id: \.self) { difficulty in
-                                DifficultyButton(difficulty: difficulty) {
-                                    gameModel.startLearningSession(difficulty: difficulty)
-                                }
-                            }
+//                    VStack(spacing: 12) {
+//                        Text("or choose by difficulty:")
+//                            .font(.subheadline)
+//                            .foregroundColor(.secondary)
+//                        
+//                        HStack(spacing: 12) {
+//                            ForEach(DifficultyLevel.allCases, id: \.self) { difficulty in
+//                                DifficultyButton(difficulty: difficulty) {
+//                                    gameModel.startLearningSession(difficulty: difficulty)
+//                                }
+//                            }
+//                        }
+//                    }
+                    
+                    VStack(spacing: 20) {
+                        // Resume/Start New Game button
+                        Button(action: { gameModel.resumeOrStartGame() }) {
+                            Text(gameModel.isGameActive ? "Resume your progress" : "Start Game")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.blue)
+                                .cornerRadius(12)
                         }
+                        .buttonStyle(PlainButtonStyle())
                     }
                 }
             }

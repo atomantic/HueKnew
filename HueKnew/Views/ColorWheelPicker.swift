@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ColorWheelPicker: View {
-    @State private var selectedHue: Double = 0
+    @State private var selectedHue: Double = Double.random(in: 0...360)
     @State private var selectedSaturation: Double = 0.8
     @State private var selectedValue: Double = 0.8
     let onColorSelected: (HSBColor) -> Void
@@ -72,7 +72,7 @@ struct ColorWheelPicker: View {
                         )
                     )
                 }) {
-                    Text("Explore")
+                    Text("Learn")
                         .font(.headline)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
