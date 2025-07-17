@@ -120,7 +120,9 @@ struct CameraColorPickerView: View {
             : min(viewSize.width / imgSize.width, viewSize.height / imgSize.height)
         let displaySize = CGSize(width: imgSize.width * baseScale, height: imgSize.height * baseScale)
         let originX = (viewSize.width - displaySize.width) / 2
-        let originY: CGFloat = mode == .ar ? (viewSize.height - displaySize.height) / 2 : (viewSize.height - displaySize.height) / 2
+        let originY: CGFloat = mode == .ar
+            ? (viewSize.height - displaySize.height) / 2
+            : (viewSize.height - displaySize.height) / 2
         let relativeX = (location.x - originX) / displaySize.width
         let relativeY = (location.y - originY) / displaySize.height
         guard relativeX >= 0, relativeY >= 0, relativeX <= 1, relativeY <= 1 else { return nil }
@@ -282,8 +284,8 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         guard let buffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         let ciImage = CIImage(cvPixelBuffer: buffer)
         if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
-            let frameImage = UIImage(cgImage: cgImage)
-            delegate?.didOutput(image: frameImage.normalizedOrientation())
+            let frameImage = UIImage(cgImage: cgImage, scale: 1.0, orientation: .right)
+            delegate?.didOutput(image: frameImage)
         }
     }
 }
