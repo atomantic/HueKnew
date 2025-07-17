@@ -22,7 +22,7 @@ struct SettingsView: View {
         return "\(version) (build \(build))"
     }
     
-    let gameModel: GameModel
+    @Bindable var gameModel: GameModel
     
     var body: some View {
         NavigationView {
@@ -56,7 +56,11 @@ struct SettingsView: View {
                             .foregroundColor(.secondary)
                     }
                 }
-                
+
+                Section("Beta") {
+                    Toggle("Enable Beta Features", isOn: $gameModel.betaEnabled)
+                }
+
                 Section("About") {
                     HStack {
                         Text("Version")
