@@ -85,12 +85,7 @@ struct CameraColorPickerView: View {
                 break
             }
         }
-        .sheet(isPresented: $showCamera) {
-            CameraCaptureView(image: $image)
-                .onDisappear {
-                    if image != nil { mode = .photos }
-                }
-        }
+        
         .sheet(isPresented: $showPhotoPicker) {
             PhotoPickerView(image: $image)
                 .onDisappear {
