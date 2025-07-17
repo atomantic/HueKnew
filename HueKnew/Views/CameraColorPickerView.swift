@@ -5,7 +5,6 @@ import PhotosUI
 enum CameraMode: String, CaseIterable, Identifiable {
     case ar = "AR"
     case photos = "Photos"
-    case takePhoto = "Take Photo"
     var id: String { rawValue }
 }
 
@@ -13,7 +12,6 @@ struct CameraColorPickerView: View {
     @State private var mode: CameraMode = .ar
     @State private var image: UIImage?
     @State private var liveFrame: UIImage?
-    @State private var showCamera = false
     @State private var showPhotoPicker = false
     @State private var showColorDetail = false
     @State private var touchLocation: CGPoint = .zero
@@ -41,8 +39,8 @@ struct CameraColorPickerView: View {
 
                 if let baseImage = currentImage, showSelector {
                     MagnifierView(image: baseImage, imagePoint: imagePoint)
-                        .frame(width: 80, height: 80)
-                        .position(x: touchLocation.x, y: max(CGFloat(40), touchLocation.y - 60))
+                        .frame(width: 100, height: 100)
+                        .position(x: touchLocation.x, y: max(CGFloat(50), touchLocation.y - 120))
                 }
 
 
@@ -51,50 +49,22 @@ struct CameraColorPickerView: View {
                         showColorDetail = true
                     }
                         .opacity(colorName.isEmpty ? 0 : 1)
-                        .padding(.top, geo.safeAreaInsets.top)
                     Spacer()
                     ModePicker(selection: $mode)
                         .padding(.bottom, geo.safeAreaInsets.bottom + 8)
                 }
                 .padding(.horizontal)
-
-                if mode == .photos {
-                    HStack {
-                        Spacer()
-                        Button(action: { showPhotoPicker = true }) {
-                            Image(systemName: "photo")
-                                .padding(8)
-                                .background(Color(.systemBackground).opacity(0.8))
-                                .clipShape(Circle())
-                        }
-                        .padding(.top, geo.safeAreaInsets.top + 8)
-                        .padding(.trailing, 8)
-                    }
-                }
             }
         }
         .onChange(of: mode) { _, newMode in
-            switch newMode {
-            case .photos:
-                if image == nil && !showCamera {
-                    showPhotoPicker = true
-                }
-            case .takePhoto:
-                showCamera = true
-            case .ar:
-                break
+            if newMode == .photos {
+                showPhotoPicker = true
             }
-        }
-        .sheet(isPresented: $showCamera) {
-            CameraCaptureView(image: $image)
-                .onDisappear {
-                    if image != nil { mode = .photos }
-                }
         }
         .sheet(isPresented: $showPhotoPicker) {
             PhotoPickerView(image: $image)
                 .onDisappear {
-                    if image != nil { mode = .photos }
+                    if image == nil { mode = .ar }
                 }
         }
         .sheet(isPresented: $showColorDetail) {
@@ -108,11 +78,12 @@ struct CameraColorPickerView: View {
         Group {
             if mode == .ar {
                 LiveCameraView(frame: $liveFrame)
+                    .gesture(sampleGesture)
             } else if let img = image {
                 Image(uiImage: img)
                     .resizable()
                     .scaledToFit()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                     .gesture(sampleGesture)
             } else {
                 Color.black
@@ -148,9 +119,7 @@ struct CameraColorPickerView: View {
             : min(viewSize.width / imgSize.width, viewSize.height / imgSize.height)
         let displaySize = CGSize(width: imgSize.width * baseScale, height: imgSize.height * baseScale)
         let originX = (viewSize.width - displaySize.width) / 2
-        let originY: CGFloat = mode == .ar
-            ? (viewSize.height - displaySize.height) / 2
-            : viewSize.height - displaySize.height
+        let originY: CGFloat = mode == .ar ? (viewSize.height - displaySize.height) / 2 : (viewSize.height - displaySize.height) / 2
         let relativeX = (location.x - originX) / displaySize.width
         let relativeY = (location.y - originY) / displaySize.height
         guard relativeX >= 0, relativeY >= 0, relativeX <= 1, relativeY <= 1 else { return nil }
@@ -221,49 +190,13 @@ struct MagnifierView: View {
                     .frame(width: 6, height: 6)
             )
             .overlay(alignment: .bottom) {
-                Image(systemName: "arrowtriangle.down.fill")
+                Image(systemName: "pin.fill")
                     .resizable()
-                    .frame(width: 12, height: 6)
+                    .frame(width: 12, height: 12)
                     .foregroundColor(.white)
-                    .offset(y: 4)
+                    .rotationEffect(.degrees(45))
+                    .offset(y: 6)
             }
-    }
-}
-
-struct CameraCaptureView: UIViewControllerRepresentable {
-    @Environment(\.presentationMode) private var presentationMode
-    @Binding var image: UIImage?
-
-    func makeUIViewController(context: Context) -> UIImagePickerController {
-        let picker = UIImagePickerController()
-        picker.sourceType = .camera
-        picker.delegate = context.coordinator
-        picker.cameraCaptureMode = .photo
-        return picker
-    }
-
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-        let parent: CameraCaptureView
-        init(_ parent: CameraCaptureView) {
-            self.parent = parent
-        }
-
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let img = info[.originalImage] as? UIImage {
-                parent.image = img.normalizedOrientation()
-            }
-            parent.presentationMode.wrappedValue.dismiss()
-        }
-
-        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            parent.presentationMode.wrappedValue.dismiss()
-        }
     }
 }
 
