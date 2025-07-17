@@ -100,14 +100,20 @@ struct CameraColorPickerView: View {
         guard let img = currentImage,
               let imgPoint = imagePoint(for: location, in: geo, image: img) else { return }
         imagePoint = imgPoint
-        if let uiColor = img.color(at: imgPoint) {
-            let hsb = uiColor.hsbComponents
-            if let closest = colorDatabase.closestColor(hue: hsb.hue, saturation: hsb.saturation, brightness: hsb.brightness) {
-                colorName = closest.name
-                selectedColorInfo = closest
+
+        DispatchQueue.global(qos: .userInitiated).async {
+            if let uiColor = img.color(at: imgPoint) {
+                let hsb = uiColor.hsbComponents
+                let closest = self.colorDatabase.closestColor(hue: hsb.hue, saturation: hsb.saturation, brightness: hsb.brightness)
+                DispatchQueue.main.async {
+                    self.colorName = closest?.name ?? ""
+                    self.selectedColorInfo = closest
+                }
             } else {
-                colorName = ""
-                selectedColorInfo = nil
+                DispatchQueue.main.async {
+                    self.colorName = ""
+                    self.selectedColorInfo = nil
+                }
             }
         }
     }
