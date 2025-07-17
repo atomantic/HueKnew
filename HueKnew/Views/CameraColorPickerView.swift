@@ -39,8 +39,8 @@ struct CameraColorPickerView: View {
 
                 if let baseImage = currentImage, showSelector {
                     MagnifierView(image: baseImage, imagePoint: imagePoint)
-                        .frame(width: 100, height: 100)
-                        .position(x: touchLocation.x, y: max(CGFloat(50), touchLocation.y - 120))
+                        .frame(width: 120, height: 120)
+                        .position(x: touchLocation.x, y: max(CGFloat(60), touchLocation.y - 150))
                 }
 
 
@@ -173,7 +173,7 @@ struct MagnifierView: View {
     let imagePoint: CGPoint
 
     var body: some View {
-        let cropSize: CGFloat = 40
+        let cropSize: CGFloat = 80
         let originX = max(min(imagePoint.x - cropSize / 2, image.size.width - cropSize), 0)
         let originY = max(min(imagePoint.y - cropSize / 2, image.size.height - cropSize), 0)
         let rect = CGRect(x: originX, y: originY, width: cropSize, height: cropSize)
@@ -181,22 +181,30 @@ struct MagnifierView: View {
         return Image(uiImage: cropped)
             .resizable()
             .scaledToFill()
-            .frame(width: 80, height: 80)
+            .frame(width: 120, height: 120)
             .clipShape(Circle())
             .overlay(Circle().stroke(Color.white, lineWidth: 2))
             .overlay(
                 Rectangle()
                     .stroke(Color.white, lineWidth: 1)
-                    .frame(width: 6, height: 6)
+                    .frame(width: 8, height: 8)
             )
             .overlay(alignment: .bottom) {
-                Image(systemName: "pin.fill")
-                    .resizable()
-                    .frame(width: 12, height: 12)
-                    .foregroundColor(.white)
-                    .rotationEffect(.degrees(45))
-                    .offset(y: 6)
+                StingerShape()
+                    .fill(Color.white)
+                    .frame(width: 20, height: 20)
+                    .offset(y: 10)
             }
+    }
+}
+
+struct StingerShape: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.midX, y: rect.maxY))
+        path.addQuadCurve(to: CGPoint(x: rect.midX, y: rect.minY), control: CGPoint(x: rect.minX, y: rect.midY))
+        path.addQuadCurve(to: CGPoint(x: rect.midX, y: rect.maxY), control: CGPoint(x: rect.maxX, y: rect.midY))
+        return path
     }
 }
 
