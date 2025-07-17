@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - testflight
+      - 'codex/**'
 
 env:
   IPHONEOS_DEPLOYMENT_TARGET: ${{ vars.IPHONEOS_DEPLOYMENT_TARGET }}
