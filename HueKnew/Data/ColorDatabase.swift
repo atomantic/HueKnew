@@ -480,6 +480,27 @@ extension ColorDatabase {
         return best
     }
 
+    func nearestColors(hue: Double, saturation: Double, brightness: Double, count: Int) -> [ColorInfo] {
+        guard count > 0 else { return [] }
+
+        var matches: [(info: ColorInfo, diff: Double)] = []
+
+        for color in getAllColors() {
+            let hsb = color.hsbComponents
+            let diff = calculateColorDifference(hsb1: (hue, saturation, brightness), hsb2: hsb)
+            if matches.count < count {
+                let idx = matches.firstIndex { diff < $0.diff } ?? matches.count
+                matches.insert((color, diff), at: idx)
+            } else if let worst = matches.last, diff < worst.diff {
+                matches.removeLast()
+                let idx = matches.firstIndex { diff < $0.diff } ?? matches.count
+                matches.insert((color, diff), at: idx)
+            }
+        }
+
+        return matches.map { $0.info }
+    }
+
     private func calculateColorDifference(hsb1: (hue: Double, saturation: Double, brightness: Double), hsb2: (hue: Double, saturation: Double, brightness: Double)) -> Double {
         let hueDiff = min(abs(hsb1.hue - hsb2.hue), 360 - abs(hsb1.hue - hsb2.hue))
         let normalizedHueDiff = hueDiff / 360.0

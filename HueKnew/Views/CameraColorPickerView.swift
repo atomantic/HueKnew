@@ -17,6 +17,9 @@ struct CameraColorPickerView: View {
     @State private var touchLocation: CGPoint = .zero
     @State private var colorName: String = ""
     @State private var selectedColorInfo: ColorInfo?
+    @State private var nearbyColors: [ColorInfo] = []
+    @State private var lastARUpdate = Date()
+    private let arUpdateInterval: TimeInterval = 0.3
     @State private var showSelector = false
     @State private var imagePoint: CGPoint = .zero
     private let colorDatabase = ColorDatabase.shared
@@ -51,10 +54,13 @@ struct CameraColorPickerView: View {
 
 
                 VStack {
-                    ColorInfoPanel(color: selectedColorInfo?.color ?? .clear, name: colorName) {
-                        showColorDetail = true
+                    ForEach(nearbyColors.sorted { $0.name < $1.name }) { info in
+                        ColorInfoPanel(colorInfo: info) {
+                            selectedColorInfo = info
+                            showColorDetail = true
+                        }
                     }
-                        .opacity(colorName.isEmpty ? 0 : 1)
+                    .opacity(nearbyColors.isEmpty ? 0 : 1)
                     Spacer()
                     ModePicker(selection: $mode)
                         .padding(.bottom, geo.safeAreaInsets.bottom + 8)
@@ -63,6 +69,9 @@ struct CameraColorPickerView: View {
             }
             .onChange(of: liveFrame) { _ in
                 if mode == .ar {
+                    let now = Date()
+                    guard now.timeIntervalSince(lastARUpdate) >= arUpdateInterval else { return }
+                    lastARUpdate = now
                     let center = CGPoint(x: geo.size.width / 2, y: geo.size.height / 2)
                     updateColor(at: center, in: geo)
                 }
@@ -115,13 +124,20 @@ struct CameraColorPickerView: View {
         DispatchQueue.global(qos: .userInitiated).async {
             if let uiColor = img.color(at: imgPoint) {
                 let hsb = uiColor.hsbComponents
-                let closest = self.colorDatabase.closestColor(hue: hsb.hue, saturation: hsb.saturation, brightness: hsb.brightness)
+                let matches = self.colorDatabase.nearestColors(
+                    hue: hsb.hue,
+                    saturation: hsb.saturation,
+                    brightness: hsb.brightness,
+                    count: 3
+                )
                 DispatchQueue.main.async {
-                    self.colorName = closest?.name ?? ""
-                    self.selectedColorInfo = closest
+                    self.nearbyColors = matches.sorted { $0.name < $1.name }
+                    self.colorName = matches.first?.name ?? ""
+                    self.selectedColorInfo = matches.first
                 }
             } else {
                 DispatchQueue.main.async {
+                    self.nearbyColors = []
                     self.colorName = ""
                     self.selectedColorInfo = nil
                 }
@@ -163,16 +179,15 @@ struct ModePicker: View {
 }
 
 struct ColorInfoPanel: View {
-    let color: Color
-    let name: String
+    let colorInfo: ColorInfo
     let onInfo: () -> Void
     var body: some View {
         HStack(spacing: 12) {
             Circle()
-                .fill(color)
+                .fill(colorInfo.color)
                 .frame(width: 32, height: 32)
                 .overlay(Circle().stroke(Color.white, lineWidth: 1))
-            Text(name)
+            Text(colorInfo.name)
                 .font(.body)
                 .foregroundColor(.primary)
             Spacer()
