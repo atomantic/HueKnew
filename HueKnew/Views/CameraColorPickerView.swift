@@ -40,7 +40,7 @@ struct CameraColorPickerView: View {
                 if mode == .ar {
                     Rectangle()
                         .stroke(Color.white, lineWidth: 2)
-                        .frame(width: 80, height: 80)
+                        .frame(width: 6, height: 6)
                 }
 
                 if let baseImage = currentImage, showSelector, mode != .ar {
@@ -207,7 +207,7 @@ struct MagnifierView: View {
             .overlay(
                 Rectangle()
                     .stroke(Color.white, lineWidth: 1)
-                    .frame(width: 8, height: 8)
+                    .frame(width: 6, height: 6)
             )
             .overlay(alignment: .bottom) {
                 StingerShape()

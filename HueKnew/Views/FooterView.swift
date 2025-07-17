@@ -77,7 +77,8 @@ struct FooterView: View {
             .frame(maxWidth: .infinity)
             .foregroundColor(activeView == .settings ? .blue : .primary)
         }
-        .padding(.vertical, 6)
+        .padding(.top, 12)
+        .padding(.bottom, 6)
         .background(Color(.systemGray6))
     }
 }
