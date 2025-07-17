@@ -19,7 +19,7 @@ struct CameraColorPickerView: View {
     @State private var selectedColorInfo: ColorInfo?
     @State private var nearbyColors: [ColorInfo] = []
     @State private var lastARUpdate = Date()
-    private let arUpdateInterval: TimeInterval = 0.3
+    private let arUpdateInterval: TimeInterval = 0.6
     @State private var showSelector = false
     @State private var imagePoint: CGPoint = .zero
     private let colorDatabase = ColorDatabase.shared
@@ -54,7 +54,7 @@ struct CameraColorPickerView: View {
 
 
                 VStack {
-                    ForEach(nearbyColors.sorted { $0.name < $1.name }) { info in
+                    ForEach(nearbyColors) { info in
                         ColorInfoPanel(colorInfo: info) {
                             selectedColorInfo = info
                             showColorDetail = true
