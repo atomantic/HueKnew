@@ -57,9 +57,7 @@ struct SettingsView: View {
                     }
                 }
 
-                Section("Beta") {
-                    Toggle("Enable Beta Features", isOn: $gameModel.betaEnabled)
-                }
+                
 
                 Section("About") {
                     HStack {

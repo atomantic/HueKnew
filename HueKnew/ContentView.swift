@@ -32,7 +32,7 @@ struct ContentView: View {
                         showingCameraPicker = false
                         showingColorDictionary = true
                     },
-                    showCamera: gameModel.betaEnabled
+                    showCamera: true
                 )
                 .safeAreaPadding(.bottom)
             }
