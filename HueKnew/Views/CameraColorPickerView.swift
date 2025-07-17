@@ -212,7 +212,7 @@ struct StingerShape: Shape {
 }
 
 struct PhotoPickerView: UIViewControllerRepresentable {
-    @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.dismiss) private var dismiss
     @Binding var image: UIImage?
 
     func makeUIViewController(context: Context) -> PHPickerViewController {
@@ -242,7 +242,7 @@ struct PhotoPickerView: UIViewControllerRepresentable {
                     }
                 }
             }
-            parent.presentationMode.wrappedValue.dismiss()
+            parent.dismiss()
         }
     }
 }
