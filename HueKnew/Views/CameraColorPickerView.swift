@@ -37,7 +37,13 @@ struct CameraColorPickerView: View {
                 contentView(sampleGesture: sampleGesture)
                     .ignoresSafeArea(edges: .top)
 
-                if let baseImage = currentImage, showSelector {
+                if mode == .ar {
+                    Rectangle()
+                        .stroke(Color.white, lineWidth: 2)
+                        .frame(width: 80, height: 80)
+                }
+
+                if let baseImage = currentImage, showSelector, mode != .ar {
                     MagnifierView(image: baseImage, imagePoint: imagePoint)
                         .frame(width: 120, height: 120)
                         .position(x: touchLocation.x, y: max(CGFloat(60), touchLocation.y - 150))
@@ -54,6 +60,12 @@ struct CameraColorPickerView: View {
                         .padding(.bottom, geo.safeAreaInsets.bottom + 8)
                 }
                 .padding(.horizontal)
+            }
+            .onChange(of: liveFrame) { _ in
+                if mode == .ar {
+                    let center = CGPoint(x: geo.size.width / 2, y: geo.size.height / 2)
+                    updateColor(at: center, in: geo)
+                }
             }
         }
         .onChange(of: mode) { _, newMode in
@@ -79,7 +91,6 @@ struct CameraColorPickerView: View {
         Group {
             if mode == .ar {
                 LiveCameraView(frame: $liveFrame)
-                    .gesture(sampleGesture)
             } else if let img = image {
                 Image(uiImage: img)
                     .resizable()
