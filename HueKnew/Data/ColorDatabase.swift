@@ -553,6 +553,10 @@ extension ColorDatabase {
     func color(hex: String) -> ColorInfo? {
         hexIndex[hex.lowercased()]
     }
+
+    func availableEnvironments() -> [String] {
+        Array(environmentIndex.keys).sorted()
+    }
 }
 
 extension ColorPair {

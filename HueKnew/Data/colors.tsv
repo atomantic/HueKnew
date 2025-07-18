@@ -16,17 +16,17 @@ Hex	Category	Name	Environment	Description
 #004040	blues	Rich Black		A printing term for a deep black achieved by mixing multiple inks for a velvety finish.
 #0040FF	blues	Cerulean (RGB)		A vibrant medium blue reminiscent of a twilight horizon.
 #00416A	blues	Indigo Dye		A historic dye from Indigofera plants, prized across Asia and Africa for its long-lasting deep blue textiles.
-#004225	greens	British Racing Green		A deep, rich green associated with British motorsport since the early 1900s. It became iconic after British cars adopted the color for international racing events, symbolizing tradition and speed.
+#004225	greens	British Racing Green	racetrack	A deep, rich green associated with British motorsport since the early 1900s. It became iconic after British cars adopted the color for international racing events, symbolizing tradition and speed.
 #004242	blues	Warm Black		A deep, rich black with subtle warm undertones that creates a softer, more approachable alternative to pure black. Warm black evokes the comforting darkness of a moonlit night or the rich depths of fertile soil. This color is often used in design to convey sophistication while maintaining warmth and accessibility.
 #0047AB	blues	Cobalt Blue		A vivid blue pigment made from cobalt(II) aluminate, discovered in 1802 by French chemist Louis Jacques Thénard. Cobalt blue offered artists a stable, lightfast alternative to ultramarine and was quickly adopted by painters like J.M.W. Turner and Vincent van Gogh. Its pure, cool hue is ideal for depicting skies and water, and it remains a cornerstone of both traditional and modern palettes.
 #0048BA	blues	Absolute Zero		A deep, intense blue that represents the theoretical temperature of absolute zero (-273.15°C). This color embodies the coldest possible temperature in physics, where all molecular motion ceases. The pigment's depth and saturation mirror the profound stillness and infinite cold of this scientific concept.
-#004953	blues	Midnight Green (Eagle Green)		A dark teal shade used by the Philadelphia Eagles, conjuring the shadowy greens of a midnight forest and conveying athletic determination.
+#004953	blues	Midnight Green (Eagle Green)	sports,forest	A dark teal shade used by the Philadelphia Eagles, conjuring the shadowy greens of a midnight forest and conveying athletic determination.
 #004B49	blues	Deep Jungle Green		A dark, bluish-green capturing the dense foliage of tropical jungles. Popularized by Crayola in the 1990s, it suggests exotic locales and adventurous spirit.
-#004F98	blues	USAFA Blue		The official blue of the U.S. Air Force Academy, symbolizing service and the open skies.
-#00573F	greens	Gotham Green		The New York Jets' signature shade, named for NYC's Gotham nickname and representing team pride.
-#006400	greens	Dark Green (X11)		Part of the original X11 color set, providing a deeper alternative to the web's pure green.
+#004F98	blues	USAFA Blue	military	The official blue of the U.S. Air Force Academy, symbolizing service and the open skies.
+#00573F	greens	Gotham Green	city,sports	The New York Jets' signature shade, named for NYC's Gotham nickname and representing team pride.
+#006400	greens	Dark Green (X11)	forest	Part of the original X11 color set, providing a deeper alternative to the web's pure green.
 #006600	greens	Pakistan Green		A deep, rich green that represents the national identity of Pakistan and its agricultural heritage. This color symbolizes prosperity, growth, and the natural beauty of the Pakistani landscape. Pakistan green's association with national pride and cultural heritage has made it significant in Pakistani design and cultural branding.
-#0067A5	blues	Sapphire Blue		A jewel-toned hue reminiscent of fine sapphires, long prized in royal jewelry as a symbol of fidelity.
+#0067A5	blues	Sapphire Blue	gemstone,royal	A jewel-toned hue reminiscent of fine sapphires, long prized in royal jewelry as a symbol of fidelity.
 #006B3C	greens	Cadmium Green		A 19th-century pigment made from cadmium compounds, valued by painters for its strength and permanence.
 #006DB0	blues	Honolulu Blue		Chosen for the Detroit Lions in the 1930s to evoke Honolulu's bright tropical waters.
 #0070B8	blues	Spanish Blue		A bright azure commonly seen in Spanish heraldry and regional flags. Its lively tone conveys Mediterranean vibrancy and cultural pride.

@@ -1,8 +1,7 @@
 import SwiftUI
 
 struct ImagineView: View {
-    @State private var selectedEnvironment = "forest"
-    private let environments = ["forest", "desert", "seascape", "city"]
+    @State private var currentEnvironment: String = ""
     @State private var inputText = ""
     @State private var enteredColors: [String] = []
     @State private var showResults = false
@@ -19,7 +18,7 @@ struct ImagineView: View {
     }
 
     private var environmentColors: [ColorInfo] {
-        colorDatabase.colors(forEnvironment: selectedEnvironment)
+        colorDatabase.colors(forEnvironment: currentEnvironment)
     }
 
     private var suggestedColors: [ColorInfo] {
@@ -32,29 +31,44 @@ struct ImagineView: View {
         return enteredColors.filter { !envSet.contains($0.lowercased()) }
     }
 
+    private func addColor(_ text: String) {
+        let trimmed = text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+        enteredColors.append(trimmed)
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Imagine")
                 .font(.largeTitle)
                 .bold()
 
-            Picker("Environment", selection: $selectedEnvironment) {
-                ForEach(environments, id: \.self) { env in
-                    Text(env.capitalized).tag(env)
-                }
-            }
-            .pickerStyle(SegmentedPickerStyle())
-
-            Text("Type colors you imagine in a \(selectedEnvironment).")
+            Text("Type colors you imagine in a \(currentEnvironment).")
                 .font(.subheadline)
 
             TextField("Enter color", text: $inputText)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .onSubmit {
-                    guard !inputText.isEmpty else { return }
-                    enteredColors.append(inputText)
+                    addColor(inputText)
                     inputText = ""
                 }
+                .onChange(of: inputText) { newValue in
+                    if newValue.contains(",") {
+                        let parts = newValue.split(separator: ",")
+                        parts.dropLast().forEach { part in addColor(String(part)) }
+                        inputText = parts.last.map(String.init) ?? ""
+                    }
+                }
+
+            if !enteredColors.isEmpty {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(enteredColors, id: \.self) { name in
+                            ColorPill(name: name, info: colorDatabase.color(named: name))
+                        }
+                    }
+                }
+            }
 
             if !autocompleteSuggestions.isEmpty {
                 VStack(alignment: .leading) {
@@ -70,11 +84,6 @@ struct ImagineView: View {
                     }
                 }
                 .background(Color(.systemGray6))
-            }
-
-            if !enteredColors.isEmpty {
-                Text("You entered: \(enteredColors.joined(separator: ", "))")
-                    .font(.footnote)
             }
 
             Button("Done") {
@@ -98,6 +107,30 @@ struct ImagineView: View {
             Spacer()
         }
         .padding()
+        .onAppear {
+            if currentEnvironment.isEmpty {
+                currentEnvironment = colorDatabase.availableEnvironments().randomElement() ?? "forest"
+            }
+        }
+    }
+}
+
+struct ColorPill: View {
+    let name: String
+    let info: ColorInfo?
+
+    var body: some View {
+        HStack(spacing: 6) {
+            Circle()
+                .fill(info?.color ?? Color.gray)
+                .frame(width: 20, height: 20)
+            Text(name)
+                .font(.caption)
+                .foregroundColor(.primary)
+        }
+        .padding(6)
+        .background(Color(.systemGray5))
+        .clipShape(Capsule())
     }
 }
 

@@ -20,17 +20,21 @@ struct ContentView: View {
             VStack(spacing: 0) {
                 if showingCameraPicker {
                     CameraColorPickerView()
+                } else if showingImagine {
+                    ImagineView()
                 } else {
                     GameView(gameModel: gameModel)
                 }
                 FooterView(
                     onHome: {
                         showingCameraPicker = false
+                        showingImagine = false
                         gameModel.goToMenu()
                         activeView = .home
                     },
                     onCamera: {
                         showingCameraPicker = true
+                        showingImagine = false
                         activeView = .camera
                     },
                     onSettings: {
@@ -39,6 +43,7 @@ struct ContentView: View {
                     },
                     onCatalog: {
                         showingCameraPicker = false
+                        showingImagine = false
                         showingColorDictionary = true
                         activeView = .catalog
                     },
@@ -60,10 +65,6 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showingColorDictionary) {
                 ColorDictionaryView()
-                    .onDisappear { activeView = .home }
-            }
-            .sheet(isPresented: $showingImagine) {
-                ImagineView()
                     .onDisappear { activeView = .home }
             }
         }

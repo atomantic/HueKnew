@@ -146,5 +146,10 @@ final class ColorDatabaseTests: XCTestCase {
             XCTFail("Black not found in night environment")
         }
     }
+
+    func testAvailableEnvironments() {
+        let envs = colorDatabase.availableEnvironments()
+        XCTAssertFalse(envs.isEmpty)
+    }
 }
 

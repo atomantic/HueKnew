@@ -86,6 +86,7 @@ The game uses a progressive learning approach with two main phases:
 - **Color vision test**: Optional accessibility test to adapt challenges
 - **Category-based learning**: Focus on specific color families (blues, yellows, reds, etc.)
 - **Imagine environments**: Brainstorm colors for scenes like forests or deserts
+- **Autocomplete suggestions**: Get prompted with likely colors for each environment
 
 ## 🎨 Color Categories
 
