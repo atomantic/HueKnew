@@ -23,12 +23,22 @@ struct ImagineView: View {
 
     private var suggestedColors: [ColorInfo] {
         let enteredSet = Set(enteredColors.map { $0.lowercased() })
-        return environmentColors.filter { !enteredSet.contains($0.name.lowercased()) }.prefix(3).map { $0 }
+        return environmentColors.filter { !enteredSet.contains($0.name.lowercased()) }
     }
 
     private var unusualColors: [String] {
         let envSet = Set(environmentColors.map { $0.name.lowercased() })
         return enteredColors.filter { !envSet.contains($0.lowercased()) }
+    }
+
+    private var article: String {
+        guard let first = currentEnvironment.first else { return "a" }
+        return ["a", "e", "i", "o", "u"].contains(String(first).lowercased()) ? "an" : "a"
+    }
+
+    private var promptView: some View {
+        Text("Type colors you imagine in \(article) ") + Text(currentEnvironment).bold() + Text(".")
+            .font(.subheadline)
     }
 
     private func addColor(_ text: String) {
@@ -42,10 +52,9 @@ struct ImagineView: View {
             Text("Imagine")
                 .font(.largeTitle)
                 .bold()
+                .frame(maxWidth: .infinity, alignment: .center)
 
-            Text("Type colors you imagine in a \(currentEnvironment).")
-                .font(.subheadline)
-
+            promptView
             TextField("Enter color", text: $inputText)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .onSubmit {
@@ -94,7 +103,7 @@ struct ImagineView: View {
 
             if showResults {
                 if !unusualColors.isEmpty {
-                    Text("Unusual colors: \(unusualColors.joined(separator: ", "))")
+                    Text("You thought of some interesting colors we didn't think of for this environment: \(unusualColors.joined(separator: ", "))")
                         .font(.footnote)
                         .foregroundColor(.orange)
                 }

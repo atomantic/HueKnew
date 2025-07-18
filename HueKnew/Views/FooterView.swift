@@ -69,7 +69,7 @@ struct FooterView: View {
             // Imagine button
             Button(action: onImagine) {
                 VStack {
-                    Image(systemName: "sparkles")
+                    Image(systemName: "brain.head.profile")
                         .font(.title2)
                     Text("Imagine")
                         .font(.caption)
