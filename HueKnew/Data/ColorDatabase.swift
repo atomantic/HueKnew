@@ -78,6 +78,7 @@ class ColorDatabase: ObservableObject {
     private var colorPairs: [ColorPair] = []
     private var closestColorCache: [String: ColorInfo] = [:]
     private var environmentIndex: [String: [ColorInfo]] = [:]
+    private var colorEnvironmentIndex: [String: [String]] = [:]
     private var nameIndex: [String: ColorInfo] = [:]
     private var hexIndex: [String: ColorInfo] = [:]
 
@@ -131,6 +132,7 @@ class ColorDatabase: ObservableObject {
                 )
                 nameIndex[tsvColor.name.lowercased()] = info
                 hexIndex[tsvColor.hex.lowercased()] = info
+                colorEnvironmentIndex[tsvColor.name.lowercased()] = envParts.map { String($0) }
                 for env in envParts.map({ $0.lowercased() }) {
                     environmentIndex[env, default: []].append(info)
                 }
@@ -552,6 +554,10 @@ extension ColorDatabase {
 
     func color(hex: String) -> ColorInfo? {
         hexIndex[hex.lowercased()]
+    }
+
+    func environments(forColor name: String) -> [String] {
+        colorEnvironmentIndex[name.lowercased()] ?? []
     }
 
     func availableEnvironments() -> [String] {

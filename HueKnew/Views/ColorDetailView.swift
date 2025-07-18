@@ -54,6 +54,18 @@ struct ColorDetailView: View {
                             .font(.subheadline)
                             .foregroundColor(.primary)
                     }
+
+                    if !colorDatabase.environments(forColor: color.name).isEmpty {
+                        HStack(alignment: .top) {
+                            Text("Environments:")
+                                .font(.headline)
+                                .foregroundColor(.secondary)
+                            Text(colorDatabase.environments(forColor: color.name).joined(separator: ", "))
+                                .font(.subheadline)
+                                .foregroundColor(.primary)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                    }
                     
                     Text("Description:")
                         .font(.headline)

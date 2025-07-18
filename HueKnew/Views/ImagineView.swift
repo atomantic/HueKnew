@@ -33,14 +33,12 @@ struct ImagineView: View {
         return enteredColors.filter { !envSet.contains($0.lowercased()) }
     }
 
-    private var article: String {
-        guard let first = currentEnvironment.first else { return "a" }
-        return ["a", "e", "i", "o", "u"].contains(String(first).lowercased()) ? "an" : "a"
-    }
-
     private var promptView: some View {
-        Text("Type colors you imagine in \(article) ") + Text(currentEnvironment).bold() + Text(".")
-            .font(.subheadline)
+        VStack(alignment: .leading, spacing: 2) {
+            Text("Imagine colors in this scene:")
+            Text(currentEnvironment).bold()
+        }
+        .font(.subheadline)
     }
 
     private func addColor(_ text: String) {

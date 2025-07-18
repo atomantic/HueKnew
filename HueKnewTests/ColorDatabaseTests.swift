@@ -151,5 +151,10 @@ final class ColorDatabaseTests: XCTestCase {
         let envs = colorDatabase.availableEnvironments()
         XCTAssertFalse(envs.isEmpty)
     }
+
+    func testEnvironmentsForColor() {
+        let envs = colorDatabase.environments(forColor: "Black")
+        XCTAssertTrue(envs.contains("night"))
+    }
 }
 
