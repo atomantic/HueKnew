@@ -378,13 +378,13 @@ struct NameOptionCard: View {
                 name: "Gamboge",
                 hexValue: "#E49B0F",
                 description: "A deep golden yellow with warm undertones",
-                category: .yellows
+                category: .yellows, environment: nil
             ),
             comparisonColor: ColorInfo(
                 name: "Indian Yellow",
                 hexValue: "#E3B505",
                 description: "A rich, warm yellow with orange undertones",
-                category: .yellows
+                category: .yellows, environment: nil
             ),
             learningNotes: "Gamboge has more brown/amber undertones, while Indian Yellow is purer and brighter with orange hints.",
             category: .yellows

@@ -65,7 +65,7 @@ struct SimilarColorCard: View {
 
 #Preview {
     SimilarColorCard(
-        colorInfo: ColorInfo(name: "Gamboge", hexValue: "#E49B0F", description: "", category: .yellows),
-        baseColor: ColorInfo(name: "Indian Yellow", hexValue: "#E3B505", description: "", category: .yellows)
+        colorInfo: ColorInfo(name: "Gamboge", hexValue: "#E49B0F", description: "", category: .yellows, environment: nil),
+        baseColor: ColorInfo(name: "Indian Yellow", hexValue: "#E3B505", description: "", category: .yellows, environment: nil)
     )
 }

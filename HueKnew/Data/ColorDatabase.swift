@@ -67,6 +67,7 @@ struct TSVColor {
     let hex: String
     let category: String
     let name: String
+    let environment: String?
     let description: String
 }
 
@@ -94,13 +95,32 @@ class ColorDatabase: ObservableObject {
             // Skip header line
             for line in lines.dropFirst() where !line.isEmpty {
                 let components = TSVParser.parseTSVLine(line)
-                guard components.count >= 4 else { continue }
+                
+                // Ensure there are at least 3 components (hex, category, name)
+                guard components.count >= 3 else { continue }
+                
+                let hex = components[0]
+                let category = components[1]
+                let name = components[2]
+                
+                var environment: String? = nil
+                var description: String = ""
+                
+                if components.count == 4 {
+                    // Old format: Hex, Category, Name, Description
+                    description = components[3]
+                } else if components.count >= 5 {
+                    // New format: Hex, Category, Name, Environment, Description
+                    environment = components[3]
+                    description = components[4]
+                }
                 
                 let tsvColor = TSVColor(
-                    hex: components[0],
-                    category: components[1],
-                    name: components[2],
-                    description: components[3]
+                    hex: hex,
+                    category: category,
+                    name: name,
+                    environment: environment,
+                    description: description
                 )
                 tsvColors.append(tsvColor)
             }
@@ -129,14 +149,16 @@ class ColorDatabase: ObservableObject {
                         name: color1.name,
                         hexValue: color1.hex,
                         description: color1.description,
-                        category: mapStringToCategory(color1.category)
+                        category: mapStringToCategory(color1.category),
+                        environment: color1.environment
                     )
 
                     let colorInfo2 = ColorInfo(
                         name: color2.name,
                         hexValue: color2.hex,
                         description: color2.description,
-                        category: mapStringToCategory(color2.category)
+                        category: mapStringToCategory(color2.category),
+                        environment: color2.environment
                     )
 
                     let learningNotes = generateComparisonNotes(color1: color1, color2: color2)
@@ -155,8 +177,8 @@ class ColorDatabase: ObservableObject {
     }
 
     private func generateComparisonNotes(color1: TSVColor, color2: TSVColor) -> String {
-        let info1 = ColorInfo(name: color1.name, hexValue: color1.hex, description: color1.description, category: mapStringToCategory(color1.category))
-        let info2 = ColorInfo(name: color2.name, hexValue: color2.hex, description: color2.description, category: mapStringToCategory(color2.category))
+        let info1 = ColorInfo(name: color1.name, hexValue: color1.hex, description: color1.description, category: mapStringToCategory(color1.category), environment: color1.environment)
+        let info2 = ColorInfo(name: color2.name, hexValue: color2.hex, description: color2.description, category: mapStringToCategory(color2.category), environment: color2.environment)
 
         let comparisons1 = getColorComparisons(color1: info1, color2: info2)
         let comparisons2 = getColorComparisons(color1: info2, color2: info1)
@@ -274,9 +296,15 @@ extension ColorDatabase {
                 name: tsvColor.name,
                 hexValue: tsvColor.hex,
                 description: tsvColor.description,
-                category: mapStringToCategory(tsvColor.category)
+                category: mapStringToCategory(tsvColor.category),
+                environment: tsvColor.environment
             )
         }
+    }
+
+    func getColors(for environment: String) -> [ColorInfo] {
+        let allColors = getAllColors()
+        return allColors.filter { $0.environment?.contains(environment) ?? false }
     }
 
     func getAllColorPairs() -> [ColorPair] {

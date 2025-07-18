@@ -14,6 +14,7 @@ struct ColorInfo: Identifiable, Codable, Equatable {
     let hexValue: String
     let description: String
     let category: ColorCategory
+    let environment: String?
     
     var color: Color {
         Color(hex: hexValue)

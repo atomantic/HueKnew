@@ -14,13 +14,15 @@ final class ColorPairTests: XCTestCase {
             name: "Red",
             hexValue: "#FF0000",
             description: "Pure red color",
-            category: .reds
+            category: .reds,
+            environment: nil
         )
         colorInfo2 = ColorInfo(
             name: "Blue",
             hexValue: "#0000FF",
             description: "Pure blue color",
-            category: .blues
+            category: .blues,
+            environment: nil
         )
         colorPair = ColorPair(
             primaryColor: colorInfo1,
@@ -85,7 +87,8 @@ extension ColorPairTests {
             name: "Green",
             hexValue: "00FF00",
             description: "Green without hash",
-            category: .greens
+            category: .greens,
+            environment: nil
         )
         let rgb = colorWithoutHash.rgbComponents
         XCTAssertEqual(rgb.red, 0.0, accuracy: 0.01)
@@ -98,7 +101,8 @@ extension ColorPairTests {
             name: "Red",
             hexValue: "#FF0000",
             description: "Pure red color",
-            category: .reds
+            category: .reds,
+            environment: nil
         )
         XCTAssertEqual(colorInfo1, colorInfo1Copy)
         XCTAssertNotEqual(colorInfo1, colorInfo2)
@@ -137,13 +141,15 @@ extension ColorPairTests {
             name: "Light Red",
             hexValue: "#FF1111",
             description: "Light red",
-            category: .reds
+            category: .reds,
+            environment: nil
         )
         let color2 = ColorInfo(
             name: "Slightly Different Red",
             hexValue: "#FF0000",
             description: "Slightly different red",
-            category: .reds
+            category: .reds,
+            environment: nil
         )
         let similarPair = ColorPair(
             primaryColor: color1,

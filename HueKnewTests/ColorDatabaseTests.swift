@@ -15,53 +15,60 @@ final class ColorDatabaseTests: XCTestCase {
     
     // MARK: - TSV Parser Tests
     func testTSVParserBasicLine() {
-        let line = "red\t#FF0000\tRed\tA bright red color"
+        let line = "#FF0000\treds\tRed\tnil\tA bright red color"
         let fields = TSVParser.parseTSVLine(line)
-        XCTAssertEqual(fields.count, 4)
-        XCTAssertEqual(fields[0], "red")
-        XCTAssertEqual(fields[1], "#FF0000")
+        XCTAssertEqual(fields.count, 5)
+        XCTAssertEqual(fields[0], "#FF0000")
+        XCTAssertEqual(fields[1], "reds")
         XCTAssertEqual(fields[2], "Red")
-        XCTAssertEqual(fields[3], "A bright red color")
+        XCTAssertEqual(fields[3], "nil")
+        XCTAssertEqual(fields[4], "A bright red color")
     }
     
     func testTSVParserQuotedField() {
-        let line = "red\t#FF0000\t\"Red, the primary color\"\tA bright red color"
+        let line = "#FF0000\treds\t\"Red, the primary color\"\tnil\tA bright red color"
         let fields = TSVParser.parseTSVLine(line)
-        XCTAssertEqual(fields.count, 4)
+        XCTAssertEqual(fields.count, 5)
         XCTAssertEqual(fields[2], "Red, the primary color")
     }
     
     func testTSVParserEscapedQuote() {
-        let line = "red\t#FF0000\t\"Red with \"\"quotes\"\" inside\"\tA bright red color"
+        let line = "#FF0000\treds\t\"Red with \"\"quotes\"\" inside\"\tnil\tA bright red color"
         let fields = TSVParser.parseTSVLine(line)
-        XCTAssertEqual(fields.count, 4)
+        XCTAssertEqual(fields.count, 5)
         XCTAssertEqual(fields[2], "Red with \"quotes\" inside")
     }
     
     func testTSVParserTabInQuotedField() {
-        let line = "red\t#FF0000\t\"Red\twith\ttabs\"\tA bright red color"
+        let line = "#FF0000\treds\t\"Red\twith\ttabs\"\tnil\tA bright red color"
         let fields = TSVParser.parseTSVLine(line)
-        XCTAssertEqual(fields.count, 4)
+        XCTAssertEqual(fields.count, 5)
         XCTAssertEqual(fields[2], "Red\twith\ttabs")
     }
     
     func testTSVParserEmptyFields() {
-        let line = "red\t\t\t"
+        let line = "#FF0000\treds\tRed\t\t"
         let fields = TSVParser.parseTSVLine(line)
-        XCTAssertEqual(fields.count, 4)
-        XCTAssertEqual(fields[0], "red")
-        XCTAssertEqual(fields[1], "")
-        XCTAssertEqual(fields[2], "")
+        XCTAssertEqual(fields.count, 5)
+        XCTAssertEqual(fields[0], "#FF0000")
+        XCTAssertEqual(fields[1], "reds")
+        XCTAssertEqual(fields[2], "Red")
         XCTAssertEqual(fields[3], "")
+        XCTAssertEqual(fields[4], "")
     }
 
     // MARK: - Color Database Tests
     func testLoadColorsFromTSV() {
-        // Ensure the method does not crash
-        // Data can be stubbed or mocked for more robust testing
         colorDatabase.loadColorsFromTSV()
         let allColors = colorDatabase.getAllColors()
         XCTAssertFalse(allColors.isEmpty, "Colors should be loaded from TSV")
+        
+        // Verify that some colors have environments and some don't
+        let pineGreen = allColors.first { $0.name == "Pine Green" }
+        XCTAssertEqual(pineGreen?.environment, "forest")
+        
+        let redColor = allColors.first { $0.name == "Red" }
+        XCTAssertNil(redColor?.environment)
     }
     
     func testGenerateColorPairs() {
@@ -82,15 +89,15 @@ final class ColorDatabaseTests: XCTestCase {
     }
     
     func testCalculateColorDifference() {
-        let color1 = ColorInfo(name: "Red", hexValue: "#FF0000", description: "", category: .reds)
-        let color2 = ColorInfo(name: "Blue", hexValue: "#0000FF", description: "", category: .blues)
+        let color1 = ColorInfo(name: "Red", hexValue: "#FF0000", description: "", category: .reds, environment: nil)
+        let color2 = ColorInfo(name: "Blue", hexValue: "#0000FF", description: "", category: .blues, environment: nil)
         let difference = colorDatabase.calculateColorDifference(color1: color1, color2: color2)
         
         XCTAssertGreaterThan(difference, 0.0, "There should be a difference between red and blue")
     }
     
     func testTemperatureCategory() {
-        let color = ColorInfo(name: "Cyan", hexValue: "#00FFFF", description: "", category: .blues)
+        let color = ColorInfo(name: "Cyan", hexValue: "#00FFFF", description: "", category: .blues, environment: nil)
         let temperature = colorDatabase.temperatureCategory(for: color)
 
         XCTAssertEqual(temperature, "cool", "Cyan should be classified as a cool color")
@@ -114,7 +121,7 @@ final class ColorDatabaseTests: XCTestCase {
             let burnt = colors.first(where: { $0.name == "Burnt Sienna" }),
             let terra = colors.first(where: { $0.name == "Terra Cotta" })
         else {
-            XCTFail("Required colors not found")
+            XCTFail("Required colors not found. Available colors: \(colors.map { $0.name }.joined(separator: ", "))")
             return
         }
 
@@ -128,7 +135,7 @@ final class ColorDatabaseTests: XCTestCase {
             let carnelian = colors.first(where: { $0.name == "Carnelian" }),
             let firebrick = colors.first(where: { $0.name == "Firebrick" })
         else {
-            XCTFail("Required colors not found")
+            XCTFail("Required colors not found. Available colors: \(colors.map { $0.name }.joined(separator: ", "))")
             return
         }
 

@@ -55,7 +55,7 @@ struct CameraColorPickerView: View {
 
                 VStack {
                     ForEach(nearbyColors) { info in
-                        ColorInfoPanel(colorInfo: info) {
+                        ColorInfoPanelView(colorInfo: info) {
                             selectedColorInfo = info
                             showColorDetail = true
                         }

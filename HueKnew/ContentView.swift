@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var showingSettings = false
     @State private var showingColorDictionary = false
     @State private var showingCameraPicker = false
+    @State private var showingImagine = false
     @State private var activeView: ActiveView = .home
 
     var body: some View {
@@ -41,6 +42,11 @@ struct ContentView: View {
                         showingColorDictionary = true
                         activeView = .catalog
                     },
+                    onImagine: {
+                        showingCameraPicker = false
+                        showingImagine = true
+                        activeView = .imagine
+                    },
                     showCamera: true,
                     activeView: $activeView
                 )
@@ -54,6 +60,10 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showingColorDictionary) {
                 ColorDictionaryView()
+                    .onDisappear { activeView = .home }
+            }
+            .sheet(isPresented: $showingImagine) {
+                ImagineView()
                     .onDisappear { activeView = .home }
             }
         }
