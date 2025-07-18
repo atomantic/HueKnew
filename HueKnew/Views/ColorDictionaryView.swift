@@ -71,8 +71,7 @@ struct ColorDictionaryView: View {
     }
     
     var body: some View {
-        NavigationView {
-            VStack(spacing: 0) {
+        VStack(spacing: 0) {
                 // Search and filter controls
                 VStack(spacing: 12) {
                     // Search bar
@@ -158,10 +157,9 @@ struct ColorDictionaryView: View {
                     }
                 }
                 .listStyle(PlainListStyle())
-            }
-            .navigationTitle("Color Catalog")
-            .navigationBarTitleDisplayMode(.large)
         }
+        .navigationTitle("Color Catalog")
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 

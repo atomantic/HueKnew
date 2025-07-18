@@ -9,47 +9,39 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var gameModel = GameModel()
-    @State private var showingSettings = false
-    @State private var showingColorDictionary = false
-    @State private var showingCameraPicker = false
-    @State private var showingImagine = false
     @State private var activeView: ActiveView = .home
 
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                if showingCameraPicker {
+                switch activeView {
+                case .camera:
                     CameraColorPickerView()
-                } else if showingImagine {
+                case .catalog:
+                    ColorDictionaryView()
+                case .settings:
+                    SettingsView(gameModel: gameModel)
+                case .imagine:
                     ImagineView()
-                } else {
+                case .home:
                     GameView(gameModel: gameModel)
                 }
+
                 FooterView(
                     onHome: {
-                        showingCameraPicker = false
-                        showingImagine = false
-                        gameModel.goToMenu()
                         activeView = .home
+                        gameModel.goToMenu()
                     },
                     onCamera: {
-                        showingCameraPicker = true
-                        showingImagine = false
                         activeView = .camera
                     },
                     onSettings: {
-                        showingSettings = true
                         activeView = .settings
                     },
                     onCatalog: {
-                        showingCameraPicker = false
-                        showingImagine = false
-                        showingColorDictionary = true
                         activeView = .catalog
                     },
                     onImagine: {
-                        showingCameraPicker = false
-                        showingImagine = true
                         activeView = .imagine
                     },
                     showCamera: true,
@@ -59,14 +51,6 @@ struct ContentView: View {
             }
             .background(Color(.systemGray6))
             .navigationBarHidden(true)
-            .sheet(isPresented: $showingSettings) {
-                SettingsView(gameModel: gameModel)
-                    .onDisappear { activeView = .home }
-            }
-            .sheet(isPresented: $showingColorDictionary) {
-                ColorDictionaryView()
-                    .onDisappear { activeView = .home }
-            }
         }
     }
 }

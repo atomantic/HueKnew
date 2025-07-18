@@ -76,11 +76,11 @@ Hex	Category	Name	Environment	Description
 #0A7E8C	blues	Metallic Seaweed		A dark turquoise with a subtle metallic sheen, reminiscent of glistening seaweed under coastal waters.
 #0ABAB5	blues	Tiffany Blue		A distinctive robin's egg blue that has become synonymous with luxury and elegance since Tiffany & Co. adopted it in 1845. This color was chosen by founder Charles Lewis Tiffany for the cover of the company's Blue Book catalog, and has since become one of the most recognizable brand colors in the world. The shade's association with Tiffany's iconic jewelry boxes and the promise of precious gifts has made it a symbol of romance and sophistication.
 #0BDA51	greens	Malachite		A vibrant green pigment derived from the mineral malachite, a copper carbonate hydroxide. This ancient pigment was used in Egyptian wall paintings and medieval illuminated manuscripts. The mineral's distinctive banded patterns, formed by copper deposits, create the characteristic green color. Malachite was ground into powder and mixed with egg yolk or oil to create paint, though modern versions use synthetic copper compounds for safety.
-#0F52BA	blues	Sapphire		Named after the precious gemstone, sapphire blue conveys luxury and has been prized in jewelry and royal regalia.
+#0F52BA	blues	Sapphire	gemstone	Named after the precious gemstone, sapphire blue conveys luxury and has been prized in jewelry and royal regalia.
 #100C08	oranges	Smoky Black		This deep brownish-black resembles charred wood or thick smoke, lending a moody warmth to designs.
 #1164B4	blues	Green-Blue		A balanced teal often used in scientific illustrations to depict water or algae.
 #123524	greens	Phthalo Green		A deep, intense green pigment first synthesized in 1938, known for its exceptional color strength and lightfastness. This synthetic pigment revolutionized green colors in art, offering artists a powerful, non-toxic alternative to traditional green pigments. Phthalo green's association with modern artistic innovation and technical excellence has made it significant in contemporary art and industrial applications.
-#126180	blues	Blue Sapphire		A dark, jewel-toned blue modeled after sapphire gemstones, valued in fashion for its richness.
+#126180	blues	Blue Sapphire	gemstone	A dark, jewel-toned blue modeled after sapphire gemstones, valued in fashion for its richness.
 #130a8f	blues	International Klein Blue		A deep, ultramarine blue created by French artist Yves Klein in the 1950s. This pigment was developed specifically for Klein's monochromatic paintings and became his signature color. The artist patented the color and used it extensively in his 'Anthropometries' series, where he used nude models as 'living brushes.' International Klein Blue represents the artist's quest for pure color and his belief in the spiritual power of monochromatic art.
 #138808	greens	India Green		The green of India's national flag, symbolizing fertility, faith, and the land's lush landscapes.
 #1560BD	blues	Denim		A classic blue inspired by the durable cotton twill fabric that revolutionized workwear in the late 19th century. Denim's name comes from 'de Nîmes,' referring to the French city where the fabric was first woven. This color represents durability, authenticity, and American culture, as denim jeans became a symbol of rebellion and youth culture in the 1950s. The color's association with hard work and casual style has made it a timeless choice in fashion and design.
@@ -113,7 +113,7 @@ Hex	Category	Name	Environment	Description
 #2A52BE	blues	Cerulean Blue		A classic sky-blue pigment made from cobalt(II) stannate, introduced in the 19th century as a safer alternative to earlier blue pigments. Cerulean blue is valued for its subtle, naturalistic hue and its stability in mixtures, making it a favorite for painting skies and seascapes. Its gentle, slightly greenish undertone distinguishes it from other blues, and it remains a staple in artists' palettes for landscape painting.
 #2C1608	oranges	Zinnwaldite Brown		A deep, rich brown inspired by the mineral zinnwaldite, a lithium-bearing mica found in granite pegmatites. Zinnwaldite brown evokes the earthy depths of geological formations, the natural beauty of mineral deposits, and the enduring strength of stone. This color is often used in design to convey solidity, natural richness, and the timeless appeal of earth tones.
 #2D383A	blues	Outer Space (Crayola)		A deep, mysterious gray that captures the infinite darkness of outer space. This color represents the unknown, exploration, and the vastness of the universe. Outer space's association with scientific discovery and cosmic wonder has made it popular in educational and space-themed design.
-#2D5DA1	blues	Sapphire (Crayola)		Crayola introduced this jewel-toned blue to evoke the richness of sapphire gemstones.
+#2D5DA1	blues	Sapphire (Crayola)	gemstone	Crayola introduced this jewel-toned blue to evoke the richness of sapphire gemstones.
 #2D68C4	blues	True Blue		A dependable medium blue often used in corporate logos to convey trust and loyalty.
 #2E2787	blues	Picotee Blue		A deep, rich blue inspired by the picotee pattern in flowers, where petals have a distinct border of color. This color represents the precision of natural patterns and the delicate beauty of floral design. Picotee blue's association with horticultural precision and natural elegance has made it popular in garden and floral design.
 #2E2D88	blues	Cosmic Cobalt		A soft medium blue reminiscent of a twilight horizon.
@@ -127,7 +127,7 @@ Hex	Category	Name	Environment	Description
 #30BFBF	blues	Maximum Blue Green		A soft medium blue reminiscent of clear skies.
 #317873	blues	Myrtle Green		A deep, rich green inspired by the myrtle plant, which has been associated with love, marriage, and victory since ancient times. This color represents tradition, fidelity, and the enduring bonds of relationships. Myrtle green's association with classical mythology and romantic symbolism has made it popular in wedding and ceremonial design.
 #318CE7	blues	Bleu De France		A vibrant medium blue reminiscent of clear skies.
-#319177	greens	Illuminating Emerald		A radiant emerald shade used in modern digital palettes for its gemstone brilliance.
+#319177	greens	Illuminating Emerald	gemstone	A radiant emerald shade used in modern digital palettes for its gemstone brilliance.
 #32127A	purples	Persian Indigo		A deep, rich indigo inspired by the traditional indigo dyeing techniques of Persia, which have been perfected over centuries of textile production. This color represents the deep wisdom of traditional crafts and the enduring beauty of natural dyes. Persian indigo's association with classical textile arts and cultural heritage has made it significant in heritage and artisanal design.
 #32174D	purples	Russian Violet		A soft dark purple reminiscent of lavender fields.
 #324AB2	blues	Violet-Blue		A vivid blend of blue and violet that stands between the two on the color wheel.
@@ -135,7 +135,7 @@ Hex	Category	Name	Environment	Description
 #333399	blues	Blue (Pigment)		Similar to deep ocean water, it's a soft medium blue.
 #33CC33	greens	Strong Lime Green		An electric lime hue that became popular in early arcade and computer graphics.
 #343434	neutrals	Jet		Named for the gemstone jet, once carved into Victorian mourning jewelry.
-#353839	neutrals	Onyx	ocean	A deep, rich black inspired by the onyx gemstone, which has been prized for its beauty and protective properties since ancient times. This color represents strength, protection, and the mysterious depths of the earth. Onyx's association with luxury and spiritual protection has made it popular in jewelry and high-end design.
+#353839	neutrals	Onyx	ocean,gemstone	A deep, rich black inspired by the onyx gemstone, which has been prized for its beauty and protective properties since ancient times. This color represents strength, protection, and the mysterious depths of the earth. Onyx's association with luxury and spiritual protection has made it popular in jewelry and high-end design.
 #355E3B	greens	Hunter Green		Traditional color of 19th-century English hunting attire, valued for woodland camouflage.
 #36454F	blues	Charcoal		A dark gray inspired by the sooty sticks used for sketching and drawing.
 #36747D	blues	Ming		A sophisticated blue-gray named after the Ming dynasty (1368-1644), one of China's most prosperous and culturally rich periods. This color represents the refined aesthetics and artistic achievements of Chinese culture. Ming's association with classical Chinese art and architecture has made it popular in traditional and contemporary Asian design.
@@ -186,7 +186,7 @@ Hex	Category	Name	Environment	Description
 #4F7942	greens	Fern Green		Reflects the deep color of mature fern fronds in shaded woods.
 #5072A7	blues	Blue Yonder		A hazy sky blue suggesting distant horizons.
 #507D2A	greens	Sap Green		Historically made from buckthorn berries, prized by painters for foliage.
-#50C878	greens	Emerald		A brilliant green pigment inspired by the precious gemstone emerald, which gets its color from trace amounts of chromium and vanadium. The synthetic pigment was developed in the 19th century as a safer alternative to the toxic emerald green (copper arsenite). This color captures the lush, vibrant quality of the gemstone and has been used extensively in decorative arts and fashion, particularly during the Art Nouveau period when emerald green was a signature color.
+#50C878	greens	Emerald	gemstone	A brilliant green pigment inspired by the precious gemstone emerald, which gets its color from trace amounts of chromium and vanadium. The synthetic pigment was developed in the 19th century as a safer alternative to the toxic emerald green (copper arsenite). This color captures the lush, vibrant quality of the gemstone and has been used extensively in decorative arts and fashion, particularly during the Art Nouveau period when emerald green was a signature color.
 #512888	purples	KSU Purple		Kansas State University's official color representing school pride.
 #5271FF	blues	Vantg Blue		A vivid digital blue valued for crisp contrast on screens.
 #536878	blues	Dark Electric Blue		A moody teal reminiscent of vintage electronics casings.
@@ -225,7 +225,7 @@ Hex	Category	Name	Environment	Description
 #664228	oranges	Van Dyke Brown		Rich brown pigment favored by painter Anthony van Dyck.
 #665D1E	yellows	Antique Bronze		A muted metallic gold suggestive of aged bronze statuary.
 #6699CC	blues	Blue-Gray (Crayola)		A mid-century Crayola blend of blue and gray popular in school art kits.
-#66DDAA	greens	Medium Aquamarine		A refreshing blue-green inspired by the aquamarine gemstone, which has been prized for its ocean-like color since ancient times. This color represents the clear, tropical waters of the Caribbean and the tranquility of marine environments. Medium aquamarine's association with water, healing, and communication has made it popular in jewelry and wellness design.
+#66DDAA	greens	Medium Aquamarine	gemstone	A refreshing blue-green inspired by the aquamarine gemstone, which has been prized for its ocean-like color since ancient times. This color represents the clear, tropical waters of the Caribbean and the tranquility of marine environments. Medium aquamarine's association with water, healing, and communication has made it popular in jewelry and wellness design.
 #66FF66	greens	Screamin' Green		Neon green introduced by Crayola in 1990 for bold art.
 #673147	purples	Old Mauve		A deep, aged purple that represents the faded elegance of the original mauve dye discovered by William Henry Perkin in 1856. This color represents the historical significance of synthetic dyes and the evolution of fashion technology. Old mauve's association with Victorian innovation and textile history has made it significant in heritage and museum contexts.
 #674846	reds	Rose Ebony		A dusky mauve-brown reminiscent of dried rose petals.
@@ -286,7 +286,7 @@ Hex	Category	Name	Environment	Description
 #7ED4E6	blues	Middle Blue		A classic Crayola hue from 1958 capturing the clarity of a midday sky.
 #7F00FF	purples	Violet (Color Wheel)		The standard violet at the edge of the visible spectrum, long linked to mysticism and creativity.
 #7F1734	purples	Claret		Similar to lavender fields, it's a vibrant dark purple.
-#7FFFD4	greens	Aquamarine		Named for seawater, this gem-like hue is the birthstone for March.
+#7FFFD4	greens	Aquamarine	gemstone	Named for seawater, this gem-like hue is the birthstone for March.
 #800000	reds	Maroon (Web)		A deep, rich red-brown that takes its name from the French word 'marron,' meaning chestnut. This color has been associated with academic institutions and military uniforms throughout history. Maroon's association with tradition, authority, and sophistication has made it popular in educational and corporate branding. The color's dignified, timeless quality makes it ideal for creating serious, professional environments.
 #800020	reds	Burgundy		Named for the famed wine region of France, this deep red suggests richness and refined taste.
 #800080	purples	Patriarch		A deep, authoritative purple that represents patriarchal leadership and traditional authority structures. This color symbolizes wisdom, experience, and the weight of historical responsibility. Patriarch's association with institutional power and traditional values has made it significant in formal and ceremonial contexts.
@@ -300,14 +300,14 @@ Hex	Category	Name	Environment	Description
 #826644	oranges	Raw Umber		A soft medium orange reminiscent of a glowing sunset.
 #838996	blues	Roman Silver		A muted medium blue reminiscent of clear skies.
 #841617	reds	OU Crimson Red		Similar to brick walls, it's a vibrant medium red.
-#841B2D	reds	Antique Ruby		Similar to brick walls, it's a vibrant medium red.
+#841B2D	reds	Antique Ruby	gemstone	Similar to brick walls, it's a vibrant medium red.
 #848482	neutrals	Battleship Grey		A muted, tarnished gray that mimics the appearance of aged silver metal. This color represents the passage of time, heritage, and the beauty of well-worn objects. Old silver's association with antique elegance and traditional craftsmanship has made it popular in heritage design and vintage aesthetics.
 #856088	purples	Chinese Violet		Similar to lavender fields, it's a muted medium purple.
 #856D4D	oranges	French Bistre		Similar to autumn leaves, it's a muted medium orange.
 #85754E	oranges	Gold Fusion		A modern metallic orange-gold with a subtle sheen, popular for automotive finishes.
 #8601AF	purples	Violet (RYB)		Similar to violet blossoms, it's a vibrant medium purple.
 #86608E	purples	French Lilac		A dignified, authoritative purple that represents ceremonial grandeur and institutional authority. This color symbolizes the weight of tradition, the dignity of official proceedings, and the solemnity of important occasions. Pomp and Power's association with formal ceremonies and institutional prestige has made it significant in governmental and ceremonial contexts.
-#86A1A9	blues	Tourmaline		A complex blue-gray named after the tourmaline gemstone, which is celebrated for its remarkable range of colors and its role in both ancient and modern jewelry. Tourmaline has been prized since antiquity in cultures from Egypt to China, believed to inspire creativity and protect against negative energy. The color tourmaline blue evokes the gemstone's rare blue-green varieties, which were once mistaken for sapphires and are now among the most valuable. This shade is associated with clarity, insight, and the mysterious beauty of natural minerals.
+#86A1A9	blues	Tourmaline	gemstone	A complex blue-gray named after the tourmaline gemstone, which is celebrated for its remarkable range of colors and its role in both ancient and modern jewelry. Tourmaline has been prized since antiquity in cultures from Egypt to China, believed to inspire creativity and protect against negative energy. The color tourmaline blue evokes the gemstone's rare blue-green varieties, which were once mistaken for sapphires and are now among the most valuable. This shade is associated with clarity, insight, and the mysterious beauty of natural minerals.
 #87421F	oranges	Fuzzy Wuzzy		Crayola coined this warm brown in 1998, named after the classic children's rhyme.
 #87CEEB	blues	Sky Blue		A vibrant light blue reminiscent of a clear sky.
 #87CEFA	blues	Light Sky Blue		A bright, cheerful blue that captures the pure color of a clear summer sky. This color represents openness, optimism, and infinite possibility. Light sky blue's association with good weather and positive outlooks has made it popular in travel, aviation, and outdoor recreation branding. The color's uplifting quality makes it ideal for creating bright, welcoming environments.
@@ -368,13 +368,13 @@ Hex	Category	Name	Environment	Description
 #9932CC	purples	Dark Orchid		Similar to royal velvet, it's a vibrant medium purple.
 #996515	oranges	Golden Brown		A vibrant medium orange reminiscent of a glowing sunset.
 #996666	reds	Copper Rose		Named after rose petals, this red has a muted medium look.
-#9966CC	purples	Amethyst		Similar to lavender fields, it's a soft light purple.
+#9966CC	purples	Amethyst	gemstone	Similar to lavender fields, it's a soft light purple.
 #997A8D	purples	Mountbatten Pink		A muted, dusty pink named after Lord Mountbatten, who used this color for his naval ships during World War II as a form of camouflage. This color represents strategic thinking, military innovation, and the practical application of color theory in warfare. Mountbatten pink's association with naval history and camouflage has made it significant in military and maritime contexts.
 #9AB973	greens	Olivine		A fresh, natural green inspired by the olivine mineral, which is found in igneous rocks and has been used in jewelry for centuries. This color represents the beauty of natural minerals and the connection between geology and human culture. Olivine's association with natural beauty and scientific discovery has made it popular in jewelry and educational design.
 #9ACD32	greens	Yellow-Green		A vibrant medium green reminiscent of pine forests.
-#9B111E	reds	Ruby Red		Similar to a fresh rose, it's a vibrant medium red.
+#9B111E	reds	Ruby Red	gemstone	Similar to a fresh rose, it's a vibrant medium red.
 #9BC4E2	blues	Pale Cerulean		Named after a twilight horizon, this blue has a soft light look.
-#9C2542	reds	Big Dip O’Ruby		Similar to brick walls, it's a vibrant medium red.
+#9C2542	reds	Big Dip O’Ruby	gemstone	Similar to brick walls, it's a vibrant medium red.
 #9C51B6	purples	Purple Plum		A rich, deep purple inspired by the plum fruit, which has been cultivated for its sweet taste and nutritional value for thousands of years. This color represents natural abundance, seasonal beauty, and the rich traditions of fruit cultivation. Purple Plum's association with natural food and seasonal harvests has made it popular in agricultural and food branding.
 #9C7C38	oranges	Metallic Sunburst		This orange evokes tangerine peel with its soft medium tone.
 #9CAF88	greens	Sage Green		A muted green with gray undertones inspired by the sage plant (Salvia), which has been revered for its medicinal and culinary properties for thousands of years. Sage has been used in traditional medicine, spiritual cleansing rituals, and as a symbol of wisdom and healing. Sage green's association with natural healing and peaceful wisdom has made it popular in wellness and heritage design.
@@ -411,7 +411,7 @@ Hex	Category	Name	Environment	Description
 #A7FC00	greens	Spring Bud		Named after fresh herbs, this green has a vibrant medium look.
 #A81C07	reds	Rufous		This red evokes ripe cherries with its vibrant medium tone.
 #A83731	reds	Sweet Brown		Similar to ripe cherries, it's a soft medium red.
-#A8C3BC	greens	Opal		A soft, iridescent blue-green inspired by the opal gemstone, which has been treasured for its play of colors and mystical properties since ancient times. This color represents creativity, inspiration, and the ever-changing beauty of natural phenomena. Opal's association with artistic expression and spiritual insight has made it popular in jewelry and creative design.
+#A8C3BC	greens	Opal	gemstone	A soft, iridescent blue-green inspired by the opal gemstone, which has been treasured for its play of colors and mystical properties since ancient times. This color represents creativity, inspiration, and the ever-changing beauty of natural phenomena. Opal's association with artistic expression and spiritual insight has made it popular in jewelry and creative design.
 #A8E4A0	greens	Granny Smith Apple		A crisp, tart green inspired by the Granny Smith apple, which was first cultivated in Australia in the 1860s by Maria Ann Smith. This apple's distinctive green color comes from its high chlorophyll content, even when ripe. The color represents freshness, health, and natural tartness, making it popular in food packaging and wellness design. Granny Smith green's association with crisp, refreshing flavors has made it a favorite in culinary and beverage branding.
 #A91101	reds	Rojo Spanish Red		Similar to brick walls, it's a vibrant medium red.
 #A9BA9D	greens	Laurel Green		Named after fresh herbs, this green has a muted light look.
@@ -452,7 +452,7 @@ Hex	Category	Name	Environment	Description
 #B57EDC	purples	Lavender (Floral)		A soft, fragrant purple inspired by the lavender flower (Lavandula), which has been cultivated in the Mediterranean for over 2,500 years. Lavender's soothing color represents tranquility, healing, and spiritual purification. The flower's essential oils have been used in aromatherapy and traditional medicine for centuries. This color's calming properties have made it popular in spa design, sleep products, and wellness branding.
 #B5B35C	yellows	Olive Green		This yellow evokes olive groves with its soft medium tone.
 #B7410E	oranges	Rust		This orange evokes autumn leaves with its vibrant medium tone.
-#B768A2	purples	Pearly Purple		A soft, iridescent purple that captures the delicate shimmer of pearl-like surfaces. This color represents elegance, refinement, and the subtle beauty of natural iridescence. Pearly purple's association with luxury and sophisticated beauty has made it popular in high-end fashion and cosmetic design.
+#B768A2	purples	Pearly Purple	gemstone	A soft, iridescent purple that captures the delicate shimmer of pearl-like surfaces. This color represents elegance, refinement, and the subtle beauty of natural iridescence. Pearly purple's association with luxury and sophisticated beauty has made it popular in high-end fashion and cosmetic design.
 #B784A7	purples	Opera Mauve		A sophisticated purple-pink that captures the elegant atmosphere of opera houses and classical performances. This color represents cultural refinement, artistic excellence, and the glamour of high society entertainment. Opera mauve's association with classical arts and luxury has made it popular in theatrical and cultural design.
 #B86D29	oranges	Liver (Dogs)		Named after a glowing sunset, this orange has a vibrant medium look.
 #B87333	oranges	Copper		Similar to a glowing sunset, it's a soft medium orange.
@@ -589,7 +589,7 @@ Hex	Category	Name	Environment	Description
 #DECC9C	oranges	Lion		A warm, golden beige inspired by the majestic lion's mane, which has been a symbol of strength, courage, and royalty throughout human history. This color represents leadership, nobility, and natural authority. Lion's association with power and dignity has made it popular in luxury branding and traditional design. The color's rich, warm quality evokes feelings of strength and confidence.
 #DF00FF	purples	Phlox / Psychedelic Purple		A bright, electric purple that captures the excitement and energy of 1960s counterculture and psychedelic art. This color represents artistic freedom, cultural revolution, and the exploration of consciousness. Psychedelic purple's association with creative expression and cultural innovation has made it popular in artistic and alternative design.
 #DF73FF	purples	Heliotrope		A bright purple-pink named after the heliotrope flower (Heliotropium), which was believed to turn toward the sun. The name comes from the Greek 'helios' (sun) and 'trope' (turn). This color represents devotion and faithfulness, as the flower was thought to follow the sun's path across the sky. Heliotrope's vibrant, romantic quality has made it popular in Victorian gardens and continues to appeal in modern floral design and fashion.
-#E0115F	purples	Ruby		Similar to royal velvet, it's a vibrant medium purple.
+#E0115F	purples	Ruby	gemstone	Similar to royal velvet, it's a vibrant medium purple.
 #E0B0FF	purples	Mauve		A soft, dusty purple named after the French word for the mallow flower. This color was accidentally discovered by 18-year-old chemistry student William Henry Perkin in 1856 while trying to synthesize quinine. Mauve became the first synthetic dye and revolutionized the textile industry, making purple accessible to everyone. The color's association with innovation and democratization of fashion has made it historically significant.
 #E0FFFF	blues	Light Cyan		A pale, ethereal blue-green that represents the purest form of light and clarity. This color captures the crystalline quality of clear water and the transparency of ice. Light cyan's association with purity, cleanliness, and technology has made it popular in medical and scientific applications. The color's cool, refreshing quality makes it ideal for creating a sense of space and cleanliness.
 #E12C2C	reds	Permanent Geranium Lake		Named after ripe cherries, this red has a vibrant medium look.
@@ -684,7 +684,7 @@ Hex	Category	Name	Environment	Description
 #F5DEB3	oranges	Wheat		A soft, golden tan inspired by ripe wheat fields at harvest time. Wheat color evokes the abundance of agriculture, the warmth of summer, and the timeless beauty of rural landscapes. This color is often used in design to convey natural warmth, rustic charm, and the comforting appeal of traditional craftsmanship.
 #F5E050	yellows	Minion Yellow		A bright, cheerful yellow inspired by the beloved Minion characters from the Despicable Me film series. This color represents playfulness, loyalty, and childlike joy. Minion yellow's association with fun, friendship, and positive energy has made it popular in children's products and entertainment branding.
 #F5F5DC	yellows	Beige		This yellow evokes ripe lemons with its soft light tone.
-#F5F5F5	neutrals	Cultured Pearl		A muted light neutral reminiscent of soft ash.
+#F5F5F5	neutrals	Cultured Pearl	gemstone	A muted light neutral reminiscent of soft ash.
 #F5FFFA	neutrals	Mint Cream		A soft, cool white with a subtle green tint inspired by the refreshing quality of mint. This color represents cleanliness, freshness, and natural purity. Mint cream's association with cool, soothing sensations has made it popular in healthcare and spa design, where it creates a sense of calm and cleanliness.
 #F653A6	purples	Magenta (Crayola)		A vibrant light purple reminiscent of violet blossoms.
 #F6ADC6	purples	Nadeshiko Pink		A soft, gentle pink named after the Nadeshiko (Dianthus superbus), the national flower of Japan. This color represents traditional Japanese femininity, grace, and the beauty of natural simplicity. Nadeshiko pink's association with Japanese culture and traditional values has made it popular in Asian design and cultural branding.
@@ -795,7 +795,7 @@ Hex	Category	Name	Environment	Description
 #FFBA00	oranges	Selective Yellow		This orange evokes tangerine peel with its vibrant medium tone.
 #FFBCD9	purples	Cotton Candy		A vibrant light purple reminiscent of lavender fields.
 #FFBD88	oranges	Macaroni And Cheese		A vibrant light orange reminiscent of a glowing sunset.
-#FFBF00	oranges	Amber		This orange evokes tangerine peel with its vibrant medium tone.
+#FFBF00	oranges	Amber	gemstone	This orange evokes tangerine peel with its vibrant medium tone.
 #FFC0CB	reds	Pink		A soft, gentle color that has been associated with femininity, romance, and tenderness throughout human history. This color represents love, compassion, and the gentle qualities of human nature. Pink's association with nurturing and emotional warmth has made it popular in healthcare, beauty, and romantic design.
 #FFC40C	yellows	Mikado Yellow		A bright, golden yellow named after the Japanese emperor (Mikado), representing the imperial color of Japan. This color has been associated with power, authority, and divine right in Japanese culture. Mikado yellow's association with Japanese heritage and imperial tradition has made it significant in cultural and ceremonial contexts.
 #FFC680	oranges	Buff		Named after a glowing sunset, this orange has a vibrant light look.
