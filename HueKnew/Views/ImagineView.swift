@@ -34,11 +34,15 @@ struct ImagineView: View {
     }
 
     private var promptView: some View {
-        VStack(alignment: .leading, spacing: 2) {
+        VStack(spacing: 2) {
             Text("Imagine colors in this scene:")
-            Text(currentEnvironment).bold()
+            Text(currentEnvironment)
+                .font(.title3)
+                .bold()
         }
         .font(.subheadline)
+        .frame(maxWidth: .infinity)
+        .multilineTextAlignment(.center)
     }
 
     private func addColor(_ text: String) {
