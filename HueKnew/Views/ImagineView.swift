@@ -139,8 +139,6 @@ struct ColorPill: View {
             Text(name)
                 .font(.caption)
                 .foregroundColor(.primary)
-                .lineLimit(1)
-                .truncationMode(.tail)
         }
         .padding(6)
         .background(Color(.systemGray5))
