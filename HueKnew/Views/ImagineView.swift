@@ -70,11 +70,10 @@ struct ImagineView: View {
                 }
 
             if !enteredColors.isEmpty {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        ForEach(enteredColors, id: \.self) { name in
-                            ColorPill(name: name, info: colorDatabase.color(named: name))
-                        }
+                let columns = [GridItem(.adaptive(minimum: 80), spacing: 8)]
+                LazyVGrid(columns: columns, alignment: .leading, spacing: 8) {
+                    ForEach(enteredColors, id: \.self) { name in
+                        ColorPill(name: name, info: colorDatabase.color(named: name))
                     }
                 }
             }
@@ -106,6 +105,8 @@ struct ImagineView: View {
                     Text("You thought of some interesting colors we didn't think of for this environment: \(unusualColors.joined(separator: ", "))")
                         .font(.footnote)
                         .foregroundColor(.orange)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
 
                 ForEach(suggestedColors, id: \.id) { info in
