@@ -5,16 +5,16 @@ struct ColorInfoPanel: View {
     let onInfo: () -> Void
 
     var body: some View {
-        HStack(spacing: 12) {
-            Circle()
-                .fill(colorInfo.color)
-                .frame(width: 32, height: 32)
-                .overlay(Circle().stroke(Color.white, lineWidth: 1))
-            Text(colorInfo.name)
-                .font(.body)
-                .foregroundColor(.primary)
-            Spacer()
-            Button(action: onInfo) {
+        Button(action: onInfo) {
+            HStack(spacing: 12) {
+                Circle()
+                    .fill(colorInfo.color)
+                    .frame(width: 32, height: 32)
+                    .overlay(Circle().stroke(Color.white, lineWidth: 1))
+                Text(colorInfo.name)
+                    .font(.body)
+                    .foregroundColor(.primary)
+                Spacer()
                 Image(systemName: "info.circle")
                     .font(.title3)
             }

@@ -154,7 +154,7 @@ class ColorDatabase: ObservableObject {
                 hexIndex[tsvColor.hex.lowercased()] = info
                 colorEnvironmentIndex[tsvColor.name.lowercased()] = colorEnvironments
                 for env in colorEnvironments {
-                    environmentIndex[env, default: []].append(info)
+                    environmentIndex[env.lowercased(), default: []].append(info)
                 }
             }
             
@@ -180,14 +180,14 @@ class ColorDatabase: ObservableObject {
 
                     let colorInfo1 = ColorInfo(
                         name: color1.name,
-                        hexValue: color1.hex,
+                        hexValue: "#" + color1.hex,
                         description: color1.description,
                         category: mapStringToCategory(color1.category)
                     )
 
                     let colorInfo2 = ColorInfo(
                         name: color2.name,
-                        hexValue: color2.hex,
+                        hexValue: "#" + color2.hex,
                         description: color2.description,
                         category: mapStringToCategory(color2.category)
                     )
@@ -208,8 +208,8 @@ class ColorDatabase: ObservableObject {
     }
 
     private func generateComparisonNotes(color1: TSVColor, color2: TSVColor) -> String {
-        let info1 = ColorInfo(name: color1.name, hexValue: color1.hex, description: color1.description, category: mapStringToCategory(color1.category))
-        let info2 = ColorInfo(name: color2.name, hexValue: color2.hex, description: color2.description, category: mapStringToCategory(color2.category))
+        let info1 = ColorInfo(name: color1.name, hexValue: "#" + color1.hex, description: color1.description, category: mapStringToCategory(color1.category))
+        let info2 = ColorInfo(name: color2.name, hexValue: "#" + color2.hex, description: color2.description, category: mapStringToCategory(color2.category))
 
         let comparisons1 = getColorComparisons(color1: info1, color2: info2)
         let comparisons2 = getColorComparisons(color1: info2, color2: info1)
@@ -325,7 +325,7 @@ extension ColorDatabase {
         return tsvColors.map { tsvColor in
             ColorInfo(
                 name: tsvColor.name,
-                hexValue: tsvColor.hex,
+                hexValue: "#" + tsvColor.hex,
                 description: tsvColor.description,
                 category: mapStringToCategory(tsvColor.category)
             )
@@ -577,7 +577,7 @@ extension ColorDatabase {
     }
 
     func environments(forColor name: String) -> [String] {
-        colorEnvironmentIndex[name.lowercased()] ?? []
+        return (colorEnvironmentIndex[name.lowercased()] ?? []).map { $0.lowercased() }
     }
 
     func availableEnvironments() -> [String] {

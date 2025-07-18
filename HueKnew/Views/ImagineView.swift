@@ -123,25 +123,42 @@ struct ImagineView: View {
             .padding(.top)
 
             if showResults {
+                if suggestedColors.isEmpty {
+                    Text("You've named all the colors we could think of for this environment! Try another one.")
+                        .font(.footnote)
+                        .foregroundColor(.init(red: 0.0, green: 0.5, blue: 0.0))
+                    Button("New Environment") {
+                        currentEnvironment = colorDatabase.availableEnvironments().randomElement() ?? "forest"
+                        enteredColors = []
+                        showResults = false
+                    }
+                    .buttonStyle(.bordered)
+                    .padding(.top)
+                } else {
+                    Text("Here are more suggestions:")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+
+                    ScrollView {
+                        LazyVStack(spacing: 8) {
+                            ForEach(suggestedColors, id: \.id) { info in
+                                ColorInfoPanel(colorInfo: info) {
+                                    selectedColorInfo = info
+                                    showColorDetail = true
+                                }
+                            }
+                        }
+                    }
+                    .frame(maxHeight: 300)
+                }
+
                 if !unusualColors.isEmpty {
-                    Text("You thought of some interesting colors we didn't think of for this environment: \(unusualColors.joined(separator: ", "))")
+                    Text("You thought of some colors we didn't: \(unusualColors.joined(separator: ", "))")
                         .font(.footnote)
                         .foregroundColor(.orange)
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
-
-                ScrollView {
-                    LazyVStack(spacing: 8) {
-                        ForEach(suggestedColors, id: \.id) { info in
-                            ColorInfoPanel(colorInfo: info) {
-                                selectedColorInfo = info
-                                showColorDetail = true
-                            }
-                        }
-                    }
-                }
-                .frame(maxHeight: 300)
             }
 
             Spacer()
