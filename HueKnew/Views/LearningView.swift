@@ -202,7 +202,7 @@ struct ColorDisplayCard: View {
             ),
             comparisonColor: ColorInfo(
                 name: "Indian Yellow",
-                hexValue: "#E3B505",
+                hexValue: "E3B505",
                 description: "A rich, warm yellow with orange undertones",
                 category: .yellows
             ),

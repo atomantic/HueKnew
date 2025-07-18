@@ -26,5 +26,5 @@ struct ColorInfoPanel: View {
 }
 
 #Preview {
-    ColorInfoPanel(colorInfo: ColorInfo(name: "Red", hexValue: "#FF0000", description: "", category: .reds)) {}
+    ColorInfoPanel(colorInfo: ColorInfo(name: "Red", hexValue: "FF0000", description: "", category: .reds)) {}
 }

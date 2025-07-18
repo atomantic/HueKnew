@@ -81,9 +81,34 @@ class ColorDatabase: ObservableObject {
     private var colorEnvironmentIndex: [String: [String]] = [:]
     private var nameIndex: [String: ColorInfo] = [:]
     private var hexIndex: [String: ColorInfo] = [:]
+    private var environments: [String: [String]] = [:]
 
     private init() {
+        loadEnvironments()
         loadColorsFromTSV()
+    }
+
+    func loadEnvironments() {
+        guard let url = Bundle.main.url(forResource: "environments", withExtension: "tsv") else {
+            Logger.error("Could not find environments.tsv in bundle")
+            return
+        }
+
+        do {
+            let content = try String(contentsOf: url, encoding: .utf8)
+            let lines = content.components(separatedBy: .newlines)
+
+            for line in lines where !line.isEmpty {
+                let components = line.split(separator: "\t").map { String($0) }
+                guard components.count == 2 else { continue }
+                let environmentName = components[0]
+                let colorHexes = components[1].split(separator: ",").map { String($0) }
+                environments[environmentName] = colorHexes
+            }
+            Logger.info("Successfully loaded \(environments.count) environments")
+        } catch {
+            Logger.error("Failed to load environments from TSV: \(error.localizedDescription)")
+        }
     }
 
     func loadColorsFromTSV() {
@@ -99,41 +124,36 @@ class ColorDatabase: ObservableObject {
             // Skip header line
             for line in lines.dropFirst() where !line.isEmpty {
                 let components = TSVParser.parseTSVLine(line)
-                guard components.count >= 4 else { continue }
+                guard components.count >= 3 else { continue }
 
-                let environmentString: String
-                let description: String
-                if components.count >= 5 {
-                    environmentString = components[3]
-                    description = components[4]
-                } else {
-                    environmentString = ""
-                    description = components[3]
+                let hex = components[0]
+                let category = components[1]
+                let name = components[2]
+                let description = components.count > 3 ? components[3] : ""
+
+                let colorEnvironments = environments.compactMap { (env, hexes) -> String? in
+                    hexes.contains(hex) ? env : nil
                 }
 
-                let envParts = environmentString
-                    .split(separator: ",")
-                    .map { $0.trimmingCharacters(in: .whitespaces) }
-
                 let tsvColor = TSVColor(
-                    hex: components[0],
-                    category: components[1],
-                    name: components[2],
-                    environment: envParts,
+                    hex: hex,
+                    category: category,
+                    name: name,
+                    environment: colorEnvironments,
                     description: description
                 )
                 tsvColors.append(tsvColor)
 
                 let info = ColorInfo(
                     name: tsvColor.name,
-                    hexValue: tsvColor.hex,
+                    hexValue: "#" + tsvColor.hex,
                     description: tsvColor.description,
                     category: mapStringToCategory(tsvColor.category)
                 )
                 nameIndex[tsvColor.name.lowercased()] = info
                 hexIndex[tsvColor.hex.lowercased()] = info
-                colorEnvironmentIndex[tsvColor.name.lowercased()] = envParts.map { String($0) }
-                for env in envParts.map({ $0.lowercased() }) {
+                colorEnvironmentIndex[tsvColor.name.lowercased()] = colorEnvironments
+                for env in colorEnvironments {
                     environmentIndex[env, default: []].append(info)
                 }
             }

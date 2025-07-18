@@ -12,7 +12,7 @@ final class ColorPairTests: XCTestCase {
         super.setUp()
         colorInfo1 = ColorInfo(
             name: "Red",
-            hexValue: "#FF0000",
+            hexValue: "FF0000",
             description: "Pure red color",
             category: .reds
         )
@@ -96,7 +96,7 @@ extension ColorPairTests {
     func testColorEquality() {
         let colorInfo1Copy = ColorInfo(
             name: "Red",
-            hexValue: "#FF0000",
+            hexValue: "FF0000",
             description: "Pure red color",
             category: .reds
         )
@@ -135,13 +135,13 @@ extension ColorPairTests {
         // Create two similar colors for advanced difficulty
         let color1 = ColorInfo(
             name: "Light Red",
-            hexValue: "#FF1111",
+            hexValue: "FF1111",
             description: "Light red",
             category: .reds
         )
         let color2 = ColorInfo(
             name: "Slightly Different Red",
-            hexValue: "#FF0000",
+            hexValue: "FF0000",
             description: "Slightly different red",
             category: .reds
         )
