@@ -5,18 +5,34 @@ struct ImagineView: View {
     @State private var inputText = ""
     @State private var enteredColors: [String] = []
     @State private var showResults = false
+    @State private var selectedColorInfo: ColorInfo?
+    @State private var showColorDetail = false
+
+    private let aliasMap: [String: String] = ["ochre": "Ocher (Ochre)"]
 
     private let colorDatabase = ColorDatabase.shared
 
     private var autocompleteSuggestions: [String] {
         guard !inputText.isEmpty else { return [] }
         let enteredSet = Set(enteredColors.map { $0.lowercased() })
-        let all = colorDatabase.getAllColors().map { $0.name }
-        return all.filter { $0.lowercased().hasPrefix(inputText.lowercased()) &&
-            !enteredSet.contains($0.lowercased()) }
-            .sorted()
-            .prefix(5)
-            .map { $0 }
+        let lowerInput = inputText.lowercased()
+
+        var suggestions: [String] = []
+
+        // Alias matching (e.g. "ochre" -> "Ocher (Ochre)")
+        if let alias = aliasMap.first(where: { lowerInput.hasPrefix($0.key) })?.value,
+           !enteredSet.contains(alias.lowercased()) {
+            suggestions.append(alias)
+        }
+
+        let allNames = colorDatabase.getAllColors().map { $0.name }
+        let matches = allNames.filter {
+            $0.lowercased().hasPrefix(lowerInput) && !enteredSet.contains($0.lowercased())
+        }
+
+        suggestions.append(contentsOf: matches)
+
+        return Array(Set(suggestions)).sorted().prefix(5).map { $0 }
     }
 
     private var environmentColors: [ColorInfo] {
@@ -82,18 +98,21 @@ struct ImagineView: View {
             }
 
             if !autocompleteSuggestions.isEmpty {
-                VStack(alignment: .leading) {
-                    ForEach(autocompleteSuggestions, id: \.self) { suggestion in
-                        Button(action: {
-                            enteredColors.append(suggestion)
-                            inputText = ""
-                        }) {
-                            Text(suggestion)
-                                .padding(.vertical, 4)
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 0) {
+                        ForEach(autocompleteSuggestions, id: \.self) { suggestion in
+                            Button(action: {
+                                enteredColors.append(suggestion)
+                                inputText = ""
+                            }) {
+                                Text(suggestion)
+                                    .padding(.vertical, 4)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
                         }
                     }
                 }
+                .frame(maxHeight: 120)
                 .background(Color(.systemGray6))
             }
 
@@ -112,9 +131,17 @@ struct ImagineView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
 
-                ForEach(suggestedColors, id: \.id) { info in
-                    ColorInfoPanel(colorInfo: info) {}
+                ScrollView {
+                    LazyVStack(spacing: 8) {
+                        ForEach(suggestedColors, id: \.id) { info in
+                            ColorInfoPanel(colorInfo: info) {
+                                selectedColorInfo = info
+                                showColorDetail = true
+                            }
+                        }
+                    }
                 }
+                .frame(maxHeight: 300)
             }
 
             Spacer()
@@ -123,6 +150,11 @@ struct ImagineView: View {
         .onAppear {
             if currentEnvironment.isEmpty {
                 currentEnvironment = colorDatabase.availableEnvironments().randomElement() ?? "forest"
+            }
+        }
+        .sheet(isPresented: $showColorDetail) {
+            if let colorInfo = selectedColorInfo {
+                ColorDetailView(color: colorInfo)
             }
         }
     }
