@@ -72,8 +72,7 @@ struct ImagineView: View {
                 }
 
             if !enteredColors.isEmpty {
-                let columns = [GridItem(.adaptive(minimum: 80), spacing: 8)]
-                LazyVGrid(columns: columns, alignment: .leading, spacing: 8) {
+                FlowLayout(spacing: 8) {
                     ForEach(enteredColors, id: \.self) { name in
                         ColorPill(name: name, info: colorDatabase.color(named: name))
                     }
@@ -139,6 +138,8 @@ struct ColorPill: View {
             Text(name)
                 .font(.caption)
                 .foregroundColor(.primary)
+                .lineLimit(1)
+                .fixedSize()
         }
         .padding(6)
         .background(Color(.systemGray5))
