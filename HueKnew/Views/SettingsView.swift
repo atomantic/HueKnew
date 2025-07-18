@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @Environment(\.dismiss) private var dismiss
     @StateObject private var audioManager = AudioManager.shared
     @State private var showingResetAlert = false
     @State private var showingVisionTest = false
@@ -25,8 +24,7 @@ struct SettingsView: View {
     @Bindable var gameModel: GameModel
     
     var body: some View {
-        NavigationView {
-            Form {
+        Form {
                 Section("Audio & Feedback") {
                     Toggle("Sound Effects", isOn: $audioManager.soundEnabled)
                     Toggle("Vibration", isOn: $audioManager.vibrationEnabled)
@@ -73,17 +71,10 @@ struct SettingsView: View {
                     Link("Terms of Service", destination: URL(string: "https://raw.githubusercontent.com/atomantic/HueKnew/refs/heads/main/TERMS_OF_USE.md")!)
                         .foregroundColor(.blue)
                 }
-            }
-            .navigationTitle("Settings")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
-                        dismiss()
-                    }
-                }
-            }
-            .alert("Reset Progress", isPresented: $showingResetAlert) {
+        }
+        .navigationTitle("Settings")
+        .navigationBarTitleDisplayMode(.inline)
+        .alert("Reset Progress", isPresented: $showingResetAlert) {
                 Button("Cancel", role: .cancel) { }
                 Button("Reset", role: .destructive) {
                     gameModel.resetProgress()
@@ -91,12 +82,11 @@ struct SettingsView: View {
             } message: {
                 Text("This will reset all your game progress including score, level, streak, and mastered colors. This action cannot be undone.")
             }
-            .sheet(isPresented: $showingVisionTest) {
+        .sheet(isPresented: $showingVisionTest) {
                 ColorVisionTestView { result in
                     gameModel.setColorVisionDeficiency(result)
                 }
             }
-        }
     }
 }
 

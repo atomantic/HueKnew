@@ -9,7 +9,6 @@ import SwiftUI
 
 struct GameView: View {
     @Bindable var gameModel: GameModel
-    @State private var showingColorDictionary = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -116,9 +115,6 @@ struct GameView: View {
                 }
             }
             .padding()
-            .sheet(isPresented: $showingColorDictionary) {
-                ColorDictionaryView()
-            }
         }
     }
     
