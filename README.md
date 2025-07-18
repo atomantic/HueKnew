@@ -4,10 +4,9 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Hue Knew 🎨](#hue-knew-)
-  - [🎯 Goal](#goal)
-  - [📸 Screenshots](#screenshots)
-  - [📔 Game Overview](#-game-overview)
+  - [🎯 Goal](#-goal)
+  - [📸 Screenshots](#-screenshots)
+  - [🎯 Game Overview](#-game-overview)
     - [📚 Learning Phase](#-learning-phase)
     - [🎮 Challenge Phase](#-challenge-phase)
   - [🌟 Features](#-features)
@@ -86,6 +85,7 @@ The game uses a progressive learning approach with two main phases:
 - **Streak tracking**: Monitor your learning momentum
 - **Color vision test**: Optional accessibility test to adapt challenges
 - **Category-based learning**: Focus on specific color families (blues, yellows, reds, etc.)
+- **Imagine environments**: Brainstorm colors for scenes like forests or deserts
 
 ## 🎨 Color Categories
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum ActiveView {
-    case home, camera, settings, catalog
+    case home, camera, settings, catalog, imagine
 }
 
 struct FooterView: View {
@@ -16,6 +16,7 @@ struct FooterView: View {
     let onCamera: () -> Void
     let onSettings: () -> Void
     let onCatalog: () -> Void
+    let onImagine: () -> Void
     var showCamera: Bool = true
     @Binding var activeView: ActiveView
     
@@ -65,6 +66,20 @@ struct FooterView: View {
 
             Spacer()
 
+            // Imagine button
+            Button(action: onImagine) {
+                VStack {
+                    Image(systemName: "sparkles")
+                        .font(.title2)
+                    Text("Imagine")
+                        .font(.caption)
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .foregroundColor(activeView == .imagine ? .blue : .primary)
+
+            Spacer()
+
             // Settings button
             Button(action: onSettings) {
                 VStack {
@@ -89,6 +104,7 @@ struct FooterView: View {
         onCamera: { print("Camera tapped") },
         onSettings: { print("Settings tapped") },
         onCatalog: { print("Catalog tapped") },
+        onImagine: {},
         showCamera: true,
         activeView: .constant(.home)
     )

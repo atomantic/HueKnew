@@ -67,6 +67,7 @@ struct TSVColor {
     let hex: String
     let category: String
     let name: String
+    let environment: [String]
     let description: String
 }
 
@@ -76,6 +77,9 @@ class ColorDatabase: ObservableObject {
     private var tsvColors: [TSVColor] = []
     private var colorPairs: [ColorPair] = []
     private var closestColorCache: [String: ColorInfo] = [:]
+    private var environmentIndex: [String: [ColorInfo]] = [:]
+    private var nameIndex: [String: ColorInfo] = [:]
+    private var hexIndex: [String: ColorInfo] = [:]
 
     private init() {
         loadColorsFromTSV()
@@ -90,19 +94,46 @@ class ColorDatabase: ObservableObject {
         do {
             let content = try String(contentsOf: url, encoding: .utf8)
             let lines = content.components(separatedBy: .newlines)
-            
+
             // Skip header line
             for line in lines.dropFirst() where !line.isEmpty {
                 let components = TSVParser.parseTSVLine(line)
                 guard components.count >= 4 else { continue }
-                
+
+                let environmentString: String
+                let description: String
+                if components.count >= 5 {
+                    environmentString = components[3]
+                    description = components[4]
+                } else {
+                    environmentString = ""
+                    description = components[3]
+                }
+
+                let envParts = environmentString
+                    .split(separator: ",")
+                    .map { $0.trimmingCharacters(in: .whitespaces) }
+
                 let tsvColor = TSVColor(
                     hex: components[0],
                     category: components[1],
                     name: components[2],
-                    description: components[3]
+                    environment: envParts,
+                    description: description
                 )
                 tsvColors.append(tsvColor)
+
+                let info = ColorInfo(
+                    name: tsvColor.name,
+                    hexValue: tsvColor.hex,
+                    description: tsvColor.description,
+                    category: mapStringToCategory(tsvColor.category)
+                )
+                nameIndex[tsvColor.name.lowercased()] = info
+                hexIndex[tsvColor.hex.lowercased()] = info
+                for env in envParts.map({ $0.lowercased() }) {
+                    environmentIndex[env, default: []].append(info)
+                }
             }
             
             Logger.info("Successfully loaded \(tsvColors.count) colors from TSV")
@@ -508,6 +539,19 @@ extension ColorDatabase {
         let brightDiff = abs(hsb1.brightness - hsb2.brightness)
         let weightedDifference = (normalizedHueDiff * 0.6) + (satDiff * 0.25) + (brightDiff * 0.15)
         return weightedDifference * 100.0
+    }
+
+    // MARK: - Index Lookup Helpers
+    func colors(forEnvironment environment: String) -> [ColorInfo] {
+        environmentIndex[environment.lowercased()] ?? []
+    }
+
+    func color(named name: String) -> ColorInfo? {
+        nameIndex[name.lowercased()]
+    }
+
+    func color(hex: String) -> ColorInfo? {
+        hexIndex[hex.lowercased()]
     }
 }
 
