@@ -10,8 +10,10 @@ struct ImagineView: View {
 
     private var autocompleteSuggestions: [String] {
         guard !inputText.isEmpty else { return [] }
+        let enteredSet = Set(enteredColors.map { $0.lowercased() })
         let all = colorDatabase.getAllColors().map { $0.name }
-        return all.filter { $0.lowercased().hasPrefix(inputText.lowercased()) }
+        return all.filter { $0.lowercased().hasPrefix(inputText.lowercased()) &&
+            !enteredSet.contains($0.lowercased()) }
             .sorted()
             .prefix(5)
             .map { $0 }
@@ -137,6 +139,8 @@ struct ColorPill: View {
             Text(name)
                 .font(.caption)
                 .foregroundColor(.primary)
+                .lineLimit(1)
+                .truncationMode(.tail)
         }
         .padding(6)
         .background(Color(.systemGray5))
