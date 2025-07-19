@@ -113,7 +113,11 @@ struct CameraColorPickerView: View {
     }
 
     private var currentImage: UIImage? {
-        if mode == .ar { return liveFrame } else { return image }
+        if mode == .ar {
+            return liveFrame?.normalizedOrientation()
+        } else {
+            return image?.normalizedOrientation()
+        }
     }
 
     private func updateColor(at location: CGPoint, in geo: GeometryProxy) {
@@ -322,7 +326,7 @@ struct LiveCameraView: UIViewControllerRepresentable {
         init(_ parent: LiveCameraView) { self.parent = parent }
         func didOutput(image: UIImage) {
             DispatchQueue.main.async {
-                self.parent.frame = image
+                self.parent.frame = image.normalizedOrientation()
             }
         }
     }
