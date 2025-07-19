@@ -415,8 +415,8 @@ extension ColorDatabase {
         
         // Compare saturation (relative to color1)
         let satDiff = hsb1.saturation - hsb2.saturation
-        if abs(satDiff) > 0.05 {
-            if abs(satDiff) > 0.1 {
+        if abs(satDiff) > 0.03 {
+            if abs(satDiff) > 0.07 {
                 comparisons.append(satDiff > 0 ? "More Saturated" : "Less Saturated")
             } else {
                 comparisons.append(satDiff > 0 ? "Slightly More Saturated" : "Slightly Less Saturated")
@@ -426,8 +426,8 @@ extension ColorDatabase {
         
         // Compare brightness (relative to color1)
         let brightDiff = hsb1.brightness - hsb2.brightness
-        if abs(brightDiff) > 0.05 {
-            if abs(brightDiff) > 0.1 {
+        if abs(brightDiff) > 0.03 {
+            if abs(brightDiff) > 0.07 {
                 comparisons.append(brightDiff > 0 ? "Brighter" : "Darker")
             } else {
                 comparisons.append(brightDiff > 0 ? "Slightly Brighter" : "Slightly Darker")
