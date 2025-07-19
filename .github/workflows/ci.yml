@@ -1,11 +1,24 @@
-name: CI – Build & Test
+name: CI/CD Pipeline
 
 on:
   pull_request:
+  push:
+    branches:
+      - main
+      - testflight
+      - 'codex/**'
+
+env:
+  IPHONEOS_DEPLOYMENT_TARGET: ${{ vars.IPHONEOS_DEPLOYMENT_TARGET }}
+  TEAM_ID:                  ${{ secrets.TEAM_ID }}
+  APPSTORE_API_KEY_ID:      ${{ secrets.APPSTORE_API_KEY_ID }}
+  APPSTORE_ISSUER_ID:       ${{ secrets.APPSTORE_ISSUER_ID }}
+  APPSTORE_API_PRIVATE_KEY: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
 
 jobs:
-  build-and-test:
+  ci:
     runs-on: macos-latest
+    name: Build & Test
 
     steps:
       - name: Checkout repository
@@ -46,3 +59,72 @@ jobs:
             IPHONEOS_DEPLOYMENT_TARGET=18.2 \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO
+
+  cd:
+    runs-on: macos-latest
+    name: Build and Deploy to TestFlight
+    needs: ci
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/testflight' || startsWith(github.ref, 'refs/heads/codex/'))
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: 'latest-stable'
+
+      - name: Create ASC key file
+        run: |
+          cat > "$GITHUB_WORKSPACE/AuthKey.p8" <<EOF
+          ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
+          EOF
+          chmod 600 "$GITHUB_WORKSPACE/AuthKey.p8"
+
+      - name: Archive iOS App (unsigned)
+        run: |
+          xcodebuild \
+            -project HueKnew.xcodeproj \
+            -scheme HueKnew \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath build/HueKnew.xcarchive \
+            IPHONEOS_DEPLOYMENT_TARGET="$IPHONEOS_DEPLOYMENT_TARGET" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            archive
+
+      - name: Create exportOptions.plist
+        run: |
+          cat > exportOptions.plist <<EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+            "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key><string>app-store-connect</string>
+            <key>teamID</key><string>$TEAM_ID</string>
+            <key>signingStyle</key><string>automatic</string>
+          </dict>
+          </plist>
+          EOF
+
+      - name: Export .ipa (automatic signing)
+        run: |
+          xcodebuild -exportArchive \
+            -archivePath build/HueKnew.xcarchive \
+            -exportOptionsPlist exportOptions.plist \
+            -exportPath build/export \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$GITHUB_WORKSPACE/AuthKey.p8" \
+            -authenticationKeyID "${{ secrets.APPSTORE_API_KEY_ID }}" \
+            -authenticationKeyIssuerID "${{ secrets.APPSTORE_ISSUER_ID }}"
+
+      - name: Upload to TestFlight
+        uses: apple-actions/upload-testflight-build@v3
+        with:
+          app-path: 'build/export/HueKnew.ipa'
+          issuer-id: ${{ secrets.APPSTORE_ISSUER_ID }}
+          api-key-id: ${{ secrets.APPSTORE_API_KEY_ID }}
+          api-private-key: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
