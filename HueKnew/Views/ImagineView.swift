@@ -1,71 +1,8 @@
 import SwiftUI
 
 struct ImagineView: View {
-    @State private var currentEnvironment: String = ""
-    @State private var inputText = ""
-    @State private var enteredColors: [String] = []
-    @State private var showResults = false
-    @State private var selectedColorInfo: ColorInfo?
-    @State private var showColorDetail = false
-
-    private let aliasMap: [String: String] = ["ochre": "Ocher (Ochre)"]
-
-    private let colorDatabase = ColorDatabase.shared
-
-    private var autocompleteSuggestions: [String] {
-        guard !inputText.isEmpty else { return [] }
-        let enteredSet = Set(enteredColors.map { $0.lowercased() })
-        let lowerInput = inputText.lowercased()
-
-        var suggestions: [String] = []
-
-        // Alias matching (e.g. "ochre" -> "Ocher (Ochre)")
-        if let alias = aliasMap.first(where: { lowerInput.hasPrefix($0.key) })?.value,
-           !enteredSet.contains(alias.lowercased()) {
-            suggestions.append(alias)
-        }
-
-        let allNames = colorDatabase.getAllColors().map { $0.name }
-        let matches = allNames.filter {
-            $0.lowercased().hasPrefix(lowerInput) && !enteredSet.contains($0.lowercased())
-        }
-
-        suggestions.append(contentsOf: matches)
-
-        return Array(Set(suggestions)).sorted().prefix(5).map { $0 }
-    }
-
-    private var environmentColors: [ColorInfo] {
-        colorDatabase.colors(forEnvironment: currentEnvironment)
-    }
-
-    private var suggestedColors: [ColorInfo] {
-        let enteredSet = Set(enteredColors.map { $0.lowercased() })
-        return environmentColors.filter { !enteredSet.contains($0.name.lowercased()) }
-    }
-
-    private var unusualColors: [String] {
-        let envSet = Set(environmentColors.map { $0.name.lowercased() })
-        return enteredColors.filter { !envSet.contains($0.lowercased()) }
-    }
-
-    private var promptView: some View {
-        VStack(spacing: 2) {
-            Text("Imagine colors in this scene:")
-            Text(currentEnvironment)
-                .font(.title3)
-                .bold()
-        }
-        .font(.subheadline)
-        .frame(maxWidth: .infinity)
-        .multilineTextAlignment(.center)
-    }
-
-    private func addColor(_ text: String) {
-        let trimmed = text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return }
-        enteredColors.append(trimmed)
-    }
+    @StateObject private var viewModel = ImagineViewModel()
+    @FocusState private var isInputActive: Bool
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -74,36 +11,57 @@ struct ImagineView: View {
                 .bold()
                 .frame(maxWidth: .infinity, alignment: .center)
 
-            promptView
-            TextField("Enter color", text: $inputText)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .onSubmit {
-                    addColor(inputText)
-                    inputText = ""
-                }
-                .onChange(of: inputText) { newValue in
-                    if newValue.contains(",") {
-                        let parts = newValue.split(separator: ",")
-                        parts.dropLast().forEach { part in addColor(String(part)) }
-                        inputText = parts.last.map(String.init) ?? ""
-                    }
-                }
+            VStack(spacing: 2) {
+                Text("Imagine colors in this scene:")
+                Text(viewModel.currentEnvironment)
+                    .font(.title3)
+                    .bold()
+            }
+            .font(.subheadline)
+            .frame(maxWidth: .infinity)
+            .multilineTextAlignment(.center)
 
-            if !enteredColors.isEmpty {
+            if !viewModel.isDone {
+                VStack(spacing: 12) {
+                    TextField("Enter color", text: $viewModel.inputText)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .focused($isInputActive)
+                        .onSubmit {
+                            viewModel.addColor(viewModel.inputText)
+                            viewModel.inputText = ""
+                        }
+                        .onChange(of: viewModel.inputText) { newValue in
+                            if newValue.contains(",") {
+                                let parts = newValue.split(separator: ",")
+                                parts.dropLast().forEach { part in viewModel.addColor(String(part)) }
+                                viewModel.inputText = parts.last.map(String.init) ?? ""
+                            }
+                        }
+                    
+                    Button("Done") {
+                        viewModel.handleDoneButton()
+                        isInputActive = false
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .disabled(viewModel.enteredColors.isEmpty)
+                }
+            }
+
+            if !viewModel.enteredColors.isEmpty {
                 FlowLayout(spacing: 8) {
-                    ForEach(enteredColors, id: \.self) { name in
-                        ColorPill(name: name, info: colorDatabase.color(named: name))
+                    ForEach(viewModel.enteredColors, id: \.self) { name in
+                        ColorPill(name: name, info: viewModel.colorDatabase.color(named: name))
                     }
                 }
             }
 
-            if !autocompleteSuggestions.isEmpty {
+            if !viewModel.autocompleteSuggestions.isEmpty {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 0) {
-                        ForEach(autocompleteSuggestions, id: \.self) { suggestion in
+                        ForEach(viewModel.autocompleteSuggestions, id: \.self) { suggestion in
                             Button(action: {
-                                enteredColors.append(suggestion)
-                                inputText = ""
+                                viewModel.enteredColors.append(suggestion)
+                                viewModel.inputText = ""
                             }) {
                                 Text(suggestion)
                                     .padding(.vertical, 4)
@@ -116,61 +74,88 @@ struct ImagineView: View {
                 .background(Color(.systemGray6))
             }
 
-            Button("Done") {
-                showResults = true
-            }
-            .buttonStyle(.borderedProminent)
-            .padding(.top)
+            
 
-            if showResults {
-                if suggestedColors.isEmpty {
-                    Text("You've named all the colors we could think of for this environment! Try another one.")
-                        .font(.footnote)
-                        .foregroundColor(.init(red: 0.0, green: 0.5, blue: 0.0))
-                    Button("New Environment") {
-                        currentEnvironment = colorDatabase.availableEnvironments().randomElement() ?? "forest"
-                        enteredColors = []
-                        showResults = false
-                    }
-                    .buttonStyle(.bordered)
-                    .padding(.top)
-                } else {
-                    Text("Here are more suggestions:")
-                        .font(.footnote)
-                        .foregroundColor(.secondary)
+            if viewModel.showResults {
+                VStack(spacing: 16) {
+                    if viewModel.suggestedColors.isEmpty {
+                        VStack(spacing: 8) {
+                            Text("🎉 Great job!")
+                                .font(.title2)
+                                .bold()
+                            Text("You've named all the colors we could think of for this environment!")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                                .multilineTextAlignment(.center)
+                        }
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .cornerRadius(12)
+                        
+                        Button("New Environment") {
+                            viewModel.newEnvironment()
+                        }
+                        .buttonStyle(.borderedProminent)
+                    } else {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("More ideas:")
+                                .font(.headline)
+                                .foregroundColor(.primary)
 
-                    ScrollView {
-                        LazyVStack(spacing: 8) {
-                            ForEach(suggestedColors, id: \.id) { info in
-                                ColorInfoPanel(colorInfo: info) {
-                                    selectedColorInfo = info
-                                    showColorDetail = true
+                            ScrollView {
+                                LazyVStack(spacing: 8) {
+                                    ForEach(viewModel.suggestedColors, id: \.id) { info in
+                                        ColorInfoPanel(colorInfo: info) {
+                                            viewModel.selectedColorInfo = info
+                                            viewModel.showColorDetail = true
+                                        }
+                                    }
                                 }
                             }
+                            .frame(maxHeight: 300)
                         }
                     }
-                    .frame(maxHeight: 300)
-                }
 
-                if !unusualColors.isEmpty {
-                    Text("You thought of some colors we didn't: \(unusualColors.joined(separator: ", "))")
-                        .font(.footnote)
-                        .foregroundColor(.orange)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    if !viewModel.unusualColors.isEmpty {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Interesting choices:")
+                                .font(.subheadline)
+                                .bold()
+                            Text("You thought of some colors we didn't include: \(viewModel.unusualColors.joined(separator: ", "))")
+                                .font(.footnote)
+                                .foregroundColor(.orange)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                        .padding()
+                        .background(Color.orange.opacity(0.1))
+                        .cornerRadius(8)
+                    }
+                    
+                    Button("Try Another Environment") {
+                        viewModel.newEnvironment()
+                    }
+                    .buttonStyle(.bordered)
                 }
             }
 
             Spacer()
         }
         .padding()
-        .onAppear {
-            if currentEnvironment.isEmpty {
-                currentEnvironment = colorDatabase.availableEnvironments().randomElement() ?? "forest"
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Done") {
+                    isInputActive = false
+                }
             }
         }
-        .sheet(isPresented: $showColorDetail) {
-            if let colorInfo = selectedColorInfo {
+        .onAppear {
+            if viewModel.currentEnvironment.isEmpty {
+                viewModel.currentEnvironment = viewModel.colorDatabase.availableEnvironments().randomElement() ?? "forest"
+            }
+        }
+        .sheet(isPresented: $viewModel.showColorDetail) {
+            if let colorInfo = viewModel.selectedColorInfo {
                 ColorDetailView(color: colorInfo)
             }
         }
