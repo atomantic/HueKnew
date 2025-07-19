@@ -98,7 +98,8 @@ class ColorDatabase: ObservableObject, ColorDatabaseProtocol {
             let content = try String(contentsOf: url, encoding: .utf8)
             let lines = content.components(separatedBy: .newlines)
 
-            for line in lines where !line.isEmpty {
+            // Skip header line
+            for line in lines.dropFirst() where !line.isEmpty {
                 let components = line.split(separator: "\t").map { String($0) }
                 guard components.count == 2 else { continue }
                 let environmentName = components[0]

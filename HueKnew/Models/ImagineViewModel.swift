@@ -13,7 +13,7 @@ class ImagineViewModel: ObservableObject {
     private let aliasMap: [String: String] = ["ochre": "Ocher (Ochre)"]
     internal let colorDatabase: ColorDatabaseProtocol
 
-    init(colorDatabase: ColorDatabase = ColorDatabase.shared) {
+    init(colorDatabase: ColorDatabaseProtocol = ColorDatabase.shared) {
         self.colorDatabase = colorDatabase
         if currentEnvironment.isEmpty {
             currentEnvironment = colorDatabase.availableEnvironments().randomElement() ?? "forest"
