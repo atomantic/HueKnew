@@ -20,6 +20,8 @@ struct CameraColorPickerView: View {
     @State private var nearbyColors: [ColorInfo] = []
     @State private var lastARUpdate = Date()
     private let arUpdateInterval: TimeInterval = 0.6
+    /// Size of the square sampled when determining a color
+    private let sampleSize: CGFloat = 8
     @State private var showSelector = false
     @State private var imagePoint: CGPoint = .zero
     private let colorDatabase = ColorDatabase.shared
@@ -126,7 +128,6 @@ struct CameraColorPickerView: View {
         imagePoint = imgPoint
 
         DispatchQueue.global(qos: .userInitiated).async {
-            let sampleSize: CGFloat = 8
             let rect = CGRect(x: imgPoint.x - sampleSize / 2,
                               y: imgPoint.y - sampleSize / 2,
                               width: sampleSize,
@@ -358,7 +359,7 @@ private extension CGImage {
               let data = dataProvider.data,
               let pixelData = CFDataGetBytePtr(data) else { return nil }
         let bytesPerPixel = 4
-        let bytesPerRow = bytesPerPixel * width
+        let bytesPerRow = self.bytesPerRow
         let x = Int(point.x)
         let y = Int(point.y)
         guard x >= 0, y >= 0, x < width, y < height else { return nil }
@@ -371,15 +372,17 @@ private extension CGImage {
     }
 
     func averageColor(in rect: CGRect) -> UIColor? {
+        guard rect.width > 0, rect.height > 0 else { return nil }
         guard let dataProvider = dataProvider,
               let data = dataProvider.data,
               let pixelData = CFDataGetBytePtr(data) else { return nil }
         let bytesPerPixel = 4
-        let bytesPerRow = bytesPerPixel * width
+        let bytesPerRow = self.bytesPerRow
         let x0 = max(Int(rect.minX), 0)
         let y0 = max(Int(rect.minY), 0)
         let x1 = min(Int(rect.maxX), width - 1)
         let y1 = min(Int(rect.maxY), height - 1)
+        guard x1 >= x0, y1 >= y0 else { return nil }
         var rTotal: Int = 0
         var gTotal: Int = 0
         var bTotal: Int = 0
