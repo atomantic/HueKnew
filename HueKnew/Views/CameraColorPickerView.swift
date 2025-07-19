@@ -122,7 +122,12 @@ struct CameraColorPickerView: View {
         imagePoint = imgPoint
 
         DispatchQueue.global(qos: .userInitiated).async {
-            if let uiColor = img.color(at: imgPoint) {
+            let sampleSize: CGFloat = 8
+            let rect = CGRect(x: imgPoint.x - sampleSize / 2,
+                              y: imgPoint.y - sampleSize / 2,
+                              width: sampleSize,
+                              height: sampleSize)
+            if let uiColor = img.averageColor(in: rect) {
                 let hsb = uiColor.hsbComponents
                 let matches = self.colorDatabase.nearestColors(
                     hue: hsb.hue,
@@ -328,6 +333,10 @@ private extension UIImage {
         guard let cgImage else { return nil }
         return cgImage.color(at: point)
     }
+    func averageColor(in rect: CGRect) -> UIColor? {
+        guard let cgImage else { return nil }
+        return cgImage.averageColor(in: rect)
+    }
     func normalizedOrientation() -> UIImage {
         if imageOrientation == .up { return self }
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
@@ -354,6 +363,39 @@ private extension CGImage {
         let g = CGFloat(pixelData[index + 1]) / 255.0
         let b = CGFloat(pixelData[index + 2]) / 255.0
         let a = CGFloat(pixelData[index + 3]) / 255.0
+        return UIColor(red: r, green: g, blue: b, alpha: a)
+    }
+
+    func averageColor(in rect: CGRect) -> UIColor? {
+        guard let dataProvider = dataProvider,
+              let data = dataProvider.data,
+              let pixelData = CFDataGetBytePtr(data) else { return nil }
+        let bytesPerPixel = 4
+        let bytesPerRow = bytesPerPixel * width
+        let x0 = max(Int(rect.minX), 0)
+        let y0 = max(Int(rect.minY), 0)
+        let x1 = min(Int(rect.maxX), width - 1)
+        let y1 = min(Int(rect.maxY), height - 1)
+        var rTotal: Int = 0
+        var gTotal: Int = 0
+        var bTotal: Int = 0
+        var aTotal: Int = 0
+        var count: Int = 0
+        for y in y0...y1 {
+            for x in x0...x1 {
+                let index = y * bytesPerRow + x * bytesPerPixel
+                rTotal += Int(pixelData[index])
+                gTotal += Int(pixelData[index + 1])
+                bTotal += Int(pixelData[index + 2])
+                aTotal += Int(pixelData[index + 3])
+                count += 1
+            }
+        }
+        guard count > 0 else { return nil }
+        let r = CGFloat(rTotal) / CGFloat(count) / 255.0
+        let g = CGFloat(gTotal) / CGFloat(count) / 255.0
+        let b = CGFloat(bTotal) / CGFloat(count) / 255.0
+        let a = CGFloat(aTotal) / CGFloat(count) / 255.0
         return UIColor(red: r, green: g, blue: b, alpha: a)
     }
 }
