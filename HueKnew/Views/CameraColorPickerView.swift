@@ -21,7 +21,8 @@ struct CameraColorPickerView: View {
     @State private var lastARUpdate = Date()
     private let arUpdateInterval: TimeInterval = 0.6
     /// Size of the square sampled when determining a color
-    private let sampleSize: CGFloat = 8
+    /// One pixel larger than the on-screen indicator to avoid rounding issues
+    private let sampleSize: CGFloat = 9
     @State private var showSelector = false
     @State private var imagePoint: CGPoint = .zero
     private let colorDatabase = ColorDatabase.shared
@@ -116,7 +117,7 @@ struct CameraColorPickerView: View {
 
     private var currentImage: UIImage? {
         if mode == .ar {
-            return liveFrame?.normalizedOrientation()
+            return liveFrame
         } else {
             return image?.normalizedOrientation()
         }
@@ -131,7 +132,7 @@ struct CameraColorPickerView: View {
             let rect = CGRect(x: imgPoint.x - sampleSize / 2,
                               y: imgPoint.y - sampleSize / 2,
                               width: sampleSize,
-                              height: sampleSize)
+                              height: sampleSize).integral
             if let uiColor = img.averageColor(in: rect) {
                 let hsb = uiColor.hsbComponents
                 let matches = self.colorDatabase.nearestColors(
@@ -327,7 +328,7 @@ struct LiveCameraView: UIViewControllerRepresentable {
         init(_ parent: LiveCameraView) { self.parent = parent }
         func didOutput(image: UIImage) {
             DispatchQueue.main.async {
-                self.parent.frame = image.normalizedOrientation()
+                self.parent.frame = image
             }
         }
     }
@@ -380,8 +381,8 @@ private extension CGImage {
         let bytesPerRow = self.bytesPerRow
         let x0 = max(Int(rect.minX), 0)
         let y0 = max(Int(rect.minY), 0)
-        let x1 = min(Int(rect.maxX), width - 1)
-        let y1 = min(Int(rect.maxY), height - 1)
+        let x1 = min(Int(rect.maxX - 1), width - 1)
+        let y1 = min(Int(rect.maxY - 1), height - 1)
         guard x1 >= x0, y1 >= y0 else { return nil }
         var rTotal: Int = 0
         var gTotal: Int = 0
