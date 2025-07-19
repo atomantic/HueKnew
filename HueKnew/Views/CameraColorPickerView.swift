@@ -345,8 +345,11 @@ private extension UIImage {
     }
     func normalizedOrientation() -> UIImage {
         if imageOrientation == .up { return self }
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        draw(in: CGRect(origin: .zero, size: size))
+        let shouldSwap = imageOrientation == .right || imageOrientation == .left ||
+            imageOrientation == .rightMirrored || imageOrientation == .leftMirrored
+        let newSize = shouldSwap ? CGSize(width: size.height, height: size.width) : size
+        UIGraphicsBeginImageContextWithOptions(newSize, false, scale)
+        draw(in: CGRect(origin: .zero, size: newSize))
         let normalized = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return normalized ?? self
