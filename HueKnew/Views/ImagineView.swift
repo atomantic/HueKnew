@@ -30,7 +30,7 @@ struct ImagineView: View {
                             viewModel.addColor(viewModel.inputText)
                             viewModel.inputText = ""
                         }
-                        .onChange(of: viewModel.inputText) { newValue in
+                        .onChange(of: viewModel.inputText) { oldValue, newValue in
                             if newValue.contains(",") {
                                 let parts = newValue.split(separator: ",")
                                 parts.dropLast().forEach { part in viewModel.addColor(String(part)) }

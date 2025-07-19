@@ -22,12 +22,12 @@ struct FooterView: View {
     
     var body: some View {
         HStack {
-            // Home button
+            // Learn button
             Button(action: onHome) {
                 VStack {
-                    Image(systemName: "house.fill")
+                    Image(systemName: "book.closed.fill")
                         .font(.title2)
-                    Text("Home")
+                    Text("Learn")
                         .font(.caption)
                 }
             }
