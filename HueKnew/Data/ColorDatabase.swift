@@ -71,13 +71,13 @@ struct TSVColor {
     let description: String
 }
 
-class ColorDatabase: ObservableObject {
+class ColorDatabase: ObservableObject, ColorDatabaseProtocol {
     static let shared = ColorDatabase()
 
     private var tsvColors: [TSVColor] = []
     private var colorPairs: [ColorPair] = []
     private var closestColorCache: [String: ColorInfo] = [:]
-    private var environmentIndex: [String: [ColorInfo]] = [:]
+    internal var environmentIndex: [String: [ColorInfo]] = [:]
     private var colorEnvironmentIndex: [String: [String]] = [:]
     private var nameIndex: [String: ColorInfo] = [:]
     private var hexIndex: [String: ColorInfo] = [:]
@@ -564,11 +564,11 @@ extension ColorDatabase {
     }
 
     // MARK: - Index Lookup Helpers
-    func colors(forEnvironment environment: String) -> [ColorInfo] {
+    public func colors(forEnvironment environment: String) -> [ColorInfo] {
         environmentIndex[environment.lowercased()] ?? []
     }
 
-    func color(named name: String) -> ColorInfo? {
+    public func color(named name: String) -> ColorInfo? {
         nameIndex[name.lowercased()]
     }
 
