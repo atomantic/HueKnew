@@ -415,8 +415,8 @@ extension ColorDatabase {
         
         // Compare saturation (relative to color1)
         let satDiff = hsb1.saturation - hsb2.saturation
-        if abs(satDiff) > 0.02 {
-            if abs(satDiff) > 0.05 {
+        if abs(satDiff) > 0.05 {
+            if abs(satDiff) > 0.1 {
                 comparisons.append(satDiff > 0 ? "More Saturated" : "Less Saturated")
             } else {
                 comparisons.append(satDiff > 0 ? "Slightly More Saturated" : "Slightly Less Saturated")
@@ -426,8 +426,8 @@ extension ColorDatabase {
         
         // Compare brightness (relative to color1)
         let brightDiff = hsb1.brightness - hsb2.brightness
-        if abs(brightDiff) > 0.02 {
-            if abs(brightDiff) > 0.05 {
+        if abs(brightDiff) > 0.05 {
+            if abs(brightDiff) > 0.1 {
                 comparisons.append(brightDiff > 0 ? "Brighter" : "Darker")
             } else {
                 comparisons.append(brightDiff > 0 ? "Slightly Brighter" : "Slightly Darker")
@@ -449,8 +449,8 @@ extension ColorDatabase {
         let hueDiff = hue1 - hue2
         let normalizedHueDiff = abs(hueDiff) > 180 ? 360 - abs(hueDiff) : abs(hueDiff)
         
-        // Show color descriptions for any difference
-        guard normalizedHueDiff > 0 else { return "" }
+        // Only describe hue differences visible to most humans
+        guard normalizedHueDiff >= 10 else { return "" }
         
         // Define hue ranges for primary and secondary colors
         let redRange = 350.0...360.0
