@@ -129,10 +129,10 @@ struct CameraColorPickerView: View {
         imagePoint = imgPoint
 
         DispatchQueue.global(qos: .userInitiated).async {
-            let rect = CGRect(x: imgPoint.x - sampleSize / 2,
-                              y: imgPoint.y - sampleSize / 2,
-                              width: sampleSize,
-                              height: sampleSize).integral
+            let intSize = Int(sampleSize)
+            let x = Int(round(imgPoint.x)) - intSize / 2
+            let y = Int(round(imgPoint.y)) - intSize / 2
+            let rect = CGRect(x: x, y: y, width: intSize, height: intSize)
             if let uiColor = img.averageColor(in: rect) {
                 let hsb = uiColor.hsbComponents
                 let matches = self.colorDatabase.nearestColors(
@@ -303,7 +303,7 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         let ciImage = CIImage(cvPixelBuffer: buffer)
         if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
             let frameImage = UIImage(cgImage: cgImage, scale: 1.0, orientation: .right)
-            delegate?.didOutput(image: frameImage)
+            delegate?.didOutput(image: frameImage.normalizedOrientation())
         }
     }
 }
