@@ -355,6 +355,19 @@ private extension UIImage {
 }
 
 private extension CGImage {
+    struct ChannelOffsets { let r: Int; let g: Int; let b: Int; let a: Int }
+
+    var channelOffsets: ChannelOffsets {
+        let info = bitmapInfo
+        let alphaInfo = CGImageAlphaInfo(rawValue: info.rawValue & CGBitmapInfo.alphaInfoMask.rawValue)
+        let littleEndian = info.contains(.byteOrder32Little)
+        switch (alphaInfo, littleEndian) {
+        case (.premultipliedFirst, true), (.first, true), (.noneSkipFirst, true):
+            return ChannelOffsets(r: 2, g: 1, b: 0, a: 3) // BGRA
+        default:
+            return ChannelOffsets(r: 0, g: 1, b: 2, a: 3) // Assume RGBA
+        }
+    }
     func color(at point: CGPoint) -> UIColor? {
         guard let dataProvider = dataProvider,
               let data = dataProvider.data,
@@ -364,11 +377,48 @@ private extension CGImage {
         let x = Int(point.x)
         let y = Int(point.y)
         guard x >= 0, y >= 0, x < width, y < height else { return nil }
+        let offsets = channelOffsets
         let index = y * bytesPerRow + x * bytesPerPixel
-        let r = CGFloat(pixelData[index]) / 255.0
-        let g = CGFloat(pixelData[index + 1]) / 255.0
-        let b = CGFloat(pixelData[index + 2]) / 255.0
-        let a = CGFloat(pixelData[index + 3]) / 255.0
+        let r = CGFloat(pixelData[index + offsets.r]) / 255.0
+        let g = CGFloat(pixelData[index + offsets.g]) / 255.0
+        let b = CGFloat(pixelData[index + offsets.b]) / 255.0
+        let a = CGFloat(pixelData[index + offsets.a]) / 255.0
+        return UIColor(red: r, green: g, blue: b, alpha: a)
+    }
+
+    func averageColor(in rect: CGRect) -> UIColor? {
+        guard rect.width > 0, rect.height > 0 else { return nil }
+        guard let dataProvider = dataProvider,
+              let data = dataProvider.data,
+              let pixelData = CFDataGetBytePtr(data) else { return nil }
+        let bytesPerPixel = 4
+        let bytesPerRow = self.bytesPerRow
+        let offsets = channelOffsets
+        let x0 = max(Int(rect.minX), 0)
+        let y0 = max(Int(rect.minY), 0)
+        let x1 = min(Int(rect.maxX - 1), width - 1)
+        let y1 = min(Int(rect.maxY - 1), height - 1)
+        guard x1 >= x0, y1 >= y0 else { return nil }
+        var rTotal: Int = 0
+        var gTotal: Int = 0
+        var bTotal: Int = 0
+        var aTotal: Int = 0
+        var count: Int = 0
+        for y in y0...y1 {
+            for x in x0...x1 {
+                let index = y * bytesPerRow + x * bytesPerPixel
+                rTotal += Int(pixelData[index + offsets.r])
+                gTotal += Int(pixelData[index + offsets.g])
+                bTotal += Int(pixelData[index + offsets.b])
+                aTotal += Int(pixelData[index + offsets.a])
+                count += 1
+            }
+        }
+        guard count > 0 else { return nil }
+        let r = CGFloat(rTotal) / CGFloat(count) / 255.0
+        let g = CGFloat(gTotal) / CGFloat(count) / 255.0
+        let b = CGFloat(bTotal) / CGFloat(count) / 255.0
+        let a = CGFloat(aTotal) / CGFloat(count) / 255.0
         return UIColor(red: r, green: g, blue: b, alpha: a)
     }
 
