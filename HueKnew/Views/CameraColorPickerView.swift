@@ -41,14 +41,14 @@ struct CameraColorPickerView: View {
                     .ignoresSafeArea(edges: .top)
 
                 if let baseImage = currentImage, showSelector {
-                    MagnifierView(image: baseImage, imagePoint: imagePoint)
+                    MagnifierView(image: baseImage, imagePoint: imagePoint, isARMode: mode == .ar)
                         .frame(width: 120, height: 120)
-                        .position(x: touchLocation.x, y: min(touchLocation.y + 150, geo.size.height - 60))
+                        .position(x: touchLocation.x, y: mode == .ar ? min(touchLocation.y + 150, geo.size.height - 60) : max(CGFloat(60), touchLocation.y - 150))
                 }
 
                 // AR mode center magnifier
                 if mode == .ar, let baseImage = currentImage {
-                    MagnifierView(image: baseImage, imagePoint: imagePoint)
+                    MagnifierView(image: baseImage, imagePoint: imagePoint, isARMode: true)
                         .frame(width: 120, height: 120)
                         .position(x: geo.size.width / 2, y: geo.size.height / 2)
                 }
@@ -101,7 +101,7 @@ struct CameraColorPickerView: View {
                 Image(uiImage: img)
                     .resizable()
                     .scaledToFit()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
                     .gesture(sampleGesture)
             } else {
                 Color.black
@@ -178,11 +178,22 @@ struct ModePicker: View {
 struct MagnifierView: View {
     let image: UIImage
     let imagePoint: CGPoint
+    let isARMode: Bool
 
     var body: some View {
         let cropSize: CGFloat = 80
-        let originX = max(min(imagePoint.x - cropSize / 2, image.size.width - cropSize), 0)
-        let originY = max(min(imagePoint.y - cropSize / 2, image.size.height - cropSize), 0)
+        
+        // Transform coordinates for AR mode due to image orientation
+        let adjustedPoint: CGPoint
+        if isARMode && image.imageOrientation == .right {
+            // For .right orientation, transform coordinates
+            adjustedPoint = CGPoint(x: imagePoint.y, y: image.size.width - imagePoint.x)
+        } else {
+            adjustedPoint = imagePoint
+        }
+        
+        let originX = max(min(adjustedPoint.x - cropSize / 2, image.size.width - cropSize), 0)
+        let originY = max(min(adjustedPoint.y - cropSize / 2, image.size.height - cropSize), 0)
         let rect = CGRect(x: originX, y: originY, width: cropSize, height: cropSize)
         let cropped = image.cgImage?.cropping(to: rect).map { UIImage(cgImage: $0, scale: image.scale, orientation: image.imageOrientation) } ?? image
         return Image(uiImage: cropped)
