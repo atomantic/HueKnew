@@ -20,9 +20,6 @@ struct CameraColorPickerView: View {
     @State private var nearbyColors: [ColorInfo] = []
     @State private var lastARUpdate = Date()
     private let arUpdateInterval: TimeInterval = 0.6
-    /// Size of the square sampled when determining a color
-    /// One pixel larger than the on-screen indicator to avoid rounding issues
-    private let sampleSize: CGFloat = 9
     @State private var showSelector = false
     @State private var imagePoint: CGPoint = .zero
     private let colorDatabase = ColorDatabase.shared
@@ -43,18 +40,11 @@ struct CameraColorPickerView: View {
                 contentView(sampleGesture: sampleGesture)
                     .ignoresSafeArea(edges: .top)
 
-                if mode == .ar {
-                    Rectangle()
-                        .stroke(Color.white, lineWidth: 2)
-                        .frame(width: 6, height: 6)
-                }
-
-                if let baseImage = currentImage, showSelector, mode != .ar {
+                if let baseImage = currentImage, showSelector {
                     MagnifierView(image: baseImage, imagePoint: imagePoint)
                         .frame(width: 120, height: 120)
                         .position(x: touchLocation.x, y: max(CGFloat(60), touchLocation.y - 150))
                 }
-
 
                 VStack {
                     ForEach(nearbyColors) { info in
@@ -116,11 +106,7 @@ struct CameraColorPickerView: View {
     }
 
     private var currentImage: UIImage? {
-        if mode == .ar {
-            return liveFrame
-        } else {
-            return image?.normalizedOrientation()
-        }
+        if mode == .ar { return liveFrame } else { return image }
     }
 
     private func updateColor(at location: CGPoint, in geo: GeometryProxy) {
@@ -129,11 +115,7 @@ struct CameraColorPickerView: View {
         imagePoint = imgPoint
 
         DispatchQueue.global(qos: .userInitiated).async {
-            let intSize = Int(sampleSize)
-            let x = Int(round(imgPoint.x)) - intSize / 2
-            let y = Int(round(imgPoint.y)) - intSize / 2
-            let rect = CGRect(x: x, y: y, width: intSize, height: intSize)
-            if let uiColor = img.averageColor(in: rect) {
+            if let uiColor = img.color(at: imgPoint) {
                 let hsb = uiColor.hsbComponents
                 let matches = self.colorDatabase.nearestColors(
                     hue: hsb.hue,
@@ -164,9 +146,7 @@ struct CameraColorPickerView: View {
             : min(viewSize.width / imgSize.width, viewSize.height / imgSize.height)
         let displaySize = CGSize(width: imgSize.width * baseScale, height: imgSize.height * baseScale)
         let originX = (viewSize.width - displaySize.width) / 2
-        let originY: CGFloat = mode == .ar
-            ? (viewSize.height - displaySize.height) / 2
-            : (viewSize.height - displaySize.height) / 2
+        let originY: CGFloat = (viewSize.height - displaySize.height) / 2
         let relativeX = (location.x - originX) / displaySize.width
         let relativeY = (location.y - originY) / displaySize.height
         guard relativeX >= 0, relativeY >= 0, relativeX <= 1, relativeY <= 1 else { return nil }
@@ -188,6 +168,8 @@ struct ModePicker: View {
         .clipShape(Capsule())
     }
 }
+
+
 
 struct MagnifierView: View {
     let image: UIImage
@@ -339,89 +321,23 @@ private extension UIImage {
         guard let cgImage else { return nil }
         return cgImage.color(at: point)
     }
-    func averageColor(in rect: CGRect) -> UIColor? {
-        guard let cgImage else { return nil }
-        return cgImage.averageColor(in: rect)
-    }
-    func normalizedOrientation() -> UIImage {
-        if imageOrientation == .up { return self }
-        let shouldSwap = imageOrientation == .right || imageOrientation == .left ||
-            imageOrientation == .rightMirrored || imageOrientation == .leftMirrored
-        let newSize = shouldSwap ? CGSize(width: size.height, height: size.width) : size
-        UIGraphicsBeginImageContextWithOptions(newSize, false, scale)
-        draw(in: CGRect(origin: .zero, size: newSize))
-        let normalized = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return normalized ?? self
-    }
-
 }
 
 private extension CGImage {
-    struct ChannelOffsets { let r: Int; let g: Int; let b: Int; let a: Int }
-
-    var channelOffsets: ChannelOffsets {
-        let info = bitmapInfo
-        let alphaInfo = CGImageAlphaInfo(rawValue: info.rawValue & CGBitmapInfo.alphaInfoMask.rawValue)
-        let littleEndian = info.contains(.byteOrder32Little)
-        switch (alphaInfo, littleEndian) {
-        case (.premultipliedFirst, true), (.first, true), (.noneSkipFirst, true):
-            return ChannelOffsets(r: 2, g: 1, b: 0, a: 3) // BGRA
-        default:
-            return ChannelOffsets(r: 0, g: 1, b: 2, a: 3) // Assume RGBA
-        }
-    }
     func color(at point: CGPoint) -> UIColor? {
         guard let dataProvider = dataProvider,
               let data = dataProvider.data,
               let pixelData = CFDataGetBytePtr(data) else { return nil }
         let bytesPerPixel = 4
-        let bytesPerRow = self.bytesPerRow
+        let bytesPerRow = bytesPerPixel * width
         let x = Int(point.x)
         let y = Int(point.y)
         guard x >= 0, y >= 0, x < width, y < height else { return nil }
-        let offsets = channelOffsets
         let index = y * bytesPerRow + x * bytesPerPixel
-        let r = CGFloat(pixelData[index + offsets.r]) / 255.0
-        let g = CGFloat(pixelData[index + offsets.g]) / 255.0
-        let b = CGFloat(pixelData[index + offsets.b]) / 255.0
-        let a = CGFloat(pixelData[index + offsets.a]) / 255.0
-        return UIColor(red: r, green: g, blue: b, alpha: a)
-    }
-
-    func averageColor(in rect: CGRect) -> UIColor? {
-        guard rect.width > 0, rect.height > 0 else { return nil }
-        guard let dataProvider = dataProvider,
-              let data = dataProvider.data,
-              let pixelData = CFDataGetBytePtr(data) else { return nil }
-        let bytesPerPixel = 4
-        let bytesPerRow = self.bytesPerRow
-        let offsets = channelOffsets
-        let x0 = max(Int(rect.minX), 0)
-        let y0 = max(Int(rect.minY), 0)
-        let x1 = min(Int(rect.maxX - 1), width - 1)
-        let y1 = min(Int(rect.maxY - 1), height - 1)
-        guard x1 >= x0, y1 >= y0 else { return nil }
-        var rTotal: Int = 0
-        var gTotal: Int = 0
-        var bTotal: Int = 0
-        var aTotal: Int = 0
-        var count: Int = 0
-        for y in y0...y1 {
-            for x in x0...x1 {
-                let index = y * bytesPerRow + x * bytesPerPixel
-                rTotal += Int(pixelData[index + offsets.r])
-                gTotal += Int(pixelData[index + offsets.g])
-                bTotal += Int(pixelData[index + offsets.b])
-                aTotal += Int(pixelData[index + offsets.a])
-                count += 1
-            }
-        }
-        guard count > 0 else { return nil }
-        let r = CGFloat(rTotal) / CGFloat(count) / 255.0
-        let g = CGFloat(gTotal) / CGFloat(count) / 255.0
-        let b = CGFloat(bTotal) / CGFloat(count) / 255.0
-        let a = CGFloat(aTotal) / CGFloat(count) / 255.0
+        let r = CGFloat(pixelData[index]) / 255.0
+        let g = CGFloat(pixelData[index + 1]) / 255.0
+        let b = CGFloat(pixelData[index + 2]) / 255.0
+        let a = CGFloat(pixelData[index + 3]) / 255.0
         return UIColor(red: r, green: g, blue: b, alpha: a)
     }
 }
