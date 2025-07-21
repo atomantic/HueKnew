@@ -187,11 +187,33 @@ struct MagnifierView: View {
 
     var body: some View {
         let cropSize: CGFloat = 80
-        let normalizedImage = image.imageOrientation == .up ? image : image.normalizedOrientation()
-        let originX = max(min(imagePoint.x - cropSize / 2, normalizedImage.size.width - cropSize), 0)
-        let originY = max(min(imagePoint.y - cropSize / 2, normalizedImage.size.height - cropSize), 0)
+        // Adjust coordinates based on image orientation
+        let adjustedPoint: CGPoint
+        let adjustedSize: CGSize
+        
+        switch image.imageOrientation {
+        case .right, .rightMirrored:
+            // Image is rotated 90 degrees clockwise, so swap x/y and adjust
+            adjustedPoint = CGPoint(x: imagePoint.y, y: image.size.width - imagePoint.x)
+            adjustedSize = CGSize(width: image.size.height, height: image.size.width)
+        case .left, .leftMirrored:
+            // Image is rotated 90 degrees counter-clockwise, so swap x/y and adjust
+            adjustedPoint = CGPoint(x: image.size.height - imagePoint.y, y: imagePoint.x)
+            adjustedSize = CGSize(width: image.size.height, height: image.size.width)
+        case .down, .downMirrored:
+            // Image is rotated 180 degrees
+            adjustedPoint = CGPoint(x: image.size.width - imagePoint.x, y: image.size.height - imagePoint.y)
+            adjustedSize = image.size
+        default:
+            // No rotation needed
+            adjustedPoint = imagePoint
+            adjustedSize = image.size
+        }
+        
+        let originX = max(min(adjustedPoint.x - cropSize / 2, adjustedSize.width - cropSize), 0)
+        let originY = max(min(adjustedPoint.y - cropSize / 2, adjustedSize.height - cropSize), 0)
         let rect = CGRect(x: originX, y: originY, width: cropSize, height: cropSize)
-        let cropped = normalizedImage.cgImage?.cropping(to: rect).map { UIImage(cgImage: $0) } ?? normalizedImage
+        let cropped = image.cgImage?.cropping(to: rect).map { UIImage(cgImage: $0) } ?? image
         return Image(uiImage: cropped)
             .resizable()
             .scaledToFill()
