@@ -190,7 +190,7 @@ struct MagnifierView: View {
         let originX = max(min(imagePoint.x - cropSize / 2, image.size.width - cropSize), 0)
         let originY = max(min(imagePoint.y - cropSize / 2, image.size.height - cropSize), 0)
         let rect = CGRect(x: originX, y: originY, width: cropSize, height: cropSize)
-        let cropped = image.cgImage?.cropping(to: rect).map { UIImage(cgImage: $0) } ?? image
+        let cropped = image.cgImage?.cropping(to: rect).map { UIImage(cgImage: $0, scale: image.scale, orientation: image.imageOrientation) } ?? image
         return Image(uiImage: cropped)
             .resizable()
             .scaledToFill()
