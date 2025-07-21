@@ -311,8 +311,10 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         guard let buffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         let ciImage = CIImage(cvPixelBuffer: buffer)
         if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
-            let frameImage = UIImage(cgImage: cgImage, scale: 1.0, orientation: .up)
-            delegate?.didOutput(image: frameImage)
+            // Normalize orientation so coordinates match the on-screen preview
+            let oriented = UIImage(cgImage: cgImage, scale: 1.0, orientation: .right)
+                .normalizedOrientation()
+            delegate?.didOutput(image: oriented)
         }
     }
 }
