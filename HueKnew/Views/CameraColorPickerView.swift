@@ -43,7 +43,7 @@ struct CameraColorPickerView: View {
                 if let baseImage = currentImage, showSelector {
                     MagnifierView(image: baseImage, imagePoint: imagePoint)
                         .frame(width: 120, height: 120)
-                        .position(x: touchLocation.x, y: max(CGFloat(60), touchLocation.y - 150))
+                        .position(x: touchLocation.x, y: min(touchLocation.y + 150, geo.size.height - 60))
                 }
 
                 // AR mode center magnifier
@@ -78,7 +78,7 @@ struct CameraColorPickerView: View {
             }
         }
         .onChange(of: mode) { _, newMode in
-            if newMode == .photos {
+            if newMode == .photos && image == nil {
                 showPhotoPicker = true
             }
         }
@@ -101,7 +101,7 @@ struct CameraColorPickerView: View {
                 Image(uiImage: img)
                     .resizable()
                     .scaledToFit()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: img.size.width > img.size.height ? .bottom : .center)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                     .gesture(sampleGesture)
             } else {
                 Color.black
