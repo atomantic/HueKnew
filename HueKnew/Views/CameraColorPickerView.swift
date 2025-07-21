@@ -288,7 +288,7 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         guard let buffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         let ciImage = CIImage(cvPixelBuffer: buffer)
         if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
-            let frameImage = UIImage(cgImage: cgImage)
+            let frameImage = UIImage(cgImage: cgImage, scale: 1.0, orientation: .right)
             delegate?.didOutput(image: frameImage)
         }
     }
