@@ -255,7 +255,7 @@ struct PhotoPickerView: UIViewControllerRepresentable {
                 provider.loadObject(ofClass: UIImage.self) { object, _ in
                     if let uiImage = object as? UIImage {
                         DispatchQueue.main.async {
-                            self.parent.image = uiImage.normalizedOrientation()
+                            self.parent.image = uiImage
                         }
                     }
                 }
@@ -302,8 +302,8 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         guard let buffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         let ciImage = CIImage(cvPixelBuffer: buffer)
         if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
-            let frameImage = UIImage(cgImage: cgImage, scale: 1.0, orientation: .right)
-            delegate?.didOutput(image: frameImage.normalizedOrientation())
+            let frameImage = UIImage(cgImage: cgImage, scale: 1.0, orientation: .up)
+            delegate?.didOutput(image: frameImage)
         }
     }
 }
