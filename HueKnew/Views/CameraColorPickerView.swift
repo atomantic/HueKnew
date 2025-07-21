@@ -30,7 +30,10 @@ struct CameraColorPickerView: View {
                 .onChanged { value in
                     touchLocation = value.location
                     showSelector = true
-                    updateColor(at: value.location, in: geo)
+                    // Calculate magnifier position to ensure color sampling matches what's shown
+                    let magnifierY = max(CGFloat(60), value.location.y - 150)
+                    let magnifierCenter = CGPoint(x: value.location.x, y: magnifierY + 60) // 60 is half the magnifier height
+                    updateColor(at: magnifierCenter, in: geo)
                 }
                 .onEnded { _ in
                     showSelector = false
@@ -44,6 +47,13 @@ struct CameraColorPickerView: View {
                     MagnifierView(image: baseImage, imagePoint: imagePoint)
                         .frame(width: 120, height: 120)
                         .position(x: touchLocation.x, y: max(CGFloat(60), touchLocation.y - 150))
+                }
+
+                // AR mode center magnifier
+                if mode == .ar, let baseImage = currentImage {
+                    MagnifierView(image: baseImage, imagePoint: imagePoint)
+                        .frame(width: 120, height: 120)
+                        .position(x: geo.size.width / 2, y: geo.size.height / 2)
                 }
 
                 VStack {
@@ -284,7 +294,7 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         guard let buffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         let ciImage = CIImage(cvPixelBuffer: buffer)
         if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
-            let frameImage = UIImage(cgImage: cgImage, scale: 1.0, orientation: .up)
+            let frameImage = UIImage(cgImage: cgImage, scale: 1.0, orientation: .right)
             delegate?.didOutput(image: frameImage)
         }
     }
