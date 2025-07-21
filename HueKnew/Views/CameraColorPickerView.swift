@@ -288,7 +288,7 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         guard let buffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         let ciImage = CIImage(cvPixelBuffer: buffer)
         if let cgImage = context.createCGImage(ciImage, from: ciImage.extent) {
-            let frameImage = UIImage(cgImage: cgImage, scale: 1.0, orientation: .up)
+            let frameImage = UIImage(cgImage: cgImage, scale: 1.0)
             delegate?.didOutput(image: frameImage)
         }
     }
@@ -326,20 +326,7 @@ private extension UIImage {
         return cgImage.color(at: point)
     }
     
-    func normalizedOrientation() -> UIImage {
-        if imageOrientation == .up { return self }
-        
-        // Calculate the correct size for the normalized image
-        let shouldSwap = imageOrientation == .right || imageOrientation == .left ||
-            imageOrientation == .rightMirrored || imageOrientation == .leftMirrored
-        let newSize = shouldSwap ? CGSize(width: size.height, height: size.width) : size
-        
-        UIGraphicsBeginImageContextWithOptions(newSize, false, scale)
-        draw(in: CGRect(origin: .zero, size: newSize))
-        let normalized = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return normalized ?? self
-    }
+
 }
 
 private extension CGImage {
