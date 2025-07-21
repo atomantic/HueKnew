@@ -30,10 +30,7 @@ struct CameraColorPickerView: View {
                 .onChanged { value in
                     touchLocation = value.location
                     showSelector = true
-                    // Calculate magnifier position to ensure color sampling matches what's shown
-                    let magnifierY = max(CGFloat(60), value.location.y - 150)
-                    let magnifierCenter = CGPoint(x: value.location.x, y: magnifierY + 60) // 60 is half the magnifier height
-                    updateColor(at: magnifierCenter, in: geo)
+                    updateColor(at: value.location, in: geo)
                 }
                 .onEnded { _ in
                     showSelector = false
@@ -88,9 +85,6 @@ struct CameraColorPickerView: View {
         
         .sheet(isPresented: $showPhotoPicker) {
             PhotoPickerView(image: $image)
-                .onDisappear {
-                    if image == nil { mode = .ar }
-                }
         }
         .sheet(isPresented: $showColorDetail) {
             if let colorInfo = selectedColorInfo {
@@ -107,7 +101,7 @@ struct CameraColorPickerView: View {
                 Image(uiImage: img)
                     .resizable()
                     .scaledToFit()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: img.size.width > img.size.height ? .bottom : .center)
                     .gesture(sampleGesture)
             } else {
                 Color.black
