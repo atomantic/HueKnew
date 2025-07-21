@@ -188,8 +188,26 @@ struct MagnifierView: View {
     var body: some View {
         let cropSize: CGFloat = 80
         let normalizedImage = image.normalizedOrientation()
-        let originX = max(min(imagePoint.x - cropSize / 2, normalizedImage.size.width - cropSize), 0)
-        let originY = max(min(imagePoint.y - cropSize / 2, normalizedImage.size.height - cropSize), 0)
+        
+        // Transform coordinates based on the original image orientation
+        let adjustedPoint: CGPoint
+        switch image.imageOrientation {
+        case .right, .rightMirrored:
+            // Original image was rotated 90° clockwise, so transform coordinates
+            adjustedPoint = CGPoint(x: imagePoint.y, y: image.size.width - imagePoint.x)
+        case .left, .leftMirrored:
+            // Original image was rotated 90° counter-clockwise, so transform coordinates
+            adjustedPoint = CGPoint(x: image.size.height - imagePoint.y, y: imagePoint.x)
+        case .down, .downMirrored:
+            // Original image was rotated 180°, so transform coordinates
+            adjustedPoint = CGPoint(x: image.size.width - imagePoint.x, y: image.size.height - imagePoint.y)
+        default:
+            // No rotation needed
+            adjustedPoint = imagePoint
+        }
+        
+        let originX = max(min(adjustedPoint.x - cropSize / 2, normalizedImage.size.width - cropSize), 0)
+        let originY = max(min(adjustedPoint.y - cropSize / 2, normalizedImage.size.height - cropSize), 0)
         let rect = CGRect(x: originX, y: originY, width: cropSize, height: cropSize)
         let cropped = normalizedImage.cgImage?.cropping(to: rect).map { UIImage(cgImage: $0) } ?? normalizedImage
         return Image(uiImage: cropped)
@@ -329,8 +347,14 @@ private extension UIImage {
     
     func normalizedOrientation() -> UIImage {
         if imageOrientation == .up { return self }
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        draw(in: CGRect(origin: .zero, size: size))
+        
+        // Calculate the correct size for the normalized image
+        let shouldSwap = imageOrientation == .right || imageOrientation == .left ||
+            imageOrientation == .rightMirrored || imageOrientation == .leftMirrored
+        let newSize = shouldSwap ? CGSize(width: size.height, height: size.width) : size
+        
+        UIGraphicsBeginImageContextWithOptions(newSize, false, scale)
+        draw(in: CGRect(origin: .zero, size: newSize))
         let normalized = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return normalized ?? self
