@@ -187,10 +187,11 @@ struct MagnifierView: View {
 
     var body: some View {
         let cropSize: CGFloat = 80
-        let originX = max(min(imagePoint.x - cropSize / 2, image.size.width - cropSize), 0)
-        let originY = max(min(imagePoint.y - cropSize / 2, image.size.height - cropSize), 0)
+        let normalizedImage = image.imageOrientation == .up ? image : image.normalizedOrientation()
+        let originX = max(min(imagePoint.x - cropSize / 2, normalizedImage.size.width - cropSize), 0)
+        let originY = max(min(imagePoint.y - cropSize / 2, normalizedImage.size.height - cropSize), 0)
         let rect = CGRect(x: originX, y: originY, width: cropSize, height: cropSize)
-        let cropped = image.cgImage?.cropping(to: rect).map { UIImage(cgImage: $0) } ?? image
+        let cropped = normalizedImage.cgImage?.cropping(to: rect).map { UIImage(cgImage: $0) } ?? normalizedImage
         return Image(uiImage: cropped)
             .resizable()
             .scaledToFill()
@@ -324,6 +325,15 @@ private extension UIImage {
     func color(at point: CGPoint) -> UIColor? {
         guard let cgImage else { return nil }
         return cgImage.color(at: point)
+    }
+    
+    func normalizedOrientation() -> UIImage {
+        if imageOrientation == .up { return self }
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        draw(in: CGRect(origin: .zero, size: size))
+        let normalized = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return normalized ?? self
     }
 }
 
