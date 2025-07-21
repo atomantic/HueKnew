@@ -187,26 +187,8 @@ struct MagnifierView: View {
 
     var body: some View {
         let cropSize: CGFloat = 80
-        
-        // Transform coordinates based on image orientation to match raw image data
-        let adjustedPoint: CGPoint
-        switch image.imageOrientation {
-        case .right, .rightMirrored:
-            // Displayed image is rotated 90° clockwise from raw, so transform coordinates
-            adjustedPoint = CGPoint(x: imagePoint.y, y: image.size.width - imagePoint.x)
-        case .left, .leftMirrored:
-            // Displayed image is rotated 90° counter-clockwise from raw, so transform coordinates
-            adjustedPoint = CGPoint(x: image.size.height - imagePoint.y, y: imagePoint.x)
-        case .down, .downMirrored:
-            // Displayed image is rotated 180° from raw, so transform coordinates
-            adjustedPoint = CGPoint(x: image.size.width - imagePoint.x, y: image.size.height - imagePoint.y)
-        default:
-            // No rotation needed
-            adjustedPoint = imagePoint
-        }
-        
-        let originX = max(min(adjustedPoint.x - cropSize / 2, image.size.width - cropSize), 0)
-        let originY = max(min(adjustedPoint.y - cropSize / 2, image.size.height - cropSize), 0)
+        let originX = max(min(imagePoint.x - cropSize / 2, image.size.width - cropSize), 0)
+        let originY = max(min(imagePoint.y - cropSize / 2, image.size.height - cropSize), 0)
         let rect = CGRect(x: originX, y: originY, width: cropSize, height: cropSize)
         let cropped = image.cgImage?.cropping(to: rect).map { UIImage(cgImage: $0) } ?? image
         return Image(uiImage: cropped)
