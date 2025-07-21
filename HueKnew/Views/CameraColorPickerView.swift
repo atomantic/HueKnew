@@ -70,7 +70,7 @@ struct CameraColorPickerView: View {
                 }
                 .padding(.horizontal)
             }
-            .onChange(of: liveFrame) { _ in
+            .onChange(of: liveFrame) { _, _ in
                 if mode == .ar {
                     let now = Date()
                     guard now.timeIntervalSince(lastARUpdate) >= arUpdateInterval else { return }
@@ -285,14 +285,14 @@ class CameraController: UIViewController, AVCaptureVideoDataOutputSampleBufferDe
         preview.videoGravity = .resizeAspectFill
         preview.frame = view.bounds
         if let connection = preview.connection {
-            connection.videoOrientation = .portrait
+            connection.videoRotationAngle = 0
         }
         view.layer.addSublayer(preview)
 
         let output = AVCaptureVideoDataOutput()
         output.setSampleBufferDelegate(self, queue: DispatchQueue(label: "camera.frame"))
         if let connection = output.connection(with: .video) {
-            connection.videoOrientation = .portrait
+            connection.videoRotationAngle = 0
         }
         session.addOutput(output)
         session.startRunning()
@@ -414,41 +414,6 @@ private extension CGImage {
                 gTotal += Int(pixelData[index + offsets.g])
                 bTotal += Int(pixelData[index + offsets.b])
                 aTotal += Int(pixelData[index + offsets.a])
-                count += 1
-            }
-        }
-        guard count > 0 else { return nil }
-        let r = CGFloat(rTotal) / CGFloat(count) / 255.0
-        let g = CGFloat(gTotal) / CGFloat(count) / 255.0
-        let b = CGFloat(bTotal) / CGFloat(count) / 255.0
-        let a = CGFloat(aTotal) / CGFloat(count) / 255.0
-        return UIColor(red: r, green: g, blue: b, alpha: a)
-    }
-
-    func averageColor(in rect: CGRect) -> UIColor? {
-        guard rect.width > 0, rect.height > 0 else { return nil }
-        guard let dataProvider = dataProvider,
-              let data = dataProvider.data,
-              let pixelData = CFDataGetBytePtr(data) else { return nil }
-        let bytesPerPixel = 4
-        let bytesPerRow = self.bytesPerRow
-        let x0 = max(Int(rect.minX), 0)
-        let y0 = max(Int(rect.minY), 0)
-        let x1 = min(Int(rect.maxX - 1), width - 1)
-        let y1 = min(Int(rect.maxY - 1), height - 1)
-        guard x1 >= x0, y1 >= y0 else { return nil }
-        var rTotal: Int = 0
-        var gTotal: Int = 0
-        var bTotal: Int = 0
-        var aTotal: Int = 0
-        var count: Int = 0
-        for y in y0...y1 {
-            for x in x0...x1 {
-                let index = y * bytesPerRow + x * bytesPerPixel
-                rTotal += Int(pixelData[index])
-                gTotal += Int(pixelData[index + 1])
-                bTotal += Int(pixelData[index + 2])
-                aTotal += Int(pixelData[index + 3])
                 count += 1
             }
         }
