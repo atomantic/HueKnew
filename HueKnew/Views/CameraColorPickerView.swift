@@ -49,7 +49,7 @@ struct CameraColorPickerView: View {
                 // AR mode center magnifier
                 if mode == .ar, let baseImage = currentImage {
                     let magnifierY = geo.size.height / 2
-                    let stingerOffset: CGFloat = 70 // Offset to where the stinger points
+                    let stingerOffset: CGFloat = 30 // Offset to where the stinger points
                     let samplePoint = CGPoint(x: geo.size.width / 2, y: magnifierY + stingerOffset)
                     
                     if let imgPoint = imagePoint(for: samplePoint, in: geo, image: baseImage) {
@@ -78,7 +78,7 @@ struct CameraColorPickerView: View {
                     let now = Date()
                     guard now.timeIntervalSince(lastARUpdate) >= arUpdateInterval else { return }
                     lastARUpdate = now
-                    let stingerOffset: CGFloat = 70 // Same offset as magnifier
+                    let stingerOffset: CGFloat = 30 // Same offset as magnifier
                     let samplePoint = CGPoint(x: geo.size.width / 2, y: geo.size.height / 2 + stingerOffset)
                     updateColor(at: samplePoint, in: geo)
                 }
@@ -211,7 +211,7 @@ struct MagnifierView: View {
         let originX = max(min(adjustedPoint.x - cropSize / 2, adjustedSize.width - cropSize), 0)
         let originY = max(min(adjustedPoint.y - cropSize / 2, adjustedSize.height - cropSize), 0)
         let rect = CGRect(x: originX, y: originY, width: cropSize, height: cropSize)
-        let cropped = image.cgImage?.cropping(to: rect).map { UIImage(cgImage: $0, scale: image.scale, orientation: image.imageOrientation) } ?? image
+        let cropped = image.cgImage?.cropping(to: rect).map { UIImage(cgImage: $0, scale: image.scale, orientation: .up) } ?? image
         return Image(uiImage: cropped)
             .resizable()
             .scaledToFill()
