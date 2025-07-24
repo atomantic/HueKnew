@@ -53,6 +53,10 @@ struct CameraColorPickerView: View {
                     let samplePoint = CGPoint(x: geo.size.width / 2, y: magnifierY + stingerOffset)
                     
                     if let imgPoint = imagePoint(for: samplePoint, in: geo, image: baseImage) {
+                        // Store the image point for AR mode color detection
+                        DispatchQueue.main.async {
+                            self.imagePoint = imgPoint
+                        }
                         MagnifierView(image: baseImage, imagePoint: imgPoint, isARMode: true)
                             .frame(width: 120, height: 120)
                             .position(x: geo.size.width / 2, y: magnifierY)
@@ -78,9 +82,25 @@ struct CameraColorPickerView: View {
                     let now = Date()
                     guard now.timeIntervalSince(lastARUpdate) >= arUpdateInterval else { return }
                     lastARUpdate = now
-                    let stingerOffset: CGFloat = 30 // Same offset as magnifier
-                    let samplePoint = CGPoint(x: geo.size.width / 2, y: geo.size.height / 2 + stingerOffset)
-                    updateColor(at: samplePoint, in: geo)
+                    // Use the stored imagePoint from magnifier
+                    if imagePoint != .zero, let img = currentImage {
+                        DispatchQueue.global(qos: .userInitiated).async {
+                            if let uiColor = img.color(at: self.imagePoint) {
+                                let hsb = uiColor.hsbComponents
+                                let matches = self.colorDatabase.nearestColors(
+                                    hue: hsb.hue,
+                                    saturation: hsb.saturation,
+                                    brightness: hsb.brightness,
+                                    count: 3
+                                )
+                                DispatchQueue.main.async {
+                                    self.nearbyColors = matches.sorted { $0.name < $1.name }
+                                    self.colorName = matches.first?.name ?? ""
+                                    self.selectedColorInfo = matches.first
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -211,7 +231,7 @@ struct MagnifierView: View {
         let originX = max(min(adjustedPoint.x - cropSize / 2, adjustedSize.width - cropSize), 0)
         let originY = max(min(adjustedPoint.y - cropSize / 2, adjustedSize.height - cropSize), 0)
         let rect = CGRect(x: originX, y: originY, width: cropSize, height: cropSize)
-        let cropped = image.cgImage?.cropping(to: rect).map { UIImage(cgImage: $0, scale: image.scale, orientation: .up) } ?? image
+        let cropped = image.cgImage?.cropping(to: rect).map { UIImage(cgImage: $0, scale: image.scale, orientation: image.imageOrientation) } ?? image
         return Image(uiImage: cropped)
             .resizable()
             .scaledToFill()
