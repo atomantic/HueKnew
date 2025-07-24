@@ -48,9 +48,15 @@ struct CameraColorPickerView: View {
 
                 // AR mode center magnifier
                 if mode == .ar, let baseImage = currentImage {
-                    MagnifierView(image: baseImage, imagePoint: imagePoint, isARMode: true)
-                        .frame(width: 120, height: 120)
-                        .position(x: geo.size.width / 2, y: geo.size.height / 2)
+                    let magnifierY = geo.size.height / 2
+                    let stingerOffset: CGFloat = 70 // Offset to where the stinger points
+                    let samplePoint = CGPoint(x: geo.size.width / 2, y: magnifierY + stingerOffset)
+                    
+                    if let imgPoint = imagePoint(for: samplePoint, in: geo, image: baseImage) {
+                        MagnifierView(image: baseImage, imagePoint: imgPoint, isARMode: true)
+                            .frame(width: 120, height: 120)
+                            .position(x: geo.size.width / 2, y: magnifierY)
+                    }
                 }
 
                 VStack {
@@ -72,8 +78,9 @@ struct CameraColorPickerView: View {
                     let now = Date()
                     guard now.timeIntervalSince(lastARUpdate) >= arUpdateInterval else { return }
                     lastARUpdate = now
-                    let center = CGPoint(x: geo.size.width / 2, y: geo.size.height / 2)
-                    updateColor(at: center, in: geo)
+                    let stingerOffset: CGFloat = 70 // Same offset as magnifier
+                    let samplePoint = CGPoint(x: geo.size.width / 2, y: geo.size.height / 2 + stingerOffset)
+                    updateColor(at: samplePoint, in: geo)
                 }
             }
         }
@@ -150,7 +157,12 @@ struct CameraColorPickerView: View {
             : min(viewSize.width / imgSize.width, viewSize.height / imgSize.height)
         let displaySize = CGSize(width: imgSize.width * baseScale, height: imgSize.height * baseScale)
         let originX = (viewSize.width - displaySize.width) / 2
-        let originY: CGFloat = (viewSize.height - displaySize.height) / 2
+        
+        // For photo mode, image is aligned to bottom; for AR mode, it's centered
+        let originY: CGFloat = mode == .ar
+            ? (viewSize.height - displaySize.height) / 2
+            : viewSize.height - displaySize.height
+        
         let relativeX = (location.x - originX) / displaySize.width
         let relativeY = (location.y - originY) / displaySize.height
         guard relativeX >= 0, relativeY >= 0, relativeX <= 1, relativeY <= 1 else { return nil }
@@ -185,15 +197,19 @@ struct MagnifierView: View {
         
         // Transform coordinates for AR mode due to image orientation
         let adjustedPoint: CGPoint
+        let adjustedSize: CGSize
+        
         if isARMode && image.imageOrientation == .right {
             // For .right orientation, transform coordinates
             adjustedPoint = CGPoint(x: imagePoint.y, y: image.size.width - imagePoint.x)
+            adjustedSize = CGSize(width: image.size.height, height: image.size.width)
         } else {
             adjustedPoint = imagePoint
+            adjustedSize = image.size
         }
         
-        let originX = max(min(adjustedPoint.x - cropSize / 2, image.size.width - cropSize), 0)
-        let originY = max(min(adjustedPoint.y - cropSize / 2, image.size.height - cropSize), 0)
+        let originX = max(min(adjustedPoint.x - cropSize / 2, adjustedSize.width - cropSize), 0)
+        let originY = max(min(adjustedPoint.y - cropSize / 2, adjustedSize.height - cropSize), 0)
         let rect = CGRect(x: originX, y: originY, width: cropSize, height: cropSize)
         let cropped = image.cgImage?.cropping(to: rect).map { UIImage(cgImage: $0, scale: image.scale, orientation: image.imageOrientation) } ?? image
         return Image(uiImage: cropped)
