@@ -54,9 +54,7 @@ struct CameraColorPickerView: View {
                     
                     if let imgPoint = imagePoint(for: samplePoint, in: geo, image: baseImage) {
                         // Store the image point for AR mode color detection
-                        DispatchQueue.main.async {
-                            self.imagePoint = imgPoint
-                        }
+                        self.imagePoint = imgPoint
                         MagnifierView(image: baseImage, imagePoint: imgPoint, isARMode: true)
                             .frame(width: 120, height: 120)
                             .position(x: geo.size.width / 2, y: magnifierY)
